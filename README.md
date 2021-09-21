@@ -2,6 +2,8 @@
 
 This is my personal Neovim configuration (Windows, WSL/Ubuntu and termux).
 
+![screenshot](/assets/nvim.png)
+
 ## plugins
 
 - [packer.nvim](https://github.com/wbthomason/packer.nvim) plugin/package management for neovim
