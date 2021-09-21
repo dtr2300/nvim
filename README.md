@@ -29,3 +29,52 @@ This is my personal Neovim configuration (Windows, WSL/Ubuntu and termux).
 - [nvim-lua-guide](https://github.com/nanotee/nvim-lua-guide) getting started using lua in neovim
 - [nvim-luaref](https://github.com/milisims/nvim-luaref) adds a reference for builtin lua functions, extracting both text and formatting from the lua 5.1 reference manual
 - [scnvim](https://github.com/davidgranstrom/scnvim) neovim frontend for supercollider
+
+## useful links
+
+- [Getting started using Lua in Neovim](https://github.com/nanotee/nvim-lua-guide)
+- [neovim craft](https://neovimcraft.com/)
+- [Awesome Neovim](https://github.com/rockerBOO/awesome-neovim)
+- [Neovim Awesome - Plugin Search](https://neovim.erock.io/)
+- [neovim](https://neovim.io/)
+- [neovim Github](https://github.com/neovim/neovim)
+- [neovim-qt Github](https://github.com/equalsraf/neovim-qt)
+- [neovim Reddit](https://www.reddit.com/r/neovim/)
+- [neovim Discourse](https://neovim.discourse.group/)
+
+## other configs
+
+- https://github.com/aserowy/NeoCode
+- https://github.com/ashincoder/StarVim
+- https://github.com/ayamir/nvimdots
+- https://github.com/brainfucksec/neovim-lua
+- https://github.com/budswa/nvim
+- https://github.com/ChristianChiarulli/LunarVim
+- https://github.com/crivotz/nv-ide
+- https://github.com/danielnehrig/nvim
+- https://github.com/dhruvmanila/dotfiles
+- https://github.com/e-cal/evim
+- https://github.com/elianiva/dotfiles
+- https://github.com/folke/dot
+- https://github.com/fsouza/dotfiles
+- https://github.com/glepnir/nvim
+- https://github.com/goolord/nvim
+- https://github.com/GustavoPrietoP/evil-nvim
+- https://github.com/hackorum/VapourNvim
+- https://github.com/icyphox/dotfiles
+- https://github.com/kabouzeid/dotfiles
+- https://github.com/kristijanhusak/neovim-config
+- https://github.com/kunzaatko/nvim-dots
+- https://github.com/martinsione/dotfiles
+- https://github.com/mjlbach/defaults.nvim
+- https://github.com/mte90/dotfiles
+- https://github.com/noib3/dotfiles/
+- https://github.com/NTBBloodbath/doom-nvim
+- https://github.com/olgam4/nvim
+- https://github.com/samrath2007/kyoto.nvim
+- https://github.com/siduck76/NvChad
+- https://github.com/smithbm2316/dotfiles
+- https://github.com/Theory-of-Everything/nii-nvim
+- https://github.com/tjdevries/config_manager
+- https://github.com/vi-tality/neovitality
+- https://github.com/wbthomason/dotfiles
