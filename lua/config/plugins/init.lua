@@ -37,7 +37,7 @@ return require"packer".startup({function()
 end,
 
 config = {
-  compile_path = vim.fn.stdpath("config").."/lua/config/plugins/packer_compiled.lua",
+  compile_path = vim.fn.stdpath("config") .. "/lua/config/plugins/packer_compiled.lua",
   display = {
     open_fn = require"packer.util".float,
   }
