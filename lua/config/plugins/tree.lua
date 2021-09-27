@@ -15,17 +15,17 @@ function M.setup()
   local map = require"config.utils.map".map
 
   vim.g.nvim_tree_ignore = {".git", "venv", ".cache", "__pycache__"}
-  vim.g.nvim_tree_auto_ignore_ft = {"alpha"}
   vim.g.nvim_tree_git_hl = 1
 
   require"nvim-tree".setup {
     disable_netrw = false,
+    ignore_ft_on_setup = {"alpha"},
     auto_close = true,
     update_cwd = true,
     update_focused_file = {
       enable = true,
       update_cwd = true,
-      ignore_list = {}
+      ignore_list = {"help"}
     }
   }
 
