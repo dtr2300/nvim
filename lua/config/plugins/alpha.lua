@@ -9,7 +9,7 @@ local function button(sc, txt, keybind, keybind_opts)
 end
 
 local function pick_color()
-  local colors = {"String", "Identifier", "Keyword"}
+  local colors = {"String", "Identifier", "Keyword", "Number"}
   return colors[math.random(#colors)]
 end
 
