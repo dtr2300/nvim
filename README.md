@@ -11,8 +11,9 @@ This is my personal Neovim configuration (Windows, WSL/Ubuntu and termux).
 - [nvim-web-devicons](https://github.com/kyazdani42/nvim-web-devicons) adds filetype glyphs (icons) to various vim plugins
 - [plenary.nvim](https://github.com/nvim-lua/plenary.nvim) all the lua functions I don't want to write twice
 - [nvim-notify](https://github.com/rcarriga/nvim-notify) a fancy, configurable, notification manager for neovim
+- [sqlite.lua](https://github.com/tami5/sqlite.lua) sqlite/luajit binding and a highly opinionated wrapper for storing, retrieving, caching, and persisting sqlite databases
 - [onedark.nvim](https://github.com/navarasu/onedark.nvim) a dark theme for neovim >= 0.5 based on atom one dark theme
-- [lualine.nvim (fork)](https://github.com/shadmansaleh/lualine.nvim) a blazing fast and easy to configure neovim statusline
+- [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim) a blazing fast and easy to configure neovim statusline
 - [alpha-nvim](https://github.com/goolord/alpha-nvim) a fast and highly customizable greeter for neovim
 - [nvim-tree.lua](https://github.com/kyazdani42/nvim-tree.lua) a file explorer for neovim
 - [barbar.nvim](https://github.com/romgrk/barbar.nvim) tabs, as understood by any other editor
