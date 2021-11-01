@@ -13,8 +13,11 @@ function M.setup()
   local map = require"config.utils.map".map
 
   M.adjust_fontsize(0)
-  vim.fn.rpcnotify(1, 'NVUI_CURSOR_FRAMETIME', 0)
   vim.cmd("source " .. nvui_install_path .. "\\vim\\plugin\\nvui.vim")
+  vim.cmd[[
+    NvuiCursorFrametime 0
+    NvuiCmdFontFamily FiraCode NF
+  ]]
 
   map("n", "<C-ScrollWheelUp>", "<Cmd>silent! lua require'config.gui.nvui'.adjust_fontsize(1)<CR>")
   map("n", "<C-ScrollWheelDown>", "<Cmd>silent! lua require'config.gui.nvui'.adjust_fontsize(-1)<CR>")

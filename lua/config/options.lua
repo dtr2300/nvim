@@ -33,6 +33,6 @@ vim.g.onedark_style = "dark"
 vim.cmd "colorscheme onedark"
 
 -- Set interface language
-if jit.os == "Windows" then
+if vim.fn.has("win32") == 1 then
   vim.cmd "lang messages en_GB"
 end

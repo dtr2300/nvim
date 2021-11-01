@@ -1,6 +1,5 @@
 local map = require"config.utils.map".map
 
-vim.g.nvim_tree_ignore = {".git", "venv", ".cache", "__pycache__"}
 vim.g.nvim_tree_git_hl = 1
 
 require"nvim-tree".setup {
@@ -12,6 +11,10 @@ require"nvim-tree".setup {
     enable = true,
     update_cwd = true,
     ignore_list = {"help"}
+  },
+  filters = {
+    dotfiles = false,
+    custom = {".git", "venv", ".cache", "__pycache__"}
   }
 }
 

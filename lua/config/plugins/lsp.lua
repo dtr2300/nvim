@@ -84,7 +84,7 @@ end
 
 -- pyright, vimls, bashls
 local servers = {"pyright", "vimls"}
-if jit.os == "Linux" then
+if vim.fn.has("unix") == 1 then
   table.insert(servers, "bashls")
 end
 
@@ -96,18 +96,19 @@ end
 local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
-local sumneko_binary_name = (jit.os == "Windows") and "lua-language-server.exe" or "lua-language-server"
+local sumneko_binary_name = (vim.fn.has("win32") == 1) and "lua-language-server.exe" or "lua-language-server"
 local sumneko_root_path
 local sumneko_binary
 
+-- vim.fn.has("wsl") doesnt seem to work
 local is_wsl = not not vim.env.WSL_DISTRO_NAME
-if jit.os == "Windows" or is_wsl then
-  local vscode_extension_path = ((jit.os == "Windows") and "C:" or "/mnt/c") .. "/Users/Dieter/.vscode/extensions"
+if vim.fn.has("win32") == 1 or is_wsl then
+  local vscode_extension_path = ((vim.fn.has("win32") == 1) and "C:" or "/mnt/c") .. "/Users/Dieter/.vscode/extensions"
   sumneko_root_path = find_sumneko_path(vscode_extension_path) ..  "/server"
   sumneko_binary = sumneko_root_path .. "/bin/" .. jit.os .. "/" .. sumneko_binary_name
 else
   sumneko_root_path = "/data/data/com.termux/files/usr/lib/lua-language-server"
-  sumneko_binary = sumneko_root_path .. "/" .. sumneko_binary_name
+  sumneko_binary = sumneko_root_path .. "/bin/Android/" .. sumneko_binary_name
 end
 
 require"lspconfig".sumneko_lua.setup {

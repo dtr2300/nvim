@@ -10,11 +10,12 @@ return require"packer".startup({function()
 
   use { "kyazdani42/nvim-web-devicons", config=p"webdevicons" }
   use { "nvim-lua/plenary.nvim", config=p"plenary" }
-  use { "rcarriga/nvim-notify" }
+  use { "rcarriga/nvim-notify", config=p"notify" }
+  use { "tami5/sqlite.lua", config=p"sqlite" }
 
   use { "navarasu/onedark.nvim" }
 
-  use { "shadmansaleh/lualine.nvim", config=p"lualine" }
+  use { "nvim-lualine/lualine.nvim", config=p"lualine" }
   use { "goolord/alpha-nvim", config=p"alpha" }
   use { "romgrk/barbar.nvim", config=p"barbar" .. ".setup()" }
   use { "kyazdani42/nvim-tree.lua", config=p"tree" }
@@ -35,7 +36,7 @@ return require"packer".startup({function()
   use { "milisims/nvim-luaref" }
   use { "nanotee/nvim-lua-guide" }
 
-  if jit.os == "Windows" then
+  if vim.fn.has("win32") == 1 then
     use { "davidgranstrom/scnvim", config=p"scnvim" }
   end
 end,
