@@ -1,4 +1,4 @@
-if jit.os ~= "Windows" then
+if vim.fn.has("win32") == 0 then
   return
 end
 

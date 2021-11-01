@@ -1,4 +1,5 @@
-if jit.os == "Windows" then
+if vim.fn.has("win32") == 1 then
+  -- already handled by scnvim
   return
 end
 
