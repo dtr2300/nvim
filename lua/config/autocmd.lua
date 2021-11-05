@@ -25,6 +25,4 @@ augroup END
 ]],
 }
 
-for _, v in ipairs(cmds) do
-  vim.cmd(v)
-end
+vim.cmd(table.concat(cmds))
