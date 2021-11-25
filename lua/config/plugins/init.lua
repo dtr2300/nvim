@@ -12,6 +12,7 @@ return require"packer".startup({function()
   use { "nvim-lua/plenary.nvim", config=p"plenary" }
   use { "rcarriga/nvim-notify", config=p"notify" }
   use { "tami5/sqlite.lua", config=p"sqlite" }
+  use { "MunifTanjim/nui.nvim" }
 
   use { "navarasu/onedark.nvim" }
 
