@@ -12,6 +12,7 @@ This is my personal Neovim configuration (Windows, WSL/Ubuntu and termux).
 - [plenary.nvim](https://github.com/nvim-lua/plenary.nvim) all the lua functions I don't want to write twice
 - [nvim-notify](https://github.com/rcarriga/nvim-notify) a fancy, configurable, notification manager for neovim
 - [sqlite.lua](https://github.com/tami5/sqlite.lua) sqlite/luajit binding and a highly opinionated wrapper for storing, retrieving, caching, and persisting sqlite databases
+- [nui.nvim](https://github.com/MunifTanjim/nui.nvim) ui component library for neovim
 - [onedark.nvim](https://github.com/navarasu/onedark.nvim) a dark theme for neovim >= 0.5 based on atom one dark theme
 - [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim) a blazing fast and easy to configure neovim statusline
 - [alpha-nvim](https://github.com/goolord/alpha-nvim) a fast and highly customizable greeter for neovim
@@ -33,15 +34,15 @@ This is my personal Neovim configuration (Windows, WSL/Ubuntu and termux).
 
 ## useful links
 
-- [Getting started using Lua in Neovim](https://github.com/nanotee/nvim-lua-guide)
-- [neovim craft](https://neovimcraft.com/)
-- [Awesome Neovim](https://github.com/rockerBOO/awesome-neovim)
-- [Neovim Awesome - Plugin Search](https://neovim.erock.io/)
-- [neovim](https://neovim.io/)
-- [neovim Github](https://github.com/neovim/neovim)
-- [neovim-qt Github](https://github.com/equalsraf/neovim-qt)
-- [neovim Reddit](https://www.reddit.com/r/neovim/)
-- [neovim Discourse](https://neovim.discourse.group/)
+- [getting started using lua in neovim](https://github.com/nanotee/nvim-lua-guide)
+- [neovim craft](https://neovimcraft.com/) ([json](https://github.com/neurosnap/neovimcraft/blob/main/src/lib/resources.json))
+- [awesome neovim](https://github.com/rockerBOO/awesome-neovim)
+- [neovim awesome](https://neovim.erock.io/)
+- [neovim.io](https://neovim.io/)
+- [neovim github](https://github.com/neovim/neovim)
+- [neovim-qt github](https://github.com/equalsraf/neovim-qt)
+- [neovim reddit](https://www.reddit.com/r/neovim/)
+- [neovim discourse](https://neovim.discourse.group/)
 
 ## other configs
 
