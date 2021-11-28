@@ -35,16 +35,23 @@ This is my personal Neovim configuration (Windows, WSL/Ubuntu and termux).
 ## useful links
 
 - [getting started using lua in neovim](https://github.com/nanotee/nvim-lua-guide)
+- [programming in lua (first edition)](https://www.lua.org/pil/contents.html)
 - [neovim craft](https://neovimcraft.com/) ([json](https://github.com/neurosnap/neovimcraft/blob/main/src/lib/resources.json))
 - [awesome neovim](https://github.com/rockerBOO/awesome-neovim)
-- [neovim awesome](https://neovim.erock.io/)
 - [neovim.io](https://neovim.io/)
 - [neovim github](https://github.com/neovim/neovim)
 - [neovim-qt github](https://github.com/equalsraf/neovim-qt)
 - [neovim reddit](https://www.reddit.com/r/neovim/)
 - [neovim discourse](https://neovim.discourse.group/)
+- upgrade to neovim 0.6:
+    - [Following HEAD: breaking changes on master](https://github.com/neovim/neovim/issues/14090)
+    - [How to upgrade NeoVim 0.5 to NeoVim 0.6 config? (LSP)](https://www.reddit.com/r/neovim/comments/r36y8q/how_to_upgrade_neovim_05_to_neovim_06_config_lsp/)
+    - [Neovim 0.6 release stream (11/30/21 at 17:00 UTC/12:00 pm EST)](https://neovim.discourse.group/t/neovim-0-6-release-stream-11-30-21-at-17-00-utc-12-00-pm-est/1535)
+
 
 ## other configs
+
+[search](https://github.com/search?l=&o=desc&q=vim+language%3ALua&s=indexed&type=Code)
 
 - https://github.com/aserowy/NeoCode
 - https://github.com/ashincoder/StarVim
@@ -54,8 +61,10 @@ This is my personal Neovim configuration (Windows, WSL/Ubuntu and termux).
 - https://github.com/ChristianChiarulli/LunarVim
 - https://github.com/crivotz/nv-ide
 - https://github.com/danielnehrig/nvim
+- https://github.com/davidgranstrom/vim-conf
 - https://github.com/dhruvmanila/dotfiles
 - https://github.com/e-cal/evim
+- https://github.com/ecosse3/nvim
 - https://github.com/elianiva/dotfiles
 - https://github.com/folke/dot
 - https://github.com/fsouza/dotfiles
@@ -63,20 +72,28 @@ This is my personal Neovim configuration (Windows, WSL/Ubuntu and termux).
 - https://github.com/goolord/nvim
 - https://github.com/GustavoPrietoP/evil-nvim
 - https://github.com/hackorum/VapourNvim
+- https://github.com/ibhagwan/nvim-lua
 - https://github.com/icyphox/dotfiles
+- https://github.com/jdhao/nvim-config
 - https://github.com/kabouzeid/dotfiles
 - https://github.com/kristijanhusak/neovim-config
 - https://github.com/kunzaatko/nvim-dots
 - https://github.com/martinsione/dotfiles
+- https://github.com/mattleong/CosmicNvim
 - https://github.com/mjlbach/defaults.nvim
 - https://github.com/mte90/dotfiles
 - https://github.com/noib3/dotfiles/
 - https://github.com/NTBBloodbath/doom-nvim
+- https://github.com/NvChad/NvChad
+- https://github.com/nvim-lua/kickstart.nvim
 - https://github.com/olgam4/nvim
+- https://github.com/olimorris/dotfiles
 - https://github.com/samrath2007/kyoto.nvim
-- https://github.com/siduck76/NvChad
+- https://github.com/shaeinst/roshnivim
 - https://github.com/smithbm2316/dotfiles
+- https://github.com/Takachii15/dotfiles/tree/master/.config/nvim
 - https://github.com/Theory-of-Everything/nii-nvim
 - https://github.com/tjdevries/config_manager
 - https://github.com/vi-tality/neovitality
 - https://github.com/wbthomason/dotfiles
+- https://gitlab.com/ysfgrg/nvoid 
