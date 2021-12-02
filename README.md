@@ -43,10 +43,7 @@ This is my personal Neovim configuration (Windows, WSL/Ubuntu and termux).
 - [neovim-qt github](https://github.com/equalsraf/neovim-qt)
 - [neovim reddit](https://www.reddit.com/r/neovim/)
 - [neovim discourse](https://neovim.discourse.group/)
-- upgrade to neovim 0.6:
-    - [Following HEAD: breaking changes on master](https://github.com/neovim/neovim/issues/14090)
-    - [How to upgrade NeoVim 0.5 to NeoVim 0.6 config? (LSP)](https://www.reddit.com/r/neovim/comments/r36y8q/how_to_upgrade_neovim_05_to_neovim_06_config_lsp/)
-    - [Neovim 0.6 release stream (11/30/21 at 17:00 UTC/12:00 pm EST)](https://neovim.discourse.group/t/neovim-0-6-release-stream-11-30-21-at-17-00-utc-12-00-pm-est/1535)
+- [Following HEAD: breaking changes on master](https://github.com/neovim/neovim/issues/14090)
 
 
 ## other configs

@@ -29,9 +29,6 @@ function M.setup()
   -- Append N blank lines below cursor
   map("n", "<F3>", "<Cmd>lua require'config.mappings'.append_blank_lines()<CR>")
 
-  -- Un-highlight
-  map("n", "<Leader>ch", "<Cmd>noh<CR>")
-
   -- Spellcheck
   map("n", "<Leader>sn", "<Cmd>setlocal spelllang=nl<CR> <bar> <Cmd>setlocal spell<CR>")
   map("n", "<Leader>se", "<Cmd>setlocal spelllang=en<CR> <bar> <Cmd>setlocal spell<CR>")

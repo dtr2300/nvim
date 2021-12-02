@@ -1,5 +1,5 @@
 return require"packer".startup({function()
-  local branch = vim.fn.has("nvim-0.6") == 1 and "master" or "0.5-compat"
+  local branch
 
   local p = function(name)
     return string.format("require'config.plugins.%s'", name)
@@ -25,11 +25,14 @@ return require"packer".startup({function()
   use { "nvim-telescope/telescope.nvim", config=p"telescope" .. ".setup()" }
   use { "norcalli/nvim-colorizer.lua", config=p"colorizer" }
 
+  --branch = vim.fn.has("nvim-0.7") == 1 and "master" or "0.6-compat"
+  branch = "master"
   use { "nvim-treesitter/nvim-treesitter", branch=branch, config=p"treesitter", run=":TSUpdate" }
   use { "nvim-treesitter/playground" }
   use { "nvim-treesitter/nvim-treesitter-textobjects", branch=branch }
 
-  use { "ray-x/lsp_signature.nvim" }
+  branch = vim.fn.has("nvim-0.7") == 1 and "master" or "neovim-0.6"
+  use { "ray-x/lsp_signature.nvim", branch=branch }
   use { "neovim/nvim-lspconfig", config=p"lsp" }
 
   use { "hrsh7th/nvim-compe", config=p"compe" }

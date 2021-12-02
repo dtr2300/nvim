@@ -8,44 +8,44 @@ local function find_sumneko_path(vscode_extension_path)
 end
 
 -- diagnostic symbols in the sign column (gutter)
-local signs = {Error=" ", Warning=" ", Hint=" ", Information=" "}
+local signs = {Error="", Warn="", Hint="", Info=""}
 
 for type, icon in pairs(signs) do
-  local hl = "LspDiagnosticsSign" .. type
-  vim.fn.sign_define(hl, {text=icon, texthl=hl, numhl=""})
+  local hl = "DiagnosticSign" .. type
+  vim.fn.sign_define(hl, {text=icon, texthl=hl, numhl=hl})
 end
 
 -- symbols for autocomplete
 vim.lsp.protocol.CompletionItemKind = {
-  "   (Text) ",
-  "   (Method)",
-  "   (Function)",
-  "   (Constructor)",
-  " ﴲ  (Field)",
-  "[] (Variable)",
-  "   (Class)",
-  " ﰮ  (Interface)",
-  "   (Module)",
-  " 襁 (Property)",
-  "   (Unit)",
-  "   (Value)",
-  " 練 (Enum)",
-  "   (Keyword)",
-  "   (Snippet)",
-  "   (Color)",
-  "   (File)",
-  "   (Reference)",
-  "   (Folder)",
-  "   (EnumMember)",
-  " ﲀ  (Constant)",
-  " ﳤ  (Struct)",
-  "   (Event)",
-  "   (Operator)",
-  "   (TypeParameter)",
+  " (Text)",
+  " (Method)",
+  " (Function)",
+  " (Constructor)",
+  "ﴲ (Field)",
+  " [Variable]",
+  " (Class)",
+  "ﰮ (Interface)",
+  " (Module)",
+  "襁(Property)",
+  " (Unit)",
+  " (Value)",
+  "練(Enum)",
+  " (Keyword)",
+  " (Snippet)",
+  " (Color)",
+  " (File)",
+  " (Reference)",
+  " (Folder)",
+  " (EnumMember)",
+  "ﲀ (Constant)",
+  "ﳤ (Struct)",
+  " (Event)",
+  " (Operator)",
+  " (TypeParameter)",
 }
 
 -- Disable underline
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {underline=false})
+--vim.diagnostic.config({underline=false})
 
 -- use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
@@ -70,10 +70,10 @@ local on_attach = function(client, bufnr)
   buf_set_keymap("n", "<Leader>rn", "<Cmd>lua vim.lsp.buf.rename()<CR>", opts)
   buf_set_keymap("n", "<Leader>ca", "<Cmd>lua vim.lsp.buf.code_action()<CR>", opts)
   buf_set_keymap("n", "gr", "<Cmd>lua vim.lsp.buf.references()<CR>", opts)
-  buf_set_keymap("n", "<Leader>e", "<Cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", opts)
-  buf_set_keymap("n", "[d", "<Cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
-  buf_set_keymap("n", "]d", "<Cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
-  buf_set_keymap("n", "<Leader>q", "<Cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
+  buf_set_keymap("n", "<Leader>e", "<Cmd>lua vim.diagnostic.open_float(0, scope='line'})<CR>", opts)
+  buf_set_keymap("n", "[d", "<Cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
+  buf_set_keymap("n", "]d", "<Cmd>lua vim.diagnostic.goto_next()<CR>", opts)
+  buf_set_keymap("n", "<Leader>q", "<Cmd>lua vim.diagnostic.setloclist()<CR>", opts)
   buf_set_keymap("n", "<Leader>F", "<Cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 
   -- lsp_signature
@@ -100,9 +100,8 @@ local sumneko_binary_name = (vim.fn.has("win32") == 1) and "lua-language-server.
 local sumneko_root_path
 local sumneko_binary
 
--- vim.fn.has("wsl") doesnt seem to work
-local is_wsl = not not vim.env.WSL_DISTRO_NAME
-if vim.fn.has("win32") == 1 or is_wsl then
+--local is_wsl = not not vim.env.WSL_DISTRO_NAME
+if vim.fn.has("win32") == 1 or vim.fn.has("wsl") == 1 then
   local vscode_extension_path = ((vim.fn.has("win32") == 1) and "C:" or "/mnt/c") .. "/Users/Dieter/.vscode/extensions"
   sumneko_root_path = find_sumneko_path(vscode_extension_path) ..  "/server"
   sumneko_binary = sumneko_root_path .. "/bin/" .. jit.os .. "/" .. sumneko_binary_name

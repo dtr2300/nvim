@@ -29,7 +29,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 
 -- Set colorscheme
-vim.g.onedark_style = "dark"
+vim.g.onedark_style = "darker"
 vim.cmd "colorscheme onedark"
 
 -- Set interface language
