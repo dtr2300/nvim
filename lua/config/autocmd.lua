@@ -25,4 +25,8 @@ augroup END
 ]],
 }
 
+if vim.fn.has("win32") == 1 then
+  table.insert(cmds, "lang messages en_GB")
+end
+
 vim.cmd(table.concat(cmds))

@@ -14,7 +14,7 @@ return require"packer".startup({function()
   use { "tami5/sqlite.lua", config=p"sqlite" }
   use { "MunifTanjim/nui.nvim" }
 
-  use { "navarasu/onedark.nvim" }
+  use { "navarasu/onedark.nvim", config=p"onedark" }
 
   use { "nvim-lualine/lualine.nvim", config=p"lualine" }
   use { "goolord/alpha-nvim", config=p"alpha" }

@@ -27,12 +27,3 @@ vim.g.loaded_perl_provider = 0
 -- Mapleader
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
-
--- Set colorscheme
-vim.g.onedark_style = "darker"
-vim.cmd "colorscheme onedark"
-
--- Set interface language
-if vim.fn.has("win32") == 1 then
-  vim.cmd "lang messages en_GB"
-end
