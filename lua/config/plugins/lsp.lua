@@ -1,7 +1,7 @@
-local function find_sumneko_path(vscode_extension_path)
-  local dirs = require"plenary.scandir".scan_dir(vscode_extension_path, {add_dirs=true, depth=1})
+local function find_sumneko_path(path)
+  local dirs = require"plenary.scandir".scan_dir(path, {add_dirs=true, depth=1})
   for _, dir in ipairs(dirs) do
-    if string.find(dir, "sumneko%.lua") then
+    if string.find(dir, "sumneko%.lua") or string.find(dir, "lua%-language%-server") then
       return dir
     end
   end
@@ -96,18 +96,19 @@ end
 local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
-local sumneko_binary_name = (vim.fn.has("win32") == 1) and "lua-language-server.exe" or "lua-language-server"
+local sumneko_binary = "lua-language-server"
 local sumneko_root_path
-local sumneko_binary
 
---local is_wsl = not not vim.env.WSL_DISTRO_NAME
-if vim.fn.has("win32") == 1 or vim.fn.has("wsl") == 1 then
-  local vscode_extension_path = ((vim.fn.has("win32") == 1) and "C:" or "/mnt/c") .. "/Users/Dieter/.vscode/extensions"
-  sumneko_root_path = find_sumneko_path(vscode_extension_path) ..  "/server"
-  sumneko_binary = sumneko_root_path .. "/bin/" .. jit.os .. "/" .. sumneko_binary_name
+if vim.fn.has("win32") == 1 then
+  --sumneko_root_path = find_sumneko_path("C:/Users/Dieter/.vscode/extensions") ..  "/server"
+  sumneko_root_path = find_sumneko_path("D:/Program Files")
+  sumneko_binary = sumneko_root_path .. "/bin/" .. sumneko_binary
+elseif vim.fn.has("wsl") == 1 then
+  sumneko_root_path = find_sumneko_path("/home/dtr/.local/share")
+  sumneko_binary = sumneko_root_path .. "/bin/" .. sumneko_binary
 else
   sumneko_root_path = "/data/data/com.termux/files/usr/lib/lua-language-server"
-  sumneko_binary = sumneko_root_path .. "/bin/Android/" .. sumneko_binary_name
+  sumneko_binary = sumneko_root_path .. "/bin/Android/" .. sumneko_binary
 end
 
 require"lspconfig".sumneko_lua.setup {
