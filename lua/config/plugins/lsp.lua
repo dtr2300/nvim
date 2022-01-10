@@ -100,16 +100,14 @@ local sumneko_binary = "lua-language-server"
 local sumneko_root_path
 
 if vim.fn.has("win32") == 1 then
-  --sumneko_root_path = find_sumneko_path("C:/Users/Dieter/.vscode/extensions") ..  "/server"
+  --sumneko_root_path = find_sumneko_path("C:/Users/Dieter/.vscode/extensions") .. "/server"
   sumneko_root_path = find_sumneko_path("D:/Program Files")
-  sumneko_binary = sumneko_root_path .. "/bin/" .. sumneko_binary
 elseif vim.fn.has("wsl") == 1 then
   sumneko_root_path = find_sumneko_path("/home/dtr/.local/share")
-  sumneko_binary = sumneko_root_path .. "/bin/" .. sumneko_binary
 else
   sumneko_root_path = "/data/data/com.termux/files/usr/lib/lua-language-server"
-  sumneko_binary = sumneko_root_path .. "/bin/Android/" .. sumneko_binary
 end
+sumneko_binary = sumneko_root_path .. "/bin/" .. sumneko_binary
 
 require"lspconfig".sumneko_lua.setup {
   on_attach = on_attach,
