@@ -24,7 +24,8 @@ function M.setup()
   map("v", "<C-Down>", [[@='"zx"zp`[V`]'<CR>]])
 
   -- Update plugins
-  map("n", "<Leader>cc", "<Cmd>PackerUpdate<CR>")
+  map("n", "<Leader>cc", "<Cmd>BarbarDisable<CR> <bar> <Cmd>PackerUpdate<CR>")
+  map("n", "<Leader>cC", "<Cmd>BarbarDisable<CR> <bar> <Cmd>PackerCompile<CR>")
 
   -- Append N blank lines below cursor
   map("n", "<F3>", "<Cmd>lua require'config.mappings'.append_blank_lines()<CR>")
