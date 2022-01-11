@@ -96,7 +96,6 @@ end
 local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
-local sumneko_binary = "lua-language-server"
 local sumneko_root_path
 
 if vim.fn.has("win32") == 1 then
@@ -107,11 +106,10 @@ elseif vim.fn.has("wsl") == 1 then
 else
   sumneko_root_path = "/data/data/com.termux/files/usr/lib/lua-language-server"
 end
-sumneko_binary = sumneko_root_path .. "/bin/" .. sumneko_binary
 
 require"lspconfig".sumneko_lua.setup {
   on_attach = on_attach,
-  cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"},
+  cmd = {sumneko_root_path .. "/bin/lua-language-server", "-E", sumneko_root_path .. "/main.lua"},
   settings = {
     Lua = {
       runtime = {
