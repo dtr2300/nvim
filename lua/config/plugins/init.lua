@@ -22,6 +22,7 @@ return require"packer".startup({function()
   use { "kyazdani42/nvim-tree.lua", config=p"tree" }
   use { "folke/which-key.nvim", config=p"whichkey" }
   use { "folke/zen-mode.nvim", config=p"zenmode" }
+  use { "nvim-telescope/telescope-file-browser.nvim" }
   use { "nvim-telescope/telescope.nvim", config=p"telescope" .. ".setup()" }
   use { "norcalli/nvim-colorizer.lua", config=p"colorizer" }
 

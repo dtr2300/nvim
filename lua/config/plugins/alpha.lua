@@ -30,10 +30,10 @@ dashboard.section.header.val = {
 dashboard.section.header.opts.hl = pick_color()
 
 dashboard.section.buttons.val = {
-  button("SPC f h", "  Recently opened files"),
+  button("SPC f o", "  Recently opened files"),
   button("SPC f f", "  Find file"),
-  button("SPC f a", "  Find word"),
-  button("SPC s l", "  Open session"),
+  button("SPC f l", "  Find word"),
+  button("SPC s s", "  Open session"),
   button("SPC c n", "  New file"),
   button("SPC c c", "  Update plugins"),
   button("q", "  Quit", "<Cmd>qa<CR>")

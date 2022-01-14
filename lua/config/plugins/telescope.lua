@@ -49,16 +49,19 @@ function M.setup()
     },
   }
 
-  map("n", "<Leader>fb", "<Cmd>Telescope marks<CR>")
-  map("n", "<Leader>ff", "<Cmd>Telescope find_files<CR>")
-  map("n", "<Leader>fh", "<Cmd>Telescope oldfiles<CR>")
-  map("n", "<Leader>fa", "<Cmd>Telescope live_grep<CR>")
-  map("n", "<Leader>fT", "<Cmd>Telescope treesitter<CR>")
-  map("n", "<Leader>fB", "<Cmd>Telescope current_buffer_fuzzy_find<CR>")
+  require"telescope".load_extension "file_browser"
+
+  map("n", "<Leader>fb", "<Cmd>Telescope builtin<CR>")
   map("n", "<Leader>fC", "<Cmd>Telescope commands<CR>")
+  map("n", "<Leader>fc", "<Cmd>Telescope current_buffer_fuzzy_find<CR>")
+  map("n", "<Leader>ff", "<Cmd>Telescope find_files<CR>")
   map("n", "<Leader>fF", "<Cmd>Telescope file_browser<CR>")
-  map("n", "<Leader>fH", "<Cmd>Telescope help_tags<CR>")
-  map("n", "<Leader>sl", "<Cmd>lua require'config.plugins.telescope'.list_sessions()<CR>")
+  map("n", "<Leader>fh", "<Cmd>Telescope help_tags<CR>")
+  map("n", "<Leader>fm", "<Cmd>Telescope marks<CR>")
+  map("n", "<Leader>fl", "<Cmd>Telescope live_grep<CR>")
+  map("n", "<Leader>fo", "<Cmd>Telescope oldfiles<CR>")
+  map("n", "<Leader>ft", "<Cmd>Telescope treesitter<CR>")
+  map("n", "<Leader>ss", "<Cmd>lua require'config.plugins.telescope'.list_sessions()<CR>")
 end
 
 return M
