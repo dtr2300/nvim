@@ -14,13 +14,14 @@ This is my personal Neovim configuration (Windows, WSL/Ubuntu and termux).
 - [sqlite.lua](https://github.com/tami5/sqlite.lua) sqlite/luajit binding and a highly opinionated wrapper for storing, retrieving, caching, and persisting sqlite databases
 - [nui.nvim](https://github.com/MunifTanjim/nui.nvim) ui component library for neovim
 - [onedark.nvim](https://github.com/navarasu/onedark.nvim) a dark theme for neovim >= 0.5 based on atom one dark theme
+- [tabline-framework.nvim](https://github.com/rafcamlet/tabline-framework.nvim) user-friendly framework for building your dream tabline in a few lines of code
 - [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim) a blazing fast and easy to configure neovim statusline
 - [alpha-nvim](https://github.com/goolord/alpha-nvim) a fast and highly customizable greeter for neovim
-- [nvim-tree.lua](https://github.com/kyazdani42/nvim-tree.lua) a file explorer for neovim
-- [barbar.nvim](https://github.com/romgrk/barbar.nvim) tabs, as understood by any other editor
 - [which-key.nvim](https://github.com/folke/which-key.nvim) displays a popup with possible key bindings of the command you started typing
 - [zen-mode.nvim](https://github.com/folke/zen-mode.nvim) distraction-free coding for neovim
 - [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) a highly extendable fuzzy finder over lists
+- [telescope-file-browser.nvim](https://github.com/nvim-telescope/telescope-file-browser.nvim) a file browser extension for telescope.nvim
+- [telescope-repo.nvim](https://github.com/cljoly/telescope-repo.nvim) an extension for telescope.nvim that searches the filesystem for git or other repositories
 - [nvim-colorizer.lua](https://github.com/norcalli/nvim-colorizer.lua) a high-performance color highlighter for neovim which has no external dependencies
 - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) provide a simple and easy way to use the interface for tree-sitter in neovim and provide some basic functionality such as highlighting based on it
 - [playground](https://github.com/nvim-treesitter/playground) view treesitter information directly in neovim
@@ -31,6 +32,11 @@ This is my personal Neovim configuration (Windows, WSL/Ubuntu and termux).
 - [nvim-lua-guide](https://github.com/nanotee/nvim-lua-guide) getting started using lua in neovim
 - [nvim-luaref](https://github.com/milisims/nvim-luaref) adds a reference for builtin lua functions, extracting both text and formatting from the lua 5.1 reference manual
 - [scnvim](https://github.com/davidgranstrom/scnvim) neovim frontend for supercollider
+
+### disabled
+
+- [nvim-tree.lua](https://github.com/kyazdani42/nvim-tree.lua) a file explorer for neovim
+- [barbar.nvim](https://github.com/romgrk/barbar.nvim) tabs, as understood by any other editor
 
 ## useful links
 

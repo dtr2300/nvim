@@ -1,8 +1,10 @@
 return require"packer".startup({function()
-  local branch
-
   local p = function(name)
     return string.format("require'config.plugins.%s'", name)
+  end
+
+  local ps = function(name)
+    return p(name) .. ".setup()"
   end
 
   use { "lewis6991/impatient.nvim" }
@@ -18,21 +20,21 @@ return require"packer".startup({function()
 
   use { "nvim-lualine/lualine.nvim", config=p"lualine" }
   use { "goolord/alpha-nvim", config=p"alpha" }
-  use { "romgrk/barbar.nvim", config=p"barbar" .. ".setup()" }
-  use { "kyazdani42/nvim-tree.lua", config=p"tree" }
+  use { "rafcamlet/tabline-framework.nvim", config=ps"tablineframework", after="onedark.nvim" }
+  --use { "romgrk/barbar.nvim", config=ps"barbar" }
+  --use { "kyazdani42/nvim-tree.lua", config=p"tree" }
   use { "folke/which-key.nvim", config=p"whichkey" }
   use { "folke/zen-mode.nvim", config=p"zenmode" }
   use { "nvim-telescope/telescope-file-browser.nvim" }
-  use { "nvim-telescope/telescope.nvim", config=p"telescope" .. ".setup()" }
+  use { "cljoly/telescope-repo.nvim" }
+  use { "nvim-telescope/telescope.nvim", config=ps"telescope" }
   use { "norcalli/nvim-colorizer.lua", config=p"colorizer" }
 
-  --branch = vim.fn.has("nvim-0.7") == 1 and "master" or "0.6-compat"
-  branch = "master"
-  use { "nvim-treesitter/nvim-treesitter", branch=branch, config=p"treesitter", run=":TSUpdate" }
+  use { "nvim-treesitter/nvim-treesitter", config=p"treesitter", run=":TSUpdate" }
   use { "nvim-treesitter/playground" }
-  use { "nvim-treesitter/nvim-treesitter-textobjects", branch=branch }
+  use { "nvim-treesitter/nvim-treesitter-textobjects" }
 
-  branch = vim.fn.has("nvim-0.7") == 1 and "master" or "neovim-0.6"
+  local branch = vim.fn.has("nvim-0.7") == 1 and "master" or "neovim-0.6"
   use { "ray-x/lsp_signature.nvim", branch=branch }
   use { "neovim/nvim-lspconfig", config=p"lsp" }
 

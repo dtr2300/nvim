@@ -1,6 +1,7 @@
 local map = require"config.utils.map".map
 
 vim.g.nvim_tree_git_hl = 1
+--vim.g.nvim_tree_respect_buf_cwd = 1
 
 require"nvim-tree".setup {
   disable_netrw = false,
@@ -33,6 +34,6 @@ require"nvim-tree".toggle = function()
   toggle()
 end
 
-map("n", "<Leader>tt", "<Cmd>NvimTreeToggle<CR>")
-map("n", "<Leader>tr", "<Cmd>NvimTreeRefresh<CR>")
-map("n", "<Leader>tf", "<Cmd>NvimTreeFindFile<CR>")
+map("n", "<Leader>xx", "<Cmd>NvimTreeToggle<CR>")
+map("n", "<Leader>xr", "<Cmd>NvimTreeRefresh<CR>")
+map("n", "<Leader>xf", "<Cmd>NvimTreeFindFile<CR>")

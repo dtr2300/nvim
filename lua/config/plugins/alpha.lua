@@ -30,9 +30,9 @@ dashboard.section.header.val = {
 dashboard.section.header.opts.hl = pick_color()
 
 dashboard.section.buttons.val = {
-  button("SPC f o", "  Recently opened files"),
-  button("SPC f f", "  Find file"),
-  button("SPC f l", "  Find word"),
+  button("SPC t o", "  Recently opened files"),
+  button("SPC t f", "  Find file"),
+  button("SPC t l", "  Find word"),
   button("SPC s s", "  Open session"),
   button("SPC c n", "  New file"),
   button("SPC c c", "  Update plugins"),
@@ -44,10 +44,10 @@ dashboard.section.footer.opts.hl = "Constant"
 
 require"alpha".setup(dashboard.opts)
 
--- hide tabline on startup screen
+-- hide tabline and statusline on startup screen
 vim.cmd [[
 augroup alpha_tabline
   au!
-  au FileType alpha set showtabline=0 | au BufUnload <buffer> set showtabline=2
+  au FileType alpha set showtabline=0 laststatus=0 noruler | au BufUnload <buffer> set showtabline=2 ruler laststatus=2
 augroup END
 ]]

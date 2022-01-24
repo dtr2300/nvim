@@ -1,8 +1,8 @@
 local cmds = {
--- Set colorscheme
+-- set colorscheme
 "colorscheme onedark",
 
--- Highlight on yank
+-- highlight on yank
 [[
 augroup yank_hl
   au!
@@ -10,7 +10,7 @@ augroup yank_hl
 augroup END
 ]],
 
--- Capture command to buffer command
+-- capture command to buffer command
 [[
 function! Capture(cmd)
   execute ":enew|pu=execute('" . a:cmd . "')|1,2d_"
@@ -18,7 +18,7 @@ endfunction
 command! -nargs=1 Capture silent call Capture(<f-args>)
 ]],
 
--- Terminal
+-- terminal
 [[
 augroup neovim_terminal
   au!
@@ -28,7 +28,7 @@ augroup END
 ]],
 }
 
--- Set interface language
+-- set interface language
 if vim.fn.has("win32") == 1 then
   table.insert(cmds, "lang messages en_GB")
 end

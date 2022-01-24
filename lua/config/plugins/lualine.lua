@@ -2,5 +2,6 @@ require"lualine".setup {
   options = {
     theme = "onedark"
   },
-  extensions = {"nvim-tree", "quickfix"}
+  --extensions = {"nvim-tree", "quickfix"}
+  extensions = {"quickfix"}
 }

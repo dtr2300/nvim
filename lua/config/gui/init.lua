@@ -1,6 +1,6 @@
 local M = {}
 
--- Called from /lua/config/init.lua
+-- called from lua/config/init.lua
 function M.setup_no_ginit()
   if vim.g.nvy then
     require"config.gui.nvy"
@@ -11,7 +11,7 @@ function M.setup_no_ginit()
   end
 end
 
--- Called from /ginit.vim
+-- called from ginit.vim
 function M.setup_ginit()
   if vim.g.neovide then
     require "config.gui.neovide".setup()

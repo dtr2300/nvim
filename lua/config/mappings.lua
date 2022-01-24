@@ -8,36 +8,42 @@ end
 function M.setup()
   local map = require"config.utils.map".map
 
-  -- New file
-  map("n", "<Leader>cn", "<Cmd>ene <BAR> startinsert<CR>")
+  -- new buffer
+  map("n", "<Leader>cn", "<Cmd>ene<CR>")
 
-  -- Show help in new tab
-  map("n", "<F1>", "<Cmd>tab help<CR>")
+  -- show help
+  map("n", "<F1>", "<Cmd>vert help<CR>")
+  map("n", "<S-F1>", "<Cmd>tab help<CR>")
 
-  -- Execute current buffer
+  -- execute current buffer
   map("n", "<F2>", "<Cmd>source %<CR>")
 
-  -- Bubble lines
+  -- bubble lines
   map("n", "<C-Up>", "<Cmd>m .-2<CR>", {noremap=false, silent=true})
   map("n", "<C-Down>", "<Cmd>m .+1<CR>", {noremap=false, silent=true})
   map("v", "<C-Up>", [[@='"zxk"zP`[V`]'<CR>]])
   map("v", "<C-Down>", [[@='"zx"zp`[V`]'<CR>]])
 
-  -- Update plugins
-  map("n", "<Leader>cc", "<Cmd>BarbarDisable<CR> <bar> <Cmd>PackerUpdate<CR>")
-  map("n", "<Leader>cC", "<Cmd>BarbarDisable<CR> <bar> <Cmd>PackerCompile<CR>")
+  -- update plugins
+  map("n", "<Leader>cc", "<Cmd>PackerUpdate<CR>")
+  map("n", "<Leader>cC", "<Cmd>PackerCompile<CR>")
+  map("n", "<Leader>cS", "<Cmd>PackerSync<CR>")
 
-  -- Append N blank lines below cursor
+  -- append N blank lines below cursor
   map("n", "<F3>", "<Cmd>lua require'config.mappings'.append_blank_lines()<CR>")
 
-  -- Spellcheck
+  -- spellcheck
   map("n", "<Leader>sn", "<Cmd>setlocal spelllang=nl<CR> <bar> <Cmd>setlocal spell<CR>")
   map("n", "<Leader>se", "<Cmd>setlocal spelllang=en<CR> <bar> <Cmd>setlocal spell<CR>")
 
-  -- Open float terminal
+  -- open float terminal
   map("n", "<Leader>dd", "<Cmd>lua require'config.utils.terminal'.float_terminal()<CR>")
   map("n", "<Leader>dg", "<Cmd>lua require'config.utils.terminal'.float_terminal('lazygit')<CR>")
   map("n", "<Leader>dm", "<Cmd>lua require'config.utils.terminal'.float_terminal('glow')<CR>")
+
+  -- change directory
+  map("n", "<Leader>cd", "<Cmd>lcd %:p:h<CR><Cmd>pwd<CR>")
+  map("n", "<Leader>cD", "<Cmd>lcd %:h | lcd `git rev-parse --show-toplevel`<CR><Cmd>pwd<CR>")
 end
 
 return M
