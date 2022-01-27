@@ -34,6 +34,13 @@ function M.setup()
     defaults = {
       prompt_prefix = ' ',
       file_ignore_patterns = {"__pycache__", "venv"},
+      layout_config = {
+        horizontal = {
+          width=0.99,
+          preview_width=0.4,
+          preview_cutoff=20,
+        },
+      },
       mappings = {
         i = {
           ["<esc>"] = require"telescope.actions".close,

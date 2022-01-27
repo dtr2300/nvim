@@ -24,6 +24,12 @@ function M.setup()
   map("i", "<C-ScrollWheelUp>", "<Cmd>silent! lua require'config.gui.nvui'.adjust_fontsize(1)<CR>")
   map("i", "<C-ScrollWheelDown>", "<Cmd>silent! lua require'config.gui.nvui'.adjust_fontsize(-1)<CR>")
   map("n", "<F11>", "<Cmd>NvuiToggleFullscreen<CR>")
+
+  vim.cmd [[
+  function! NvuiGetTitle()
+    return "neovim"
+  endfunction
+  ]]
 end
 
 return M
