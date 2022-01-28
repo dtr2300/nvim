@@ -1,5 +1,13 @@
 M = {}
 
+-- change dir
+local function cd(buf)
+  local entry = require"telescope.actions.state".get_selected_entry()
+  require"telescope.actions".close(buf)
+  local dir = vim.fn.fnamemodify(entry.value, ":p:h")
+  vim.cmd(string.format("silent lcd %s", dir))
+end
+
 -- sessions picker
 function M.list_sessions()
   local opts = {
@@ -16,14 +24,6 @@ function M.list_sessions()
     end
   }
   require"telescope.builtin".find_files(require"telescope.themes".get_dropdown(opts))
-end
-
--- change dir
-local function cd(buf)
-  local entry = require"telescope.actions.state".get_selected_entry()
-  require"telescope.actions".close(buf)
-  local dir = vim.fn.fnamemodify(entry.value, ":p:h")
-  vim.cmd(string.format("silent lcd %s", dir))
 end
 
 -- setup
@@ -88,6 +88,7 @@ function M.setup()
   -- load extensions
   require"telescope".load_extension "file_browser"
   require"telescope".load_extension "repo"
+  require"telescope".load_extension "fzf"
 
   -- mappings
   map("n", "<Leader>tb", "<Cmd>Telescope builtin<CR>")

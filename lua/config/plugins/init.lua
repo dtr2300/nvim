@@ -26,6 +26,7 @@ return require"packer".startup({function()
   use { "folke/which-key.nvim", config=p"whichkey" }
   use { "folke/zen-mode.nvim", config=p"zenmode" }
   use { "nvim-telescope/telescope-file-browser.nvim" }
+  use { "nvim-telescope/telescope-fzf-native.nvim", run="make" }
   use { "cljoly/telescope-repo.nvim" }
   use { "nvim-telescope/telescope.nvim", config=ps"telescope" }
   use { "norcalli/nvim-colorizer.lua", config=p"colorizer" }
