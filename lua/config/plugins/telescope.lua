@@ -37,6 +37,7 @@ function M.setup()
       layout_config = {
         horizontal = {
           width=0.99,
+          height=0.99,
           preview_width=0.4,
           preview_cutoff=20,
         },
@@ -91,8 +92,8 @@ function M.setup()
   require"telescope".load_extension "fzf"
 
   -- mappings
-  map("n", "<Leader>tb", "<Cmd>Telescope builtin<CR>")
-  map("n", "<Leader>tB", "<Cmd>Telescope buffers<CR>")
+  map("n", "<Leader>tB", "<Cmd>Telescope builtin<CR>")
+  map("n", "<Leader>tb", "<Cmd>Telescope buffers<CR>")
   map("n", "<Leader>tC", "<Cmd>Telescope commands<CR>")
   map("n", "<Leader>tc", "<Cmd>Telescope current_buffer_fuzzy_find<CR>")
   map("n", "<Leader>tf", "<Cmd>Telescope find_files<CR>")
@@ -104,13 +105,14 @@ function M.setup()
   map("n", "<Leader>tl", "<Cmd>Telescope live_grep<CR>")
   map("n", "<Leader>tm", "<Cmd>Telescope marks<CR>")
   map("n", "<Leader>to", "<Cmd>Telescope oldfiles<CR>")
-  map("n", "<Leader>tP", "<Cmd>Telescope pickers<CR>")
+  map("n", "<Leader>tp", "<Cmd>Telescope pickers<CR>")
   map("n", "<Leader>tq", "<Cmd>Telescope quickfix<CR>")
   map("n", "<Leader>t1", "<Cmd>Telescope repo list<CR>")
   map("n", "<Leader>t2", "<Cmd>lua require'telescope'.extensions.repo.list {cwd='f:/devel'}<CR>")
   map("n", "<Leader>t3", "<Cmd>lua require'telescope'.extensions.repo.list {cwd='f:/devel/py'}<CR>")
-  map("n", "<Leader>tr", "<Cmd>Telescope registers<CR>")
-  map("n", "<Leader>tR", "<Cmd>Telescope resume<CR>")
+  map("n", "<Leader>t4", "<Cmd>lua require'telescope'.extensions.repo.list {cwd='d:/msys64/home/Dieter'}<CR>")
+  map("n", "<Leader>tR", "<Cmd>Telescope registers<CR>")
+  map("n", "<Leader>tr", "<Cmd>Telescope resume<CR>")
   map("n", "<Leader>tt", "<Cmd>Telescope treesitter<CR>")
   map("n", "<Leader>tv", "<Cmd>Telescope vim_options<CR>")
 

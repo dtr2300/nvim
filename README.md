@@ -44,6 +44,7 @@ This is my personal Neovim configuration (Windows, WSL/Ubuntu and termux).
 - [getting started using lua in neovim](https://github.com/nanotee/nvim-lua-guide)
 - [programming in lua (first edition)](https://www.lua.org/pil/contents.html)
 - [neovim craft](https://neovimcraft.com/) ([json](https://github.com/neurosnap/neovimcraft/blob/main/src/lib/resources.json))
+- [nvim.sh](https://github.com/neurosnap/nvim.sh)
 - [awesome neovim](https://github.com/rockerBOO/awesome-neovim)
 - [neovim.io](https://neovim.io/)
 - [neovim github](https://github.com/neovim/neovim)
