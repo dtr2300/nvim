@@ -1,17 +1,22 @@
 local M = {}
 
 local margin = 4 -- size of the left margin
-local short = false -- display buffer numbers only
-local alt = false -- use alternative style
-local alt_auto_width = true -- automatically adjust tabwidth
-local alt_width = 10 -- max tabsize
-local alt_width_short = 2 -- max tabsize short
+local short = false -- display buffer indices only
+local max_len = 90 -- max name lentgth for standatd layout
+local alt = false -- use alternative layout
+local alt_auto_width = true -- automatically adjust tabwidth for alt layout
+local alt_width = 10 -- tabsize for alt layout if alt_auto_width = false
+local alt_width_short = 2 -- tabsize for alt layout - short
 
 local function ls()
   return vim.tbl_filter(function(buf)
     return vim.api.nvim_buf_is_valid(buf)
           and vim.api.nvim_buf_get_option(buf, "buflisted")
   end, vim.api.nvim_list_bufs())
+end
+
+local function trunc(s, length)
+  return #s > length and string.sub(s, 1, length - 1) .. "…" or s
 end
 
 local function format_name(name)
@@ -35,24 +40,19 @@ local function render(f)
   f.add(string.rep(" ", margin))
 
   f.make_bufs(function(info)
-    if not alt then
-      f.add " "
-    else
-      f.add { "▎ ", fg=info.current and c.red or c.grey }
-    end
+    f.add(alt and { "▎ ", fg=info.current and c.red or c.grey } or " ")
 
+    local name
     if info.filename then
       local icon_color = info.current and f.icon_color(info.filename) or c.light_grey
       f.add { f.icon(info.filename) .. " ", fg=icon_color }
-
-      local name = short and tostring(info.index) or info.filename
-      if alt then name = format_name(name) end
-      f.add(name)
+      name = short and tostring(info.index) or info.filename
     else
-      local name = short and tostring(info.index) or "new " .. info.index
-      if alt then name = format_name(name) end
-      f.add(" " .. name)
+      f.add(" ")
+      name = short and tostring(info.index) or "new " .. info.index
     end
+    name = alt and format_name(name) or trunc(name, max_len)
+    f.add(name)
 
     f.add(info.modified and " ● " or (alt and "   " or " "))
   end)
@@ -89,6 +89,11 @@ end
 
 function M.set_margin(width)
   margin = width
+  vim.cmd "redrawtabline"
+end
+
+function M.set_max_len(width)
+  max_len = width
   vim.cmd "redrawtabline"
 end
 
