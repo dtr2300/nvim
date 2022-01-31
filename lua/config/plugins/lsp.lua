@@ -118,7 +118,7 @@ require"lspconfig".sumneko_lua.setup {
       },
       completion = {enable=true},
       diagnostics = {
-        globals = {"vim", "use", "packer_plugins", "reaper", "gfx", "love"},
+        globals = {"vim", "use", "packer_plugins"},
         --disable = {"lowercase-global"},
       },
       workspace = {

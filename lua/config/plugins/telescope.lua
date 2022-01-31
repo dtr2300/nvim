@@ -38,7 +38,7 @@ function M.setup()
         horizontal = {
           width=0.99,
           height=0.99,
-          preview_width=0.4,
+          preview_width=0.5,
           preview_cutoff=20,
         },
       },
