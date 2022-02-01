@@ -44,20 +44,16 @@ vim.lsp.protocol.CompletionItemKind = {
   " (TypeParameter)",
 }
 
--- Disable underline
---vim.diagnostic.config({underline=false})
+-- disable underline
+vim.diagnostic.config({underline=false})
 
--- use an on_attach function to only map the following keys
--- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   --local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
   local opts = {noremap=true, silent=true}
 
-  -- enable completion triggered by <c-x><c-o>
-  --buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
+  --buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc") -- enable completion triggered by <c-x><c-o>
 
-  -- see `:help vim.lsp.*` for documentation on any of the below functions
   buf_set_keymap("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
   buf_set_keymap("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
   buf_set_keymap("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)

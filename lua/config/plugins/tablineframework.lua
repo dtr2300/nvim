@@ -2,7 +2,7 @@ local M = {}
 
 local margin = 4 -- size of the left margin
 local short = false -- display buffer indices only
-local max_len = 90 -- max name lentgth for standatd layout
+local max_len = 90 -- max name length for standard layout
 local alt = false -- use alternative layout
 local alt_auto_width = true -- automatically adjust tabwidth for alt layout
 local alt_width = 10 -- tabsize for alt layout if alt_auto_width = false
@@ -24,7 +24,7 @@ local function format_name(name)
   if alt and not short and alt_auto_width then
     local w = vim.api.nvim_get_option("columns") - margin - 3
     local n = #ls()
-    auto_width = math.min(math.floor(w / n) - 7, math.ceil(w / 2) - 7)
+    auto_width = math.min(math.floor(w / n) - 7, math.floor(w / 2) - 7)
   end
   local max = short and alt_width_short or (alt_auto_width and auto_width or alt_width)
   if #name > max then
