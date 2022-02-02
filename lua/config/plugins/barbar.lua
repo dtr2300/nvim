@@ -1,23 +1,23 @@
 local M = {}
 
 function M.update_colors()
-  local c = require("onedark.colors")
+  local c = require "onedark.colors"
   local colors = {
-    {"BufferVisible", c.fg, c.bg0},
-    {"BufferVisibleSign", c.fg, c.bg0},
-    --{"BufferVisibleIcon", c.fg, c.bg0},
-    {"BufferVisibleIndex", c.fg, c.bg0},
-    {"BufferVisibleTarget", c.red, c.bg0},
-    {"BufferVisibleMod", c.yellow, c.bg0},
+    { "BufferVisible", c.fg, c.bg0 },
+    { "BufferVisibleSign", c.fg, c.bg0 },
+    --{ "BufferVisibleIcon", c.fg, c.bg0 },
+    { "BufferVisibleIndex", c.fg, c.bg0 },
+    { "BufferVisibleTarget", c.red, c.bg0 },
+    { "BufferVisibleMod", c.yellow, c.bg0 },
   }
   for i = 1, #colors do
     --vim.cmd(string.format("hi %s guifg=%s guibg=%s\n", colors[i][1], colors[i][2], colors[i][3]))
-    vim.highlight.create(colors[i][1], {guifg=colors[i][2], guibg=colors[i][3]}, false)
+    vim.highlight.create(colors[i][1], { guifg = colors[i][2], guibg = colors[i][3] }, false)
   end
 end
 
 function M.setup()
-  local map = require"config.utils.map".map
+  local map = require("config.utils.map").map
 
   vim.g.bufferline = {
     icon_pinned = "車",

@@ -10,11 +10,11 @@ function M.adjust_fontsize(amount)
 end
 
 function M.setup()
-  local map = require"config.utils.map".map
+  local map = require("config.utils.map").map
 
   M.adjust_fontsize(0)
   vim.cmd("source " .. nvui_install_path .. "\\vim\\plugin\\nvui.vim")
-  vim.cmd[[
+  vim.cmd [[
     NvuiCursorFrametime 0
     NvuiCmdFontFamily FiraCode NF
   ]]

@@ -2,8 +2,8 @@ M = {}
 
 -- change dir
 local function cd(buf)
-  local entry = require"telescope.actions.state".get_selected_entry()
-  require"telescope.actions".close(buf)
+  local entry = require("telescope.actions.state").get_selected_entry()
+  require("telescope.actions").close(buf)
   local dir = vim.fn.fnamemodify(entry.value, ":p:h")
   vim.cmd(string.format("silent lcd %s", dir))
 end
@@ -11,71 +11,69 @@ end
 -- sessions picker
 function M.list_sessions()
   local opts = {
-    search_dirs = {"~/.cache/vim/session"},
+    search_dirs = { "~/.cache/vim/session" },
     previewer = false,
     prompt_title = "Open Session",
     attach_mappings = function(buf, map)
       map("i", "<c-e>", function(_)
-        local entry = require"telescope.actions.state".get_selected_entry()
-        require"telescope.actions".close(buf)
+        local entry = require("telescope.actions.state").get_selected_entry()
+        require("telescope.actions").close(buf)
         vim.cmd("source " .. entry.value)
       end)
       return true
-    end
+    end,
   }
-  require"telescope.builtin".find_files(require"telescope.themes".get_dropdown(opts))
+  require("telescope.builtin").find_files(require("telescope.themes").get_dropdown(opts))
 end
 
 -- setup
 function M.setup()
-  local map = require"config.utils.map".map
+  local map = require("config.utils.map").map
 
-  require"telescope".setup {
+  require("telescope").setup {
     defaults = {
-      prompt_prefix = ' ',
-      file_ignore_patterns = {"__pycache__", "venv"},
+      prompt_prefix = " ",
+      file_ignore_patterns = { "__pycache__", "venv" },
       layout_config = {
         horizontal = {
-          width=0.99,
-          height=0.99,
-          preview_width=0.5,
-          preview_cutoff=20,
+          width = 0.99,
+          height = 0.99,
+          preview_width = 0.5,
+          preview_cutoff = 20,
         },
       },
       mappings = {
         i = {
-          ["<esc>"] = require"telescope.actions".close,
+          ["<esc>"] = require("telescope.actions").close,
           ["<C-/>"] = "which_key",
-          ["<M-f>"] = cd
+          ["<M-f>"] = cd,
         },
         n = {
-          ["<esc>"] = require"telescope.actions".close,
+          ["<esc>"] = require("telescope.actions").close,
         },
       },
     },
-    pickers = {
-    },
-    extensions = {
-    },
+    pickers = {},
+    extensions = {},
   }
 
   -- telescope repo list: keep opts.cwd
-  require"telescope._extensions.repo.list".prepare_command = function(opts)
-    local utils = require"telescope._extensions.repo.utils"
+  require("telescope._extensions.repo.list").prepare_command = function(opts)
+    local utils = require "telescope._extensions.repo.utils"
     opts = opts or {}
     opts.bin = opts.bin or utils.find_fd_binary()
     if opts.bin == "" then
-      error("fd not found, is fd installed?")
+      error "fd not found, is fd installed?"
     end
     opts.cwd = opts.cwd or vim.env.HOME
 
-    local fd_command = {opts.bin}
+    local fd_command = { opts.bin }
     local repo_pattern = opts.pattern or [[^\.git$]]
 
-    local find_repo_opts = {"--hidden", "--case-sensitive", "--absolute-path"}
+    local find_repo_opts = { "--hidden", "--case-sensitive", "--absolute-path" }
     local find_user_opts = opts.fd_opts or {}
-    local find_exec_opts = {"--exec", "echo", [[{//}]], ";"}
-    local find_pattern_opts = {repo_pattern}
+    local find_exec_opts = { "--exec", "echo", [[{//}]], ";" }
+    local find_pattern_opts = { repo_pattern }
 
     table.insert(fd_command, find_repo_opts)
     table.insert(fd_command, find_user_opts)
@@ -87,9 +85,9 @@ function M.setup()
   end
 
   -- load extensions
-  require"telescope".load_extension "file_browser"
-  require"telescope".load_extension "repo"
-  require"telescope".load_extension "fzf"
+  require("telescope").load_extension "file_browser"
+  require("telescope").load_extension "repo"
+  require("telescope").load_extension "fzf"
 
   -- mappings
   map("n", "<Leader>tB", "<Cmd>Telescope builtin<CR>")
@@ -129,7 +127,6 @@ function M.setup()
   map("n", "<Leader>lw", "<Cmd>Telescope lsp_workspace_symbols<CR>")
 
   map("n", "<Leader>ss", "<Cmd>lua require'config.plugins.telescope'.list_sessions()<CR>")
-
 end
 
 return M

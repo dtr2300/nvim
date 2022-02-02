@@ -3,7 +3,7 @@ M = {}
 --- @param cmd string optional
 function M.float_terminal(cmd)
   if not cmd then
-    cmd = vim.fn.has("win32") == 1 and "cmd" or "zsh"
+    cmd = vim.fn.has "win32" == 1 and "cmd" or "zsh"
   end
   local buf = vim.api.nvim_create_buf(false, true)
   local vpad = 4
@@ -24,7 +24,7 @@ function M.float_terminal(cmd)
     string.format("vim.api.nvim_buf_delete(%d, {force = true});", buf),
   }
   vim.cmd(table.concat(autocmd, " "))
-  --vim.cmd([[startinsert]])
+  --vim.cmd "startinsert"
 end
 
 return M

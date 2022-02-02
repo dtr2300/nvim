@@ -15,7 +15,7 @@ function M.fullscreen_toggle()
 end
 
 function M.setup()
-  local map = require"config.utils.map".map
+  local map = require("config.utils.map").map
 
   vim.cmd [[
   GuiTabline 0

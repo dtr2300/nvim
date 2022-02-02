@@ -1,6 +1,6 @@
-local map = require"config.utils.map".map
+local map = require("config.utils.map").map
 
-require"zen-mode".setup {
+require("zen-mode").setup {
   window = {
     backdrop = 1,
     width = 0.7,
@@ -20,8 +20,8 @@ require"zen-mode".setup {
     },
   },
   on_open = function(win)
-    vim.cmd("mode")
-  end
+    vim.cmd "mode"
+  end,
 }
 
 map("n", "<Leader>zz", "<Cmd>ZenMode<CR>")

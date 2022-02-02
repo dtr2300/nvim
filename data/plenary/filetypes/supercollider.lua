@@ -4,8 +4,6 @@ return {
     ["scd"] = "supercollider",
     ["schelp"] = "scdoc",
   },
-  file_name = {
-  },
-  shebang = {
-  }
+  file_name = {},
+  shebang = {},
 }

@@ -1,5 +1,5 @@
 local function find_sumneko_path(path)
-  local dirs = require"plenary.scandir".scan_dir(path, {add_dirs=true, depth=1})
+  local dirs = require("plenary.scandir").scan_dir(path, { add_dirs = true, depth = 1 })
   for _, dir in ipairs(dirs) do
     if string.find(dir, "sumneko%.lua") or string.find(dir, "lua%-language%-server") then
       return dir
@@ -8,11 +8,11 @@ local function find_sumneko_path(path)
 end
 
 -- diagnostic symbols in the sign column (gutter)
-local signs = {Error="", Warn="", Hint="", Info=""}
+local signs = { Error = "", Warn = "", Hint = "", Info = "" }
 
 for type, icon in pairs(signs) do
   local hl = "DiagnosticSign" .. type
-  vim.fn.sign_define(hl, {text=icon, texthl=hl, numhl=hl})
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 
 -- symbols for autocomplete
@@ -45,12 +45,14 @@ vim.lsp.protocol.CompletionItemKind = {
 }
 
 -- disable underline
-vim.diagnostic.config({underline=false})
+vim.diagnostic.config { underline = false }
 
 local on_attach = function(client, bufnr)
-  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+  local function buf_set_keymap(...)
+    vim.api.nvim_buf_set_keymap(bufnr, ...)
+  end
   --local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-  local opts = {noremap=true, silent=true}
+  local opts = { noremap = true, silent = true }
 
   --buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc") -- enable completion triggered by <c-x><c-o>
 
@@ -73,49 +75,49 @@ local on_attach = function(client, bufnr)
   buf_set_keymap("n", "<Leader>F", "<Cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 
   -- lsp_signature
-  require"lsp_signature".on_attach()
+  require("lsp_signature").on_attach()
 end
 
 -- setup language servers -----------------------
 
 -- pyright, vimls, bashls
-local servers = {"pyright", "vimls"}
-if vim.fn.has("unix") == 1 then
+local servers = { "pyright", "vimls" }
+if vim.fn.has "unix" == 1 then
   table.insert(servers, "bashls")
 end
 
 for _, lsp in ipairs(servers) do
-  require"lspconfig"[lsp].setup {on_attach=on_attach}
+  require("lspconfig")[lsp].setup { on_attach = on_attach }
 end
 
 -- sumneko_lua
-local runtime_path = vim.split(package.path, ';')
+local runtime_path = vim.split(package.path, ";")
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
 local sumneko_root_path
 
-if vim.fn.has("win32") == 1 then
+if vim.fn.has "win32" == 1 then
   --sumneko_root_path = find_sumneko_path("C:/Users/Dieter/.vscode/extensions") .. "/server"
-  sumneko_root_path = find_sumneko_path("D:/Program Files")
-elseif vim.fn.has("wsl") == 1 then
-  sumneko_root_path = find_sumneko_path("/home/dtr/.local/share")
+  sumneko_root_path = find_sumneko_path "D:/Program Files"
+elseif vim.fn.has "wsl" == 1 then
+  sumneko_root_path = find_sumneko_path "/home/dtr/.local/share"
 else
   sumneko_root_path = "/data/data/com.termux/files/usr/lib/lua-language-server"
 end
 
-require"lspconfig".sumneko_lua.setup {
+require("lspconfig").sumneko_lua.setup {
   on_attach = on_attach,
-  cmd = {sumneko_root_path .. "/bin/lua-language-server", "-E", sumneko_root_path .. "/main.lua"},
+  cmd = { sumneko_root_path .. "/bin/lua-language-server", "-E", sumneko_root_path .. "/main.lua" },
   settings = {
     Lua = {
       runtime = {
         version = "LuaJIT",
         path = runtime_path,
       },
-      completion = {enable=true},
+      completion = { enable = true },
       diagnostics = {
-        globals = {"vim", "use", "packer_plugins"},
-        --disable = {"lowercase-global"},
+        globals = { "vim", "use", "packer_plugins" },
+        --disable = { "lowercase-global" },
       },
       workspace = {
         library = vim.api.nvim_get_runtime_file("", true),
@@ -127,4 +129,3 @@ require"lspconfig".sumneko_lua.setup {
     },
   },
 }
-

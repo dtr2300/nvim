@@ -1,4 +1,6 @@
+-- stylua: ignore
 local cmds = {
+
 -- set colorscheme
 "colorscheme onedark",
 
@@ -26,10 +28,11 @@ augroup neovim_terminal
   au TermOpen * startinsert
 augroup END
 ]],
+
 }
 
 -- set interface language
-if vim.fn.has("win32") == 1 then
+if vim.fn.has "win32" == 1 then
   table.insert(cmds, "lang messages en_GB")
 end
 

@@ -1,21 +1,20 @@
-require"nvim-web-devicons".setup {
+require("nvim-web-devicons").setup {
   override = {
     scd = {
       icon = "",
       color = "#dd9046",
-      name = "Scd"
+      name = "Scd",
     },
     sc = {
       icon = "",
       color = "#dd9046",
-      name = "Sc"
+      name = "Sc",
     },
     schelp = {
       icon = "",
       color = "#dd9046",
-      name = "Schelp"
+      name = "Schelp",
     },
   },
-  default = true
+  default = true,
 }
-

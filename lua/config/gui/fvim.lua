@@ -1,4 +1,4 @@
-local map = require"config.utils.map".map
+local map = require("config.utils.map").map
 
 vim.opt.guifont = "FiraCode NF:h13"
 vim.cmd "FVimCustomTitleBar v:true"

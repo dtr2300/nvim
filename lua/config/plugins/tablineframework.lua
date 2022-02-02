@@ -27,7 +27,7 @@ end
 local function format_name(name)
   local auto_width = 0
   if opts.alt and not opts.short and opts.alt_auto_width then
-    local w = vim.api.nvim_get_option("columns") - opts.margin - 3
+    local w = vim.api.nvim_get_option "columns" - opts.margin - 3
     local n = #ls()
     auto_width = math.min(math.floor(w / n) - 7, math.floor(w / 2) - 7)
   end
@@ -41,19 +41,19 @@ local function format_name(name)
 end
 
 local function render(f)
-  local c = require"onedark.colors"
+  local c = require "onedark.colors"
   f.add(string.rep(" ", opts.margin))
 
   f.make_bufs(function(info)
-    f.add(opts.alt and { "▎ ", fg=info.current and c.red or c.grey } or " ")
+    f.add(opts.alt and { "▎ ", fg = info.current and c.red or c.grey } or " ")
 
     local name
     if info.filename then
       local icon_color = info.current and f.icon_color(info.filename) or c.light_grey
-      f.add { f.icon(info.filename) .. " ", fg=icon_color }
+      f.add { f.icon(info.filename) .. " ", fg = icon_color }
       name = opts.short and tostring(info.index) or info.filename
     else
-      f.add(" ")
+      f.add " "
       name = opts.short and tostring(info.index) or "new " .. info.index
     end
     name = opts.alt and format_name(name) or trunc_name(name)
@@ -63,17 +63,17 @@ local function render(f)
   end)
 
   f.add_spacer()
-  local platform_icon = vim.fn.has("win32") == 1 and "  " or "  "
+  local platform_icon = vim.fn.has "win32" == 1 and "  " or "  "
   f.add(platform_icon)
 end
 
 function M.toggle_colors()
-  require"onedark".toggle()
-  local c = require"onedark.colors"
-  local Config = require"tabline_framework.config"
-  Config.hl = {fg=c.light_grey, bg=c.bg1}
-  Config.hl_sel = {fg=c.fg, bg=c.bg3}
-  Config.hl_fill = {fg=c.fg, bg=c.bg0}
+  require("onedark").toggle()
+  local c = require "onedark.colors"
+  local Config = require "tabline_framework.config"
+  Config.hl = { fg = c.light_grey, bg = c.bg1 }
+  Config.hl_sel = { fg = c.fg, bg = c.bg3 }
+  Config.hl_fill = { fg = c.fg, bg = c.bg0 }
   vim.cmd "redrawtabline"
 end
 
@@ -108,14 +108,14 @@ function M.set_width(width)
 end
 
 function M.setup()
-  local c = require"onedark.colors"
-  local map = require"config.utils.map".map
+  local c = require "onedark.colors"
+  local map = require("config.utils.map").map
 
-  require"tabline_framework".setup {
+  require("tabline_framework").setup {
     render = render,
-    hl = {fg=c.light_grey, bg=c.bg1},
-    hl_sel = {fg=c.fg, bg=c.bg3},
-    hl_fill = {fg=c.fg, bg=c.bg0},
+    hl = { fg = c.light_grey, bg = c.bg1 },
+    hl_sel = { fg = c.fg, bg = c.bg3 },
+    hl_fill = { fg = c.fg, bg = c.bg0 },
   }
 
   map("n", "<A-.>", "<Cmd>bn<CR>")

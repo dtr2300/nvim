@@ -2,11 +2,11 @@ local M = {}
 
 -- append blank lines
 function M.append_blank_lines()
-  vim.fn.append(vim.fn.line("."), vim.fn["repeat"]({""}, vim.api.nvim_get_vvar("count1")))
+  vim.fn.append(vim.fn.line ".", vim.fn["repeat"]({ "" }, vim.api.nvim_get_vvar "count1"))
 end
 
 function M.setup()
-  local map = require"config.utils.map".map
+  local map = require("config.utils.map").map
 
   -- new buffer
   map("n", "<Leader>cn", "<Cmd>ene<CR>")
@@ -19,8 +19,8 @@ function M.setup()
   map("n", "<F2>", "<Cmd>source %<CR>")
 
   -- bubble lines
-  map("n", "<C-Up>", "<Cmd>m .-2<CR>", {noremap=false, silent=true})
-  map("n", "<C-Down>", "<Cmd>m .+1<CR>", {noremap=false, silent=true})
+  map("n", "<C-Up>", "<Cmd>m .-2<CR>", { noremap = false, silent = true })
+  map("n", "<C-Down>", "<Cmd>m .+1<CR>", { noremap = false, silent = true })
   map("v", "<C-Up>", [[@='"zxk"zP`[V`]'<CR>]])
   map("v", "<C-Down>", [[@='"zx"zp`[V`]'<CR>]])
 

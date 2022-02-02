@@ -15,7 +15,7 @@ function M.fullscreen_toggle()
 end
 
 function M.setup()
-  local map = require"config.utils.map".map
+  local map = require("config.utils.map").map
 
   M.adjust_fontsize(0)
   vim.cmd "let g:neovide_cursor_animation_length=0" -- vim.g doesn't work
