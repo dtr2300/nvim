@@ -1,4 +1,4 @@
--- stylua: ignore
+-- stylua: ignore start
 return require("packer").startup { function()
   local p = function(name) return string.format("require'config.plugins.%s'", name) end
   local s = function(name) return p(name) .. ".setup()" end
@@ -49,3 +49,4 @@ config = {
 },
 
 }
+-- stylua: ignore end
