@@ -21,8 +21,6 @@ return require"packer".startup({function()
   use { "nvim-lualine/lualine.nvim", config=p"lualine" }
   use { "goolord/alpha-nvim", config=p"alpha" }
   use { "rafcamlet/tabline-framework.nvim", config=ps"tablineframework", after="onedark.nvim" }
-  --use { "romgrk/barbar.nvim", config=ps"barbar" }
-  --use { "kyazdani42/nvim-tree.lua", config=p"tree" }
   use { "folke/which-key.nvim", config=p"whichkey" }
   use { "folke/zen-mode.nvim", config=p"zenmode" }
   use { "nvim-telescope/telescope-file-browser.nvim" }
