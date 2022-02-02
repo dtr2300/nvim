@@ -25,18 +25,14 @@ local function trunc_name(name)
 end
 
 local function format_name(name)
-  local auto_width = 0
+  local auto_width
   if opts.alt and not opts.short and opts.alt_auto_width then
     local w = vim.api.nvim_get_option "columns" - opts.margin - 3
     local n = #ls()
     auto_width = math.min(math.floor(w / n) - 7, math.floor(w / 2) - 7)
   end
   local max = opts.short and opts.alt_width_short or (opts.alt_auto_width and auto_width or opts.alt_width)
-  if #name > max then
-    name = trunc(name, max)
-  else
-    name = name .. string.rep(" ", max - #name)
-  end
+  name = #name > max and trunc(name, max) or name .. string.rep(" ", max - #name)
   return name
 end
 
