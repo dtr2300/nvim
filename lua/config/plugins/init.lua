@@ -38,7 +38,10 @@ return require("packer").startup { function()
   use { "milisims/nvim-luaref" }
   use { "nanotee/nvim-lua-guide" }
 
-  if vim.fn.has "win32" == 1 then use { "davidgranstrom/scnvim", config = p"scnvim" } end
+  if vim.fn.has "win32" == 1 then
+    use { "davidgranstrom/scnvim", config = p"scnvim" }
+    use { "madskjeldgaard/sc-scratchpad.nvim", config = p"scscratchpad", after = "scnvim" }
+  end
 end,
 
 config = {

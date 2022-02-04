@@ -29,7 +29,7 @@ local function format_name(name)
   if opts.alt and not opts.short and opts.alt_auto_width then
     local w = vim.api.nvim_get_option "columns" - opts.margin - 3
     local n = #ls()
-    auto_width = math.min(math.floor(w / n) - 7, math.floor(w / 2) - 7)
+    auto_width = math.min(math.floor(w / n), math.floor(w / 2)) - 7
   end
   local max = opts.short and opts.alt_width_short or (opts.alt_auto_width and auto_width or opts.alt_width)
   name = #name > max and trunc(name, max) or name .. string.rep(" ", max - #name)
