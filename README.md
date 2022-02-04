@@ -33,6 +33,7 @@ This is my personal Neovim configuration (Windows, WSL/Ubuntu and Termux).
 - [nvim-lua-guide](https://github.com/nanotee/nvim-lua-guide) getting started using lua in neovim
 - [nvim-luaref](https://github.com/milisims/nvim-luaref) adds a reference for builtin lua functions, extracting both text and formatting from the lua 5.1 reference manual
 - [scnvim](https://github.com/davidgranstrom/scnvim) neovim frontend for supercollider
+- [sc-scratchpad.nvim](https://github.com/madskjeldgaard/sc-scratchpad.nvim) throwaway buffers for chaotic supercollider coders in neovim
 
 ### removed
 
