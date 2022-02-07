@@ -42,8 +42,12 @@ function M.setup()
   map("n", "<Leader>dm", "<Cmd>lua require'config.utils.terminal'.float_terminal('glow')<CR>")
 
   -- change directory
-  map("n", "<Leader>cd", "<Cmd>lcd %:p:h<CR><Cmd>pwd<CR>")
-  map("n", "<Leader>cD", "<Cmd>lcd %:h | lcd `git rev-parse --show-toplevel`<CR><Cmd>pwd<CR>")
+  map("n", "<Leader>cd", "<Cmd>silent lcd %:p:h<CR><Cmd>lua vim.notify(vim.loop.cwd())<CR>")
+  map(
+    "n",
+    "<Leader>cD",
+    "<Cmd>silent lcd %:h | lcd `git rev-parse --show-toplevel`<CR><Cmd>lua vim.notify(vim.loop.cwd())<CR>"
+  )
 end
 
 return M

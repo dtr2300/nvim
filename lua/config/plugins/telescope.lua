@@ -1,29 +1,45 @@
 M = {}
 
+local pickers = require "telescope.pickers"
+local finders = require "telescope.finders"
+local conf = require("telescope.config").values
+local actions = require "telescope.actions"
+local action_state = require "telescope.actions.state"
+local make_entry = require "telescope.make_entry"
+local themes = require "telescope.themes"
+
 -- change dir
 local function cd(buf)
-  local entry = require("telescope.actions.state").get_selected_entry()
-  require("telescope.actions").close(buf)
-  local dir = vim.fn.fnamemodify(entry.value, ":p:h")
-  vim.cmd(string.format("silent lcd %s", dir))
+  local entry = action_state.get_selected_entry()
+  actions.close(buf)
+  local cwd = vim.fn.fnamemodify(entry.value, ":p:h")
+  vim.cmd(string.format("silent lcd %s", cwd))
+  vim.notify(vim.loop.cwd())
 end
 
 -- sessions picker
-function M.list_sessions()
-  local opts = {
-    search_dirs = { "~/.cache/vim/session" },
-    previewer = false,
-    prompt_title = "Open Session",
-    attach_mappings = function(buf, map)
-      map("i", "<c-e>", function(_)
-        local entry = require("telescope.actions.state").get_selected_entry()
-        require("telescope.actions").close(buf)
-        vim.cmd("source " .. entry.value)
-      end)
-      return true
-    end,
-  }
-  require("telescope.builtin").find_files(require("telescope.themes").get_dropdown(opts))
+function M.open_session()
+  local sessions = function(opts)
+    opts = opts or {}
+    local cwd = vim.fn.expand "~/.cache/vim/session"
+    local find_command = { "fd", "-t", "f", ".", cwd }
+    opts.cwd = cwd
+    opts.entry_maker = opts.entry_maker or make_entry.gen_from_file(opts)
+    pickers.new(opts, {
+      prompt_title = "Sessions",
+      finder = finders.new_oneshot_job(find_command, opts),
+      sorter = conf.file_sorter(opts),
+      attach_mappings = function(prompt_bufnr, map)
+        actions.select_default:replace(function()
+          actions.close(prompt_bufnr)
+          local selection = action_state.get_selected_entry()
+          vim.cmd("source " .. selection.value)
+        end)
+        return true
+      end,
+    }):find()
+  end
+  sessions(themes.get_dropdown {})
 end
 
 -- setup
@@ -44,12 +60,12 @@ function M.setup()
       },
       mappings = {
         i = {
-          ["<esc>"] = require("telescope.actions").close,
+          ["<esc>"] = actions.close,
           ["<C-/>"] = "which_key",
           ["<M-f>"] = cd,
         },
         n = {
-          ["<esc>"] = require("telescope.actions").close,
+          ["<esc>"] = actions.close,
         },
       },
     },
@@ -85,9 +101,9 @@ function M.setup()
   end
 
   -- load extensions
-  require("telescope").load_extension "file_browser"
-  require("telescope").load_extension "repo"
-  require("telescope").load_extension "fzf"
+  for _, ext in ipairs { "file_browser", "repo", "fzf" } do
+    require("telescope").load_extension(ext)
+  end
 
   -- mappings
   map("n", "<Leader>tB", "<Cmd>Telescope builtin<CR>")
@@ -128,7 +144,7 @@ function M.setup()
   map("n", "<Leader>lt", "<Cmd>Telescope lsp_type_definitions<CR>")
   map("n", "<Leader>lw", "<Cmd>Telescope lsp_workspace_symbols<CR>")
 
-  map("n", "<Leader>ss", "<Cmd>lua require'config.plugins.telescope'.list_sessions()<CR>")
+  map("n", "<Leader>ss", "<Cmd>lua require'config.plugins.telescope'.open_session()<CR>")
 end
 
 return M
