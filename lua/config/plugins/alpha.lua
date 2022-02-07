@@ -9,14 +9,15 @@ local function button(sc, txt, keybind, keybind_opts)
 end
 
 local function pick_color()
-  local colors = { "String", "Identifier", "Keyword", "Number" }
+  local colors = { "String", "Identifier", "Keyword", "Number", "Constant" }
   return colors[math.random(#colors)]
 end
 
 local function footer()
-  local total_plugins = #vim.tbl_keys(packer_plugins)
-  local datetime = os.date "%d-%m-%Y  %H:%M:%S"
-  return total_plugins .. " plugins  " .. datetime
+  local plugins = #vim.tbl_keys(packer_plugins)
+  local v = vim.version()
+  local datetime = os.date " %d-%m-%Y   %H:%M:%S"
+  return string.format(" %s   v%s.%s.%s  %s", plugins, v.major, v.minor, v.patch, datetime)
 end
 
 dashboard.section.header.val = {
@@ -41,7 +42,7 @@ dashboard.section.buttons.val = {
 }
 
 dashboard.section.footer.val = footer()
-dashboard.section.footer.opts.hl = "Constant"
+dashboard.section.footer.opts.hl = dashboard.section.header.opts.hl
 
 require("alpha").setup(dashboard.opts)
 

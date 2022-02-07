@@ -13,6 +13,7 @@ This is my personal Neovim configuration (Windows, WSL/Ubuntu and Termux).
 - [nvim-notify](https://github.com/rcarriga/nvim-notify) a fancy, configurable, notification manager for neovim
 - [sqlite.lua](https://github.com/tami5/sqlite.lua) sqlite/luajit binding and a highly opinionated wrapper for storing, retrieving, caching, and persisting sqlite databases
 - [nui.nvim](https://github.com/MunifTanjim/nui.nvim) ui component library for neovim
+- [osc.nvim](https://github.com/davidgranstrom/osc.nvim) open sound control (osc) library for neovim
 - [onedark.nvim](https://github.com/navarasu/onedark.nvim) a dark theme for neovim >= 0.5 based on atom one dark theme
 - [tabline-framework.nvim](https://github.com/rafcamlet/tabline-framework.nvim) user-friendly framework for building your dream tabline in a few lines of code
 - [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim) a blazing fast and easy to configure neovim statusline
