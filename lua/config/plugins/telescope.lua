@@ -8,38 +8,39 @@ local action_state = require "telescope.actions.state"
 local make_entry = require "telescope.make_entry"
 local themes = require "telescope.themes"
 
--- change dir
+-- change dir attach mapping
 local function cd(buf)
-  local entry = action_state.get_selected_entry()
   actions.close(buf)
-  local cwd = vim.fn.fnamemodify(entry.value, ":p:h")
-  vim.cmd(string.format("silent lcd %s", cwd))
+  local selection = action_state.get_selected_entry()
+  local cwd = vim.fn.fnamemodify(selection.value, ":p:h")
+  vim.cmd("silent lcd " .. cwd)
   vim.notify(vim.loop.cwd())
 end
 
 -- sessions picker
-function M.open_session()
-  local sessions = function(opts)
-    opts = opts or {}
-    local cwd = vim.fn.expand "~/.cache/vim/session"
-    local find_command = { "fd", "-t", "f", ".", cwd }
-    opts.cwd = cwd
-    opts.entry_maker = opts.entry_maker or make_entry.gen_from_file(opts)
-    pickers.new(opts, {
-      prompt_title = "Sessions",
-      finder = finders.new_oneshot_job(find_command, opts),
-      sorter = conf.file_sorter(opts),
-      attach_mappings = function(prompt_bufnr, map)
-        actions.select_default:replace(function()
-          actions.close(prompt_bufnr)
-          local selection = action_state.get_selected_entry()
-          vim.cmd("source " .. selection.value)
-        end)
-        return true
-      end,
-    }):find()
-  end
-  sessions(themes.get_dropdown {})
+local sessions = function(opts)
+  opts = opts or {}
+  opts.cwd = vim.fn.expand(opts.cwd or "~/.cache/vim/session")
+  opts.entry_maker = opts.entry_maker or make_entry.gen_from_file(opts)
+  local find_command = { "fd", "-t", "f", ".", opts.cwd }
+  pickers.new(opts, {
+    prompt_title = "Sessions",
+    finder = finders.new_oneshot_job(find_command, opts),
+    sorter = conf.file_sorter(opts),
+    attach_mappings = function(buf, map)
+      actions.select_default:replace(function()
+        actions.close(buf)
+        local selection = action_state.get_selected_entry()
+        vim.cmd("source " .. selection.value)
+      end)
+      return true
+    end,
+  }):find()
+end
+
+function M.open_session(opts)
+  opts = opts or {}
+  sessions(themes.get_dropdown(opts))
 end
 
 -- setup
