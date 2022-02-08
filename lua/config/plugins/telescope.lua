@@ -17,12 +17,12 @@ local function cd(buf)
   vim.notify(vim.loop.cwd())
 end
 
--- sessions picker
+-- session picker
 local sessions = function(opts)
   opts = opts or {}
   opts.cwd = vim.fn.expand(opts.cwd or "~/.cache/vim/session")
   opts.entry_maker = opts.entry_maker or make_entry.gen_from_file(opts)
-  local find_command = { "fd", "-t", "f", ".", opts.cwd }
+  local find_command = { "fd", "-t", "f", "-H", "\\.vim$", opts.cwd }
   pickers.new(opts, {
     prompt_title = "Sessions",
     finder = finders.new_oneshot_job(find_command, opts),
