@@ -42,14 +42,15 @@ function M.setup()
   map("n", "<Leader>dm", "<Cmd>lua require'config.utils.terminal'.float_terminal('glow')<CR>")
 
   -- change directory
-  map("n", "<Leader>cd", "<Cmd>lcd %:p:h<CR><Cmd>lua vim.notify(vim.loop.cwd(),2,{title='cwd'})<CR>")
+  map("n", "<Leader>cd", "<Cmd>lcd %:p:h<CR><Cmd>lua require'config.utils.sessions'.info()<CR>")
   map(
     "n",
     "<Leader>cD",
-    "<Cmd>lcd %:h | silent! lcd `git rev-parse --show-toplevel`<CR><Cmd>lua vim.notify(vim.loop.cwd(),2,{title='cwd'})<CR>"
+    "<Cmd>lcd %:h | silent! lcd `git rev-parse --show-toplevel`<CR><Cmd>lua require'config.utils.sessions'.info()<CR>"
   )
 
   -- sessions
+  map("n", "<Leader>si", "<Cmd>lua require'config.utils.sessions'.info()<CR>")
   map("n", "<Leader>ss", "<Cmd>lua require'config.utils.sessions'.open_session()<CR>")
   map("n", "<Leader>sS", "<Cmd>lua require'config.utils.sessions'.save_session()<CR>")
 end

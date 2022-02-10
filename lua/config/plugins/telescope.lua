@@ -9,7 +9,7 @@ local function cd(buf)
   local selection = action_state.get_selected_entry()
   local cwd = vim.fn.fnamemodify(selection.value, ":p:h")
   vim.cmd("silent lcd " .. cwd)
-  vim.notify(vim.loop.cwd(), 2, { title = "cwd" })
+  require("config.utils.sessions").info()
 end
 
 -- setup

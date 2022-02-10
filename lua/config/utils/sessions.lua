@@ -10,6 +10,13 @@ local themes = require "telescope.themes"
 
 local session_dir = "~/.cache/vim/session"
 
+function M.info()
+  local this_session = vim.api.nvim_eval "v:this_session"
+  this_session = vim.fn.fnamemodify(this_session, ":p:t:r")
+  local cwd = vim.loop.cwd()
+  vim.notify(string.format("session: %s\ncwd:     %s", this_session, cwd), 2, { title = "info" })
+end
+
 function M.open_session()
   local sessions = function(opts)
     opts = opts or {}
@@ -38,7 +45,7 @@ function M.save_session()
   local this_session = vim.api.nvim_eval "v:this_session"
   if this_session == "" then
     vim.fn.inputsave()
-    this_session = vim.fn.input "Enter a name for this session: "
+    this_session = vim.fn.input "Session name: "
     vim.fn.inputrestore()
     vim.cmd("mks " .. vim.fn.expand(session_dir) .. "/" .. this_session .. ".vim")
   else
