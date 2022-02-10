@@ -1,12 +1,7 @@
 M = {}
 
-local pickers = require "telescope.pickers"
-local finders = require "telescope.finders"
-local conf = require("telescope.config").values
 local actions = require "telescope.actions"
 local action_state = require "telescope.actions.state"
-local make_entry = require "telescope.make_entry"
-local themes = require "telescope.themes"
 
 -- change dir attach mapping
 local function cd(buf)
@@ -14,33 +9,7 @@ local function cd(buf)
   local selection = action_state.get_selected_entry()
   local cwd = vim.fn.fnamemodify(selection.value, ":p:h")
   vim.cmd("silent lcd " .. cwd)
-  vim.notify(vim.loop.cwd())
-end
-
--- session picker
-local sessions = function(opts)
-  opts = opts or {}
-  opts.cwd = vim.fn.expand(opts.cwd or "~/.cache/vim/session")
-  opts.entry_maker = opts.entry_maker or make_entry.gen_from_file(opts)
-  local find_command = { "fd", "-t", "f", "-H", "\\.vim$", opts.cwd }
-  pickers.new(opts, {
-    prompt_title = "Sessions",
-    finder = finders.new_oneshot_job(find_command, opts),
-    sorter = conf.file_sorter(opts),
-    attach_mappings = function(buf, map)
-      actions.select_default:replace(function()
-        actions.close(buf)
-        local selection = action_state.get_selected_entry()
-        vim.cmd("source " .. selection.value)
-      end)
-      return true
-    end,
-  }):find()
-end
-
-function M.open_session(opts)
-  opts = opts or {}
-  sessions(themes.get_dropdown(opts))
+  vim.notify(vim.loop.cwd(), 2, { title = "cwd" })
 end
 
 -- setup
@@ -144,8 +113,6 @@ function M.setup()
   map("n", "<Leader>lr", "<Cmd>Telescope lsp_references<CR>")
   map("n", "<Leader>lt", "<Cmd>Telescope lsp_type_definitions<CR>")
   map("n", "<Leader>lw", "<Cmd>Telescope lsp_workspace_symbols<CR>")
-
-  map("n", "<Leader>ss", "<Cmd>lua require'config.plugins.telescope'.open_session()<CR>")
 end
 
 return M
