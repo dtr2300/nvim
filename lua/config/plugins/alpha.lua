@@ -35,6 +35,7 @@ dashboard.section.buttons.val = {
   button("SPC t f", "  Find file"),
   button("SPC t l", "  Find word"),
   button("SPC t F", "  File browser"),
+  button("SPC t 1", "  Find repo"),
   button("SPC s s", "  Open session"),
   button("SPC c n", "  New file"),
   button("SPC c c", "  Update plugins"),
@@ -44,7 +45,7 @@ dashboard.section.buttons.val = {
 dashboard.section.footer.val = footer()
 dashboard.section.footer.opts.hl = dashboard.section.header.opts.hl
 
-require("alpha").setup(dashboard.opts)
+require("alpha").setup(dashboard.config)
 
 -- hide tabline and statusline on startup screen
 vim.cmd [[
