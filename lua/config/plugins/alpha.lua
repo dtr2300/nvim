@@ -45,6 +45,8 @@ dashboard.section.buttons.val = {
 dashboard.section.footer.val = footer()
 dashboard.section.footer.opts.hl = dashboard.section.header.opts.hl
 
+dashboard.config.layout[1].val = 1
+
 require("alpha").setup(dashboard.config)
 
 -- hide tabline and statusline on startup screen
