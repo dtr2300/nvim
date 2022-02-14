@@ -4,7 +4,11 @@ return require("packer").startup { function()
   local s = function(name) return p(name) .. ".setup()" end
 
   use { "lewis6991/impatient.nvim" }
-  use { "wbthomason/packer.nvim" }
+  if vim.fn.has "win32" == 1 then
+    use { "wbthomason/packer.nvim", commit = "c5e98e3ca84843dbae47cd8f3a76bc38c6404241" }
+  else
+    use { "wbthomason/packer.nvim" }
+  end
 
   use { "kyazdani42/nvim-web-devicons", config = p"webdevicons" }
   use { "nvim-lua/plenary.nvim", config = p"plenary" }
