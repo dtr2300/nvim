@@ -34,6 +34,8 @@ return require("packer").startup { function()
   use { "ray-x/lsp_signature.nvim", branch = branch }
   use { "neovim/nvim-lspconfig", config = p"lsp" }
 
+  use { "L3MON4D3/LuaSnip", config = p"luasnip" }
+
   use { "hrsh7th/nvim-compe", config = p"compe" }
 
   use { "milisims/nvim-luaref" }

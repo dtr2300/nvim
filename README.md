@@ -31,15 +31,11 @@ This is my personal Neovim configuration (Windows, WSL/Ubuntu and Termux).
 - [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) a collection of common configurations for neovim's built-in language server client
 - [lsp_signature.nvim](https://github.com/ray-x/lsp_signature.nvim) show function signature when you type
 - [nvim-compe](https://github.com/hrsh7th/nvim-compe) auto completion plugin for neovim
+- [LuaSnip](https://github.com/L3MON4D3/LuaSnip) snippet engine for neovim written in lua
 - [nvim-lua-guide](https://github.com/nanotee/nvim-lua-guide) getting started using lua in neovim
 - [nvim-luaref](https://github.com/milisims/nvim-luaref) adds a reference for builtin lua functions, extracting both text and formatting from the lua 5.1 reference manual
 - [scnvim](https://github.com/davidgranstrom/scnvim) neovim frontend for supercollider
 - [sc-scratchpad.nvim](https://github.com/madskjeldgaard/sc-scratchpad.nvim) throwaway buffers for chaotic supercollider coders in neovim
-
-### removed
-
-- [nvim-tree.lua](https://github.com/kyazdani42/nvim-tree.lua) a file explorer for neovim
-- [barbar.nvim](https://github.com/romgrk/barbar.nvim) tabs, as understood by any other editor
 
 ## useful links
 
@@ -74,6 +70,9 @@ This is my personal Neovim configuration (Windows, WSL/Ubuntu and Termux).
     - [delta](https://github.com/dandavison/delta)
     - [exa](https://github.com/ogham/exa)
     - [gh](https://github.com/cli/cli)
+- terminals
+    - [Windows Terminal](https://docs.microsoft.com/en-us/windows/terminal/)
+    - [wezterm](https://github.com/wez/wezterm)
 - gui
     - [neovim-qt](https://github.com/equalsraf/neovim-qt)
     - [nvui](https://github.com/rohit-px2/nvui)

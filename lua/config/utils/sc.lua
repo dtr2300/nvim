@@ -36,6 +36,7 @@ local function scnvim_help_keys()
   return help_keys
 end
 
+-- sc-eval picker
 function M.sc_eval(sc_code, sc_return_code, opts)
   require("scnvim").eval(sc_code, function(return_val)
     local sc_eval_picker = function(opts)
@@ -60,10 +61,12 @@ function M.sc_eval(sc_code, sc_return_code, opts)
   end)
 end
 
+-- synthdefs
 function M.play_synthdef()
   M.sc_eval([[SynthDescLib.default.synthDescs.keys.asArray;]], [[Synth('%s');]], { prompt_title = "Play SynthDef" })
 end
 
+-- scales
 function M.play_scale()
   M.sc_eval(
     [[Scale.names;]],
@@ -72,6 +75,7 @@ function M.play_scale()
   )
 end
 
+-- schelp picker
 function M.schelp()
   local schelp_picker = function(opts)
     opts = opts or {}
@@ -90,6 +94,18 @@ function M.schelp()
     }):find()
   end
   schelp_picker(themes.get_dropdown {})
+end
+
+-- because require("scnvim.utils").get_snippets() doesn't work
+function M.load_snippets()
+  local filename = vim.g.scnvim_root_dir .. "\\scnvim-data\\scnvim_snippets.lua"
+  local ok, file = pcall(loadfile(filename))
+  if ok then
+    require("luasnip").snippets.supercollider = file
+    vim.notify "sc snippets loaded"
+  else
+    vim.notify("couldn't find " .. filename, 4)
+  end
 end
 
 return M
