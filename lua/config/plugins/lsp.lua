@@ -81,7 +81,7 @@ end
 -- setup language servers -----------------------
 
 -- pyright, vimls, bashls
-local servers = { "pyright", "vimls" }
+local servers = { "pyright", "vimls", "clangd" }
 if vim.fn.has "unix" == 1 then
   table.insert(servers, "bashls")
 end

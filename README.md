@@ -40,24 +40,27 @@ This is my personal Neovim configuration (Windows, WSL/Ubuntu and Termux).
 ## useful links
 
 - index
-    - [Awesome Neovim](https://github.com/rockerBOO/awesome-neovim)
-    - [Neovim Craft](https://neovimcraft.com/) ([json](https://github.com/neurosnap/neovimcraft/blob/main/src/lib/resources.json))
+    - [awesome neovim](https://github.com/rockerBOO/awesome-neovim)
+    - [neovim craft](https://neovimcraft.com/) ([json](https://github.com/neurosnap/neovimcraft/blob/main/src/lib/resources.json))
     - [nvim.sh](https://github.com/neurosnap/nvim.sh)
 - lua
-    - [Getting started using Lua in Neovim](https://github.com/nanotee/nvim-lua-guide)
-    - [Programming in Lua (first edition)](https://www.lua.org/pil/contents.html)
-    - [Lua 5.1 Reference Manual](https://www.lua.org/manual/5.1/manual.html)
-    - [Learn Lua in Y Minutes](https://learnxinyminutes.com/docs/lua/)
+    - [getting started using lua in neovim](https://github.com/nanotee/nvim-lua-guide)
+    - [programming in lua (first edition)](https://www.lua.org/pil/contents.html)
+    - [lua 5.1 reference manual](https://www.lua.org/manual/5.1/manual.html)
+    - [learn lua in y minutes](https://learnxinyminutes.com/docs/lua/)
 - viml
-    - [Learn Vimscript in Y Minutes](https://learnxinyminutes.com/docs/vimscript/)
-    - [Vim Script for Python Developers](https://gist.github.com/yegappan/16d964a37ead0979b05e655aa036cad0)
+    - [learn vimscript in y minutes](https://learnxinyminutes.com/docs/vimscript/)
+    - [vim script for python developers](https://gist.github.com/yegappan/16d964a37ead0979b05e655aa036cad0)
 - neovim
     - [neovim](https://github.com/neovim/neovim)
     - [neovim.io](https://neovim.io/)
-    - [Following HEAD: breaking changes on master](https://github.com/neovim/neovim/issues/14090)
+- breaking changes
+    - [nvim](https://github.com/neovim/neovim/issues/14090)
+    - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter/issues/2293)
+    - [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim/issues/1470)
 - community
-    - [Neovim Reddit](https://www.reddit.com/r/neovim/)
-    - [Neovim Discourse](https://neovim.discourse.group/)
+    - [neovim reddit](https://www.reddit.com/r/neovim/)
+    - [neovim discourse](https://neovim.discourse.group/)
 - tools
     - [nerd-fonts](https://github.com/ryanoasis/nerd-fonts)
     - [stylua](https://github.com/JohnnyMorganz/StyLua)
@@ -71,7 +74,7 @@ This is my personal Neovim configuration (Windows, WSL/Ubuntu and Termux).
     - [exa](https://github.com/ogham/exa)
     - [gh](https://github.com/cli/cli)
 - terminals
-    - [Windows Terminal](https://docs.microsoft.com/en-us/windows/terminal/)
+    - [windows terminal](https://docs.microsoft.com/en-us/windows/terminal/)
     - [wezterm](https://github.com/wez/wezterm)
 - gui
     - [neovim-qt](https://github.com/equalsraf/neovim-qt)
@@ -85,8 +88,11 @@ This is my personal Neovim configuration (Windows, WSL/Ubuntu and Termux).
     - [vim-language-server](https://github.com/iamcco/vim-language-server)
     - [bash-language-server](https://github.com/bash-lsp/bash-language-server)
     - [sumneko-lua](https://github.com/sumneko/lua-language-server)
+    - [clangd](https://clangd.llvm.org/)
+        - [bear](https://github.com/rizsotto/Bear)
+        - [compiledb](https://pypi.org/project/compiledb/)
 - misc
-    - [Neovim as a SuperCollider IDE](https://madskjeldgaard.dk/posts/neovim-as-sc-ide/)
+    - [neovim as a superCollider ide](https://madskjeldgaard.dk/posts/neovim-as-sc-ide/)
 
 ## other configs
 
