@@ -92,7 +92,7 @@ This is my personal Neovim configuration (Windows, WSL/Ubuntu and Termux).
         - [bear](https://github.com/rizsotto/Bear)
         - [compiledb](https://pypi.org/project/compiledb/)
 - misc
-    - [neovim as a superCollider ide](https://madskjeldgaard.dk/posts/neovim-as-sc-ide/)
+    - [neovim as a supercollider ide](https://madskjeldgaard.dk/posts/neovim-as-sc-ide/)
 
 ## other configs
 
