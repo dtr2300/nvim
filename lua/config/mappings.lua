@@ -11,10 +11,6 @@ function M.setup()
   -- new buffer
   map("n", "<Leader>cn", "<Cmd>ene<CR>")
 
-  -- show help
-  map("n", "<F1>", "<Cmd>vert help<CR>")
-  map("n", "<S-F1>", "<Cmd>tab help<CR>")
-
   -- execute current buffer
   map("n", "<F2>", "<Cmd>source %<CR>")
 
@@ -24,10 +20,12 @@ function M.setup()
   map("v", "<C-Up>", [[@='"zxk"zP`[V`]'<CR>]])
   map("v", "<C-Down>", [[@='"zx"zp`[V`]'<CR>]])
 
-  -- update plugins
-  map("n", "<Leader>cc", "<Cmd>PackerUpdate<CR>")
-  map("n", "<Leader>cC", "<Cmd>PackerCompile<CR>")
-  map("n", "<Leader>cS", "<Cmd>PackerSync<CR>")
+  -- update
+  map("n", "<Leader>pu", "<Cmd>PackerUpdate<CR>")
+  map("n", "<Leader>pc", "<Cmd>PackerCompile<CR>")
+  map("n", "<Leader>ps", "<Cmd>PackerSync<CR>")
+  map("n", "<Leader>pU", "<Cmd>TSUpdate<CR>")
+  map("n", "<Leader>pC", "<Cmd>LuaCacheClear<CR>")
 
   -- append N blank lines below cursor
   map("n", "<F3>", "<Cmd>lua require'config.mappings'.append_blank_lines()<CR>")
@@ -36,10 +34,11 @@ function M.setup()
   map("n", "<Leader>sn", "<Cmd>setlocal spelllang=nl<CR> <bar> <Cmd>setlocal spell<CR>")
   map("n", "<Leader>se", "<Cmd>setlocal spelllang=en<CR> <bar> <Cmd>setlocal spell<CR>")
 
-  -- open float terminal
-  map("n", "<Leader>dd", "<Cmd>lua require'config.utils.terminal'.float_terminal()<CR>")
-  map("n", "<Leader>dg", "<Cmd>lua require'config.utils.terminal'.float_terminal('lazygit')<CR>")
-  map("n", "<Leader>dm", "<Cmd>lua require'config.utils.terminal'.float_terminal('glow')<CR>")
+  -- open terminal
+  map("n", "<Leader>df", "<Cmd>lua require'config.utils.terminal'.float_terminal()<CR>")
+  map("n", "<Leader>ds", "<Cmd>split | term<CR>")
+  map("n", "<Leader>dv", "<Cmd>vsplit | term<CR>")
+  map("n", "<Leader>dt", "<Cmd>term<CR>")
 
   -- change directory
   map("n", "<Leader>cd", "<Cmd>lcd %:p:h<CR><Cmd>lua require'config.utils.sessions'.info()<CR>")
