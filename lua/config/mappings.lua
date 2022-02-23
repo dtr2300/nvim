@@ -11,9 +11,6 @@ function M.setup()
   -- new buffer
   map("n", "<Leader>cn", "<Cmd>ene<CR>")
 
-  -- execute current buffer
-  map("n", "<F2>", "<Cmd>source %<CR>")
-
   -- bubble lines
   map("n", "<C-Up>", "<Cmd>m .-2<CR>", { noremap = false, silent = true })
   map("n", "<C-Down>", "<Cmd>m .+1<CR>", { noremap = false, silent = true })
