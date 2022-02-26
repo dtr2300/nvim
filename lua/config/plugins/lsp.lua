@@ -81,10 +81,7 @@ end
 -- setup language servers -----------------------
 
 -- pyright, vimls, bashls
-local servers = { "pyright", "vimls", "clangd" }
-if vim.fn.has "unix" == 1 then
-  table.insert(servers, "bashls")
-end
+local servers = { "pyright", "vimls", "bashls", "clangd" }
 
 for _, lsp in ipairs(servers) do
   require("lspconfig")[lsp].setup { on_attach = on_attach }

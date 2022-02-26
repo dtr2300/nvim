@@ -28,6 +28,8 @@ function M.setup()
   map("n", "<C-ScrollWheelDown>", "<Cmd>silent! lua require'config.gui.nvimqt'.adjust_fontsize(-1)<CR>")
   map("i", "<C-ScrollWheelUp>", "<Cmd>silent! lua require'config.gui.nvimqt'.adjust_fontsize(1)<CR>")
   map("i", "<C-ScrollWheelDown>", "<Cmd>silent! lua require'config.gui.nvimqt'.adjust_fontsize(-1)<CR>")
+  map("n", "<F7>", "<Cmd>silent! lua require'config.gui.nvimqt'.adjust_fontsize(1)<CR>")
+  map("n", "<S-F7>", "<Cmd>silent! lua require'config.gui.nvimqt'.adjust_fontsize(-1)<CR>")
   map("n", "<F11>", "<Cmd>lua require'config.gui.nvimqt'.fullscreen_toggle()<CR>")
 end
 

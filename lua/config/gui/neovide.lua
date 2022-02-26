@@ -26,8 +26,8 @@ function M.setup()
   --map("n", "<C-ScrollWheelDown>", "<Cmd>silent! lua require'config.gui.neovide'.adjust_fontsize(-1)<CR>")
   --map("i", "<C-ScrollWheelUp>", "<Cmd>silent! lua require'config.gui.neovide'.adjust_fontsize(1)<CR>")
   --map("i", "<C-ScrollWheelDown>", "<Cmd>silent! lua require'config.gui.neovide'.adjust_fontsize(-1)<CR>")
-  map("n", "<F8>", "<Cmd>lua require'config.gui.neovide'.adjust_fontsize(1)<CR>")
-  map("n", "<F7>", "<Cmd>lua require'config.gui.neovide'.adjust_fontsize(-1)<CR>")
+  map("n", "<F7>", "<Cmd>lua require'config.gui.neovide'.adjust_fontsize(1)<CR>")
+  map("n", "<S-F7>", "<Cmd>lua require'config.gui.neovide'.adjust_fontsize(-1)<CR>")
   map("n", "<F11>", "<Cmd>lua require'config.gui.neovide'.fullscreen_toggle()<CR>")
 end
 
