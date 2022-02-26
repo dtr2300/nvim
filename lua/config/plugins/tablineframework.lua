@@ -70,7 +70,7 @@ function M.toggle_colors()
   Config.hl = { fg = c.light_grey, bg = c.bg1 }
   Config.hl_sel = { fg = c.fg, bg = c.bg3 }
   Config.hl_fill = { fg = c.fg, bg = c.bg0 }
-  vim.cmd "redrawtabline"
+  R "config.plugins.lualine"
 end
 
 function M.toggle_short()

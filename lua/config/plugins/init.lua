@@ -15,7 +15,7 @@ return require("packer").startup { function()
 
   use { "navarasu/onedark.nvim", config = p"onedark" }
 
-  use { "nvim-lualine/lualine.nvim", config = p"lualine" }
+  use { "nvim-lualine/lualine.nvim", config = p"lualine", after = "onedark.nvim" }
   use { "goolord/alpha-nvim", config = p"alpha" }
   use { "rafcamlet/tabline-framework.nvim", config = s"tablineframework", after = "onedark.nvim" }
   use { "folke/which-key.nvim", config = p"whichkey" }
