@@ -8,8 +8,11 @@ end
 function M.setup()
   local map = require("config.utils.map").map
 
-  -- new buffer
+  -- buffers
   map("n", "<Leader>cn", "<Cmd>ene<CR>")
+  map("n", "<A-.>", "<Cmd>bn<CR>")
+  map("n", "<A-,>", "<Cmd>bp<CR>")
+  map("n", "<A-c>", "<Cmd>bd<CR>")
 
   -- bubble lines
   map("n", "<C-Up>", "<Cmd>m .-2<CR>", { noremap = false, silent = true })
@@ -49,6 +52,9 @@ function M.setup()
   map("n", "<Leader>si", "<Cmd>lua require'config.utils.sessions'.info()<CR>")
   map("n", "<Leader>ss", "<Cmd>lua require'config.utils.sessions'.open_session()<CR>")
   map("n", "<Leader>sS", "<Cmd>lua require'config.utils.sessions'.save_session()<CR>")
+
+  -- toggle colors
+  map("n", "<Leader>cs", "<Cmd>lua require'config.utils.colors'.toggle_colors()<CR>")
 end
 
 return M

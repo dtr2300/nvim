@@ -20,8 +20,9 @@ vim.opt.ignorecase = true
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 vim.opt.showtabline = 2
+vim.opt.showmode = false
 
--- providers
+-- disable all providers
 vim.g.loaded_python3_provider = 0
 vim.g.loaded_python_provider = 0
 vim.g.loaded_node_provider = 0

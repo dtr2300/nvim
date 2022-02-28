@@ -63,16 +63,6 @@ local function render(f)
   f.add(platform_icon)
 end
 
-function M.toggle_colors()
-  require("onedark").toggle()
-  local c = require "onedark.colors"
-  local Config = require "tabline_framework.config"
-  Config.hl = { fg = c.light_grey, bg = c.bg1 }
-  Config.hl_sel = { fg = c.fg, bg = c.bg3 }
-  Config.hl_fill = { fg = c.fg, bg = c.bg0 }
-  R "config.plugins.lualine"
-end
-
 function M.toggle_short()
   opts.short = not opts.short
   vim.cmd "redrawtabline"
@@ -114,13 +104,9 @@ function M.setup()
     hl_fill = { fg = c.fg, bg = c.bg0 },
   }
 
-  map("n", "<A-.>", "<Cmd>bn<CR>")
-  map("n", "<A-,>", "<Cmd>bp<CR>")
-  map("n", "<A-c>", "<Cmd>bd<CR>")
   map("n", "<A-=>", "<Cmd>lua require'config.plugins.tablineframework'.toggle_short()<CR>")
   map("n", "<A-->", "<Cmd>lua require'config.plugins.tablineframework'.toggle_alt()<CR>")
   map("n", "<A-0>", "<Cmd>lua require'config.plugins.tablineframework'.toggle_auto_width()<CR>")
-  map("n", "<Leader>cs", "<Cmd>lua require'config.plugins.tablineframework'.toggle_colors()<CR>")
 end
 
 return M

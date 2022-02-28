@@ -3,7 +3,7 @@ require("onedark").setup {
   transparent = false,
   term_colors = true,
   ending_tildes = false,
-  toggle_style_key = "<Leader>cX", -- <Leader>cs : see tablineframework.lua
+  toggle_style_key = "<Leader>cX", -- use <Leader>cs : see utils/colors.lua
   toggle_style_list = { "cool", "deep", "warm", "warmer", "dark", "darker" },
 
   code_style = {

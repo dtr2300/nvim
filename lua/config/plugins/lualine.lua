@@ -1,41 +1,52 @@
 local c = require "onedark.colors"
 
-local colors = {
-  blue = c.bg_blue,
-  green = c.green,
-  purple = c.purple,
-  cyan = c.cyan,
-  red1 = c.red,
-  red2 = c.dark_red,
-  yellow = c.yellow,
-  fg = c.fg,
-  bg = c.bg0,
-  gray1 = c.light_grey,
-  gray2 = c.grey,
-  gray3 = "#3e4452",
-}
-
 local custom_onedark = {
   normal = {
-    a = { fg = colors.bg, bg = colors.green, gui = "bold" },
-    b = { fg = colors.fg, bg = colors.bg },
-    c = { fg = colors.fg, bg = colors.bg },
+    a = { fg = c.bg0, bg = c.green, gui = "bold" },
+    b = { fg = c.fg, bg = c.bg0 },
+    c = { fg = c.fg, bg = c.bg0 },
   },
-  command = { a = { fg = colors.bg, bg = colors.yellow, gui = "bold" } },
-  insert = { a = { fg = colors.bg, bg = colors.blue, gui = "bold" } },
-  visual = { a = { fg = colors.bg, bg = colors.purple, gui = "bold" } },
-  terminal = { a = { fg = colors.bg, bg = colors.cyan, gui = "bold" } },
-  replace = { a = { fg = colors.bg, bg = colors.red1, gui = "bold" } },
+  command = { a = { fg = c.bg0, bg = c.bg_yellow, gui = "bold" } },
+  insert = { a = { fg = c.bg0, bg = c.bg_blue, gui = "bold" } },
+  visual = { a = { fg = c.bg0, bg = c.purple, gui = "bold" } },
+  terminal = { a = { fg = c.bg0, bg = c.cyan, gui = "bold" } },
+  replace = { a = { fg = c.bg0, bg = c.red, gui = "bold" } },
   inactive = {
-    a = { fg = colors.gray1, bg = colors.bg, gui = "bold" },
-    b = { fg = colors.gray1, bg = colors.bg },
-    c = { fg = colors.gray1, bg = colors.bg },
+    a = { fg = c.light_grey, bg = c.bg0, gui = "bold" },
+    b = { fg = c.light_grey, bg = c.bg0 },
+    c = { fg = c.light_grey, bg = c.bg0 },
   },
 }
 
 require("lualine").setup {
   options = {
     theme = custom_onedark,
+  },
+  tabline = {
+    lualine_b = {
+      function()
+        return " "
+      end,
+    },
+    lualine_c = {
+      {
+        "buffers",
+        component_separators = { left = "", right = "" },
+        section_separators = { left = "", right = "" },
+        max_length = function()
+          return vim.o.columns - 6
+        end,
+        buffers_color = {
+          active = { fg = c.fg, bg = c.bg0 },
+          inactive = { fg = c.grey, bg = c.bg0 },
+        },
+      },
+    },
+    lualine_y = {
+      function()
+        return vim.fn.has "win32" == 1 and "" or ""
+      end,
+    },
   },
   extensions = { "quickfix" },
 }
