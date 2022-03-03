@@ -55,6 +55,9 @@ function M.setup()
 
   -- toggle colors
   map("n", "<Leader>cs", "<Cmd>lua require'config.utils.colors'.toggle_colors()<CR>")
+
+  -- messages
+  map("n", "<F12>", "<Cmd>messages<CR>")
 end
 
 return M

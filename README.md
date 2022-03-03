@@ -72,10 +72,11 @@ This is my personal Neovim configuration (Windows, WSL/Ubuntu and Termux).
     - [delta](https://github.com/dandavison/delta)
     - [exa](https://github.com/ogham/exa)
     - [gh](https://github.com/cli/cli)
+    - [gh-s](https://github.com/gennaro-tedesco/gh-s)
 - terminals
     - [windows terminal](https://docs.microsoft.com/en-us/windows/terminal/)
     - [wezterm](https://github.com/wez/wezterm)
-- gui
+- guis
     - [neovim-qt](https://github.com/equalsraf/neovim-qt)
     - [nvui](https://github.com/rohit-px2/nvui)
     - [neovide](https://github.com/neovide/neovide)

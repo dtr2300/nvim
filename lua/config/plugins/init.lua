@@ -17,7 +17,6 @@ return require("packer").startup { function()
 
   use { "nvim-lualine/lualine.nvim", config = p"lualine", after = "onedark.nvim" }
   use { "goolord/alpha-nvim", config = p"alpha" }
-  --use { "rafcamlet/tabline-framework.nvim", config = s"tablineframework", after = "onedark.nvim" }
   use { "folke/which-key.nvim", config = p"whichkey" }
   use { "folke/zen-mode.nvim", config = p"zenmode" }
   use { "nvim-telescope/telescope-file-browser.nvim" }
