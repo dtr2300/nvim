@@ -20,16 +20,7 @@ local function footer()
   return string.format(" %s   v%s.%s.%s  %s", plugins, v.major, v.minor, v.patch, datetime)
 end
 
-local function pick_header()
-  local headers = require "config.utils.headers"
-  local keys = {}
-  for k, _ in pairs(headers) do
-    table.insert(keys, k)
-  end
-  return headers[keys[math.random(#keys)]]
-end
-
-dashboard.section.header.val = pick_header()
+dashboard.section.header.val = require("config.utils.headers").random
 dashboard.section.header.opts.hl = pick_color()
 
 dashboard.section.buttons.val = {

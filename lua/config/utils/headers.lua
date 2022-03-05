@@ -1,6 +1,15 @@
-return {
+local headers = {
 
-  ["000"] = {
+  ["default1"] = {
+    [[                               __                ]],
+    [[  ___     ___    ___   __  __ /\_\    ___ ___    ]],
+    [[ / _ `\  / __`\ / __`\/\ \/\ \\/\ \  / __` __`\  ]],
+    [[/\ \/\ \/\  __//\ \_\ \ \ \_/ |\ \ \/\ \/\ \/\ \ ]],
+    [[\ \_\ \_\ \____\ \____/\ \___/  \ \_\ \_\ \_\ \_\]],
+    [[ \/_/\/_/\/____/\/___/  \/__/    \/_/\/_/\/_/\/_/]],
+  },
+
+  ["default2"] = {
     [[ _______             ____   ____.__         ]],
     [[ \      \   ____  ___\   \ /   /|__| _____  ]],
     [[ /   |   \_/ __ \/  _ \   Y   / |  |/     \ ]],
@@ -3450,3 +3459,17 @@ return {
     [[##   ##  #######   #####     ###      ####   ##   ##  ]],
   },
 }
+
+return setmetatable(headers, {
+  __index = function(t, key)
+    if key == "random" then
+      local keys = {}
+      for k, _ in pairs(headers) do
+        table.insert(keys, k)
+      end
+      return t[keys[math.random(#keys)]]
+    else
+      return t[key]
+    end
+  end,
+})
