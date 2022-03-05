@@ -20,14 +20,24 @@ local function footer()
   return string.format(" %s   v%s.%s.%s  %s", plugins, v.major, v.minor, v.patch, datetime)
 end
 
-dashboard.section.header.val = {
-  [[ _______             ____   ____.__         ]],
-  [[ \      \   ____  ___\   \ /   /|__| _____  ]],
-  [[ /   |   \_/ __ \/  _ \   Y   / |  |/     \ ]],
-  [[/    |    \  ___(  <_> )     /  |  |  Y Y  \]],
-  [[\____|__  /\___  >____/ \___/   |__|__|_|  /]],
-  [[        \/     \/                        \/ ]],
-}
+local function pick_header()
+  local headers = require "config.utils.headers"
+  local keyset = {}
+  for k in pairs(headers) do
+    table.insert(keyset, k)
+  end
+  return headers[keyset[math.random(#keyset)]]
+end
+
+--dashboard.section.header.val = {
+--  [[ _______             ____   ____.__         ]],
+--  [[ \      \   ____  ___\   \ /   /|__| _____  ]],
+--  [[ /   |   \_/ __ \/  _ \   Y   / |  |/     \ ]],
+--  [[/    |    \  ___(  <_> )     /  |  |  Y Y  \]],
+--  [[\____|__  /\___  >____/ \___/   |__|__|_|  /]],
+--  [[        \/     \/                        \/ ]],
+--}
+dashboard.section.header.val = pick_header()
 dashboard.section.header.opts.hl = pick_color()
 
 dashboard.section.buttons.val = {

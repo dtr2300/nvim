@@ -16,7 +16,7 @@ return require("packer").startup { function()
   use { "navarasu/onedark.nvim", config = p"onedark" }
 
   use { "nvim-lualine/lualine.nvim", config = p"lualine", after = "onedark.nvim" }
-  use { "goolord/alpha-nvim", config = p"alpha" }
+  use { "goolord/alpha-nvim", config = p"alpha", commit = "735d69022c0e9fe224e3e2e3cea30ca0e3e0f8ba" }
   use { "folke/which-key.nvim", config = p"whichkey" }
   use { "folke/zen-mode.nvim", config = p"zenmode" }
   use { "nvim-telescope/telescope-file-browser.nvim" }
