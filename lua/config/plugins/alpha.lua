@@ -22,21 +22,13 @@ end
 
 local function pick_header()
   local headers = require "config.utils.headers"
-  local keyset = {}
-  for k in pairs(headers) do
-    table.insert(keyset, k)
+  local keys = {}
+  for k, _ in pairs(headers) do
+    table.insert(keys, k)
   end
-  return headers[keyset[math.random(#keyset)]]
+  return headers[keys[math.random(#keys)]]
 end
 
---dashboard.section.header.val = {
---  [[ _______             ____   ____.__         ]],
---  [[ \      \   ____  ___\   \ /   /|__| _____  ]],
---  [[ /   |   \_/ __ \/  _ \   Y   / |  |/     \ ]],
---  [[/    |    \  ___(  <_> )     /  |  |  Y Y  \]],
---  [[\____|__  /\___  >____/ \___/   |__|__|_|  /]],
---  [[        \/     \/                        \/ ]],
---}
 dashboard.section.header.val = pick_header()
 dashboard.section.header.opts.hl = pick_color()
 
