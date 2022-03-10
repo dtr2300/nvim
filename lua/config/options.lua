@@ -21,6 +21,9 @@ vim.opt.splitright = true
 vim.opt.splitbelow = true
 vim.opt.showtabline = 2
 vim.opt.showmode = false
+vim.opt.list = false
+vim.opt.listchars = { eol = "¬" }
+--vim.opt.signcolumn = "number"
 
 -- disable all providers
 vim.g.loaded_python3_provider = 0
