@@ -1,16 +1,7 @@
 local buf_map = require("config.utils.map").buf_map
 
+local cmd_win = [[<Cmd>term echo. | fzf --phony --print-query --preview-window="up:90\%" --preview "jq --color-output {q} \"%\""<CR>]]
+local cmd_unix = [[<Cmd>term echo '' | fzf --phony --print-query --preview-window='up:90\%' --preview 'jq --color-output {q} "%"'<CR>]]
+
 -- live jq preview
-if vim.fn.has "win32" == 1 then
-  buf_map(
-    "n",
-    "<F2>",
-    [[<Cmd>term echo. | fzf --phony --print-query --preview-window="up:90\%" --preview "jq --color-output {q} %"<CR>]]
-  )
-else
-  buf_map(
-    "n",
-    "<F2>",
-    [[<Cmd>term echo '' | fzf --phony --print-query --preview-window='up:90\%' --preview "jq --color-output {q} %"<CR>]]
-  )
-end
+buf_map("n", "<F2>", vim.fn.has "win32" == 1 and cmd_win or cmd_unix)
