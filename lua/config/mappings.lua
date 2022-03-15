@@ -53,9 +53,6 @@ function M.setup()
   map("n", "<Leader>ss", "<Cmd>lua require'config.utils.sessions'.open_session()<CR>")
   map("n", "<Leader>sS", "<Cmd>lua require'config.utils.sessions'.save_session()<CR>")
 
-  -- toggle colors
-  map("n", "<Leader>cs", "<Cmd>lua require'config.utils.colors'.toggle_colors()<CR>")
-
   -- messages
   map("n", "<F12>", "<Cmd>messages<CR>")
 end

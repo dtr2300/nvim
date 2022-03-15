@@ -1,8 +1,16 @@
 -- stylua: ignore
 local cmds = {
 
+-- update lualine colors
+[[
+augroup update_lualine
+  au!
+  au ColorScheme * lua R 'config.plugins.lualine'
+augroup END
+]],
+
 -- set colorscheme
-"colorscheme onedark",
+"colorscheme " .. (vim.env.NVIM_COLORSCHEME or "onedark"),
 
 -- highlight on yank
 [[

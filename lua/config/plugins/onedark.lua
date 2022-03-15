@@ -3,9 +3,8 @@ require("onedark").setup {
   transparent = false,
   term_colors = true,
   ending_tildes = false,
-  toggle_style_key = "<Leader>cX", -- use <Leader>cs : see utils/colors.lua
+  toggle_style_key = "<Leader>cs",
   toggle_style_list = { "cool", "deep", "warm", "warmer", "dark", "darker" },
-
   code_style = {
     comments = "italic",
     keywords = "none",
@@ -13,9 +12,13 @@ require("onedark").setup {
     strings = "none",
     variables = "none",
   },
-
   colors = {},
-  highlights = {},
+  highlights = {
+    FloatBorder = { fg = "$grey", bg = "$bg1" },
+    NormalFloat = { fg = "$fg", bg = "$bg1" },
+    VertSplit = { fg = "$bg3" },
+    --CursorLine = { bg = "$bg_d" },
+  },
 
   diagnostics = {
     darker = true,

@@ -15,6 +15,7 @@ This is my personal Neovim configuration (Windows, WSL/Ubuntu and Termux).
 - [nui.nvim](https://github.com/MunifTanjim/nui.nvim) ui component library for neovim
 - [osc.nvim](https://github.com/davidgranstrom/osc.nvim) open sound control (osc) library for neovim
 - [onedark.nvim](https://github.com/navarasu/onedark.nvim) a dark theme for neovim >= 0.5 based on atom one dark theme
+- [catppuccin](https://github.com/catppuccin/nvim) soothing pastel theme for neovim
 - [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim) a blazing fast and easy to configure neovim statusline
 - [alpha-nvim](https://github.com/goolord/alpha-nvim) a fast and highly customizable greeter for neovim
 - [which-key.nvim](https://github.com/folke/which-key.nvim) displays a popup with possible key bindings of the command you started typing

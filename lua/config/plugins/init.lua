@@ -13,7 +13,8 @@ return require("packer").startup { function()
   use { "MunifTanjim/nui.nvim" }
   use { "davidgranstrom/osc.nvim", opt = true }
 
-  use { "navarasu/onedark.nvim", config = p"onedark" }
+  use { "catppuccin/nvim", as = "catppuccin", config = p"catppuccin" }
+  use { "navarasu/onedark.nvim", config = p"onedark", after = "catppuccin" }
 
   use { "nvim-lualine/lualine.nvim", config = p"lualine", after = "onedark.nvim" }
   use { "goolord/alpha-nvim", config = p"alpha", commit = "735d69022c0e9fe224e3e2e3cea30ca0e3e0f8ba" }
