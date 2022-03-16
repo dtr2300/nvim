@@ -3,13 +3,13 @@ math.randomseed(os.time())
 
 local function button(sc, txt, keybind, keybind_opts)
   local b = dashboard.button(sc, txt, keybind, keybind_opts)
-  b.opts.hl = "Function"
-  b.opts.hl_shortcut = "Type"
+  b.opts.hl = "AlphaButton"
+  b.opts.hl_shortcut = "AlphaButtonShortcut"
   return b
 end
 
 local function pick_color()
-  local colors = { "String", "Identifier", "Keyword", "Number", "Constant" }
+  local colors = { "AlphaCol1", "AlphaCol2", "AlphaCol3", "AlphaCol4", "AlphaCol5" }
   return colors[math.random(#colors)]
 end
 

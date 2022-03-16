@@ -18,6 +18,13 @@ require("onedark").setup {
     NormalFloat = { fg = "$fg", bg = "$bg1" },
     VertSplit = { fg = "$bg3" },
     --CursorLine = { bg = "$bg_d" },
+    AlphaButton = { fg = "$blue" },
+    AlphaButtonShortcut = { fg = "$yellow" },
+    AlphaCol1 = { fg = "$red" },
+    AlphaCol2 = { fg = "$orange" },
+    AlphaCol3 = { fg = "$cyan" },
+    AlphaCol4 = { fg = "$green" },
+    AlphaCol5 = { fg = "$purple" },
   },
 
   diagnostics = {
