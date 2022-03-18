@@ -8,11 +8,6 @@ local function button(sc, txt, keybind, keybind_opts)
   return b
 end
 
-local function pick_color()
-  local colors = { "AlphaCol1", "AlphaCol2", "AlphaCol3", "AlphaCol4", "AlphaCol5" }
-  return colors[math.random(#colors)]
-end
-
 local function footer()
   local plugins = #vim.tbl_keys(packer_plugins)
   local v = vim.version()
@@ -21,7 +16,7 @@ local function footer()
 end
 
 dashboard.section.header.val = require("config.utils.headers").random
-dashboard.section.header.opts.hl = pick_color()
+dashboard.section.header.opts.hl = "AlphaCol" .. math.random(5)
 
 dashboard.section.buttons.val = {
   button("SPC t o", "  Recently opened files"),
