@@ -52,7 +52,7 @@ require("catppuccin").setup {
     fern = false,
     barbar = false,
     bufferline = false,
-    markdown = false,
+    markdown = true,
     lightspeed = false,
     ts_rainbow = false,
     hop = false,
