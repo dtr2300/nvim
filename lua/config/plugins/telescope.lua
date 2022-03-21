@@ -44,33 +44,6 @@ function M.setup()
     extensions = {},
   }
 
-  -- telescope repo list: keep opts.cwd
-  require("telescope._extensions.repo.list").prepare_command = function(opts)
-    local utils = require "telescope._extensions.repo.utils"
-    opts = opts or {}
-    opts.bin = opts.bin or utils.find_fd_binary()
-    if opts.bin == "" then
-      error "fd not found, is fd installed?"
-    end
-    opts.cwd = opts.cwd or vim.env.HOME
-
-    local fd_command = { opts.bin }
-    local repo_pattern = opts.pattern or [[^\.git$]]
-
-    local find_repo_opts = { "--hidden", "--case-sensitive", "--absolute-path" }
-    local find_user_opts = opts.fd_opts or {}
-    local find_exec_opts = { "--exec", "echo", [[{//}]], ";" }
-    local find_pattern_opts = { repo_pattern }
-
-    table.insert(fd_command, find_repo_opts)
-    table.insert(fd_command, find_user_opts)
-    table.insert(fd_command, find_exec_opts)
-    table.insert(fd_command, find_pattern_opts)
-    fd_command = vim.tbl_flatten(fd_command)
-
-    return fd_command
-  end
-
   -- load extensions
   for _, ext in ipairs { "file_browser", "repo", "fzf" } do
     require("telescope").load_extension(ext)
@@ -95,11 +68,16 @@ function M.setup()
   map("n", "<Leader>to", "<Cmd>Telescope oldfiles<CR>")
   map("n", "<Leader>tp", "<Cmd>Telescope pickers<CR>")
   map("n", "<Leader>tq", "<Cmd>Telescope quickfix<CR>")
-  map("n", "<Leader>t1", "<Cmd>Telescope repo list<CR>")
+  -- map("n", "<Leader>t1", "<Cmd>Telescope repo list<CR>") -- doesn't work, workaround:
+  map("n", "<Leader>t1", "<Cmd>lua require'telescope'.extensions.repo.list {search_dirs={}}<CR>")
   if vim.fn.has "win32" == 1 then
-    map("n", "<Leader>t2", "<Cmd>lua require'telescope'.extensions.repo.list {cwd='f:/devel'}<CR>")
-    map("n", "<Leader>t3", "<Cmd>lua require'telescope'.extensions.repo.list {cwd='f:/devel/py'}<CR>")
-    map("n", "<Leader>t4", "<Cmd>lua require'telescope'.extensions.repo.list {cwd='d:/msys64/home/Dieter'}<CR>")
+    map("n", "<Leader>t2", "<Cmd>lua require'telescope'.extensions.repo.list {search_dirs={'f:/devel'}}<CR>")
+    map("n", "<Leader>t3", "<Cmd>lua require'telescope'.extensions.repo.list {search_dirs={'f:/devel/py'}}<CR>")
+    map(
+      "n",
+      "<Leader>t4",
+      "<Cmd>lua require'telescope'.extensions.repo.list {search_dirs={'d:/msys64/home/Dieter'}}<CR>"
+    )
   end
   map("n", "<Leader>tR", "<Cmd>Telescope registers<CR>")
   map("n", "<Leader>tr", "<Cmd>Telescope resume<CR>")
