@@ -12,7 +12,7 @@ local function footer()
   local plugins = #vim.tbl_keys(packer_plugins)
   local v = vim.version()
   local datetime = os.date " %d-%m-%Y   %H:%M:%S"
-  return string.format(" %s   v%s.%s.%s  %s", plugins, v.major, v.minor, v.patch, datetime)
+  return string.format(" %d   v%d.%d.%d  %s", plugins, v.major, v.minor, v.patch, datetime)
 end
 
 dashboard.section.header.val = require("config.utils.headers").random
@@ -40,10 +40,10 @@ require("alpha").setup(dashboard.config)
 -- hide tabline and statusline on startup screen
 vim.cmd(string.format(
   [[
-    augroup alpha_tabline
-      au!
-      au FileType alpha set showtabline=0 laststatus=0 noruler | au BufUnload <buffer> set showtabline=2 ruler laststatus=%d
-    augroup END
+  augroup alpha_tabline
+    au!
+    au FileType alpha set showtabline=0 laststatus=0 noruler | au BufUnload <buffer> set showtabline=2 ruler laststatus=%d
+  augroup END
   ]],
   vim.fn.has "nvim-0.7" == 1 and 3 or 2
 ))
