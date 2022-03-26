@@ -40,8 +40,8 @@ This is my personal Neovim configuration (Windows, WSL/Ubuntu and Termux).
 - [LuaSnip](https://github.com/L3MON4D3/LuaSnip) - snippet engine for neovim written in lua
 <!-- break -->
 - [nvim-cmp](https://github.com/hrsh7th/nvim-cmp) - a completion plugin for neovim coded in lua
-- [nvim-buffer](https://github.com/hrsh7th/cmp-buffer) - nvim-cmp source for buffer words
-- [nvim-path](https://github.com/hrsh7th/cmp-path) - nvim-cmp source for path
+- [cmp-buffer](https://github.com/hrsh7th/cmp-buffer) - nvim-cmp source for buffer words
+- [cmp-path](https://github.com/hrsh7th/cmp-path) - nvim-cmp source for path
 - [cmp-nvim-lua](https://github.com/hrsh7th/cmp-nvim-lua) - nvim-cmp source for nvim lua
 - [cmp-nvim-lsp](https://github.com/hrsh7th/cmp-nvim-lsp) - nvim-cmp source for neovim builtin lsp client
 - [cmp_luasnip](https://github.com/saadparwaiz1/cmp_luasnip) - luasnip completion source for nvim-cmp
@@ -63,7 +63,7 @@ This is my personal Neovim configuration (Windows, WSL/Ubuntu and Termux).
     - [programming in lua (first edition)](https://www.lua.org/pil/contents.html)
     - [lua 5.1 reference manual](https://www.lua.org/manual/5.1/manual.html)
     - [learn lua in y minutes](https://learnxinyminutes.com/docs/lua/)
-    - [first-class functions in an imperative world](https://www.lua.org/doc/jucs17.pdf)
+    - [first-class functions in an imperative world (pdf)](https://www.lua.org/doc/jucs17.pdf)
 - viml
     - [learn vimscript in y minutes](https://learnxinyminutes.com/docs/vimscript/)
     - [vim script for python developers](https://gist.github.com/yegappan/16d964a37ead0979b05e655aa036cad0)
