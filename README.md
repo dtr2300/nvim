@@ -6,36 +6,51 @@ This is my personal Neovim configuration (Windows, WSL/Ubuntu and Termux).
 
 ## plugins
 
-- [packer.nvim](https://github.com/wbthomason/packer.nvim) plugin/package management for neovim
-- [impatient.nvim](https://github.com/lewis6991/impatient.nvim) speed up loading lua modules in neovim to improve startup time
-- [nvim-web-devicons](https://github.com/kyazdani42/nvim-web-devicons) adds filetype glyphs (icons) to various vim plugins
-- [plenary.nvim](https://github.com/nvim-lua/plenary.nvim) all the lua functions I don't want to write twice
-- [nvim-notify](https://github.com/rcarriga/nvim-notify) a fancy, configurable, notification manager for neovim
-- [sqlite.lua](https://github.com/tami5/sqlite.lua) sqlite/luajit binding and a highly opinionated wrapper for storing, retrieving, caching, and persisting sqlite databases
-- [nui.nvim](https://github.com/MunifTanjim/nui.nvim) ui component library for neovim
-- [osc.nvim](https://github.com/davidgranstrom/osc.nvim) open sound control (osc) library for neovim
-- [onedark.nvim](https://github.com/navarasu/onedark.nvim) a dark theme for neovim >= 0.5 based on atom one dark theme
-- [catppuccin](https://github.com/catppuccin/nvim) soothing pastel theme for neovim
-- [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim) a blazing fast and easy to configure neovim statusline
-- [alpha-nvim](https://github.com/goolord/alpha-nvim) a fast and highly customizable greeter for neovim
-- [which-key.nvim](https://github.com/folke/which-key.nvim) displays a popup with possible key bindings of the command you started typing
-- [zen-mode.nvim](https://github.com/folke/zen-mode.nvim) distraction-free coding for neovim
-- [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) a highly extendable fuzzy finder over lists
-- [telescope-file-browser.nvim](https://github.com/nvim-telescope/telescope-file-browser.nvim) a file browser extension for telescope.nvim
-- [telescope-repo.nvim](https://github.com/cljoly/telescope-repo.nvim) an extension for telescope.nvim that searches the filesystem for git or other repositories
-- [telescope-fzf-native.nvim](https://github.com/nvim-telescope/telescope-fzf-native.nvim) fzf sorter for telescope written in c
-- [nvim-colorizer.lua](https://github.com/norcalli/nvim-colorizer.lua) a high-performance color highlighter for neovim which has no external dependencies
-- [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) provide a simple and easy way to use the interface for tree-sitter in neovim and provide some basic functionality such as highlighting based on it
-- [playground](https://github.com/nvim-treesitter/playground) view treesitter information directly in neovim
-- [nvim-treesitter-textobjects](https://github.com/nvim-treesitter/nvim-treesitter-textobjects) create your own textobjects using tree-sitter queries
-- [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) a collection of common configurations for neovim's built-in language server client
-- [lsp_signature.nvim](https://github.com/ray-x/lsp_signature.nvim) show function signature when you type
-- [nvim-compe](https://github.com/hrsh7th/nvim-compe) auto completion plugin for neovim
-- [LuaSnip](https://github.com/L3MON4D3/LuaSnip) snippet engine for neovim written in lua
-- [nvim-lua-guide](https://github.com/nanotee/nvim-lua-guide) getting started using lua in neovim
-- [nvim-luaref](https://github.com/milisims/nvim-luaref) adds a reference for builtin lua functions, extracting both text and formatting from the lua 5.1 reference manual
-- [scnvim](https://github.com/davidgranstrom/scnvim) neovim frontend for supercollider
-- [sc-scratchpad.nvim](https://github.com/madskjeldgaard/sc-scratchpad.nvim) throwaway buffers for chaotic supercollider coders in neovim
+- [packer.nvim](https://github.com/wbthomason/packer.nvim) - plugin/package management for neovim
+- [impatient.nvim](https://github.com/lewis6991/impatient.nvim) - speed up loading lua modules in neovim to improve startup time
+<!-- break -->
+- [nvim-web-devicons](https://github.com/kyazdani42/nvim-web-devicons) - adds filetype glyphs (icons) to various vim plugins
+- [plenary.nvim](https://github.com/nvim-lua/plenary.nvim) - all the lua functions I don't want to write twice
+- [nvim-notify](https://github.com/rcarriga/nvim-notify) - a fancy, configurable, notification manager for neovim
+- [sqlite.lua](https://github.com/tami5/sqlite.lua) - sqlite/luajit binding and a highly opinionated wrapper for storing, retrieving, caching, and persisting sqlite databases
+- [nui.nvim](https://github.com/MunifTanjim/nui.nvim) - ui component library for neovim
+- [osc.nvim](https://github.com/davidgranstrom/osc.nvim) - open sound control (osc) library for neovim
+<!-- break -->
+- [onedark.nvim](https://github.com/navarasu/onedark.nvim) - a dark theme for neovim >= 0.5 based on atom one dark theme
+- [catppuccin](https://github.com/catppuccin/nvim) - soothing pastel theme for neovim
+<!-- break -->
+- [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim) - a blazing fast and easy to configure neovim statusline
+- [alpha-nvim](https://github.com/goolord/alpha-nvim) - a fast and highly customizable greeter for neovim
+- [which-key.nvim](https://github.com/folke/which-key.nvim) - displays a popup with possible key bindings of the command you started typing
+- [zen-mode.nvim](https://github.com/folke/zen-mode.nvim) - distraction-free coding for neovim
+- [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) - a highly extendable fuzzy finder over lists
+- [telescope-file-browser.nvim](https://github.com/nvim-telescope/telescope-file-browser.nvim) - a file browser extension for telescope.nvim
+- [telescope-repo.nvim](https://github.com/cljoly/telescope-repo.nvim) - an extension for telescope.nvim that searches the filesystem for git or other repositories
+- [telescope-fzf-native.nvim](https://github.com/nvim-telescope/telescope-fzf-native.nvim) - fzf sorter for telescope written in c
+- [nvim-colorizer.lua](https://github.com/norcalli/nvim-colorizer.lua) - a high-performance color highlighter for neovim which has no external dependencies
+<!-- break -->
+- [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) - provide a simple and easy way to use the interface for tree-sitter in neovim and provide some basic functionality such as highlighting based on it
+- [playground](https://github.com/nvim-treesitter/playground) - view treesitter information directly in neovim
+- [nvim-treesitter-textobjects](https://github.com/nvim-treesitter/nvim-treesitter-textobjects) - create your own textobjects using tree-sitter queries
+<!-- break -->
+- [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) - a collection of common configurations for neovim's built-in language server client
+- [lsp_signature.nvim](https://github.com/ray-x/lsp_signature.nvim) - show function signature when you type
+- [lspkind-nvim](https://github.com/onsails/lspkind-nvim) - vscode-like pictograms for neovim lsp completion items
+<!-- break -->
+- [LuaSnip](https://github.com/L3MON4D3/LuaSnip) - snippet engine for neovim written in lua
+<!-- break -->
+- [nvim-cmp](https://github.com/hrsh7th/nvim-cmp) - a completion plugin for neovim coded in lua
+- [nvim-buffer](https://github.com/hrsh7th/cmp-buffer) - nvim-cmp source for buffer words
+- [nvim-path](https://github.com/hrsh7th/cmp-path) - nvim-cmp source for path
+- [cmp-nvim-lua](https://github.com/hrsh7th/cmp-nvim-lua) - nvim-cmp source for nvim lua
+- [cmp-nvim-lsp](https://github.com/hrsh7th/cmp-nvim-lsp) - nvim-cmp source for neovim builtin lsp client
+- [cmp_luasnip](https://github.com/saadparwaiz1/cmp_luasnip) - luasnip completion source for nvim-cmp
+<!-- break -->
+- [nvim-lua-guide](https://github.com/nanotee/nvim-lua-guide) - getting started using lua in neovim
+- [nvim-luaref](https://github.com/milisims/nvim-luaref) - adds a reference for builtin lua functions, extracting both text and formatting from the lua 5.1 reference manual
+<!-- break -->
+- [scnvim](https://github.com/davidgranstrom/scnvim) - neovim frontend for supercollider
+- [sc-scratchpad.nvim](https://github.com/madskjeldgaard/sc-scratchpad.nvim) - throwaway buffers for chaotic supercollider coders in neovim
 
 ## useful links
 
@@ -48,6 +63,7 @@ This is my personal Neovim configuration (Windows, WSL/Ubuntu and Termux).
     - [programming in lua (first edition)](https://www.lua.org/pil/contents.html)
     - [lua 5.1 reference manual](https://www.lua.org/manual/5.1/manual.html)
     - [learn lua in y minutes](https://learnxinyminutes.com/docs/lua/)
+    - [first-class functions in an imperative world](https://www.lua.org/doc/jucs17.pdf)
 - viml
     - [learn vimscript in y minutes](https://learnxinyminutes.com/docs/vimscript/)
     - [vim script for python developers](https://gist.github.com/yegappan/16d964a37ead0979b05e655aa036cad0)
@@ -58,6 +74,7 @@ This is my personal Neovim configuration (Windows, WSL/Ubuntu and Termux).
     - [nvim](https://github.com/neovim/neovim/issues/14090)
     - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter/issues/2293)
     - [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim/issues/1470)
+    - [nvim-cmp](https://github.com/hrsh7th/nvim-cmp/issues/231)
 - community
     - [neovim reddit](https://www.reddit.com/r/neovim/)
     - [neovim discourse](https://neovim.discourse.group/)

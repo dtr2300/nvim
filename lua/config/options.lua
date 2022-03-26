@@ -12,7 +12,8 @@ vim.opt.breakindent = true
 vim.opt.linebreak = true
 vim.opt.mouse = "a"
 vim.opt.hidden = true
-vim.opt.completeopt = "menuone,noselect"
+vim.opt.completeopt = { "menu", "menuone", "noselect" }
+vim.opt.shortmess:append "c"
 vim.opt.fillchars = "eob: "
 vim.opt.termguicolors = true
 vim.opt.spelllang = "en"
