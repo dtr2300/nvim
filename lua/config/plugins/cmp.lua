@@ -5,7 +5,7 @@ cmp.setup {
   mapping = {
     ["<C-d>"] = cmp.mapping.scroll_docs(-4),
     ["<C-f>"] = cmp.mapping.scroll_docs(4),
-    ["<C-e>"] = cmp.mapping.close(),
+    ["<C-x>"] = cmp.mapping.close(),
     ["<Enter>"] = cmp.mapping(
       cmp.mapping.confirm {
         behavior = cmp.ConfirmBehavior.Insert,
@@ -14,7 +14,7 @@ cmp.setup {
       { "i", "c" }
     ),
 
-    ["<c-space>"] = cmp.mapping {
+    ["<C-Space>"] = cmp.mapping {
       i = cmp.mapping.complete(),
       c = function(
         _ --[[fallback]]
@@ -29,10 +29,9 @@ cmp.setup {
       end,
     },
 
-    ["<tab>"] = cmp.config.disable,
+    ["<Tab>"] = cmp.config.disable,
 
-    -- Testing
-    ["<c-q>"] = cmp.mapping.confirm {
+    ["<C-q>"] = cmp.mapping.confirm {
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
     },
@@ -90,8 +89,11 @@ cmp.setup {
     },
   },
 
+  view = {
+    entries = "",
+  },
+
   experimental = {
-    native_menu = false,
     ghost_text = false,
   },
 }

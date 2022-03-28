@@ -2,7 +2,6 @@
 return require("packer").startup {
   function()
     local p = function(name) return string.format("require'config.plugins.%s'", name) end
-    local s = function(name) return p(name) .. ".setup()" end
 
     use { "lewis6991/impatient.nvim" }
     use { "wbthomason/packer.nvim" }
@@ -24,7 +23,7 @@ return require("packer").startup {
     use { "nvim-telescope/telescope-file-browser.nvim" }
     use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
     use { "cljoly/telescope-repo.nvim" }
-    use { "nvim-telescope/telescope.nvim", config = s"telescope" }
+    use { "nvim-telescope/telescope.nvim", config = p"telescope" }
     use { "norcalli/nvim-colorizer.lua", config = p"colorizer" }
 
     use { "nvim-treesitter/nvim-treesitter", config = p"treesitter", run = ":TSUpdate" }
