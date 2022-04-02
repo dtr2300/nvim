@@ -35,6 +35,7 @@ return require("packer").startup {
     use { "neovim/nvim-lspconfig", config = p"lsp" }
     use { "onsails/lspkind-nvim", config = p"lspkind" }
 
+    use { "rafamadriz/friendly-snippets" }
     use { "L3MON4D3/LuaSnip", config = p"luasnip" }
 
     local cmp_sources = { "hrsh7th/cmp-buffer", "hrsh7th/cmp-path", "hrsh7th/cmp-nvim-lua", "hrsh7th/cmp-nvim-lsp", "saadparwaiz1/cmp_luasnip" }
