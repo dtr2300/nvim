@@ -76,6 +76,7 @@ This is my personal Neovim configuration (Windows, WSL/Ubuntu and Termux).
     - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter/issues/2293)
     - [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim/issues/1470)
     - [nvim-cmp](https://github.com/hrsh7th/nvim-cmp/issues/231)
+    - [luasnip](https://github.com/L3MON4D3/LuaSnip/issues/81)
 - community
     - [neovim reddit](https://www.reddit.com/r/neovim/)
     - [neovim discourse](https://neovim.discourse.group/)
