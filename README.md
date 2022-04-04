@@ -28,6 +28,7 @@ This is my personal Neovim configuration (Windows, WSL/Ubuntu and Termux).
 - [telescope-repo.nvim](https://github.com/cljoly/telescope-repo.nvim) - an extension for telescope.nvim that searches the filesystem for git or other repositories
 - [telescope-fzf-native.nvim](https://github.com/nvim-telescope/telescope-fzf-native.nvim) - fzf sorter for telescope written in c
 - [nvim-colorizer.lua](https://github.com/norcalli/nvim-colorizer.lua) - a high-performance color highlighter for neovim which has no external dependencies
+- [Comment.nvim](https://github.com/numToStr/Comment.nvim) - smart and powerful comment plugin for neovim
 <!-- break -->
 - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) - provide a simple and easy way to use the interface for tree-sitter in neovim and provide some basic functionality such as highlighting based on it
 - [playground](https://github.com/nvim-treesitter/playground) - view treesitter information directly in neovim

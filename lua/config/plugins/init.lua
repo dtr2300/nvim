@@ -25,6 +25,7 @@ return require("packer").startup {
     use { "cljoly/telescope-repo.nvim" }
     use { "nvim-telescope/telescope.nvim", config = p"telescope" }
     use { "norcalli/nvim-colorizer.lua", config = p"colorizer" }
+    use { "numToStr/Comment.nvim", config = p"comment" }
 
     use { "nvim-treesitter/nvim-treesitter", config = p"treesitter", run = ":TSUpdate" }
     use { "nvim-treesitter/playground" }
