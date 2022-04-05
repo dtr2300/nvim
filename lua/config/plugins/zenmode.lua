@@ -1,5 +1,3 @@
-local map = require("config.utils.map").map
-
 require("zen-mode").setup {
   window = {
     backdrop = 1,
@@ -24,4 +22,9 @@ require("zen-mode").setup {
   end,
 }
 
-map("n", "<Leader>zz", "<Cmd>ZenMode<CR>")
+if vim.fn.has "nvim-0.7" == 1 then
+  vim.keymap.set("n", "<Leader>zz", "<Cmd>ZenMode<CR>", { silent = true })
+else
+  local map = require("config.utils.map").map
+  map("n", "<Leader>zz", "<Cmd>ZenMode<CR>")
+end

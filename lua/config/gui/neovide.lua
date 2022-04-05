@@ -15,20 +15,24 @@ function M.fullscreen_toggle()
 end
 
 function M.setup()
-  local map = require("config.utils.map").map
-
   vim.cmd "let g:neovide_cursor_animation_length=0" -- vim.g doesn't work
 
   M.adjust_fontsize()
 
-  -- mouse wheel doesn't work
-  --map("n", "<C-ScrollWheelUp>", "<Cmd>silent! lua require'config.gui.neovide'.adjust_fontsize(1)<CR>")
-  --map("n", "<C-ScrollWheelDown>", "<Cmd>silent! lua require'config.gui.neovide'.adjust_fontsize(-1)<CR>")
-  --map("i", "<C-ScrollWheelUp>", "<Cmd>silent! lua require'config.gui.neovide'.adjust_fontsize(1)<CR>")
-  --map("i", "<C-ScrollWheelDown>", "<Cmd>silent! lua require'config.gui.neovide'.adjust_fontsize(-1)<CR>")
-  map("n", "<F7>", "<Cmd>lua require'config.gui.neovide'.adjust_fontsize(1)<CR>")
-  map("n", "<S-F7>", "<Cmd>lua require'config.gui.neovide'.adjust_fontsize(-1)<CR>")
-  map("n", "<F11>", "<Cmd>lua require'config.gui.neovide'.fullscreen_toggle()<CR>")
+  if vim.fn.has "nvim-0.7" == 1 then
+    vim.keymap.set("n", "<F7>", function()
+      require("config.gui.neovide").adjust_fontsize(1)
+    end, { silent = true })
+    vim.keymap.set("n", "<S-F7>", function()
+      require("config.gui.neovide").adjust_fontsize(-1)
+    end, { silent = true })
+    vim.keymap.set("n", "<F11>", require("config.gui.neovide").fullscreen_toggle, { silent = true })
+  else
+    local map = require("config.utils.map").map
+    map("n", "<F7>", "<Cmd>lua require'config.gui.neovide'.adjust_fontsize(1)<CR>")
+    map("n", "<S-F7>", "<Cmd>lua require'config.gui.neovide'.adjust_fontsize(-1)<CR>")
+    map("n", "<F11>", "<Cmd>lua require'config.gui.neovide'.fullscreen_toggle()<CR>")
+  end
 end
 
 return M

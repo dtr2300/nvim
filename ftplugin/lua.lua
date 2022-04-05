@@ -2,9 +2,15 @@ vim.bo.tabstop = 2
 vim.bo.softtabstop = 2
 vim.bo.shiftwidth = 2
 
-local buf_map = require("config.utils.map").buf_map
-
--- execute current buffer
-buf_map("n", "<F2>", "<Cmd>source %<CR>")
--- execute selected rows
-buf_map("v", "<F4>", [[<Cmd>lua require'config.utils'.exec_selected_rows()<CR>]])
+if vim.fn.has "nvim-0.7" == 1 then
+  -- execute current buffer
+  vim.keymap.set("n", "<F2>", "<Cmd>source %<CR>", { silent = true, buffer = true })
+  -- execute selected rows
+  vim.keymap.set("v", "<F4>", require("config.utils").exec_selected_rows, { silent = true, buffer = true })
+else
+  local buf_map = require("config.utils.map").buf_map
+  -- execute current buffer
+  buf_map("n", "<F2>", "<Cmd>source %<CR>")
+  -- execute selected rows
+  buf_map("v", "<F4>", [[<Cmd>lua require'config.utils'.exec_selected_rows()<CR>]])
+end

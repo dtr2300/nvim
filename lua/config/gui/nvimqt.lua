@@ -15,8 +15,6 @@ function M.fullscreen_toggle()
 end
 
 function M.setup()
-  local map = require("config.utils.map").map
-
   vim.cmd [[
   GuiTabline 0
   GuiPopupmenu 0
@@ -24,13 +22,30 @@ function M.setup()
 
   M.adjust_fontsize()
 
-  map("n", "<C-ScrollWheelUp>", "<Cmd>silent! lua require'config.gui.nvimqt'.adjust_fontsize(1)<CR>")
-  map("n", "<C-ScrollWheelDown>", "<Cmd>silent! lua require'config.gui.nvimqt'.adjust_fontsize(-1)<CR>")
-  map("i", "<C-ScrollWheelUp>", "<Cmd>silent! lua require'config.gui.nvimqt'.adjust_fontsize(1)<CR>")
-  map("i", "<C-ScrollWheelDown>", "<Cmd>silent! lua require'config.gui.nvimqt'.adjust_fontsize(-1)<CR>")
-  map("n", "<F7>", "<Cmd>silent! lua require'config.gui.nvimqt'.adjust_fontsize(1)<CR>")
-  map("n", "<S-F7>", "<Cmd>silent! lua require'config.gui.nvimqt'.adjust_fontsize(-1)<CR>")
-  map("n", "<F11>", "<Cmd>lua require'config.gui.nvimqt'.fullscreen_toggle()<CR>")
+  if vim.fn.has "nvim-0.7" == 1 then
+    vim.keymap.set({ "n", "i" }, "<C-ScrollWheelUp>", function()
+      require("config.gui.nvimqt").adjust_fontsize(1)
+    end, { silent = true })
+    vim.keymap.set({ "n", "i" }, "<C-ScrollWheelDown>", function()
+      require("config.gui.nvimqt").adjust_fontsize(-1)
+    end, { silent = true })
+    vim.keymap.set("n", "<F7>", function()
+      require("config.gui.nvimqt").adjust_fontsize(1)
+    end, { silent = true })
+    vim.keymap.set("n", "<S-F7>", function()
+      require("config.gui.nvimqt").adjust_fontsize(-1)
+    end, { silent = true })
+    vim.keymap.set("n", "<F11>", require("config.gui.nvimqt").fullscreen_toggle, { silent = true })
+  else
+    local map = require("config.utils.map").map
+    map("n", "<C-ScrollWheelUp>", "<Cmd>silent! lua require'config.gui.nvimqt'.adjust_fontsize(1)<CR>")
+    map("n", "<C-ScrollWheelDown>", "<Cmd>silent! lua require'config.gui.nvimqt'.adjust_fontsize(-1)<CR>")
+    map("i", "<C-ScrollWheelUp>", "<Cmd>silent! lua require'config.gui.nvimqt'.adjust_fontsize(1)<CR>")
+    map("i", "<C-ScrollWheelDown>", "<Cmd>silent! lua require'config.gui.nvimqt'.adjust_fontsize(-1)<CR>")
+    map("n", "<F7>", "<Cmd>silent! lua require'config.gui.nvimqt'.adjust_fontsize(1)<CR>")
+    map("n", "<S-F7>", "<Cmd>silent! lua require'config.gui.nvimqt'.adjust_fontsize(-1)<CR>")
+    map("n", "<F11>", "<Cmd>lua require'config.gui.nvimqt'.fullscreen_toggle()<CR>")
+  end
 end
 
 return M
