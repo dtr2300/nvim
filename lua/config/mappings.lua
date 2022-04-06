@@ -19,7 +19,9 @@ if vim.fn.has "nvim-0.7" == 1 then
   vim.keymap.set("n", "<Leader>pC", "<Cmd>LuaCacheClear<CR>", { silent = true })
 
   -- append N blank lines below cursor
-  vim.keymap.set("n", "<F3>", require("config.utils").append_blank_lines, { silent = true })
+  vim.keymap.set("n", "<F3>", function()
+    vim.fn.append(vim.fn.line ".", vim.fn["repeat"]({ "" }, vim.api.nvim_get_vvar "count1"))
+  end, { silent = true })
 
   -- spellcheck
   vim.keymap.set("n", "<Leader>sn", "<Cmd>setlocal spelllang=nl<CR> <bar> <Cmd>setlocal spell<CR>", { silent = true })

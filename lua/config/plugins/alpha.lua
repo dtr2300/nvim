@@ -38,12 +38,18 @@ dashboard.config.layout[1].val = 1
 require("alpha").setup(dashboard.config)
 
 -- hide tabline and statusline on startup screen
-vim.cmd(string.format(
-  [[
-  augroup alpha_tabline
-    au!
-    au FileType alpha set showtabline=0 laststatus=0 noruler | au BufUnload <buffer> set showtabline=2 ruler laststatus=%d
-  augroup END
-  ]],
-  vim.fn.has "nvim-0.7" == 1 and 3 or 2
-))
+if vim.fn.has "nvim-0.7" == 1 then
+  vim.api.nvim_create_augroup("alpha_tabline", { clear = true })
+  vim.api.nvim_create_autocmd("FileType", {
+    group = "alpha_tabline",
+    pattern = "alpha",
+    command = "set showtabline=0 laststatus=0 noruler | au BufUnload <buffer> set showtabline=2 ruler laststatus=3",
+  })
+else
+  vim.cmd [[
+    augroup alpha_tabline
+      au!
+      au FileType alpha set showtabline=0 laststatus=0 noruler | au BufUnload <buffer> set showtabline=2 ruler laststatus=2
+    augroup END
+  ]]
+end

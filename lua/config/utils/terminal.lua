@@ -18,13 +18,22 @@ function M.float_terminal(cmd)
     border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
   })
   vim.fn.termopen(cmd)
-  local autocmd = {
-    "autocmd! TermClose <buffer> lua",
-    string.format("vim.api.nvim_win_close(%d, {force = true});", win),
-    string.format("vim.api.nvim_buf_delete(%d, {force = true});", buf),
-  }
-  vim.cmd(table.concat(autocmd, " "))
-  --vim.cmd "startinsert"
+  if vim.fn.has "nvim-0.7" == 1 then
+    vim.api.nvim_create_autocmd("TermClose", {
+      buffer = 0,
+      callback = function()
+        vim.api.nvim_win_close(win, { force = true })
+        vim.api.nvim_buf_delete(buf, { force = true })
+      end,
+    })
+  else
+    local autocmd = {
+      "autocmd! TermClose <buffer> lua",
+      string.format("vim.api.nvim_win_close(%d, {force = true});", win),
+      string.format("vim.api.nvim_buf_delete(%d, {force = true});", buf),
+    }
+    vim.cmd(table.concat(autocmd, " "))
+  end
 end
 
 return M
