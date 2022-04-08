@@ -12,7 +12,7 @@ local function footer()
   local plugins = #vim.tbl_keys(packer_plugins)
   local v = vim.version()
   local datetime = os.date " %d-%m-%Y   %H:%M:%S"
-  return string.format(" %d   v%d.%d.%d  %s", plugins, v.major, v.minor, v.patch, datetime)
+  return string.format("       %d   v%d.%d.%d  %s", plugins, v.major, v.minor, v.patch, datetime)
 end
 
 dashboard.section.header.val = require("config.utils.headers").random
@@ -30,10 +30,9 @@ dashboard.section.buttons.val = {
   button("q", "  Quit", "<Cmd>qa<CR>"),
 }
 
-dashboard.section.footer.val = footer()
+dashboard.section.footer.val = { footer(), " " }
+vim.list_extend(dashboard.section.footer.val, require "alpha.fortune"())
 dashboard.section.footer.opts.hl = dashboard.section.header.opts.hl
-
-dashboard.config.layout[1].val = 1
 
 require("alpha").setup(dashboard.config)
 
