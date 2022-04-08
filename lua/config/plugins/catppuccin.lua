@@ -105,4 +105,5 @@ require("catppuccin").remap {
   AlphaCol3 = { fg = cp.yellow },
   AlphaCol4 = { fg = cp.green },
   AlphaCol5 = { fg = cp.sky },
+  AlphaQuote = { fg = cp.lavender, style = "italic" },
 }

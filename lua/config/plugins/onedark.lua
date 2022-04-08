@@ -25,6 +25,7 @@ require("onedark").setup {
     AlphaCol3 = { fg = "$cyan" },
     AlphaCol4 = { fg = "$green" },
     AlphaCol5 = { fg = "$purple" },
+    AlphaQuote = { fg = "$light_grey", fmt = "italic" },
   },
 
   diagnostics = {
