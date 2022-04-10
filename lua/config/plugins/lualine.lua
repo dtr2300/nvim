@@ -3,7 +3,7 @@ local cs = vim.g.colors_name or vim.env.NVIM_COLORSCHEME or "onedark"
 require("lualine").setup {
   options = {
     theme = cs,
-    globalstatus = vim.fn.has "nvim-0.7" == 1,
+    globalstatus = true,
   },
   tabline = {
     lualine_a = {

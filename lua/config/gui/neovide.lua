@@ -19,20 +19,13 @@ function M.setup()
 
   M.adjust_fontsize()
 
-  if vim.fn.has "nvim-0.7" == 1 then
-    vim.keymap.set("n", "<F7>", function()
-      require("config.gui.neovide").adjust_fontsize(1)
-    end, { silent = true })
-    vim.keymap.set("n", "<S-F7>", function()
-      require("config.gui.neovide").adjust_fontsize(-1)
-    end, { silent = true })
-    vim.keymap.set("n", "<F11>", require("config.gui.neovide").fullscreen_toggle, { silent = true })
-  else
-    local map = require("config.utils.map").map
-    map("n", "<F7>", "<Cmd>lua require'config.gui.neovide'.adjust_fontsize(1)<CR>")
-    map("n", "<S-F7>", "<Cmd>lua require'config.gui.neovide'.adjust_fontsize(-1)<CR>")
-    map("n", "<F11>", "<Cmd>lua require'config.gui.neovide'.fullscreen_toggle()<CR>")
-  end
+  vim.keymap.set("n", "<F7>", function()
+    require("config.gui.neovide").adjust_fontsize(1)
+  end, { silent = true })
+  vim.keymap.set("n", "<S-F7>", function()
+    require("config.gui.neovide").adjust_fontsize(-1)
+  end, { silent = true })
+  vim.keymap.set("n", "<F11>", require("config.gui.neovide").fullscreen_toggle, { silent = true })
 end
 
 return M

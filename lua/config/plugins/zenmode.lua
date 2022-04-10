@@ -22,9 +22,4 @@ require("zen-mode").setup {
   end,
 }
 
-if vim.fn.has "nvim-0.7" == 1 then
-  vim.keymap.set("n", "<Leader>zz", "<Cmd>ZenMode<CR>", { silent = true })
-else
-  local map = require("config.utils.map").map
-  map("n", "<Leader>zz", "<Cmd>ZenMode<CR>")
-end
+vim.keymap.set("n", "<Leader>zz", "<Cmd>ZenMode<CR>", { silent = true })
