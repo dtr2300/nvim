@@ -106,4 +106,6 @@ require("catppuccin").remap {
   AlphaCol4 = { fg = cp.green },
   AlphaCol5 = { fg = cp.sky },
   AlphaQuote = { fg = cp.lavender, style = "italic" },
+
+  SCNvimEval = { fg = cp.black0, bg = cp.lavender },
 }

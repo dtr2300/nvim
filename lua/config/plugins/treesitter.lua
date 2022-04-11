@@ -1,5 +1,6 @@
 require("nvim-treesitter.configs").setup {
-  ensure_installed = "maintained",
+  ensure_installed = "all",
+  ignore_install = { "elm", "foam", "fortran", "hack", "help", "markdown", "slint", "todotxt", "verilog" },
   highlight = {
     enable = true,
   },

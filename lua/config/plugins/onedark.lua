@@ -26,6 +26,8 @@ require("onedark").setup {
     AlphaCol4 = { fg = "$green" },
     AlphaCol5 = { fg = "$purple" },
     AlphaQuote = { fg = "$light_grey", fmt = "italic" },
+
+    SCNvimEval = { fg = "$bg1", bg = "$cyan" },
   },
 
   diagnostics = {
