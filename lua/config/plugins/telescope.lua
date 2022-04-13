@@ -40,12 +40,14 @@ require("telescope").setup {
 }
 
 -- load extensions
-for _, ext in ipairs { "file_browser", "repo", "fzf" } do
+for _, ext in ipairs { "fzf", "file_browser", "repo", "packer", "luasnip" } do
   require("telescope").load_extension(ext)
 end
 
 -- mappings
-vim.keymap.set("n", "<Leader>tB", "<Cmd>Telescope builtin<CR>", { silent = true })
+vim.keymap.set("n", "<Leader>tB", function()
+  require("telescope.builtin").builtin { include_extensions = true }
+end, { silent = true })
 vim.keymap.set("n", "<Leader>tb", "<Cmd>Telescope buffers<CR>", { silent = true })
 vim.keymap.set("n", "<Leader>tC", "<Cmd>Telescope commands<CR>", { silent = true })
 vim.keymap.set("n", "<Leader>tc", "<Cmd>Telescope current_buffer_fuzzy_find<CR>", { silent = true })
@@ -59,9 +61,11 @@ vim.keymap.set("n", "<Leader>ti", "<Cmd>Telescope git_commits<CR>", { silent = t
 vim.keymap.set("n", "<Leader>tj", "<Cmd>Telescope jumplist<CR>", { silent = true })
 vim.keymap.set("n", "<Leader>tk", "<Cmd>Telescope keymaps<CR>", { silent = true })
 vim.keymap.set("n", "<Leader>tl", "<Cmd>Telescope live_grep<CR>", { silent = true })
+vim.keymap.set("n", "<Leader>tL", "<Cmd>Telescope luasnip<CR>", { silent = true })
 vim.keymap.set("n", "<Leader>tm", "<Cmd>Telescope marks<CR>", { silent = true })
 vim.keymap.set("n", "<Leader>to", "<Cmd>Telescope oldfiles<CR>", { silent = true })
 vim.keymap.set("n", "<Leader>tp", "<Cmd>Telescope pickers<CR>", { silent = true })
+vim.keymap.set("n", "<Leader>tP", "<Cmd>Telescope packer<CR>", { silent = true })
 vim.keymap.set("n", "<Leader>tq", "<Cmd>Telescope quickfix<CR>", { silent = true })
 vim.keymap.set("n", "<Leader>t1", "<Cmd>Telescope repo list<CR>", { silent = true })
 if vim.fn.has "win32" == 1 then

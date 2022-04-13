@@ -21,12 +21,17 @@ return require("packer").startup {
     use { "goolord/alpha-nvim", config = p "alpha" }
     use { "folke/which-key.nvim", config = p "whichkey" }
     use { "folke/zen-mode.nvim", config = p "zenmode" }
-    use { "nvim-telescope/telescope-file-browser.nvim" }
-    use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
-    use { "cljoly/telescope-repo.nvim" }
-    use { "nvim-telescope/telescope.nvim", config = p "telescope" }
     use { "norcalli/nvim-colorizer.lua", config = p "colorizer" }
     use { "numToStr/Comment.nvim", config = p "comment" }
+
+    local telescope_ext = {
+      { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
+      "nvim-telescope/telescope-file-browser.nvim",
+      "cljoly/telescope-repo.nvim",
+      "nvim-telescope/telescope-packer.nvim",
+      "benfowler/telescope-luasnip.nvim",
+    }
+    use { "nvim-telescope/telescope.nvim", config = p "telescope", requires = telescope_ext }
 
     use { "nvim-treesitter/nvim-treesitter", config = p "treesitter", run = ":TSUpdate" }
     use { "nvim-treesitter/playground" }

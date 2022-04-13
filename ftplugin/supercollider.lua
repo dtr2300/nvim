@@ -9,11 +9,11 @@ end, { silent = true, buffer = true })
 
 -- open the help source file for the word under the cursor
 vim.keymap.set("n", "<C-F1>", function()
-  local subject = vim.fn.expand('<cword>')
+  local subject = vim.fn.expand "<cword>"
   local cmd = [[SCDoc.helpSourceDir +/+ \"Classes\" +/+ \"%s\" ++ \".schelp\"]]
   cmd = string.format(cmd, subject)
   require("scnvim").eval(cmd, function(result)
-    result = string.format('edit %s', result)
+    result = string.format("edit %s", result)
     vim.cmd(result)
   end)
 end, { silent = true })
