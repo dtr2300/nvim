@@ -1,11 +1,31 @@
 local cmp = require "cmp"
 local lspkind = require "lspkind"
+local types = require "cmp.types"
 
 cmp.setup {
   mapping = {
+    ["<Down>"] = cmp.mapping {
+      i = cmp.mapping.select_next_item { behavior = types.cmp.SelectBehavior.Select },
+      c = function(_)
+        cmp.close()
+        vim.schedule(cmp.suspend())
+      end,
+    },
+
+    ["<Up>"] = cmp.mapping {
+      i = cmp.mapping.select_prev_item { behavior = types.cmp.SelectBehavior.Select },
+      c = function(_)
+        cmp.close()
+        vim.schedule(cmp.suspend())
+      end,
+    },
+
     ["<C-d>"] = cmp.mapping.scroll_docs(-4),
+
     ["<C-f>"] = cmp.mapping.scroll_docs(4),
+
     ["<C-x>"] = cmp.mapping.close(),
+
     ["<C-y>"] = cmp.mapping(
       cmp.mapping.confirm {
         behavior = cmp.ConfirmBehavior.Insert,
