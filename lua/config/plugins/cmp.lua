@@ -6,17 +6,19 @@ cmp.setup {
   mapping = {
     ["<Down>"] = cmp.mapping {
       i = cmp.mapping.select_next_item { behavior = types.cmp.SelectBehavior.Select },
-      c = function(_)
+      c = function(fallback)
         cmp.close()
         vim.schedule(cmp.suspend())
+        fallback()
       end,
     },
 
     ["<Up>"] = cmp.mapping {
       i = cmp.mapping.select_prev_item { behavior = types.cmp.SelectBehavior.Select },
-      c = function(_)
+      c = function(fallback)
         cmp.close()
         vim.schedule(cmp.suspend())
+        fallback()
       end,
     },
 
