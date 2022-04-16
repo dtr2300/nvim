@@ -14,11 +14,7 @@ require("lualine").setup {
         end,
       },
     },
-    lualine_x = {
-      function()
-        return vim.fn.has "win32" == 1 and "" or ""
-      end,
-    },
+    lualine_z = { "tabs" },
   },
   extensions = { "quickfix" },
 }

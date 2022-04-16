@@ -23,3 +23,13 @@ require("zen-mode").setup {
 }
 
 vim.keymap.set("n", "<Leader>zz", "<Cmd>ZenMode<CR>", { silent = true })
+
+vim.keymap.set("n", "<Leader>zZ", function()
+  require("zen-mode").toggle {
+    window = {
+      width = 0.5,
+    },
+  }
+end, { silent = true })
+
+vim.keymap.set("n", "<Leader>zx", "<Cmd>set nonu nornu scl=no<CR>", { silent = true })
