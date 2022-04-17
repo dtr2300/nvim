@@ -4,7 +4,7 @@ if vim.fn.has "win32" == 1 then
 end
 
 -- TODO: use new filetype api
-vim.api.nvim_create_augroup("filetype_supercollider", { clear = true})
+vim.api.nvim_create_augroup("filetype_supercollider", { clear = true })
 
 vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter", "BufNewFile", "BufRead" }, {
   group = "filetype_supercollider",
