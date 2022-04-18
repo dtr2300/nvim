@@ -39,7 +39,7 @@ This is my personal Neovim configuration (Windows, WSL/Ubuntu and Termux).
 <!-- break -->
 - [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) - a collection of common configurations for neovim's built-in language server client
 - [lsp_signature.nvim](https://github.com/ray-x/lsp_signature.nvim) - show function signature when you type
-- [lspkind-nvim](https://github.com/onsails/lspkind-nvim) - vscode-like pictograms for neovim lsp completion items
+- [lspkind.nvim](https://github.com/onsails/lspkind.nvim) - vscode-like pictograms for neovim lsp completion items
 <!-- break -->
 - [friendly-snippets](https://github.com/rafamadriz/friendly-snippets) - set of preconfigured snippets for different languages
 - [LuaSnip](https://github.com/L3MON4D3/LuaSnip) - snippet engine for neovim written in lua
@@ -81,6 +81,7 @@ This is my personal Neovim configuration (Windows, WSL/Ubuntu and Termux).
     - [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim/issues/1470)
     - [nvim-cmp](https://github.com/hrsh7th/nvim-cmp/issues/231)
     - [luasnip](https://github.com/L3MON4D3/LuaSnip/issues/81)
+    - [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig/issues/1075)
 - community
     - [neovim reddit](https://www.reddit.com/r/neovim/)
     - [neovim discourse](https://neovim.discourse.group/)

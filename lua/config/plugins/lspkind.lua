@@ -1,1 +1,1 @@
-require("lspkind").init()
+require("lspkind").setup()

@@ -1,7 +1,12 @@
 local M = {}
 
+-- options set via lua vim.g doesn't work
+-- see:
+--   https://github.com/neovide/neovide/issues/888#issuecomment-898928509
+--   https://github.com/neovim/neovim/pull/15373
+
 local fontname = "FiraCode NF"
-local fontsize = 13 -- weird fontsize
+local fontsize = 10
 local isfullscreen = false
 
 function M.adjust_fontsize(amount)
@@ -11,11 +16,11 @@ end
 
 function M.fullscreen_toggle()
   isfullscreen = not isfullscreen
-  vim.cmd("let g:neovide_fullscreen=v:" .. tostring(isfullscreen)) -- vim.g doesn't work
+  vim.cmd("let g:neovide_fullscreen=v:" .. tostring(isfullscreen))
 end
 
 function M.setup()
-  vim.cmd "let g:neovide_cursor_animation_length=0" -- vim.g doesn't work
+  vim.cmd "let g:neovide_cursor_animation_length=0"
 
   M.adjust_fontsize()
 
