@@ -39,7 +39,7 @@ return require("packer").startup {
 
     use { "ray-x/lsp_signature.nvim" }
     use { "neovim/nvim-lspconfig", config = p "lsp" }
-    use { "onsails/lspkind.nvim", config = p "lspkind" }
+    use { "onsails/lspkind-nvim", config = p "lspkind" }
 
     use { "rafamadriz/friendly-snippets" }
     use { "L3MON4D3/LuaSnip", config = p "luasnip" }
@@ -51,7 +51,7 @@ return require("packer").startup {
       "hrsh7th/cmp-nvim-lsp",
       "saadparwaiz1/cmp_luasnip",
     }
-    use { "hrsh7th/nvim-cmp", config = p "cmp", requires = cmp_sources, after = "lspkind.nvim" }
+    use { "hrsh7th/nvim-cmp", config = p "cmp", requires = cmp_sources, after = "lspkind-nvim" }
 
     use { "milisims/nvim-luaref" }
     use { "nanotee/nvim-lua-guide" }
