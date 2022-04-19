@@ -20,14 +20,19 @@ vim.keymap.set("n", "<Leader>pC", "<Cmd>LuaCacheClear<CR>", { silent = true })
 -- append N blank lines below cursor
 vim.keymap.set("n", "<F3>", function()
   vim.fn.append(vim.fn.line ".", vim.fn["repeat"]({ "" }, vim.api.nvim_get_vvar "count1"))
-end, { silent = true })
+end, { silent = true, desc = "Append N blank lines below cursor" })
 
 -- spellcheck
 vim.keymap.set("n", "<Leader>sn", "<Cmd>setlocal spelllang=nl<CR> <bar> <Cmd>setlocal spell<CR>", { silent = true })
 vim.keymap.set("n", "<Leader>se", "<Cmd>setlocal spelllang=en<CR> <bar> <Cmd>setlocal spell<CR>", { silent = true })
 
 -- open terminal
-vim.keymap.set("n", "<Leader>df", require("config.utils.terminal").float_terminal, { silent = true })
+vim.keymap.set(
+  "n",
+  "<Leader>df",
+  require("config.utils.terminal").float_terminal,
+  { silent = true, desc = "Open floating terminal" }
+)
 vim.keymap.set("n", "<Leader>ds", "<Cmd>split | term<CR>", { silent = true })
 vim.keymap.set("n", "<Leader>dv", "<Cmd>vsplit | term<CR>", { silent = true })
 vim.keymap.set("n", "<Leader>dt", "<Cmd>term<CR>", { silent = true })
@@ -47,9 +52,27 @@ vim.keymap.set(
 )
 
 -- sessions
-vim.keymap.set("n", "<Leader>si", require("config.utils.sessions").info, { silent = true })
-vim.keymap.set("n", "<Leader>ss", require("config.utils.sessions").open_session, { silent = true })
-vim.keymap.set("n", "<Leader>sS", require("config.utils.sessions").save_session, { silent = true })
+vim.keymap.set("n", "<Leader>si", require("config.utils.sessions").info, { silent = true, desc = "Show session info" })
+vim.keymap.set(
+  "n",
+  "<Leader>ss",
+  require("config.utils.sessions").open_session,
+  { silent = true, desc = "Open session" }
+)
+vim.keymap.set(
+  "n",
+  "<Leader>sS",
+  require("config.utils.sessions").save_session,
+  { silent = true, desc = "Save session" }
+)
 
 -- messages
 vim.keymap.set("n", "<F12>", "<Cmd>messages<CR>", { silent = true })
+
+-- set filetype
+vim.keymap.set("n", "<Leader>yc", "<Cmd>set ft=cpp<CR>", { silent = true })
+vim.keymap.set("n", "<Leader>yl", "<Cmd>set ft=lua<CR>", { silent = true })
+vim.keymap.set("n", "<Leader>ym", "<Cmd>set ft=markdown<CR>", { silent = true })
+vim.keymap.set("n", "<Leader>yp", "<Cmd>set ft=python<CR>", { silent = true })
+vim.keymap.set("n", "<Leader>yr", "<Cmd>set ft=rust<CR>", { silent = true })
+vim.keymap.set("n", "<Leader>ys", "<Cmd>set ft=supercollider<CR>", { silent = true })

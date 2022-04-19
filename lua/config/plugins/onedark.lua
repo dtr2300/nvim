@@ -18,6 +18,8 @@ require("onedark").setup {
     NormalFloat = { fg = "$fg", bg = "$bg1" },
     VertSplit = { fg = "$bg3" },
     --CursorLine = { bg = "$bg_d" },
+
+    -- alpha
     AlphaButton = { fg = "$blue" },
     AlphaButtonShortcut = { fg = "$yellow" },
     AlphaCol1 = { fg = "$red" },
@@ -27,7 +29,11 @@ require("onedark").setup {
     AlphaCol5 = { fg = "$purple" },
     AlphaQuote = { fg = "$light_grey", fmt = "italic" },
 
+    -- scnvim
     SCNvimEval = { fg = "$bg1", bg = "$cyan" },
+
+    -- luasnip
+    LuasnipChoice = { fg = "$orange", fmt = "italic" },
   },
 
   diagnostics = {

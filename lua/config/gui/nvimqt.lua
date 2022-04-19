@@ -24,17 +24,22 @@ function M.setup()
 
   vim.keymap.set({ "n", "i" }, "<C-ScrollWheelUp>", function()
     require("config.gui.nvimqt").adjust_fontsize(1)
-  end, { silent = true })
+  end, { silent = true, desc = "Adjust fontsize +1" })
   vim.keymap.set({ "n", "i" }, "<C-ScrollWheelDown>", function()
     require("config.gui.nvimqt").adjust_fontsize(-1)
-  end, { silent = true })
+  end, { silent = true, desc = "Fontsize -1" })
   vim.keymap.set("n", "<F7>", function()
     require("config.gui.nvimqt").adjust_fontsize(1)
-  end, { silent = true })
+  end, { silent = true, desc = "Fontsize +1" })
   vim.keymap.set("n", "<S-F7>", function()
     require("config.gui.nvimqt").adjust_fontsize(-1)
-  end, { silent = true })
-  vim.keymap.set("n", "<F11>", require("config.gui.nvimqt").fullscreen_toggle, { silent = true })
+  end, { silent = true, desc = "Fontsize -1" })
+  vim.keymap.set(
+    "n",
+    "<F11>",
+    require("config.gui.nvimqt").fullscreen_toggle,
+    { silent = true, desc = "Toggle fullscreen" }
+  )
 end
 
 return M

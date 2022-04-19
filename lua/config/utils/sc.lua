@@ -36,11 +36,6 @@ local function scnvim_help_keys()
   return help_keys
 end
 
--- load snippets
-function M.load_snippets()
-  require("luasnip").add_snippets("supercollider", require("scnvim.utils").get_snippets(), { key = "scnvimsnippets" })
-end
-
 -- sc-eval
 function M.sc_eval(sc_code, sc_return_code, o)
   require("scnvim").eval(sc_code, function(return_val)

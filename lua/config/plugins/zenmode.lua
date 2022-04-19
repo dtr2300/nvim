@@ -30,6 +30,7 @@ vim.keymap.set("n", "<Leader>zZ", function()
       width = 0.5,
     },
   }
-end, { silent = true })
+end, { silent = true, desc = "Toggle ZenMode (width=0.5)" })
 
+-- workaround for switching buffers when zenmode is active
 vim.keymap.set("n", "<Leader>zx", "<Cmd>set nonu nornu scl=no<CR>", { silent = true })

@@ -26,24 +26,3 @@ vim.api.nvim_create_autocmd("TermOpen", {
   group = "neovim_terminal",
   command = "startinsert",
 })
-
-local cmds = {
-
-  -- capture command to buffer command
-  [[
-  function! Capture(cmd)
-    execute ":enew|pu=execute('" . a:cmd . "')|1,2d_"
-  endfunction
-  command! -nargs=1 Capture silent call Capture(<f-args>)
-  ]],
-
-  -- set colorscheme
-  "colorscheme " .. (vim.env.NVIM_COLORSCHEME or "onedark"),
-}
-
--- set interface language
-if vim.fn.has "win32" == 1 then
-  table.insert(cmds, "lang messages en_GB")
-end
-
-vim.cmd(table.concat(cmds, "\n"))

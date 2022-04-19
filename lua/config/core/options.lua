@@ -36,3 +36,8 @@ vim.g.loaded_perl_provider = 0
 -- mapleader
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
+
+-- set interface language
+if vim.fn.has "win32" == 1 then
+  vim.cmd "lang messages en_GB"
+end

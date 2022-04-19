@@ -47,7 +47,7 @@ end
 -- mappings
 vim.keymap.set("n", "<Leader>tB", function()
   require("telescope.builtin").builtin { include_extensions = true }
-end, { silent = true })
+end, { silent = true, desc = "Telescope builtin (include extensions)" })
 vim.keymap.set("n", "<Leader>tb", "<Cmd>Telescope buffers<CR>", { silent = true })
 vim.keymap.set("n", "<Leader>tC", "<Cmd>Telescope commands<CR>", { silent = true })
 vim.keymap.set("n", "<Leader>tc", "<Cmd>Telescope current_buffer_fuzzy_find<CR>", { silent = true })
@@ -71,13 +71,13 @@ vim.keymap.set("n", "<Leader>t1", "<Cmd>Telescope repo list<CR>", { silent = tru
 if vim.fn.has "win32" == 1 then
   vim.keymap.set("n", "<Leader>t2", function()
     require("telescope").extensions.repo.list { search_dirs = { "f:/devel" } }
-  end, { silent = true })
+  end, { silent = true, desc = "Telescope repo list" })
   vim.keymap.set("n", "<Leader>t3", function()
     require("telescope").extensions.repo.list { search_dirs = { "f:/devel/py" } }
-  end, { silent = true })
+  end, { silent = true, desc = "Telescope repo list" })
   vim.keymap.set("n", "<Leader>t4", function()
     require("telescope").extensions.repo.list { search_dirs = { "d:/msys64/home/Dieter" } }
-  end, { silent = true })
+  end, { silent = true, desc = "Telescope repo list" })
 end
 vim.keymap.set("n", "<Leader>tR", "<Cmd>Telescope registers<CR>", { silent = true })
 vim.keymap.set("n", "<Leader>tr", "<Cmd>Telescope resume<CR>", { silent = true })
