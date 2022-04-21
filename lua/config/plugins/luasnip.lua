@@ -40,12 +40,9 @@ vim.keymap.set("i", "<C-u>", function()
   require "luasnip.extras.select_choice"
 end, { desc = "Luasnip extras select_choice" })
 
--- reload my snippets
-vim.keymap.set("n", "<Leader>ir", function()
-  R "config.utils.snippets"
-end, { desc = "Reload my snippets" })
-
 -- load scnvim snippets
-vim.keymap.set("n", "<Leader>is", function()
-  require("luasnip").add_snippets("supercollider", require("scnvim.utils").get_snippets(), { key = "scnvimsnippets" })
-end, { desc = "Load scnvim snippets" })
+if vim.fn.has "win32" == 1 then
+  vim.keymap.set("n", "<Leader>LS", function()
+    require("luasnip").add_snippets("supercollider", require("scnvim.utils").get_snippets(), { key = "scnvimsnippets" })
+  end, { desc = "Load scnvim snippets" })
+end

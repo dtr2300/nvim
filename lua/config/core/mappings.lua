@@ -23,8 +23,8 @@ vim.keymap.set("n", "<F3>", function()
 end, { silent = true, desc = "Append N blank lines below cursor" })
 
 -- spellcheck
-vim.keymap.set("n", "<Leader>sn", "<Cmd>setlocal spelllang=nl<CR> <bar> <Cmd>setlocal spell<CR>", { silent = true })
-vim.keymap.set("n", "<Leader>se", "<Cmd>setlocal spelllang=en<CR> <bar> <Cmd>setlocal spell<CR>", { silent = true })
+vim.keymap.set("n", "<Leader>LN", "<Cmd>setlocal spelllang=nl<CR><Cmd>setlocal spell<CR>", { silent = true })
+vim.keymap.set("n", "<Leader>LE", "<Cmd>setlocal spelllang=en<CR><Cmd>setlocal spell<CR>", { silent = true })
 
 -- open terminal
 vim.keymap.set(
@@ -70,9 +70,9 @@ vim.keymap.set(
 vim.keymap.set("n", "<F12>", "<Cmd>messages<CR>", { silent = true })
 
 -- set filetype
-vim.keymap.set("n", "<Leader>yc", "<Cmd>set ft=cpp<CR>", { silent = true })
-vim.keymap.set("n", "<Leader>yl", "<Cmd>set ft=lua<CR>", { silent = true })
-vim.keymap.set("n", "<Leader>ym", "<Cmd>set ft=markdown<CR>", { silent = true })
-vim.keymap.set("n", "<Leader>yp", "<Cmd>set ft=python<CR>", { silent = true })
-vim.keymap.set("n", "<Leader>yr", "<Cmd>set ft=rust<CR>", { silent = true })
-vim.keymap.set("n", "<Leader>ys", "<Cmd>set ft=supercollider<CR>", { silent = true })
+vim.keymap.set("n", "<Leader>Lc", "<Cmd>set ft=cpp<CR>", { silent = true })
+vim.keymap.set("n", "<Leader>Ll", "<Cmd>set ft=lua<CR>", { silent = true })
+vim.keymap.set("n", "<Leader>Lm", "<Cmd>set ft=markdown<CR>", { silent = true })
+vim.keymap.set("n", "<Leader>Lp", "<Cmd>set ft=python<CR>", { silent = true })
+vim.keymap.set("n", "<Leader>Lr", "<Cmd>set ft=rust<CR>", { silent = true })
+vim.keymap.set("n", "<Leader>Ls", "<Cmd>set ft=supercollider<CR>", { silent = true })

@@ -63,7 +63,6 @@ cmp.setup {
     { name = "nvim_lsp" },
     { name = "path" },
     { name = "luasnip" },
-    --{ name = "buffer", keyword_length = 5 },
     { name = "buffer" },
   },
 
@@ -117,5 +116,9 @@ cmp.setup {
 
   experimental = {
     ghost_text = false,
+  },
+
+  window = {
+    documentation = cmp.config.window.bordered(),
   },
 }
