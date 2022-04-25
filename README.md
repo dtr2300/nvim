@@ -36,11 +36,11 @@ This is my personal Neovim configuration (Windows, WSL/Ubuntu and Termux).
 - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) - provide a simple and easy way to use the interface for tree-sitter in neovim and provide some basic functionality such as highlighting based on it
 - [playground](https://github.com/nvim-treesitter/playground) - view treesitter information directly in neovim
 - [nvim-treesitter-textobjects](https://github.com/nvim-treesitter/nvim-treesitter-textobjects) - create your own textobjects using tree-sitter queries
+- [nvim-ts-rainbow](https://github.com/p00f/nvim-ts-rainbow) - rainbow parentheses for neovim using tree-sitter
 <!-- break -->
 - [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) - a collection of common configurations for neovim's built-in language server client
 - [lsp_signature.nvim](https://github.com/ray-x/lsp_signature.nvim) - show function signature when you type
 - [lspkind.nvim](https://github.com/onsails/lspkind.nvim) - vscode-like pictograms for neovim lsp completion items
-- [nvim-ts-rainbow](https://github.com/p00f/nvim-ts-rainbow) - rainbow parentheses for neovim using tree-sitter
 <!-- break -->
 - [friendly-snippets](https://github.com/rafamadriz/friendly-snippets) - set of preconfigured snippets for different languages
 - [LuaSnip](https://github.com/L3MON4D3/LuaSnip) - snippet engine for neovim written in lua
