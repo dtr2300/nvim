@@ -33,9 +33,12 @@ return require("packer").startup {
     }
     use { "nvim-telescope/telescope.nvim", config = p "telescope", requires = telescope_ext }
 
-    use { "nvim-treesitter/nvim-treesitter", config = p "treesitter", run = ":TSUpdate" }
-    use { "nvim-treesitter/playground" }
-    use { "nvim-treesitter/nvim-treesitter-textobjects" }
+    local ts_modules = {
+      "nvim-treesitter/playground",
+      "nvim-treesitter/nvim-treesitter-textobjects",
+      "p00f/nvim-ts-rainbow",
+    }
+    use { "nvim-treesitter/nvim-treesitter", config = p "treesitter", requires = ts_modules, run = ":TSUpdate" }
 
     use { "ray-x/lsp_signature.nvim" }
     use { "neovim/nvim-lspconfig", config = p "lsp" }

@@ -54,7 +54,7 @@ require("catppuccin").setup {
     bufferline = false,
     markdown = true,
     lightspeed = false,
-    ts_rainbow = false,
+    ts_rainbow = true,
     hop = false,
     notify = true,
     telekasten = false,
@@ -114,5 +114,6 @@ require("catppuccin").remap {
   SCNvimEval = { fg = c.black0, bg = c.lavender },
 
   -- luasnip
-  LuasnipChoice = { fg = c.peach, style = "italic" },
+  LuaSnipChoiceNode = { fg = c.yellow, style = "bold" },
+  LuaSnipInsertNode = { fg = c.white, style = "bold" },
 }

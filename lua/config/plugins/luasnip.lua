@@ -8,14 +8,20 @@ ls.config.set_config {
   ext_opts = {
     [types.choiceNode] = {
       active = {
-        virt_text = { { " <- Current Choice", "LuasnipChoice" } },
+        virt_text = { { "●", "LuaSnipChoiceNode" } },
+      },
+    },
+    [types.insertNode] = {
+      active = {
+        virt_text = { { "●", "LuaSnipInsertNode" } },
       },
     },
   },
 }
 
 -- load snippets
-require "config.utils.snippets"
+require "config.utils.snippets" -- TODO: move to:
+-- require("luasnip.loaders.from_lua").lazy_load()
 require("luasnip.loaders.from_vscode").lazy_load()
 
 vim.keymap.set({ "i", "s" }, "<C-k>", function()

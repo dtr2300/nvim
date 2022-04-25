@@ -35,10 +35,64 @@ ls.add_snippets("lua", {
   --s("req", fmt("local {} = require('{}')", { i(1, "default"), rep(1) })),
   -- test 8
   s(
-    "class",
+    "baseclass",
     fmt(
-      "local {} = {{}}\n{}.__index = {}\nsetmetatable({}, {{\n\t__call = function (cls, ...)\n\t\tlocal self = setmetatable({{}}, cls)\n\t\tself:_init(...)\n\t\treturn self\n\tend,\n}})\n\nfunction {}:_init({})\n\t{}\nend",
-      { i(1, "ClassName"), rep(1), rep(1), rep(1), rep(1), i(2, "args"), i(3, "") }
+      table.concat {
+        "local <> = {}\n",
+        "<>.__index = <>\n",
+        "setmetatable(<>, {\n",
+        "\t__call = function (cls, ...)\n",
+        "\t\tlocal self = setmetatable({}, cls)\n",
+        "\t\tself:_init(...)\n",
+        "\t\treturn self\n",
+        "\tend,\n",
+        "})\n\n",
+        "function <>:_init(<>)\n",
+        "\t<>\n",
+        "end\n",
+      },
+      { i(1, "BaseClass"), rep(1), rep(1), rep(1), rep(1), i(2, "_"), i(3, "") },
+      { delimiters = "<>" }
+    )
+  ),
+
+  s(
+    "derivedclass",
+    fmt(
+      table.concat {
+        "local <> = {}\n",
+        "for k, v in pairs(<>) do\n",
+        "\t<>[k] = v\n",
+        "end\n",
+        "<>.__index = <>\n",
+        "setmetatable(<>, {\n",
+        "\t__index = <>,\n",
+        "\t__call = function(cls, ...)\n",
+        "\t\tlocal self = setmetatable({}, cls)\n",
+        "\t\tself:_init(...)\n",
+        "\t\treturn self\n",
+        "\tend,\n",
+        "})\n\n",
+        "function <>:_init(<>)\n",
+        "\t<>._init(self, <>)\n",
+        "\t<>\n",
+        "end\n",
+      },
+      {
+        i(1, "DerivedClass"),
+        i(2, "BaseClass"),
+        rep(1),
+        rep(1),
+        rep(1),
+        rep(1),
+        rep(2),
+        rep(1),
+        i(3, "_"),
+        rep(2),
+        i(4, "_"),
+        i(5, ""),
+      },
+      { delimiters = "<>" }
     )
   ),
 }, {

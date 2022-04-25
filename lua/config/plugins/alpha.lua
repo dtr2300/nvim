@@ -17,7 +17,7 @@ local function footer()
 end
 
 -- header
-dashboard.section.header.val = require("config.utils.headers").random
+dashboard.section.header.val = require("config.utils.headers").random()
 dashboard.section.header.opts.hl = "AlphaCol" .. math.random(5)
 
 -- buttons

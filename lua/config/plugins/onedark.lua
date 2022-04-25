@@ -33,7 +33,17 @@ require("onedark").setup {
     SCNvimEval = { fg = "$bg1", bg = "$cyan" },
 
     -- luasnip
-    LuasnipChoice = { fg = "$orange", fmt = "italic" },
+    LuaSnipChoiceNode = { fg = "$yellow", fmt = "bold" },
+    LuaSnipInsertNode = { fg = "$light_grey", fmt = "bold" },
+
+    -- ts_rainbow
+    rainbowcol1 = { fg = "$red" },
+    rainbowcol2 = { fg = "$yellow" },
+    rainbowcol3 = { fg = "$orange" },
+    rainbowcol4 = { fg = "$green" },
+    rainbowcol5 = { fg = "$blue" },
+    rainbowcol6 = { fg = "$cyan" },
+    rainbowcol7 = { fg = "$purple" },
   },
 
   diagnostics = {

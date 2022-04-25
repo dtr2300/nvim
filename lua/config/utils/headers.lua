@@ -4168,15 +4168,13 @@ local headers = {
 }
 
 return setmetatable(headers, {
-  __index = function(t, key)
-    if key == "random" then
+  __index = {
+    random = function()
       local keys = {}
       for k, _ in pairs(headers) do
         table.insert(keys, k)
       end
-      return t[keys[math.random(#keys)]]
-    else
-      return t[key]
-    end
-  end,
+      return headers[keys[math.random(#keys)]]
+    end,
+  },
 })

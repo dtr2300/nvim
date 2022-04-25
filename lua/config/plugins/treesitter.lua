@@ -1,3 +1,6 @@
+local parsers = require "nvim-treesitter.parsers"
+local tsrainbow_enabled_list = { "lua", "supercollider" }
+
 require("nvim-treesitter.configs").setup {
   ensure_installed = "all",
   ignore_install = { "elm", "foam", "fortran", "hack", "help", "markdown", "slint", "todotxt", "verilog" },
@@ -64,5 +67,20 @@ require("nvim-treesitter.configs").setup {
         ["dF"] = "@class.outer",
       },
     },
+  },
+
+  rainbow = {
+    enable = true,
+    disable = vim.tbl_filter(function(p)
+      local disable = true
+      for _, lang in pairs(tsrainbow_enabled_list) do
+        if p == lang then
+          disable = false
+        end
+      end
+      return disable
+    end, parsers.available_parsers()),
+    extended_mode = true,
+    max_file_lines = nil,
   },
 }
