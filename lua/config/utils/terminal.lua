@@ -3,7 +3,7 @@ M = {}
 --- @param cmd string optional
 function M.float_terminal(cmd)
   if not cmd then
-    cmd = vim.fn.has "win32" == 1 and "cmd" or "zsh"
+    cmd = vim.fn.has "win32" == 1 and "cmd" or "fish"
   end
   local buf = vim.api.nvim_create_buf(false, true)
   local vpad = 4

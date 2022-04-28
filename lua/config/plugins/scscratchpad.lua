@@ -3,10 +3,11 @@ require("sc-scratchpad").setup {
     toggle = "<Leader>cp",
     send = "<C-e>",
   },
-  border = "double",
+  border = "rounded",
   position = "50%",
   width = "50%",
   height = "50%",
   firstline = "// Scratchpad",
   open_insertmode = true,
+  close_on_execution = false,
 }

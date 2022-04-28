@@ -63,6 +63,9 @@ vim.keymap.set("n", "<Leader>tk", "<Cmd>Telescope keymaps<CR>", { silent = true 
 vim.keymap.set("n", "<Leader>tl", "<Cmd>Telescope live_grep<CR>", { silent = true })
 vim.keymap.set("n", "<Leader>tL", "<Cmd>Telescope luasnip<CR>", { silent = true })
 vim.keymap.set("n", "<Leader>tm", "<Cmd>Telescope marks<CR>", { silent = true })
+vim.keymap.set("n", "<Leader>tn", function()
+  require("telescope").extensions.notify.notify()
+end, { silent = true, desc = "Telescope notify" })
 vim.keymap.set("n", "<Leader>to", "<Cmd>Telescope oldfiles<CR>", { silent = true })
 vim.keymap.set("n", "<Leader>tp", "<Cmd>Telescope pickers<CR>", { silent = true })
 vim.keymap.set("n", "<Leader>tP", "<Cmd>Telescope packer<CR>", { silent = true })
@@ -85,7 +88,6 @@ vim.keymap.set("n", "<Leader>ts", "<Cmd>Telescope git_status<CR>", { silent = tr
 vim.keymap.set("n", "<Leader>tt", "<Cmd>Telescope treesitter<CR>", { silent = true })
 vim.keymap.set("n", "<Leader>tv", "<Cmd>Telescope vim_options<CR>", { silent = true })
 
-vim.keymap.set("n", "<Leader>Tc", "<Cmd>Telescope lsp_code_actions<CR>", { silent = true })
 vim.keymap.set("n", "<Leader>Td", "<Cmd>Telescope lsp_definitions<CR>", { silent = true })
 vim.keymap.set("n", "<Leader>Tx", "<Cmd>Telescope diagnostics<CR>", { silent = true })
 vim.keymap.set("n", "<Leader>TD", "<Cmd>Telescope lsp_document_symbols<CR>", { silent = true })
