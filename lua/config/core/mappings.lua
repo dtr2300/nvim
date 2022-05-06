@@ -26,17 +26,6 @@ end, { silent = true, desc = "Append N blank lines below cursor" })
 vim.keymap.set("n", "<Leader>LN", "<Cmd>setlocal spelllang=nl<CR><Cmd>setlocal spell<CR>", { silent = true })
 vim.keymap.set("n", "<Leader>LE", "<Cmd>setlocal spelllang=en<CR><Cmd>setlocal spell<CR>", { silent = true })
 
--- open terminal
-vim.keymap.set(
-  "n",
-  "<Leader>df",
-  require("config.utils.terminal").float_terminal,
-  { silent = true, desc = "Open floating terminal" }
-)
-vim.keymap.set("n", "<Leader>ds", "<Cmd>split | term<CR>", { silent = true })
-vim.keymap.set("n", "<Leader>dv", "<Cmd>vsplit | term<CR>", { silent = true })
-vim.keymap.set("n", "<Leader>dt", "<Cmd>term<CR>", { silent = true })
-
 -- change directory
 vim.keymap.set(
   "n",

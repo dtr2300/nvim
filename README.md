@@ -25,6 +25,7 @@ This is my personal Neovim configuration (Windows, WSL/Ubuntu and Termux).
 - [zen-mode.nvim](https://github.com/folke/zen-mode.nvim) - distraction-free coding for neovim
 - [nvim-colorizer.lua](https://github.com/norcalli/nvim-colorizer.lua) - a high-performance color highlighter for neovim which has no external dependencies
 - [Comment.nvim](https://github.com/numToStr/Comment.nvim) - smart and powerful comment plugin for neovim
+- [toggleterm.nvim](https://github.com/akinsho/toggleterm.nvim) - a neovim lua plugin to help easily manage multiple terminal windows
 <!-- break -->
 - [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) - a highly extendable fuzzy finder over lists
 - [telescope-file-browser.nvim](https://github.com/nvim-telescope/telescope-file-browser.nvim) - a file browser extension for telescope.nvim

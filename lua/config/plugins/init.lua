@@ -23,6 +23,7 @@ return require("packer").startup {
     use { "folke/zen-mode.nvim", config = p "zenmode" }
     use { "norcalli/nvim-colorizer.lua", config = p "colorizer" }
     use { "numToStr/Comment.nvim", config = p "comment" }
+    use { "akinsho/toggleterm.nvim", config = p "toggleterm" }
 
     local telescope_ext = {
       { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
