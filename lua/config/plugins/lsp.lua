@@ -70,7 +70,7 @@ if vim.fn.has "win32" == 1 then
 elseif vim.fn.has "wsl" == 1 then
   sumneko_root_path = find_sumneko_path "/home/dtr/.local/share"
 else
-  sumneko_root_path = "/data/data/com.termux/files/usr/lib/lua-language-server"
+  sumneko_root_path = "/data/data/com.termux/files/usr/share/lua-language-server"
 end
 
 require("lspconfig").sumneko_lua.setup {

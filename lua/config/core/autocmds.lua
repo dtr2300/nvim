@@ -15,14 +15,3 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     vim.highlight.on_yank { higroup = "IncSearch", timeout = 150, on_visual = true }
   end,
 })
-
--- terminal
-vim.api.nvim_create_augroup("neovim_terminal", { clear = true })
-vim.api.nvim_create_autocmd("TermOpen", {
-  group = "neovim_terminal",
-  command = "setlocal nonumber norelativenumber",
-})
-vim.api.nvim_create_autocmd("TermOpen", {
-  group = "neovim_terminal",
-  command = "startinsert",
-})
