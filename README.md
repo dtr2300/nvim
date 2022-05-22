@@ -1,6 +1,6 @@
 # nvim
 
-This is my personal Neovim configuration (Windows, WSL/Ubuntu and Termux).
+This is my personal [Neovim](https://neovim.io/) configuration (Windows, WSL/Ubuntu and [Termux](https://termux.com/)).
 
 ![screenshot](/assets/nvim.png)
 
@@ -74,9 +74,9 @@ This is my personal Neovim configuration (Windows, WSL/Ubuntu and Termux).
 - viml
     - [learn vimscript in y minutes](https://learnxinyminutes.com/docs/vimscript/)
     - [vim script for python developers](https://gist.github.com/yegappan/16d964a37ead0979b05e655aa036cad0)
-- neovim
-    - [neovim](https://github.com/neovim/neovim)
-    - [neovim.io](https://neovim.io/)
+- vim / nvim
+    - [vim from the ground up](https://thevaluable.dev/vim-commands-beginner/)
+    - [working with vim](https://mkaz.blog/working-with-vim/)
 - breaking changes
     - [nvim](https://github.com/neovim/neovim/issues/14090)
     - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter/issues/2293)
@@ -100,13 +100,14 @@ This is my personal Neovim configuration (Windows, WSL/Ubuntu and Termux).
     - [exa](https://github.com/ogham/exa)
     - [gh](https://github.com/cli/cli)
     - [gh-s](https://github.com/gennaro-tedesco/gh-s)
+    - [starship](https://github.com/starship/starship)
 - terminals
     - [windows terminal](https://docs.microsoft.com/en-us/windows/terminal/)
     - [wezterm](https://github.com/wez/wezterm)
 - guis
-    - [neovim-qt](https://github.com/equalsraf/neovim-qt)
-    - [nvui](https://github.com/rohit-px2/nvui)
     - [neovide](https://github.com/neovide/neovide)
+    - [nvui](https://github.com/rohit-px2/nvui)
+    - [neovim-qt](https://github.com/equalsraf/neovim-qt)
     - [nvy](https://github.com/RMichelsen/Nvy)
     - [goneovim](https://github.com/akiyosi/goneovim)
     - [fvim](https://github.com/yatli/fvim)
@@ -120,6 +121,8 @@ This is my personal Neovim configuration (Windows, WSL/Ubuntu and Termux).
         - [compiledb](https://pypi.org/project/compiledb/)
 - misc
     - [neovim as a supercollider ide](https://madskjeldgaard.dk/posts/neovim-as-sc-ide/)
+    - [how to create vim text-objects](https://thevaluable.dev/vim-create-text-objects/)
+    - [unused keys](https://vim.fandom.com/wiki/Unused_keys)
 
 ## other configs
 

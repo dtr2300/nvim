@@ -1,7 +1,7 @@
 require("sc-scratchpad").setup {
   keymaps = {
     toggle = "<F4>",
-    send = "<C-CR>",
+    send = "<M-e>",
   },
   border = "rounded",
   position = "50%",

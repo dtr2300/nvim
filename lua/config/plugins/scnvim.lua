@@ -5,9 +5,9 @@ vim.g.scnvim_scdoc_render_prg = "f:\\devel\\Scripts\\pandoc.exe"
 vim.g.scnvim_snippet_format = "luasnip"
 --vim.g.scnvim_no_mappings = 1
 
-vim.keymap.set("n", "<C-CR>", "<Plug>(scnvim-send-block)", { remap = true })
-vim.keymap.set("i", "<C-CR>", "<C-o><Plug>(scnvim-send-block)", { remap = true })
-vim.keymap.set("v", "<C-CR>", "<Plug>(scnvim-send-selection)", { remap = true })
+vim.keymap.set("n", "<M-e>", "<Plug>(scnvim-send-block)", { remap = true })
+vim.keymap.set("i", "<M-e>", "<C-o><Plug>(scnvim-send-block)", { remap = true })
+vim.keymap.set("v", "<M-e>", "<Plug>(scnvim-send-selection)", { remap = true })
 vim.keymap.set("n", "<C-e>", "<Plug>(scnvim-send-line)", { remap = true })
 vim.keymap.set("i", "<C-e>", "<C-o><Plug>(scnvim-send-line)", { remap = true })
 
