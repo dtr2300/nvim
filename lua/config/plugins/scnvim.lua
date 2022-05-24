@@ -11,8 +11,8 @@ vim.keymap.set("v", "<M-e>", "<Plug>(scnvim-send-selection)", { remap = true })
 vim.keymap.set("n", "<C-e>", "<Plug>(scnvim-send-line)", { remap = true })
 vim.keymap.set("i", "<C-e>", "<C-o><Plug>(scnvim-send-line)", { remap = true })
 
-vim.keymap.set("n", "<S-F12>", "<Plug>(scnvim-hard-stop)", { remap = true })
-vim.keymap.set("i", "<S-F12>", "<C-o><Plug>(scnvim-hard-stop)", { remap = true })
+vim.keymap.set("n", "<F12>", "<Plug>(scnvim-hard-stop)", { remap = true })
+vim.keymap.set("i", "<F12>", "<C-o><Plug>(scnvim-hard-stop)", { remap = true })
 
 -- does this work?
 vim.keymap.set("n", "<M-k>", "<Plug>(scnvim-show-signature)", { remap = true })

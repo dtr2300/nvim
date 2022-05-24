@@ -45,6 +45,9 @@ for _, ext in ipairs { "fzf", "file_browser", "repo", "packer", "luasnip" } do
 end
 
 -- mappings
+local notes_dir = vim.fn.has "win32" == 1 and "~/Documents/Notes/notes" or "~/Notes/notes"
+
+vim.keymap.set("n", "<Leader>ta", "<Cmd>Telescope git_status<CR>", { silent = true })
 vim.keymap.set("n", "<Leader>tB", function()
   require("telescope.builtin").builtin { include_extensions = true }
 end, { silent = true, desc = "Telescope builtin (include extensions)" })
@@ -64,8 +67,11 @@ vim.keymap.set("n", "<Leader>tl", "<Cmd>Telescope live_grep<CR>", { silent = tru
 vim.keymap.set("n", "<Leader>tL", "<Cmd>Telescope luasnip<CR>", { silent = true })
 vim.keymap.set("n", "<Leader>tm", "<Cmd>Telescope marks<CR>", { silent = true })
 vim.keymap.set("n", "<Leader>tn", function()
-  require("telescope").extensions.notify.notify()
-end, { silent = true, desc = "Telescope notify" })
+  require("telescope.builtin").find_files { cwd = vim.fn.expand(notes_dir) }
+end, { silent = true, desc = "Open note" })
+vim.keymap.set("n", "<Leader>tN", function()
+  require("telescope").extensions.file_browser.file_browser { path = vim.fn.expand(notes_dir) }
+end, { silent = true, desc = "Open note (filebrowser)" })
 vim.keymap.set("n", "<Leader>to", "<Cmd>Telescope oldfiles<CR>", { silent = true })
 vim.keymap.set("n", "<Leader>tp", "<Cmd>Telescope pickers<CR>", { silent = true })
 vim.keymap.set("n", "<Leader>tP", "<Cmd>Telescope packer<CR>", { silent = true })
@@ -84,9 +90,17 @@ if vim.fn.has "win32" == 1 then
 end
 vim.keymap.set("n", "<Leader>tR", "<Cmd>Telescope registers<CR>", { silent = true })
 vim.keymap.set("n", "<Leader>tr", "<Cmd>Telescope resume<CR>", { silent = true })
-vim.keymap.set("n", "<Leader>ts", "<Cmd>Telescope git_status<CR>", { silent = true })
+vim.keymap.set("n", "<Leader>ts", function()
+  require("config.utils.sessions").open_session()
+end, { silent = true, desc = "Open session" })
+vim.keymap.set("n", "<Leader>tS", function()
+  require("config.utils.sessions").save_session()
+end, { silent = true, desc = "Save session" })
 vim.keymap.set("n", "<Leader>tt", "<Cmd>Telescope treesitter<CR>", { silent = true })
 vim.keymap.set("n", "<Leader>tv", "<Cmd>Telescope vim_options<CR>", { silent = true })
+vim.keymap.set("n", "<Leader>ty", function()
+  require("telescope").extensions.notify.notify()
+end, { silent = true, desc = "Telescope notify" })
 
 vim.keymap.set("n", "<Leader>Td", "<Cmd>Telescope lsp_definitions<CR>", { silent = true })
 vim.keymap.set("n", "<Leader>Tx", "<Cmd>Telescope diagnostics<CR>", { silent = true })

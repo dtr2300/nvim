@@ -40,23 +40,10 @@ vim.keymap.set(
   { silent = true }
 )
 
--- sessions
-vim.keymap.set("n", "<Leader>si", require("config.utils.sessions").info, { silent = true, desc = "Show session info" })
-vim.keymap.set(
-  "n",
-  "<Leader>ss",
-  require("config.utils.sessions").open_session,
-  { silent = true, desc = "Open session" }
-)
-vim.keymap.set(
-  "n",
-  "<Leader>sS",
-  require("config.utils.sessions").save_session,
-  { silent = true, desc = "Save session" }
-)
-
--- messages
-vim.keymap.set("n", "<F12>", "<Cmd>messages<CR>", { silent = true })
+-- show session info
+vim.keymap.set("n", "<Leader>ci", function()
+  require("config.utils.sessions").info()
+end, { silent = true, desc = "Show session info" })
 
 -- set filetype
 vim.keymap.set("n", "<Leader>Lc", "<Cmd>set ft=cpp<CR>", { silent = true })

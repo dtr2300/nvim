@@ -77,6 +77,9 @@ This is my personal [Neovim](https://neovim.io/) configuration (Windows, WSL/Ubu
 - vim / nvim
     - [vim from the ground up](https://thevaluable.dev/vim-commands-beginner/)
     - [working with vim](https://mkaz.blog/working-with-vim/)
+    - [how to create vim text-objects](https://thevaluable.dev/vim-create-text-objects/)
+    - [neovim as a supercollider ide](https://madskjeldgaard.dk/posts/neovim-as-sc-ide/)
+    - [unused keys](https://vim.fandom.com/wiki/Unused_keys)
 - breaking changes
     - [nvim](https://github.com/neovim/neovim/issues/14090)
     - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter/issues/2293)
@@ -119,10 +122,6 @@ This is my personal [Neovim](https://neovim.io/) configuration (Windows, WSL/Ubu
     - [clangd](https://clangd.llvm.org/)
         - [bear](https://github.com/rizsotto/Bear)
         - [compiledb](https://pypi.org/project/compiledb/)
-- misc
-    - [neovim as a supercollider ide](https://madskjeldgaard.dk/posts/neovim-as-sc-ide/)
-    - [how to create vim text-objects](https://thevaluable.dev/vim-create-text-objects/)
-    - [unused keys](https://vim.fandom.com/wiki/Unused_keys)
 
 ## other configs
 

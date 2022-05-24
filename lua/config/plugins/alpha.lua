@@ -27,7 +27,7 @@ dashboard.section.buttons.val = {
   button("SPC t l", "  Find word"),
   button("SPC t F", "  File browser"),
   button("SPC t 1", "  Find repo"),
-  button("SPC s s", "  Open session"),
+  button("SPC t s", "  Open session"),
   button("SPC c n", "  New file"),
   button("SPC p u", "  Update plugins"),
   button("q", "  Quit", "<Cmd>qa<CR>"),
