@@ -3,7 +3,7 @@ local tsrainbow_enabled_list = { "lua", "supercollider", "json" }
 
 require("nvim-treesitter.configs").setup {
   ensure_installed = "all",
-  ignore_install = { "elm", "foam", "fortran", "hack", "help", "markdown", "slint", "todotxt", "verilog" },
+  ignore_install = { "elm", "foam", "fortran", "hack", "help", "slint", "todotxt", "verilog" },
   highlight = {
     enable = true,
   },

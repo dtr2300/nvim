@@ -12,6 +12,9 @@ require("lualine").setup {
         max_length = function()
           return vim.o.columns - 3
         end,
+        symbols = {
+          alternate_file = "",
+        },
       },
     },
     lualine_z = { "tabs" },

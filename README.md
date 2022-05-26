@@ -87,6 +87,7 @@ This is my personal [Neovim](https://neovim.io/) configuration (Windows, WSL/Ubu
     - [nvim-cmp](https://github.com/hrsh7th/nvim-cmp/issues/231)
     - [luasnip](https://github.com/L3MON4D3/LuaSnip/issues/81)
     - [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig/issues/1075)
+    - [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim/issues/648)
 - community
     - [neovim reddit](https://www.reddit.com/r/neovim/)
     - [neovim discourse](https://neovim.discourse.group/)
