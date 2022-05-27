@@ -1,5 +1,21 @@
 vim.g.catppuccin_flavour = "mocha"
 
+-- dirty patch for old catppuccin colors
+require("catppuccin.core.palettes.init").get_palette = function()
+  local mocha = require "catppuccin.core.palettes.mocha"
+  mocha.mauve = "#DDB6F2"
+  mocha.red = "#F28FAD"
+  mocha.maroon = "#E8A2AF"
+  mocha.peach = "#F8BD96"
+  mocha.yellow = "#FAE3B0"
+  mocha.green = "#ABE9B3"
+  mocha.teal = "#B5E8E0"
+  mocha.sky = "#89DCEB"
+  mocha.blue = "#96CDFB"
+  mocha.lavender = "#C9CBFF"
+  return mocha
+end
+
 require("catppuccin").setup {
   transparent_background = false,
   term_colors = true,
@@ -70,22 +86,6 @@ require("catppuccin").setup {
     symbols_outline = false,
   },
 }
-
--- dirty patch for old catppuccin colors
-require("catppuccin.core.palettes.init").get_palette = function()
-  local mocha = require "catppuccin.core.palettes.mocha"
-  mocha.mauve = "#DDB6F2"
-  mocha.red = "#F28FAD"
-  mocha.maroon = "#E8A2AF"
-  mocha.peach = "#F8BD96"
-  mocha.yellow = "#FAE3B0"
-  mocha.green = "#ABE9B3"
-  mocha.teal = "#B5E8E0"
-  mocha.sky = "#89DCEB"
-  mocha.blue = "#96CDFB"
-  mocha.lavender = "#C9CBFF"
-  return mocha
-end
 
 local c = require("catppuccin.api.colors").get_colors()
 
