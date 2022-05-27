@@ -73,7 +73,7 @@ require("catppuccin").setup {
 
 -- dirty patch for old catppuccin colors
 require("catppuccin.core.palettes.init").get_palette = function()
-  local mocha = require("catppuccin.core.palettes.mocha")
+  local mocha = require "catppuccin.core.palettes.mocha"
   mocha.mauve = "#DDB6F2"
   mocha.red = "#F28FAD"
   mocha.maroon = "#E8A2AF"
@@ -93,7 +93,7 @@ require("catppuccin").remap {
   -- closer to old catppuccin
   TSKeyword = { fg = c.red, style = "NONE" },
   TSField = { fg = c.lavender, style = "NONE" },
-  TSComment = {fg = c.overlay0, style = "italic" },
+  TSComment = { fg = c.overlay0, style = "italic" },
   -- alpha
   AlphaButton = { fg = c.blue },
   AlphaButtonShortcut = { fg = c.peach },
