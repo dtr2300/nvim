@@ -109,6 +109,9 @@ require("catppuccin").remap {
   -- remap
   TSKeyword = { fg = c.red, style = "NONE" }, -- different color
   TSField = { fg = c.lavender, style = "NONE" }, -- different color
+  TSKeywordFunction = { fg = c.maroon, style = "NONE" }, -- different color
+  TSKeywordReturn = { fg = c.pink, style = "NONE" }, -- different color
+  TSParameter = { fg = c.teal, style = "NONE" }, -- different color, remove italics
   TSPunctBracket = { fg = c.subtext0 }, -- more bright
   Comment = { fg = c.overlay0, style = "italic" }, -- more bright
   markdownTSLiteral = { fg = c.teal }, -- remove italics
