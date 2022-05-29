@@ -106,10 +106,13 @@ require("catppuccin").setup {
 local c = require("catppuccin.api.colors").get_colors()
 
 require("catppuccin").remap {
-  -- closer to old catppuccin
-  TSKeyword = { fg = c.red, style = "NONE" },
-  TSField = { fg = c.lavender, style = "NONE" },
-  TSComment = { fg = c.overlay0, style = "italic" },
+  -- remap
+  TSKeyword = { fg = c.red, style = "NONE" }, -- different color
+  TSField = { fg = c.lavender, style = "NONE" }, -- different color
+  TSPunctBracket = { fg = c.subtext0 }, -- more bright
+  Comment = { fg = c.overlay0, style = "italic" }, -- more bright
+  markdownTSLiteral = { fg = c.teal }, -- remove italics
+  TSURI = { fg = c.rosewater, style = "underline" }, -- remove italics
 
   -- alpha
   AlphaButton = { fg = c.blue },
