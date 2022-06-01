@@ -1,36 +1,36 @@
--- vim.g.catppuccin_flavour = "mocha"
+vim.g.catppuccin_flavour = "mocha"
 
--- restore the old catppuccin colors
-require("catppuccin.core.palettes.init").get_palette = function()
-  return {
-    rosewater = "#F5E0DC",
-    flamingo = "#F2CDCD",
-    pink = "#F5C2E7",
-    mauve = "#DDB6F2",
-    red = "#F28FAD",
-    maroon = "#E8A2AF",
-    peach = "#F8BD96",
-    yellow = "#FAE3B0",
-    green = "#ABE9B3",
-    teal = "#B5E8E0",
-    sky = "#89DCEB",
-    sapphire = "#74C7EC",
-    blue = "#96CDFB",
-    lavender = "#C9CBFF",
-    text = "#C6D0F5",
-    subtext1 = "#B3BCDF",
-    subtext0 = "#A1A8C9",
-    overlay2 = "#8E95B3",
-    overlay1 = "#7B819D",
-    overlay0 = "#696D86",
-    surface2 = "#565970",
-    surface1 = "#43465A",
-    surface0 = "#313244",
-    base = "#1E1E2E",
-    mantle = "#181825",
-    crust = "#11111B",
-  }
-end
+-- old catppuccin colors
+-- require("catppuccin.core.palettes.init").get_palette = function()
+--   return {
+--     rosewater = "#F5E0DC",
+--     flamingo = "#F2CDCD",
+--     pink = "#F5C2E7",
+--     mauve = "#DDB6F2",
+--     red = "#F28FAD",
+--     maroon = "#E8A2AF",
+--     peach = "#F8BD96",
+--     yellow = "#FAE3B0",
+--     green = "#ABE9B3",
+--     teal = "#B5E8E0",
+--     sky = "#89DCEB",
+--     sapphire = "#74C7EC",
+--     blue = "#96CDFB",
+--     lavender = "#C9CBFF",
+--     text = "#CDD6F4",
+--     subtext1 = "#BAC2DE",
+--     subtext0 = "#A6ADC8",
+--     overlay2 = "#9399B2",
+--     overlay1 = "#7F849C",
+--     overlay0 = "#6C7086",
+--     surface2 = "#585B70",
+--     surface1 = "#45475A",
+--     surface0 = "#313244",
+--     base = "#1E1E2E",
+--     mantle = "#181825",
+--     crust = "#11111B",
+--   }
+-- end
 
 require("catppuccin").setup {
   transparent_background = false,
@@ -106,14 +106,14 @@ require("catppuccin").setup {
 local c = require("catppuccin.api.colors").get_colors()
 
 require("catppuccin").remap {
-  -- remap
-  TSKeyword = { fg = c.red, style = "NONE" }, -- different color
-  TSField = { fg = c.lavender, style = "NONE" }, -- different color
-  TSKeywordFunction = { fg = c.maroon, style = "NONE" }, -- different color
-  TSKeywordReturn = { fg = c.pink, style = "NONE" }, -- different color
-  TSParameter = { fg = c.teal, style = "NONE" }, -- different color, remove italics
-  TSPunctBracket = { fg = c.subtext0 }, -- more bright
-  Comment = { fg = c.overlay0, style = "italic" }, -- more bright
+  -- TSKeyword = { fg = c.red, style = "NONE" }, -- different color
+  -- TSField = { fg = c.lavender, style = "NONE" }, -- different color
+  -- TSKeywordFunction = { fg = c.maroon, style = "NONE" }, -- different color
+  -- TSKeywordReturn = { fg = c.pink, style = "NONE" }, -- different color
+  -- TSParameter = { fg = c.teal, style = "NONE" }, -- different color, remove italics
+  -- TSPunctBracket = { fg = c.subtext0 }, -- more bright
+  -- Comment = { fg = c.overlay0, style = "italic" }, -- more bright
+  TSParameter = { fg = c.maroon, style = "NONE" }, -- remove italics
   markdownTSLiteral = { fg = c.teal }, -- remove italics
   TSURI = { fg = c.rosewater, style = "underline" }, -- remove italics
 

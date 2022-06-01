@@ -4,6 +4,8 @@ require("lualine").setup {
   options = {
     theme = cs,
     globalstatus = true,
+    section_separators = { left = '', right = ''},
+    component_separators = { left = ' ', right = ' '},
   },
   tabline = {
     lualine_a = {
