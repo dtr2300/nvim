@@ -26,6 +26,7 @@ This is my personal [Neovim](https://neovim.io/) configuration (Windows, WSL/Ubu
 - [nvim-colorizer.lua](https://github.com/norcalli/nvim-colorizer.lua) - a high-performance color highlighter for neovim which has no external dependencies
 - [Comment.nvim](https://github.com/numToStr/Comment.nvim) - smart and powerful comment plugin for neovim
 - [toggleterm.nvim](https://github.com/akinsho/toggleterm.nvim) - a neovim lua plugin to help easily manage multiple terminal windows
+- [aerial.nvim](https://github.com/stevearc/aerial.nvim/) - a code outline window for skimming and quick navigation
 <!-- break -->
 - [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) - a highly extendable fuzzy finder over lists
 - [telescope-file-browser.nvim](https://github.com/nvim-telescope/telescope-file-browser.nvim) - a file browser extension for telescope.nvim

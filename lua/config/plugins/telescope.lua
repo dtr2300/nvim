@@ -40,7 +40,7 @@ require("telescope").setup {
 }
 
 -- load extensions
-for _, ext in ipairs { "fzf", "file_browser", "repo", "packer", "luasnip" } do
+for _, ext in ipairs { "fzf", "file_browser", "repo", "packer", "luasnip", "aerial" } do
   require("telescope").load_extension(ext)
 end
 
@@ -48,6 +48,7 @@ end
 local notes_dir = vim.fn.has "win32" == 1 and "~/Documents/Notes/notes" or "~/Notes/notes"
 
 vim.keymap.set("n", "<Leader>ta", "<Cmd>Telescope git_status<CR>", { silent = true })
+vim.keymap.set("n", "<Leader>tA", "<Cmd>Telescope aerial<CR>", { silent = true })
 vim.keymap.set("n", "<Leader>tB", function()
   require("telescope.builtin").builtin { include_extensions = true }
 end, { silent = true, desc = "Telescope builtin (include extensions)" })

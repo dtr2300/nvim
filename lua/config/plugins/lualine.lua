@@ -4,8 +4,8 @@ require("lualine").setup {
   options = {
     theme = cs,
     globalstatus = true,
-    section_separators = { left = '', right = ''},
-    component_separators = { left = ' ', right = ' '},
+    section_separators = { left = "", right = "" },
+    component_separators = { left = " ", right = " " },
   },
   tabline = {
     lualine_a = {
@@ -17,9 +17,15 @@ require("lualine").setup {
         symbols = {
           alternate_file = "",
         },
+        filetype_names = {
+          TelescopePrompt = "Telescope",
+          packer = "Packer",
+          alpha = "Alpha",
+          aerial = "Aerial",
+        },
       },
     },
     lualine_z = { "tabs" },
   },
-  extensions = { "quickfix" },
+  extensions = { "quickfix", "toggleterm", "aerial" },
 }

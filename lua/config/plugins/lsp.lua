@@ -47,6 +47,9 @@ local on_attach = function(client, bufnr)
 
   -- lsp_signature
   require("lsp_signature").on_attach()
+
+  -- aerial
+  require("aerial").on_attach(client, bufnr)
 end
 
 -- setup language servers -----------------------
