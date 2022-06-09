@@ -2,7 +2,7 @@
 vim.keymap.set("n", "<Leader>cn", "<Cmd>ene<CR>", { silent = true })
 vim.keymap.set("n", "<A-.>", "<Cmd>bn<CR>", { silent = true })
 vim.keymap.set("n", "<A-,>", "<Cmd>bp<CR>", { silent = true })
-vim.keymap.set("n", "<A-c>", "<Cmd>:AerialClose<CR><Cmd>bd<CR>", { silent = true })
+vim.keymap.set("n", "<A-c>", "<Cmd>bp<Bar>sp<Bar>bn<Bar>bd<CR>", { silent = true })
 
 -- bubble line(s)
 vim.keymap.set("n", "<C-Up>", "<Cmd>m .-2<CR>", { noremap = false, silent = true })
