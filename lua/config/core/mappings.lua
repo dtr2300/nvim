@@ -47,6 +47,7 @@ end, { silent = true, desc = "Show session info" })
 
 -- set filetype
 vim.keymap.set("n", "<Leader>Lc", "<Cmd>set ft=cpp<CR>", { silent = true })
+vim.keymap.set("n", "<Leader>Lh", "<Cmd>set ft=haskell<CR>", { silent = true })
 vim.keymap.set("n", "<Leader>Ll", "<Cmd>set ft=lua<CR>", { silent = true })
 vim.keymap.set("n", "<Leader>Lm", "<Cmd>set ft=markdown<CR>", { silent = true })
 vim.keymap.set("n", "<Leader>Lp", "<Cmd>set ft=python<CR>", { silent = true })
