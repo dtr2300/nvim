@@ -1,25 +1,26 @@
 M = {}
 
-function M.send(terminal_id)
-  terminal_id = terminal_id or 1
-  terminal_id = tonumber(terminal_id)
-
+function M.send(terminal_id, send_paragraph)
   vim.validate {
     terminal_id = { terminal_id, "number", true },
+    send_paragraph = { send_paragraph, "boolean", true },
   }
+  terminal_id = terminal_id or 1
+  terminal_id = tonumber(terminal_id)
+  send_paragraph = send_paragraph == nil or send_paragraph
 
   local b_line, _ = unpack(vim.api.nvim_win_get_cursor(0))
-
-  -- find paragraph start
   local startl = b_line
-  while vim.fn.getline(startl - 1) ~= "" do
-    startl = startl - 1
-  end
-
-  -- find paragraph end
   local endl = b_line
-  while vim.fn.getline(endl + 1) ~= "" do
-    endl = endl + 1
+
+  -- find paragraph
+  if send_paragraph then
+    while vim.fn.getline(startl - 1) ~= "" do
+      startl = startl - 1
+    end
+    while vim.fn.getline(endl + 1) ~= "" do
+      endl = endl + 1
+    end
   end
 
   local lines = vim.fn.getline(startl, endl)
@@ -39,6 +40,8 @@ function M.send(terminal_id)
   end, lines)
 
   -- TODO: strip inline comments
+
+  -- TODO: flash (?)
 
   local v = table.concat(lines, " ")
 
