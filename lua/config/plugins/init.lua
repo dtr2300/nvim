@@ -25,6 +25,7 @@ return require("packer").startup {
     use { "numToStr/Comment.nvim", config = p "comment" }
     use { "akinsho/toggleterm.nvim", config = p "toggleterm" }
     use { "stevearc/aerial.nvim", config = p "aerial" }
+    -- use { "tiagovla/scope.nvim", config = p "scope" }
 
     local telescope_ext = {
       { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },

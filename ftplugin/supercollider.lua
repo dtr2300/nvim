@@ -22,6 +22,3 @@ end, { silent = true, desc = "Open SCHelp source for the classname under the cur
 vim.keymap.set("n", "<F8>", function()
   require("config.utils.sc").play_scale()
 end, { silent = true, buffer = true, desc = "Play a scale" })
-
-vim.keymap.set("n", "<F5>", "<Cmd>SCNvimStart<CR>", { silent = true, buffer = true })
-vim.keymap.set("n", "<F6>", "<Cmd>SCNvimStop<CR>", { silent = true, buffer = true })

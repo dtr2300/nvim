@@ -1,20 +1,40 @@
-vim.g.scnvim_postwin_orientation = "h"
-vim.g.scnvim_postwin_size = 7
-vim.g.scnvim_scdoc = 0
-vim.g.scnvim_scdoc_render_prg = "f:\\devel\\Scripts\\pandoc.exe"
-vim.g.scnvim_snippet_format = "luasnip"
--- vim.g.scnvim_no_mappings = 1
+local scnvim = require "scnvim"
+local map = scnvim.map
+local map_expr = scnvim.map_expr
 
--- vim.keymap.set("n", "<M-e>", "<Plug>(scnvim-send-block)", { remap = true, buffer = true })
--- vim.keymap.set("i", "<M-e>", "<C-o><Plug>(scnvim-send-block)", { remap = true, buffer = true })
--- vim.keymap.set("v", "<M-e>", "<Plug>(scnvim-send-selection)", { remap = true, buffer = true })
---
--- vim.keymap.set("n", "<C-e>", "<Plug>(scnvim-send-line)", { remap = true, buffer = true })
--- vim.keymap.set("i", "<C-e>", "<C-o><Plug>(scnvim-send-line)", { remap = true, buffer = true })
---
--- vim.keymap.set("n", "<F12>", "<Plug>(scnvim-hard-stop)", { remap = true, buffer = true })
--- vim.keymap.set("i", "<F12>", "<C-o><Plug>(scnvim-hard-stop)", { remap = true, buffer = true })
-
--- does this work?
--- vim.keymap.set("n", "<M-k>", "<Plug>(scnvim-show-signature)", { remap = true, buffer = true })
--- vim.keymap.set("i", "<M-k>", "<C-o><Plug>(scnvim-show-signature)", { remap = true, buffer = true })
+scnvim.setup {
+  keymaps = {
+    ["<C-e>"] = map("editor.send_line", { "i", "n" }),
+    ["<M-e>"] = {
+      map("editor.send_block", { "i", "n" }),
+      map("editor.send_selection", "x"),
+    },
+    ["<CR>"] = map "postwin.toggle",
+    ["<M-CR>"] = map("postwin.toggle", "i"),
+    ["<M-L>"] = map("postwin.clear", { "n", "i" }),
+    ["<C-k>"] = map("signature.show", { "n", "i" }),
+    ["<F12>"] = map("sclang.hard_stop", { "n", "x", "i" }),
+    ["<F5>"] = map "sclang.start",
+    ["<F6>"] = map_expr "s.waitForBoot { s.volume = -12 }",
+    ["<F7>"] = map "sclang.stop",
+  },
+  documentation = {
+    cmd = "f:\\devel\\Scripts\\pandoc.exe",
+    horizontal = true,
+    direction = "top",
+    keymaps = true,
+  },
+  editor = {
+    highlight = {
+      color = "SCNvimEval",
+    },
+  },
+  postwin = {
+    float = {
+      enabled = true,
+      config = {
+        border = "rounded",
+      },
+    },
+  },
+}
