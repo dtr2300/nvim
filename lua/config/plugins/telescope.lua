@@ -61,6 +61,9 @@ end, { silent = true, desc = "Telescope builtin (include extensions)" })
 vim.keymap.set("n", "<Leader>tb", "<Cmd>Telescope buffers<CR>", { silent = true })
 vim.keymap.set("n", "<Leader>tC", "<Cmd>Telescope commands<CR>", { silent = true })
 vim.keymap.set("n", "<Leader>tc", "<Cmd>Telescope current_buffer_fuzzy_find<CR>", { silent = true })
+if vim.fn.has "win32" == 1 then
+  vim.keymap.set("n", "<Leader>td", "<Cmd>Telescope scdoc<CR>", { silent = true })
+end
 vim.keymap.set("n", "<Leader>tf", "<Cmd>Telescope find_files<CR>", { silent = true })
 vim.keymap.set("n", "<Leader>tF", "<Cmd>Telescope file_browser<CR>", { silent = true })
 vim.keymap.set("n", "<Leader>tg", "<Cmd>Telescope git_files<CR>", { silent = true })
