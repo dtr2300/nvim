@@ -2,15 +2,10 @@ if vim.fn.has "win32" == 0 then
   return
 end
 
--- open sc help
-vim.keymap.set("n", "<S-F1>", function()
-  require("config.utils.sc").schelp(require("telescope.themes").get_dropdown())
-end, { silent = true, buffer = true, desc = "Open SCHelp" })
-
 -- open the help source file for the classname under the cursor
 vim.keymap.set("n", "<C-F1>", function()
   local subject = vim.fn.expand "<cword>"
-  local cmd = [[SCDoc.helpSourceDir +/+ \"Classes\" +/+ \"%s\" ++ \".schelp\"]]
+  local cmd = [[SCDoc.helpSourceDir +/+ "Classes" +/+ "%s" ++ ".schelp"]]
   cmd = string.format(cmd, subject)
   require("scnvim").eval(cmd, function(result)
     result = string.format("edit %s", result)

@@ -15,15 +15,15 @@ scnvim.setup {
     ["<C-k>"] = map("signature.show", { "n", "i" }),
     ["<F12>"] = map("sclang.hard_stop", { "n", "x", "i" }),
     ["<F5>"] = map "sclang.start",
-    ["<F6>"] = map_expr "s.waitForBoot { s.volume = -12 }",
-    ["<F7>"] = map "sclang.stop",
+    ["<S-F5>"] = map_expr "s.waitForBoot { s.volume = -12 }",
+    ["<F6>"] = map "sclang.stop",
   },
-  documentation = {
-    cmd = "f:\\devel\\Scripts\\pandoc.exe",
-    horizontal = true,
-    direction = "top",
-    keymaps = true,
-  },
+  -- documentation = {
+  --   cmd = "pandoc.exe",
+  --   horizontal = true,
+  --   direction = "top",
+  --   keymaps = true,
+  -- },
   editor = {
     highlight = {
       color = "SCNvimEval",

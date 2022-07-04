@@ -1,5 +1,7 @@
 M = {}
 
+local exec = require("toggleterm").exec
+
 function M.send(terminal_id, send_paragraph)
   vim.validate {
     terminal_id = { terminal_id, "number", true },
@@ -43,9 +45,7 @@ function M.send(terminal_id, send_paragraph)
 
   -- TODO: flash (?)
 
-  local v = table.concat(lines, " ")
-
-  require("toggleterm").exec(v, terminal_id, nil, nil, nil, nil, false)
+  exec(table.concat(lines, " "), terminal_id, nil, nil, nil, nil, false)
 end
 
 return M

@@ -34,6 +34,7 @@ This is my personal [Neovim](https://neovim.io/) configuration (Windows, WSL/Ubu
 - [telescope-fzf-native.nvim](https://github.com/nvim-telescope/telescope-fzf-native.nvim) - fzf sorter for telescope written in c
 - [telescope-packer.nvim](https://github.com/nvim-telescope/telescope-packer.nvim) - a telescope extension that provides extra functionality for packer.nvim
 - [telescope-luasnip](https://github.com/benfowler/telescope-luasnip.nvim) - telescope.nvim extension that adds luasnip integration
+- [telescope-scdoc.nvim](https://github.com/davidgranstrom/telescope-scdoc.nvim) - a supercollider documentation picker
 <!-- break -->
 - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) - provide a simple and easy way to use the interface for tree-sitter in neovim and provide some basic functionality such as highlighting based on it
 - [playground](https://github.com/nvim-treesitter/playground) - view treesitter information directly in neovim

@@ -34,6 +34,9 @@ return require("packer").startup {
       "nvim-telescope/telescope-packer.nvim",
       "benfowler/telescope-luasnip.nvim",
     }
+    if vim.fn.has "win32" == 1 then
+      table.insert(telescope_ext, "davidgranstrom/telescope-scdoc.nvim")
+    end
     use { "nvim-telescope/telescope.nvim", config = p "telescope", requires = telescope_ext }
 
     local ts_modules = {

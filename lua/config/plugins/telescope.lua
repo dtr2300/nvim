@@ -40,7 +40,13 @@ require("telescope").setup {
 }
 
 -- load extensions
-for _, ext in ipairs { "fzf", "file_browser", "repo", "packer", "luasnip", "aerial" } do
+local extensions = { "fzf", "file_browser", "repo", "packer", "luasnip", "aerial" }
+
+if vim.fn.has "win32" == 1 then
+  table.insert(extensions, "scdoc")
+end
+
+for _, ext in ipairs(extensions) do
   require("telescope").load_extension(ext)
 end
 
