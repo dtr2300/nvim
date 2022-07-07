@@ -1,5 +1,5 @@
 local parsers = require "nvim-treesitter.parsers"
-local tsrainbow_enabled_list = { "lua", "supercollider", "json" }
+local tsrainbow_enabled_list = { "lua", "supercollider", "json", "fennel" }
 
 require("nvim-treesitter.configs").setup {
   ensure_installed = "all",

@@ -16,19 +16,21 @@ local sessions = function(opts)
   opts.cwd = vim.fn.expand(opts.cwd or session_dir)
   opts.entry_maker = opts.entry_maker or make_entry.gen_from_file(opts)
   local find_command = { "fd", "-t", "f", "-H", "\\.vim$", opts.cwd }
-  pickers.new(opts, {
-    prompt_title = "Open Session",
-    finder = finders.new_oneshot_job(find_command, opts),
-    sorter = conf.file_sorter(opts),
-    attach_mappings = function(buf, map)
-      actions.select_default:replace(function()
-        actions.close(buf)
-        local selection = action_state.get_selected_entry()
-        vim.cmd("source " .. selection.value)
-      end)
-      return true
-    end,
-  }):find()
+  pickers
+    .new(opts, {
+      prompt_title = "Open Session",
+      finder = finders.new_oneshot_job(find_command, opts),
+      sorter = conf.file_sorter(opts),
+      attach_mappings = function(buf, map)
+        actions.select_default:replace(function()
+          actions.close(buf)
+          local selection = action_state.get_selected_entry()
+          vim.cmd("source " .. selection.value)
+        end)
+        return true
+      end,
+    })
+    :find()
 end
 
 function M.info()

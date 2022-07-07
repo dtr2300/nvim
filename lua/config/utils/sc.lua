@@ -20,21 +20,23 @@ function M.sc_eval(sc_code, sc_return_code, o)
   require("scnvim").eval(sc_code, function(return_val)
     local sc_eval_picker = function(opts)
       opts = opts or {}
-      pickers.new(opts, {
-        prompt_title = "sc-eval",
-        finder = finders.new_table { results = string2table(return_val) },
-        sorter = conf.generic_sorter(opts),
-        attach_mappings = function(prompt_bufnr, map)
-          actions.select_default:replace(function()
-            actions.close(prompt_bufnr)
-            local selection = action_state.get_selected_entry()
-            if sc_return_code then
-              require("scnvim").send(string.format(sc_return_code, selection.value))
-            end
-          end)
-          return true
-        end,
-      }):find()
+      pickers
+        .new(opts, {
+          prompt_title = "sc-eval",
+          finder = finders.new_table { results = string2table(return_val) },
+          sorter = conf.generic_sorter(opts),
+          attach_mappings = function(prompt_bufnr, map)
+            actions.select_default:replace(function()
+              actions.close(prompt_bufnr)
+              local selection = action_state.get_selected_entry()
+              if sc_return_code then
+                require("scnvim").send(string.format(sc_return_code, selection.value))
+              end
+            end)
+            return true
+          end,
+        })
+        :find()
     end
     sc_eval_picker(themes.get_dropdown(o))
   end)

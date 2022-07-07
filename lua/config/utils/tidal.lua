@@ -12,6 +12,11 @@ function M.send(terminal_id, send_paragraph)
   send_paragraph = send_paragraph == nil or send_paragraph
 
   local b_line, _ = unpack(vim.api.nvim_win_get_cursor(0))
+
+  if vim.fn.getline(b_line) == "" then
+    return
+  end
+
   local startl = b_line
   local endl = b_line
 
@@ -32,20 +37,24 @@ function M.send(terminal_id, send_paragraph)
   end
 
   -- strip whitespace
-  for i, v in ipairs(lines) do
-    lines[i] = v:gsub("^%s+", ""):gsub("%s+$", "")
-  end
-
-  -- strip lines with only comments
-  lines = vim.tbl_filter(function(value)
-    return value:find "^%-%-" == nil
+  lines = vim.tbl_map(function(line)
+    return line:gsub("^%s+", ""):gsub("%s+$", "")
   end, lines)
 
-  -- TODO: strip inline comments
+  -- strip lines with only comments
+  lines = vim.tbl_filter(function(line)
+    return line:find "^%-%-" == nil
+  end, lines)
 
-  -- TODO: flash (?)
-
+  -- send
   exec(table.concat(lines, " "), terminal_id, nil, nil, nil, nil, false)
+
+  -- flash
+  local ns = vim.api.nvim_create_namespace "tidal_flash"
+  vim.highlight.range(0, ns, "SCNvimEval", { startl - 1, 0 }, { endl, 0 }, { inclusive = true })
+  vim.defer_fn(function()
+    vim.api.nvim_buf_clear_namespace(0, ns, 0, -1)
+  end, 200)
 end
 
 return M
