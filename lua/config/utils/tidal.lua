@@ -11,13 +11,12 @@ function M.send(terminal_id, send_paragraph)
   terminal_id = tonumber(terminal_id)
   send_paragraph = send_paragraph == nil or send_paragraph
 
-  local b_line, _ = unpack(vim.api.nvim_win_get_cursor(0))
-  local lines = { vim.fn.getline(b_line) }
+  local startl, _ = unpack(vim.api.nvim_win_get_cursor(0))
+  local lines = { vim.fn.getline(startl) }
   if lines[1] == "" then
     return
   end
-  local startl = b_line
-  local endl = b_line
+  local endl = startl
 
   -- find start and end of paragraph
   if send_paragraph then

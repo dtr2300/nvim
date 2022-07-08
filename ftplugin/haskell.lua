@@ -22,3 +22,13 @@ vim.keymap.set(
 
 -- silence please
 vim.keymap.set("n", "<F12>", [[<Cmd>1TermExec cmd="hush" open=0<CR>]], { silent = true, buffer = true })
+
+-- mutes
+for i = 1, 8 do
+  vim.keymap.set(
+    "n",
+    string.format("<Leader>m%d", i),
+    string.format([[<Cmd>1TermExec cmd="d%d $ silence" open=0<CR>]], i),
+    { silent = true, buffer = true }
+  )
+end
