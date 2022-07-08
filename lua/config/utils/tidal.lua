@@ -12,28 +12,30 @@ function M.send(terminal_id, send_paragraph)
   send_paragraph = send_paragraph == nil or send_paragraph
 
   local b_line, _ = unpack(vim.api.nvim_win_get_cursor(0))
-
-  if vim.fn.getline(b_line) == "" then
+  local lines = { vim.fn.getline(b_line) }
+  if lines[1] == "" then
     return
   end
-
   local startl = b_line
   local endl = b_line
 
-  -- find paragraph
+  -- find start and end of paragraph
   if send_paragraph then
-    while vim.fn.getline(startl - 1) ~= "" do
-      startl = startl - 1
-    end
-    while vim.fn.getline(endl + 1) ~= "" do
-      endl = endl + 1
-    end
-  end
-
-  local lines = vim.fn.getline(startl, endl)
-
-  if #lines == 0 or lines == nil then
-    return
+    local line
+    repeat
+      line = vim.fn.getline(startl - 1)
+      if line ~= "" then
+        table.insert(lines, 1, line)
+        startl = startl - 1
+      end
+    until line == ""
+    repeat
+      line = vim.fn.getline(endl + 1)
+      if line ~= "" then
+        table.insert(lines, line)
+        endl = endl + 1
+      end
+    until line == ""
   end
 
   -- strip whitespace
@@ -46,12 +48,16 @@ function M.send(terminal_id, send_paragraph)
     return line:find "^%-%-" == nil
   end, lines)
 
+  if #lines == 0 then
+    return
+  end
+
   -- send
   exec(table.concat(lines, " "), terminal_id, nil, nil, nil, nil, false)
 
   -- flash
   local ns = vim.api.nvim_create_namespace "tidal_flash"
-  vim.highlight.range(0, ns, "SCNvimEval", { startl - 1, 0 }, { endl, 0 }, { inclusive = true })
+  vim.highlight.range(0, ns, "SCNvimEval", { startl - 1, 0 }, { endl, 100000 }, { inclusive = true })
   vim.defer_fn(function()
     vim.api.nvim_buf_clear_namespace(0, ns, 0, -1)
   end, 200)
