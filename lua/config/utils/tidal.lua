@@ -37,14 +37,14 @@ function M.send(terminal_id, send_paragraph)
     until line == ""
   end
 
-  -- strip whitespace
+  -- strip whitespace and comments
   lines = vim.tbl_map(function(line)
-    return line:gsub("^%s+", ""):gsub("%s+$", "")
+    return line:gsub("^%s+", ""):gsub("%-%-.+$", ""):gsub("%s+$", "")
   end, lines)
 
-  -- strip lines with only comments
+  -- remove empty lines
   lines = vim.tbl_filter(function(line)
-    return line:find "^%-%-" == nil
+    return line ~= ""
   end, lines)
 
   if #lines == 0 then
