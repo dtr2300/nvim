@@ -8,7 +8,6 @@ function M.send(terminal_id, send_paragraph)
     send_paragraph = { send_paragraph, "boolean", true },
   }
   terminal_id = terminal_id or 1
-  terminal_id = tonumber(terminal_id)
   send_paragraph = send_paragraph == nil or send_paragraph
 
   local startl, _ = unpack(vim.api.nvim_win_get_cursor(0))

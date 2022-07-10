@@ -20,6 +20,14 @@ vim.keymap.set(
   { silent = true, buffer = true }
 )
 
+-- stop tidalcycles
+vim.keymap.set(
+  "n",
+  "<F6>",
+  [[<Cmd>1TermExec cmd=""<CR><Cmd>1TermExec cmd="exit"<CR>]],
+  { silent = true, buffer = true }
+)
+
 -- silence please
 vim.keymap.set("n", "<F12>", [[<Cmd>1TermExec cmd="hush" open=0<CR>]], { silent = true, buffer = true })
 
