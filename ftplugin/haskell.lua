@@ -30,9 +30,10 @@ vim.keymap.set(
 
 -- silence please
 vim.keymap.set("n", "<F12>", [[<Cmd>1TermExec cmd="hush" open=0<CR>]], { silent = true, buffer = true })
+vim.keymap.set("n", "<S-F12>", [[<Cmd>1TermExec cmd="panic" open=0<CR>]], { silent = true, buffer = true })
 
 -- mutes
-for i = 1, 8 do
+for i = 1, 9 do
   vim.keymap.set(
     "n",
     string.format("<Leader>m%d", i),

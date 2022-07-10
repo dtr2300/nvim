@@ -23,7 +23,7 @@ return require("packer").startup {
     use { "folke/zen-mode.nvim", config = p "zenmode" }
     use { "norcalli/nvim-colorizer.lua", config = p "colorizer" }
     use { "numToStr/Comment.nvim", config = p "comment" }
-    use { "akinsho/toggleterm.nvim", config = p "toggleterm" }
+    use { "akinsho/toggleterm.nvim", config = p "toggleterm", tag = "v2.*" }
     use { "stevearc/aerial.nvim", config = p "aerial" }
     -- use { "tiagovla/scope.nvim", config = p "scope" }
 
