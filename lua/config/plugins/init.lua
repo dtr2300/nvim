@@ -37,7 +37,7 @@ return require("packer").startup {
     if vim.fn.has "win32" == 1 then
       table.insert(telescope_ext, "davidgranstrom/telescope-scdoc.nvim")
     end
-    use { "nvim-telescope/telescope.nvim", config = p "telescope", requires = telescope_ext }
+    use { "nvim-telescope/telescope.nvim", config = p "telescope", branch = "0.1.x", requires = telescope_ext }
 
     local ts_modules = {
       "nvim-treesitter/playground",

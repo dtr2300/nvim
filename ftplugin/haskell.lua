@@ -24,7 +24,7 @@ vim.keymap.set(
 vim.keymap.set(
   "n",
   "<F6>",
-  [[<Cmd>1TermExec cmd=""<CR><Cmd>1TermExec cmd="exit"<CR>]],
+  [[<Cmd>1TermExec cmd=":quit"<CR><Cmd>1TermExec cmd="exit"<CR>]],
   { silent = true, buffer = true }
 )
 
@@ -37,7 +37,7 @@ for i = 1, 9 do
   vim.keymap.set(
     "n",
     string.format("<Leader>m%d", i),
-    string.format([[<Cmd>1TermExec cmd="d%d $ silence" open=0<CR>]], i),
+    string.format([[<Cmd>1TermExec cmd="d%d silence" open=0<CR>]], i),
     { silent = true, buffer = true }
   )
 end
