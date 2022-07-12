@@ -1,6 +1,6 @@
 vim.g.catppuccin_flavour = "mocha"
 
-local c = require("catppuccin.api.colors").get_colors()
+local c = require("catppuccin.core.palettes.init").get_palette()
 
 require("catppuccin").setup {
   transparent_background = false,
