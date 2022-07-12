@@ -1,5 +1,7 @@
 vim.g.catppuccin_flavour = "mocha"
 
+local c = require("catppuccin.api.colors").get_colors()
+
 require("catppuccin").setup {
   transparent_background = false,
   term_colors = true,
@@ -69,49 +71,44 @@ require("catppuccin").setup {
     telekasten = false,
     symbols_outline = false,
   },
-}
+  custom_highlights = {
+    TSParameter = { fg = c.maroon, style = "NONE" }, -- remove italics
+    markdownTSLiteral = { fg = c.teal }, -- remove italics
+    TSURI = { fg = c.rosewater, style = "underline" }, -- remove italics
 
-local c = require("catppuccin.api.colors").get_colors()
+    -- alpha
+    AlphaButton = { fg = c.blue },
+    AlphaButtonShortcut = { fg = c.peach },
+    AlphaCol1 = { fg = c.red },
+    AlphaCol2 = { fg = c.rosewater },
+    AlphaCol3 = { fg = c.yellow },
+    AlphaCol4 = { fg = c.green },
+    AlphaCol5 = { fg = c.sky },
+    AlphaQuote = { fg = c.lavender, style = "italic" },
 
-require("catppuccin").remap {
-  -- TSPunctBracket = { fg = c.subtext0 }, -- more bright
-  -- Comment = { fg = c.overlay0, style = "italic" }, -- more bright
-  TSParameter = { fg = c.maroon, style = "NONE" }, -- remove italics
-  markdownTSLiteral = { fg = c.teal }, -- remove italics
-  TSURI = { fg = c.rosewater, style = "underline" }, -- remove italics
+    -- scnvim
+    SCNvimEval = { fg = c.black0, bg = c.lavender },
 
-  -- alpha
-  AlphaButton = { fg = c.blue },
-  AlphaButtonShortcut = { fg = c.peach },
-  AlphaCol1 = { fg = c.red },
-  AlphaCol2 = { fg = c.rosewater },
-  AlphaCol3 = { fg = c.yellow },
-  AlphaCol4 = { fg = c.green },
-  AlphaCol5 = { fg = c.sky },
-  AlphaQuote = { fg = c.lavender, style = "italic" },
+    -- luasnip
+    LuaSnipChoiceNode = { fg = c.yellow, style = "bold" },
+    LuaSnipInsertNode = { fg = c.white, style = "bold" },
 
-  -- scnvim
-  SCNvimEval = { fg = c.black0, bg = c.lavender },
-
-  -- luasnip
-  LuaSnipChoiceNode = { fg = c.yellow, style = "bold" },
-  LuaSnipInsertNode = { fg = c.white, style = "bold" },
-
-  -- aerial
-  AerialClass = { fg = c.yellow },
-  AerialClassIcon = { fg = c.yellow },
-  AerialConstructor = { fg = c.sapphire },
-  AerialConstructorIcon = { fg = c.sapphire },
-  AerialEnum = { fg = c.yellow },
-  AerialEnumIcon = { fg = c.yellow },
-  AerialFunction = { fg = c.blue },
-  AerialFunctionIcon = { fg = c.blue },
-  AerialInterface = { fg = c.yellow },
-  AerialInterfaceIcon = { fg = c.yellow },
-  AerialModule = { fg = c.blue, style = "italic" },
-  AerialModuleIcon = { fg = c.blue },
-  AerialMethod = { fg = c.blue },
-  AerialMethodIcon = { fg = c.blue },
-  AerialStruct = { fg = c.yellow },
-  AerialStructIcon = { fg = c.yellow },
+    -- aerial
+    AerialClass = { fg = c.yellow },
+    AerialClassIcon = { fg = c.yellow },
+    AerialConstructor = { fg = c.sapphire },
+    AerialConstructorIcon = { fg = c.sapphire },
+    AerialEnum = { fg = c.yellow },
+    AerialEnumIcon = { fg = c.yellow },
+    AerialFunction = { fg = c.blue },
+    AerialFunctionIcon = { fg = c.blue },
+    AerialInterface = { fg = c.yellow },
+    AerialInterfaceIcon = { fg = c.yellow },
+    AerialModule = { fg = c.blue, style = "italic" },
+    AerialModuleIcon = { fg = c.blue },
+    AerialMethod = { fg = c.blue },
+    AerialMethodIcon = { fg = c.blue },
+    AerialStruct = { fg = c.yellow },
+    AerialStructIcon = { fg = c.yellow },
+  },
 }
