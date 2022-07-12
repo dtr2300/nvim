@@ -87,7 +87,7 @@ require("catppuccin").setup {
     AlphaQuote = { fg = c.lavender, style = "italic" },
 
     -- scnvim
-    SCNvimEval = { fg = c.black0, bg = c.lavender },
+    SCNvimEval = { fg = c.base, bg = c.lavender },
 
     -- luasnip
     LuaSnipChoiceNode = { fg = c.yellow, style = "bold" },
