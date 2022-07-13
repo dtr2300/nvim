@@ -6,34 +6,34 @@ require("catppuccin").setup {
   transparent_background = false,
   term_colors = true,
   styles = {
-    comments = "italic",
-    conditionals = "bold",
-    loops = "NONE",
-    functions = "NONE",
-    keywords = "NONE",
-    strings = "NONE",
-    variables = "NONE",
-    numbers = "NONE",
-    booleans = "NONE",
-    properties = "NONE",
-    types = "NONE",
-    operators = "NONE",
+    comments = { "italic" },
+    conditionals = { "bold" },
+    loops = {},
+    functions = {},
+    keywords = {},
+    strings = {},
+    variables = {},
+    numbers = {},
+    booleans = {},
+    properties = {},
+    types = {},
+    operators = {},
   },
   integrations = {
     treesitter = true,
     native_lsp = {
       enabled = true,
       virtual_text = {
-        errors = "italic",
-        hints = "italic",
-        warnings = "italic",
-        information = "italic",
+        errors = { "italic" },
+        hints = { "italic" },
+        warnings = { "italic" },
+        information = { "italic" },
       },
       underlines = {
-        errors = "underline",
-        hints = "underline",
-        warnings = "underline",
-        information = "underline",
+        errors = {},
+        hints = {},
+        warnings = {},
+        information = {},
       },
     },
     lsp_trouble = false,
@@ -72,9 +72,10 @@ require("catppuccin").setup {
     symbols_outline = false,
   },
   custom_highlights = {
-    TSParameter = { fg = c.maroon, style = "NONE" }, -- remove italics
-    markdownTSLiteral = { fg = c.teal }, -- remove italics
-    TSURI = { fg = c.rosewater, style = "underline" }, -- remove italics
+    -- remove italics
+    TSParameter = { fg = c.maroon },
+    markdownTSLiteral = { fg = c.teal },
+    TSURI = { fg = c.rosewater, style = { "underline" } },
 
     -- alpha
     AlphaButton = { fg = c.blue },
@@ -84,14 +85,14 @@ require("catppuccin").setup {
     AlphaCol3 = { fg = c.yellow },
     AlphaCol4 = { fg = c.green },
     AlphaCol5 = { fg = c.sky },
-    AlphaQuote = { fg = c.lavender, style = "italic" },
+    AlphaQuote = { fg = c.lavender, style = { "italic" } },
 
     -- scnvim
     SCNvimEval = { fg = c.base, bg = c.lavender },
 
     -- luasnip
-    LuaSnipChoiceNode = { fg = c.yellow, style = "bold" },
-    LuaSnipInsertNode = { fg = c.white, style = "bold" },
+    LuaSnipChoiceNode = { fg = c.yellow, style = { "bold" } },
+    LuaSnipInsertNode = { fg = c.white, style = { "bold" } },
 
     -- aerial
     AerialClass = { fg = c.yellow },
@@ -104,7 +105,7 @@ require("catppuccin").setup {
     AerialFunctionIcon = { fg = c.blue },
     AerialInterface = { fg = c.yellow },
     AerialInterfaceIcon = { fg = c.yellow },
-    AerialModule = { fg = c.blue, style = "italic" },
+    AerialModule = { fg = c.blue, style = { "italic" } },
     AerialModuleIcon = { fg = c.blue },
     AerialMethod = { fg = c.blue },
     AerialMethodIcon = { fg = c.blue },
