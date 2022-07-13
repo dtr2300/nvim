@@ -9,7 +9,7 @@ end
 
 -- strip comments, whitespace at the end
 local function strip(s)
-  return s:gsub("%-%-.+$", ""):gsub("%s+$", "")
+  return s:gsub("%-%-.*$", ""):gsub("%s+$", "")
 end
 
 -- flash paragraph
