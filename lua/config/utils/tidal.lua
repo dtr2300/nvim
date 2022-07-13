@@ -21,7 +21,6 @@ local function flash(startl, endl)
   end, 200)
 end
 
-
 -- get lines by searching forward or backward in the paragraph
 local function getlines(lines, start, step)
   local line
@@ -58,7 +57,7 @@ function M.send(terminal_id, send_paragraph)
     return
   end
   lines = strip(lines)
-  lines = lines ~= "" and { lines } or { }
+  lines = lines ~= "" and { lines } or {}
   local endl = startl
 
   -- get rest of the paragraph
