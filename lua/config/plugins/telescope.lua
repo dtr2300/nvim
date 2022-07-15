@@ -15,11 +15,12 @@ require("telescope").setup {
   defaults = {
     prompt_prefix = " ",
     file_ignore_patterns = { "__pycache__", "venv" },
+    border = false,
     --wrap_results = true,
     layout_config = {
       horizontal = {
-        width = 0.99,
-        height = 0.99,
+        width = { padding = 0 },
+        height = { padding = 0 },
         preview_width = 0.5,
         preview_cutoff = 20,
       },

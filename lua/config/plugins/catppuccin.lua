@@ -111,5 +111,17 @@ require("catppuccin").setup {
     AerialMethodIcon = { fg = c.blue },
     AerialStruct = { fg = c.yellow },
     AerialStructIcon = { fg = c.yellow },
+
+    -- telescope
+    TelescopePromptPrefix = { bg = c.crust },
+    TelescopePromptNormal = { bg = c.crust },
+    TelescopeResultsNormal = { bg = c.mantle },
+    TelescopePreviewNormal = { bg = c.crust },
+    TelescopePromptBorder = { bg = c.crust, fg = c.crust },
+    TelescopeResultsBorder = { bg = c.mantle, fg = c.crust },
+    TelescopePreviewBorder = { bg = c.crust, fg = c.crust },
+    TelescopePromptTitle = { fg = c.crust },
+    TelescopeResultsTitle = { fg = c.text },
+    TelescopePreviewTitle = { fg = c.crust },
   },
 }
