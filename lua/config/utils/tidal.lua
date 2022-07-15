@@ -29,7 +29,7 @@ local function flash(start_row, end_row)
 end
 
 -- collect lines by searching forward or backward in the paragraph
----@param lines table
+---@param lines table<number, string>
 ---@param start number
 ---@param step number
 ---@return table<number, string>, number
@@ -53,7 +53,7 @@ local function getlines(lines, start, step)
   return lines, start
 end
 
--- send  a line or paragraph in the current buffer to a terminal
+-- send a line or paragraph in the current buffer to a terminal
 ---@param terminal_id? number
 ---@param send_paragraph? boolean
 function M.send(terminal_id, send_paragraph)
