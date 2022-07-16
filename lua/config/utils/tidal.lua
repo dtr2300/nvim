@@ -17,7 +17,7 @@ local function strip(s)
   return s
 end
 
--- flash range of lines
+-- flash range of lines in current buffer
 ---@param start_row number
 ---@param end_row number
 local function flash(start_row, end_row)
@@ -30,14 +30,14 @@ end
 
 -- collect lines by searching forward or backward in the paragraph
 ---@param lines table<number, string>
----@param start number
+---@param row number
 ---@param step number
 ---@return table<number, string>, number
-local function getlines(lines, start, step)
+local function getlines(lines, row, step)
   local line
   local sline
   repeat
-    line = getline(start + step)
+    line = getline(row + step)
     if line ~= "" then
       sline = strip(line)
       if sline ~= "" then
@@ -47,13 +47,15 @@ local function getlines(lines, start, step)
           table.insert(lines, 1, sline)
         end
       end
-      start = start + step
+      row = row + step
     end
   until line == ""
-  return lines, start
+  return lines, row
 end
 
--- send a line or paragraph in the current buffer to a terminal
+-- send silently a line or paragraph in the current buffer to a terminal running tidalcycles
+-- multiple lines in a paragraph are concatenated
+-- line(s) are stripped of comments and leading/trailing whitespace
 ---@param terminal_id? number
 ---@param send_paragraph? boolean
 function M.send(terminal_id, send_paragraph)
