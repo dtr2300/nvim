@@ -1,10 +1,13 @@
 vim.g.catppuccin_flavour = "mocha"
 
-local c = require("catppuccin.core.palettes.init").get_palette()
+local c = require("catppuccin.palettes").get_palette()
 
 require("catppuccin").setup {
   transparent_background = false,
   term_colors = true,
+  compile = {
+    enabled = false,
+  },
   styles = {
     comments = { "italic" },
     conditionals = { "bold" },
