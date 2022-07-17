@@ -67,19 +67,19 @@ function M.send(terminal_id, send_paragraph)
   send_paragraph = send_paragraph == nil or send_paragraph
 
   -- get the first line
-  local startl, _ = unpack(vim.api.nvim_win_get_cursor(0))
-  local line = getline(startl)
+  local start_row, _ = unpack(vim.api.nvim_win_get_cursor(0))
+  local line = getline(start_row)
   if line == "" then
     return
   end
   line = strip(line)
   local lines = line ~= "" and { line } or {}
-  local endl = startl
+  local end_row = start_row
 
   -- get rest of the paragraph
   if send_paragraph then
-    lines, startl = getlines(lines, startl, -1)
-    lines, endl = getlines(lines, endl, 1)
+    lines, start_row = getlines(lines, start_row, -1)
+    lines, end_row = getlines(lines, end_row, 1)
   end
 
   -- anything left?
@@ -91,7 +91,7 @@ function M.send(terminal_id, send_paragraph)
   exec(table.concat(lines, " "), terminal_id, nil, nil, nil, nil, false)
 
   -- flash
-  flash(startl, endl)
+  flash(start_row, end_row)
 end
 
 return M
