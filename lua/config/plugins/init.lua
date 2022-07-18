@@ -14,7 +14,7 @@ return require("packer").startup {
     use { "MunifTanjim/nui.nvim" }
     use { "davidgranstrom/osc.nvim", opt = true }
 
-    use { "catppuccin/nvim", as = "catppuccin", config = p "catppuccin" }
+    use { "catppuccin/nvim", as = "catppuccin", config = p "catppuccin", run = ":CatppuccinCompile" }
     use { "navarasu/onedark.nvim", config = p "onedark", after = "catppuccin" }
 
     use { "nvim-lualine/lualine.nvim", config = p "lualine", after = "onedark.nvim" }

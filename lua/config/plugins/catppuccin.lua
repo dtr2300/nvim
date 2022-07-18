@@ -6,7 +6,9 @@ require("catppuccin").setup {
   transparent_background = false,
   term_colors = true,
   compile = {
-    enabled = false,
+    enabled = true,
+    path = vim.fn.stdpath "config" .. "/lua/config/plugins",
+    suffix = "_compiled",
   },
   styles = {
     comments = { "italic" },
