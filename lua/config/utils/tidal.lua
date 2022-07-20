@@ -2,6 +2,9 @@ M = {}
 
 local exec = require("toggleterm").exec
 
+local terminal_id = 1
+local show_output = false
+
 -- get line, strip whitespace at the beginning
 ---@param row number
 ---@return string
@@ -15,17 +18,6 @@ end
 local function strip(s)
   s = s:gsub("%-%-.*$", ""):gsub("%s+$", "")
   return s
-end
-
--- flash range of lines in current buffer
----@param start_row number
----@param end_row number
-local function flash(start_row, end_row)
-  local ns = vim.api.nvim_create_namespace "tidal_flash"
-  vim.highlight.range(0, ns, "SCNvimEval", { start_row - 1, 0 }, { end_row - 1, 100000 }, { inclusive = true })
-  vim.defer_fn(function()
-    vim.api.nvim_buf_clear_namespace(0, ns, 0, -1)
-  end, 200)
 end
 
 -- collect lines by searching forward or backward in the paragraph
@@ -53,17 +45,52 @@ local function getlines(lines, row, step)
   return lines, row
 end
 
--- send silently a line or paragraph in the current buffer to a terminal running tidalcycles
--- multiple lines in a paragraph are concatenated
--- line(s) are stripped of comments and leading/trailing whitespace
----@param terminal_id? number
----@param send_paragraph? boolean
-function M.send(terminal_id, send_paragraph)
+-- flash range of lines in current buffer
+---@param start_row number
+---@param end_row number
+local function flash(start_row, end_row)
+  local ns = vim.api.nvim_create_namespace "tidal_flash"
+  vim.highlight.range(0, ns, "SCNvimEval", { start_row - 1, 0 }, { end_row - 1, 100000 }, { inclusive = true })
+  vim.defer_fn(function()
+    vim.api.nvim_buf_clear_namespace(0, ns, 0, -1)
+  end, 200)
+end
+
+-- start terminal and tidalcycles
+function M.start()
+  exec("tidal.bat", terminal_id, 7, nil, "horizontal", true, true)
+end
+
+-- stop tidalcycles and terminal
+function M.stop()
+  exec(":quit", terminal_id, nil, nil, nil, false, true)
+  vim.defer_fn(function()
+    exec("exit", terminal_id, nil, nil, nil, false, true)
+  end, 50)
+end
+
+-- toggle show output
+function M.toggle_output()
+  show_output = not show_output
+end
+
+-- send a string
+---@param s string
+function M.send(s)
   vim.validate {
-    terminal_id = { terminal_id, "number", true },
+    s = { s, "string", false },
+  }
+  exec(s, terminal_id, nil, nil, nil, false, show_output)
+end
+
+-- send a line or paragraph in the current buffer
+-- * multiple lines in a paragraph are concatenated
+-- * line(s) are stripped of comments and leading/trailing whitespace
+---@param send_paragraph? boolean
+function M.send_buf(send_paragraph)
+  vim.validate {
     send_paragraph = { send_paragraph, "boolean", true },
   }
-  terminal_id = terminal_id or 1
   send_paragraph = send_paragraph == nil or send_paragraph
 
   -- get the first line
@@ -88,7 +115,7 @@ function M.send(terminal_id, send_paragraph)
   end
 
   -- send
-  exec(table.concat(lines, " "), terminal_id, nil, nil, nil, nil, false)
+  exec(table.concat(lines, " "), terminal_id, nil, nil, nil, false, show_output)
 
   -- flash
   flash(start_row, end_row)
