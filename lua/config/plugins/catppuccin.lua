@@ -3,6 +3,11 @@ vim.g.catppuccin_flavour = "mocha"
 local c = require("catppuccin.palettes").get_palette()
 
 require("catppuccin").setup {
+  dim_inactive = {
+    enabled = false,
+    shade = "dark",
+    percentage = 0.15,
+  },
   transparent_background = false,
   term_colors = true,
   compile = {
@@ -41,11 +46,13 @@ require("catppuccin").setup {
         information = {},
       },
     },
+    coc_nvim = false,
     lsp_trouble = false,
     cmp = true,
     lsp_saga = false,
     gitgutter = false,
     gitsigns = false,
+    leap = false,
     telescope = true,
     nvimtree = {
       enabled = false,
@@ -56,6 +63,10 @@ require("catppuccin").setup {
       enabled = false,
       show_root = false,
       transparent_panel = false,
+    },
+    dap = {
+      enabled = false,
+      enable_ui = false,
     },
     which_key = true,
     indent_blankline = {
@@ -75,6 +86,10 @@ require("catppuccin").setup {
     notify = true,
     telekasten = false,
     symbols_outline = false,
+    mini = false,
+    aerial = true,
+    vimwiki = true,
+    beacon = true,
   },
   custom_highlights = {
     -- remove italics
@@ -100,32 +115,14 @@ require("catppuccin").setup {
     LuaSnipChoiceNode = { fg = c.yellow, style = { "bold" } },
     LuaSnipInsertNode = { fg = c.white, style = { "bold" } },
 
-    -- aerial
-    AerialClass = { fg = c.yellow },
-    AerialClassIcon = { fg = c.yellow },
-    AerialConstructor = { fg = c.sapphire },
-    AerialConstructorIcon = { fg = c.sapphire },
-    AerialEnum = { fg = c.yellow },
-    AerialEnumIcon = { fg = c.yellow },
-    AerialFunction = { fg = c.blue },
-    AerialFunctionIcon = { fg = c.blue },
-    AerialInterface = { fg = c.yellow },
-    AerialInterfaceIcon = { fg = c.yellow },
-    AerialModule = { fg = c.blue, style = { "italic" } },
-    AerialModuleIcon = { fg = c.blue },
-    AerialMethod = { fg = c.blue },
-    AerialMethodIcon = { fg = c.blue },
-    AerialStruct = { fg = c.yellow },
-    AerialStructIcon = { fg = c.yellow },
-
     -- telescope
-    -- TelescopePromptPrefix = { bg = c.crust },
-    -- TelescopePromptNormal = { bg = c.crust },
-    -- TelescopeResultsNormal = { bg = c.mantle },
-    -- TelescopePreviewNormal = { bg = c.crust },
-    -- TelescopePromptBorder = { bg = c.crust, fg = c.crust },
-    -- TelescopeResultsBorder = { bg = c.mantle, fg = c.crust },
-    -- TelescopePreviewBorder = { bg = c.crust, fg = c.crust },
+    TelescopePromptPrefix = { bg = c.crust },
+    TelescopePromptNormal = { bg = c.crust },
+    TelescopeResultsNormal = { bg = c.mantle },
+    TelescopePreviewNormal = { bg = c.crust },
+    TelescopePromptBorder = { bg = c.crust, fg = c.crust },
+    TelescopeResultsBorder = { bg = c.mantle, fg = c.crust },
+    TelescopePreviewBorder = { bg = c.crust, fg = c.crust },
     -- TelescopePromptTitle = { fg = c.crust },
     -- TelescopeResultsTitle = { fg = c.text },
     -- TelescopePreviewTitle = { fg = c.crust },
