@@ -88,8 +88,8 @@ require("catppuccin").setup {
     symbols_outline = false,
     mini = false,
     aerial = true,
-    vimwiki = true,
-    beacon = true,
+    vimwiki = false,
+    beacon = false,
   },
   custom_highlights = {
     -- remove italics
@@ -110,6 +110,9 @@ require("catppuccin").setup {
 
     -- scnvim
     SCNvimEval = { fg = c.base, bg = c.lavender },
+
+    -- tidal
+    TidalEval = { fg = c.base, bg = c.lavender },
 
     -- luasnip
     LuaSnipChoiceNode = { fg = c.yellow, style = { "bold" } },

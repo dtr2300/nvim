@@ -50,7 +50,7 @@ end
 ---@param end_row number
 local function flash(start_row, end_row)
   local ns = vim.api.nvim_create_namespace "tidal_flash"
-  vim.highlight.range(0, ns, "SCNvimEval", { start_row - 1, 0 }, { end_row - 1, 100000 }, { inclusive = true })
+  vim.highlight.range(0, ns, "TidalEval", { start_row - 1, 0 }, { end_row - 1, 100000 }, { inclusive = true })
   vim.defer_fn(function()
     vim.api.nvim_buf_clear_namespace(0, ns, 0, -1)
   end, 200)

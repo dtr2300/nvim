@@ -32,6 +32,9 @@ require("onedark").setup {
     -- scnvim
     SCNvimEval = { fg = "$bg1", bg = "$cyan" },
 
+    -- tidal
+    TidalEval = { fg = "$bg1", bg = "$cyan" },
+
     -- luasnip
     LuaSnipChoiceNode = { fg = "$yellow", fmt = "bold" },
     LuaSnipInsertNode = { fg = "$light_grey", fmt = "bold" },
