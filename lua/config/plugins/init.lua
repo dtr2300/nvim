@@ -17,7 +17,7 @@ return require("packer").startup {
     use { "catppuccin/nvim", as = "catppuccin", config = p "catppuccin", run = ":CatppuccinCompile" }
     use { "navarasu/onedark.nvim", config = p "onedark", after = "catppuccin" }
 
-    use { "nvim-lualine/lualine.nvim", config = p "lualine", after = "onedark.nvim" }
+    use { "nvim-lualine/lualine.nvim", config = p "lualine", commit = "8d956c18258bb128ecf42f95411bb26efd3a5d23", after = "onedark.nvim" }
     use { "goolord/alpha-nvim", config = p "alpha" }
     use { "folke/which-key.nvim", config = p "whichkey" }
     use { "folke/zen-mode.nvim", config = p "zenmode" }

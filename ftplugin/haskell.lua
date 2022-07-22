@@ -5,7 +5,7 @@ end
 local tidal = require "config.utils.tidal"
 
 -- toggle show output (on next send)
-vim.keymap.set({ "n", "i" }, "<M-r>", function()
+vim.keymap.set("n", "<M-r>", function()
   tidal.toggle_output()
 end, { silent = true, buffer = true, desc = "Toggle show output" })
 

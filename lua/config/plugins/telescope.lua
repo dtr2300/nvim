@@ -1,10 +1,11 @@
 local actions = require "telescope.actions"
-local action_state = require "telescope.actions.state"
+local actions_state = require "telescope.actions.state"
+local actions_layout = require "telescope.actions.layout"
 
 -- change dir attach mapping
 local function cd(buf)
   actions.close(buf)
-  local selection = action_state.get_selected_entry()
+  local selection = actions_state.get_selected_entry()
   local cwd = vim.fn.fnamemodify(selection.value, ":p:h")
   vim.cmd("silent lcd " .. cwd)
   require("config.utils.sessions").info()
@@ -16,7 +17,7 @@ require("telescope").setup {
     prompt_prefix = " ",
     file_ignore_patterns = { "__pycache__", "venv" },
     -- border = false,
-    --wrap_results = true,
+    -- wrap_results = true,
     layout_config = {
       horizontal = {
         width = { padding = 0 },
@@ -30,6 +31,7 @@ require("telescope").setup {
         ["<Esc>"] = actions.close,
         ["<C-/>"] = "which_key",
         ["<M-f>"] = cd,
+        ["<C-p>"] = actions_layout.toggle_preview,
       },
       n = {
         ["<Esc>"] = actions.close,
@@ -68,6 +70,7 @@ end
 vim.keymap.set("n", "<Leader>tf", "<Cmd>Telescope find_files<CR>", { silent = true })
 vim.keymap.set("n", "<Leader>tF", "<Cmd>Telescope file_browser<CR>", { silent = true })
 vim.keymap.set("n", "<Leader>tg", "<Cmd>Telescope git_files<CR>", { silent = true })
+vim.keymap.set("n", "<Leader>tG", "<Cmd>Telescope grep_string<CR>", { silent = true })
 vim.keymap.set("n", "<Leader>th", "<Cmd>Telescope help_tags<CR>", { silent = true })
 vim.keymap.set("n", "<Leader>tH", "<Cmd>Telescope highlights<CR>", { silent = true })
 vim.keymap.set("n", "<F1>", "<Cmd>Telescope help_tags<CR>", { silent = true })
