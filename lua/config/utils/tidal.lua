@@ -118,7 +118,9 @@ function M.send_buf(send_paragraph)
   exec(table.concat(lines, " "), terminal_id, nil, nil, nil, false, show_output)
 
   -- flash
-  flash(start_row, end_row)
+  vim.schedule(function()
+    flash(start_row, end_row)
+  end)
 end
 
 return M
