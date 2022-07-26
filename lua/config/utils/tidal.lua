@@ -1,16 +1,7 @@
 M = {}
 
-local exec = require("toggleterm").exec
-
 local terminal_id = 1
-local show_output = false
-
--- get line, strip whitespace at the beginning
----@param row number
----@return string
-local function getline(row)
-  return vim.fn.getline(row):gsub("^%s+", "")
-end
+local job_id = nil
 
 -- strip comments, whitespace at the end
 ---@param s string
@@ -27,23 +18,57 @@ end
 ---@return table<number, string>, number
 local function getlines(lines, row, step)
   local line
-  local sline
+  local cline
   repeat
-    line = getline(row + step)
-    if line ~= "" then
-      sline = strip(line)
-      if sline ~= "" then
+    line = vim.fn.getline(row + step)
+    cline = line:gsub("^%s+", "")
+    if cline ~= "" then
+      line = strip(line)
+      if line ~= "" then
         if step > 0 then
-          table.insert(lines, sline)
+          table.insert(lines, line)
         else
-          table.insert(lines, 1, sline)
+          table.insert(lines, 1, line)
         end
       end
       row = row + step
     end
-  until line == ""
+  until cline == ""
   return lines, row
 end
+
+-- send a string
+---@param s string
+local function _send(s)
+  vim.fn.chansend(job_id, s .. "\n")
+end
+
+-- send a string or list of strings
+---@param obj string|table<number,string>
+local function send(obj)
+  if job_id == nil then
+    return
+  end
+  vim.validate {
+    obj = { obj, { "string", "table" }, false },
+  }
+
+  if type(obj) == "string" then
+    _send(obj)
+  else
+    if #obj == 1 then
+      _send(obj[1])
+    else
+      _send ":{"
+      for _, line in ipairs(obj) do
+        _send(line)
+      end
+      _send ":}"
+    end
+  end
+end
+
+M.send = send
 
 -- flash range of lines in current buffer
 ---@param start_row number
@@ -58,36 +83,28 @@ end
 
 -- start terminal and tidalcycles
 function M.start()
-  exec("tidal.bat", terminal_id, 7, nil, "horizontal", true, true)
+  require("toggleterm").exec("tidal.bat", terminal_id, 10, nil, "horizontal", true, true)
+  local term = require("toggleterm.terminal").get(terminal_id)
+  job_id = term ~= nil and term.job_id or nil
 end
 
 -- stop tidalcycles and terminal
 function M.stop()
-  exec(":quit", terminal_id, nil, nil, nil, false, true)
+  job_id = nil
+  require("toggleterm").exec(":quit", terminal_id, nil, nil, nil, false, true)
   vim.defer_fn(function()
-    exec("exit", terminal_id, nil, nil, nil, false, true)
+    require("toggleterm").exec("exit", terminal_id, nil, nil, nil, false, true)
   end, 50)
 end
 
--- toggle show output
-function M.toggle_output()
-  show_output = not show_output
-end
-
--- send a string
----@param s string
-function M.send(s)
-  vim.validate {
-    s = { s, "string", false },
-  }
-  exec(s, terminal_id, nil, nil, nil, false, show_output)
-end
-
 -- send a line or paragraph in the current buffer
--- * multiple lines in a paragraph are concatenated
--- * line(s) are stripped of comments and leading/trailing whitespace
+-- * trailing comments and whitespace are removed
+-- * multiple lines are wrapped in :{ :}
 ---@param send_paragraph? boolean
 function M.send_buf(send_paragraph)
+  if job_id == nil then
+    return
+  end
   vim.validate {
     send_paragraph = { send_paragraph, "boolean", true },
   }
@@ -95,8 +112,8 @@ function M.send_buf(send_paragraph)
 
   -- get the first line
   local start_row, _ = unpack(vim.api.nvim_win_get_cursor(0))
-  local line = getline(start_row)
-  if line == "" then
+  local line = vim.fn.getline(start_row)
+  if line:gsub("^%s+", "") == "" then
     return
   end
   line = strip(line)
@@ -115,7 +132,7 @@ function M.send_buf(send_paragraph)
   end
 
   -- send
-  exec(table.concat(lines, " "), terminal_id, nil, nil, nil, false, show_output)
+  send(lines)
 
   -- flash
   vim.schedule(function()
