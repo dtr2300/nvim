@@ -62,8 +62,8 @@ cmp.setup {
     { name = "nvim_lua" },
     { name = "nvim_lsp" },
     { name = "path" },
-    { name = "luasnip" },
-    { name = "buffer" },
+    { name = "luasnip", keyword_length = 3 },
+    { name = "buffer", keyword_length = 3 },
   },
 
   sorting = {

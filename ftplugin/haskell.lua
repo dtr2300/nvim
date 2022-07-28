@@ -1,3 +1,9 @@
+vim.bo.tabstop = 2
+vim.bo.softtabstop = 2
+vim.bo.shiftwidth = 2
+vim.bo.cindent = true
+vim.opt_local.cinkeys:remove "0#"
+
 if vim.fn.has "win32" == 0 then
   return
 end

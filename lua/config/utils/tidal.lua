@@ -80,6 +80,16 @@ let getState = streamGet tidal
     setB = streamSetB tidal
 :}
 
+:{
+let drumMachine name ps = stack 
+                    (map (\ x -> 
+                        (# s (name ++| (extractS "s" (x)))) $ x
+                        ) ps)
+    drumFrom name drum = s (name ++| drum)
+    drumM = drumMachine
+    drumF = drumFrom
+:}
+
 :set prompt "tidal> "
 :set prompt-cont ""
 ]]
@@ -166,19 +176,23 @@ end
 
 -- start terminal and tidalcycles
 function M.start()
-  require("toggleterm").exec("ghci", terminal_id, 10, nil, "horizontal", true, true)
-  local term = require("toggleterm.terminal").get(terminal_id)
-  job_id = term ~= nil and term.job_id or nil
-  send(tidalboot_ghci)
+  if job_id == nil then
+    require("toggleterm").exec("ghci", terminal_id, 10, nil, "horizontal", true, true)
+    local term = require("toggleterm.terminal").get(terminal_id)
+    job_id = term ~= nil and term.job_id or nil
+    send(tidalboot_ghci)
+  end
 end
 
 -- stop tidalcycles and terminal
 function M.stop()
-  job_id = nil
-  require("toggleterm").exec(":quit", terminal_id, nil, nil, nil, false, true)
-  vim.defer_fn(function()
-    require("toggleterm").exec("exit", terminal_id, nil, nil, nil, false, true)
-  end, 50)
+  if job_id ~= nil then
+    job_id = nil
+    require("toggleterm").exec(":quit", terminal_id, nil, nil, nil, false, true)
+    vim.defer_fn(function()
+      require("toggleterm").exec("exit", terminal_id, nil, nil, nil, false, true)
+    end, 50)
+  end
 end
 
 -- send a line or paragraph in the current buffer
