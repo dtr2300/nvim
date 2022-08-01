@@ -67,6 +67,7 @@ This is my personal [Neovim](https://neovim.io/) configuration (Windows, WSL/Ubu
     - [awesome neovim](https://github.com/rockerBOO/awesome-neovim)
     - [neovim craft](https://neovimcraft.com/) ([json](https://github.com/neurosnap/neovimcraft/blob/main/src/lib/resources.json))
     - [nvim.sh](https://github.com/neurosnap/nvim.sh)
+    - [this week in neovim](https://this-week-in-neovim.org/)
 - lua
     - [getting started using lua in neovim](https://github.com/nanotee/nvim-lua-guide)
     - [programming in lua (first edition)](https://www.lua.org/pil/contents.html)

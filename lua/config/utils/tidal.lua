@@ -89,7 +89,7 @@ let drumMachine name ps = stack
     drumF = drumFrom
 :}
 
-let bpm x = setcps(x/60/4)
+let bpm x = setcps (x/60/4)
 
 :set prompt "tidal> "
 :set prompt-cont ""
