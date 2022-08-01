@@ -10,6 +10,10 @@ end
 
 local tidal = require "config.utils.tidal"
 
+-- jump to prev/next paragraph
+vim.keymap.set("n", "}", "2}{j", { silent = true, buffer = true })
+vim.keymap.set("n", "{", "2{j", { silent = true, buffer = true })
+
 -- send current paragraph
 vim.keymap.set({ "n", "i" }, "<M-e>", function()
   tidal.send_buf()
