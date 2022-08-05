@@ -78,7 +78,7 @@ require("catppuccin").setup {
     vim_sneak = false,
     fern = false,
     barbar = false,
-    bufferline = false,
+    bufferline = true,
     markdown = true,
     lightspeed = false,
     ts_rainbow = true,
@@ -129,5 +129,10 @@ require("catppuccin").setup {
     -- TelescopePromptTitle = { fg = c.crust },
     -- TelescopeResultsTitle = { fg = c.text },
     -- TelescopePreviewTitle = { fg = c.crust },
+
+    -- bufferline
+    BufferLineBufferSelected = { fg = c.text, bg = c.base, style = {} },
+    BufferLineTabClose = { fg = c.surface1, bg = c.mantle },
+    BufferLineCloseButtonSelected = { fg = c.surface1, bg = c.base },
   },
 }

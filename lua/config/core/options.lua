@@ -26,12 +26,28 @@ vim.opt.list = false
 vim.opt.listchars = { eol = "¬" }
 --vim.opt.signcolumn = "number"
 
--- disable all providers
-vim.g.loaded_python3_provider = 0
-vim.g.loaded_python_provider = 0
-vim.g.loaded_node_provider = 0
-vim.g.loaded_ruby_provider = 0
-vim.g.loaded_perl_provider = 0
+-- disable buildins
+for _, buildins in pairs {
+  "gzip",
+  "zip",
+  "zipPlugin",
+  "tar",
+  "tarPlugin",
+  "getscript",
+  "getscriptPlugin",
+  "vimball",
+  "vimballPlugin",
+  "2html_plugin",
+  "logipat",
+  "rrhelper",
+} do
+  vim.g["loaded_" .. buildins] = 1
+end
+
+-- disable providers
+for _, provider in pairs { "python3", "python", "node", "ruby", "perl" } do
+  vim.g[string.format("loaded_%s_provider", provider)] = 0
+end
 
 -- mapleader
 vim.g.mapleader = " "

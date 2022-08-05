@@ -182,8 +182,10 @@ function M.start()
   if job_id == nil then
     require("toggleterm").exec("ghci", terminal_id, 10, nil, "horizontal", true, true)
     local term = require("toggleterm.terminal").get(terminal_id)
-    job_id = term ~= nil and term.job_id or nil
-    send(tidalboot_ghci)
+    if term ~= nil then
+      job_id = term.job_id
+      send(tidalboot_ghci)
+    end
   end
 end
 

@@ -20,6 +20,7 @@ This is my personal [Neovim](https://neovim.io/) configuration (Windows, WSL/Ubu
 - [catppuccin](https://github.com/catppuccin/nvim) - soothing pastel theme for neovim
 <!-- break -->
 - [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim) - a blazing fast and easy to configure neovim statusline
+- [bufferline.nvim](https://github.com/akinsho/bufferline.nvim) - a snazzy bufferline for neovim
 - [alpha-nvim](https://github.com/goolord/alpha-nvim) - a fast and highly customizable greeter for neovim
 - [which-key.nvim](https://github.com/folke/which-key.nvim) - displays a popup with possible key bindings of the command you started typing
 - [zen-mode.nvim](https://github.com/folke/zen-mode.nvim) - distraction-free coding for neovim
