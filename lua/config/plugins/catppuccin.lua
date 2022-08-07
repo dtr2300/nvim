@@ -100,7 +100,7 @@ require("catppuccin").setup {
 
     -- alpha
     AlphaButton = { fg = c.blue },
-    AlphaButtonShortcut = { fg = c.peach },
+    AlphaButtonShortcut = { fg = c.sapphire },
     AlphaCol1 = { fg = c.red },
     AlphaCol2 = { fg = c.rosewater },
     AlphaCol3 = { fg = c.yellow },

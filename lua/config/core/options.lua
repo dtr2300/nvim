@@ -24,6 +24,7 @@ vim.opt.showtabline = 2
 vim.opt.showmode = false
 vim.opt.list = false
 vim.opt.listchars = { eol = "¬" }
+vim.opt.ruler = false
 --vim.opt.signcolumn = "number"
 
 -- disable buildins
