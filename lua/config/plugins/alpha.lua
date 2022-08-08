@@ -4,45 +4,18 @@ math.randomseed(os.time())
 --- @param txt string
 --- @param keybind string?
 --- @param keybind_opts table?
+--- @param opts table?
 --- @return table
-local function button(sc, txt, keybind, keybind_opts)
+local function button(sc, txt, keybind, keybind_opts, opts)
   local b = require("alpha.themes.dashboard").button(sc, txt, keybind, keybind_opts)
   b.opts.hl = "AlphaButton"
   b.opts.hl_shortcut = "AlphaButtonShortcut"
   b.opts.width = 35
+  b.opts.position = "center"
+  if opts ~= nil then
+    b.opts = vim.tbl_extend("force", b.opts, opts)
+  end
   return b
-end
-
---- @param value table|string
---- @param hl string?
---- @return table
-local function text(value, hl)
-  return {
-    type = "text",
-    val = value,
-    opts = {
-      position = "center",
-      hl = hl or "Normal",
-    },
-  }
-end
-
---- @param value number
---- @return table
-local function pad(value)
-  return { type = "padding", val = value }
-end
-
---- @param items table
---- @param spacing number?
-local function group(items, spacing)
-  return {
-    type = "group",
-    val = items,
-    opts = {
-      spacing = spacing or 0,
-    },
-  }
 end
 
 --- @return string
@@ -58,24 +31,61 @@ local header_color = "AlphaCol" .. math.random(5)
 
 require("alpha").setup {
   layout = {
-    pad(2),
-    text(require("config.utils.headers").random(), header_color),
-    pad(1),
-    text(info(), header_color),
-    pad(2),
-    group {
-      button("SPC t o", "  Recently opened files"),
-      button("SPC t f", "  Find file"),
-      button("SPC t l", "  Find word"),
-      button("SPC t F", "  File browser"),
-      button("SPC t 1", "  Find repo"),
-      button("SPC t s", "  Open session"),
-      button("SPC c n", "  New file"),
-      button("SPC p u", "  Update plugins"),
-      button("q", "  Quit", "<Cmd>qa<CR>"),
+    { type = "padding", val = 2 },
+    {
+      type = "text",
+      val = require("config.utils.headers").random(),
+      opts = { hl = header_color, position = "center" },
     },
-    pad(1),
-    text(require "alpha.fortune"(), "AlphaQuote"),
+    { type = "padding", val = 1 },
+    {
+      type = "text",
+      val = info(),
+      opts = { hl = header_color, position = "center" },
+    },
+    { type = "padding", val = 4 },
+    -- {
+    --   type = "group",
+    --   val = function()
+    --     local mru = require("alpha.themes.startify").mru(1, vim.fn.getcwd(), 9)
+    --     -- center = crash if screen width is too small
+    --     local max_width = 0
+    --     local w
+    --     for _, el in pairs(mru.val) do
+    --       w = vim.fn.strdisplaywidth(el.val)
+    --       if w > max_width then
+    --         max_width = w
+    --       end
+    --     end
+    --     for _, el in pairs(mru.val) do
+    --       el.opts.position = "center"
+    --       el.opts.width = max_width + 3
+    --     end
+    --     return { mru }
+    --   end,
+    -- },
+    -- { type = "padding", val = 2 },
+    {
+      type = "group",
+      val = {
+        button("SPC t o", "  Recently opened files"),
+        button("SPC t f", "  Find file"),
+        button("SPC t l", "  Find word"),
+        button("SPC t F", "  File browser"),
+        button("SPC t 1", "  Find repo"),
+        button("SPC t s", "  Open session"),
+        button("SPC c n", "  New file"),
+        button("SPC p u", "  Update plugins"),
+        button("q", "  Quit", "<Cmd>qa<CR>"),
+      },
+      opts = { spacing = 0 },
+    },
+    { type = "padding", val = 3 },
+    {
+      type = "text",
+      val = require "alpha.fortune"(),
+      opts = { hl = "AlphaQuote", position = "center" },
+    },
   },
   opts = {
     setup = function()
