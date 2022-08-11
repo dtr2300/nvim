@@ -90,6 +90,8 @@ require("catppuccin").setup {
     aerial = true,
     vimwiki = false,
     beacon = false,
+    navic = false,
+    overseer = false,
   },
   custom_highlights = {
     -- remove italics
@@ -106,6 +108,7 @@ require("catppuccin").setup {
     AlphaCol3 = { fg = c.yellow },
     AlphaCol4 = { fg = c.green },
     AlphaCol5 = { fg = c.sky },
+    AlphaFile = { fg = c.teal },
     AlphaQuote = { fg = c.lavender, style = { "italic" } },
 
     -- scnvim
