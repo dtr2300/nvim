@@ -65,12 +65,6 @@ require("alpha").setup {
     { type = "padding", val = 4 },
     {
       type = "group",
-      val = mru,
-      opts = { spacing = 0 },
-    },
-    { type = "padding", val = 2 },
-    {
-      type = "group",
       val = {
         button("SPC t o", "  Recently opened files"),
         button("SPC t f", "  Find file"),
@@ -82,6 +76,12 @@ require("alpha").setup {
         button("SPC p u", "  Update plugins"),
         button("q", "  Quit", "<Cmd>qa<CR>"),
       },
+      opts = { spacing = 0 },
+    },
+    { type = "padding", val = 1 },
+    {
+      type = "group",
+      val = mru,
       opts = { spacing = 0 },
     },
     { type = "padding", val = 3 },
