@@ -33,13 +33,13 @@ local function mru()
   for i = 1, 9 do
     local full_filename = vim.v.oldfiles[i]
     local filename = vim.fn.fnamemodify(full_filename, ":t")
-    local icon = require("nvim-web-devicons").get_icon(full_filename, vim.fn.fnamemodify(filename, ":e"))
+    local icon, hl = require("nvim-web-devicons").get_icon(full_filename, vim.fn.fnamemodify(filename, ":e"))
     local b = button(
       string.format("%d", i),
       icon .. "  " .. string.sub(filename, 1, 30),
       string.format("<Cmd>e %s<CR>", full_filename),
       nil,
-      { hl = "AlphaFile" }
+      { hl = hl }
     )
     table.insert(result, b)
   end
