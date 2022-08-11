@@ -78,7 +78,7 @@ require("alpha").setup {
       },
       opts = { spacing = 0 },
     },
-    { type = "padding", val = 1 },
+    { type = "padding", val = 2 },
     {
       type = "group",
       val = mru,
