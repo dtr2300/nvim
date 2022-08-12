@@ -27,7 +27,12 @@ require("onedark").setup {
     AlphaCol3 = { fg = "$cyan" },
     AlphaCol4 = { fg = "$green" },
     AlphaCol5 = { fg = "$purple" },
-    AlphaColFile = { fg = "$grey" },
+    AlphaCol6 = { fg = "$red" },
+    AlphaCol7 = { fg = "$orange" },
+    AlphaCol8 = { fg = "$cyan" },
+    AlphaCol9 = { fg = "$green" },
+    AlphaCol10 = { fg = "$purple" },
+    AlphaCol11 = { fg = "$red" },
     AlphaQuote = { fg = "$light_grey", fmt = "italic" },
 
     -- scnvim

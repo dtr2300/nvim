@@ -108,7 +108,12 @@ require("catppuccin").setup {
     AlphaCol3 = { fg = c.yellow },
     AlphaCol4 = { fg = c.green },
     AlphaCol5 = { fg = c.sky },
-    AlphaFile = { fg = c.teal },
+    AlphaCol6 = { fg = c.flamingo },
+    AlphaCol7 = { fg = c.pink },
+    AlphaCol8 = { fg = c.mauve },
+    AlphaCol9 = { fg = c.maroon },
+    AlphaCol10 = { fg = c.peach },
+    AlphaCol11 = { fg = c.teal },
     AlphaQuote = { fg = c.lavender, style = { "italic" } },
 
     -- scnvim

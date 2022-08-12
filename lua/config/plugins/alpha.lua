@@ -63,7 +63,7 @@ local function mru()
 end
 
 math.randomseed(os.time())
-local header_color = "AlphaCol" .. math.random(5)
+local header_color = "AlphaCol" .. math.random(11)
 
 require("alpha").setup {
   layout = {
