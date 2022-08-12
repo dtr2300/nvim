@@ -1,5 +1,3 @@
-math.randomseed(os.time())
-
 ---@param sc string
 ---@param txt string
 ---@param keybind string?
@@ -64,6 +62,7 @@ local function mru()
   return result
 end
 
+math.randomseed(os.time())
 local header_color = "AlphaCol" .. math.random(5)
 
 require("alpha").setup {
