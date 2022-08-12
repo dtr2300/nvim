@@ -27,21 +27,38 @@ local function info()
   return string.format(" %d   v%d.%d.%d %s  %s", plugins, v.major, v.minor, v.patch, platform, datetime)
 end
 
+---@param name string
+---@return boolean
+local function file_exists(name)
+  local f = io.open(name, "r")
+  if f ~= nil then
+    io.close(f)
+    return true
+  else
+    return false
+  end
+end
+
 ---@return table
 local function mru()
   local result = {}
-  for i = 1, 9 do
-    local full_filename = vim.v.oldfiles[i]
-    local filename = vim.fn.fnamemodify(full_filename, ":t")
-    local icon, hl = require("nvim-web-devicons").get_icon(full_filename, vim.fn.fnamemodify(filename, ":e"))
-    local b = button(
-      string.format("%d", i),
-      icon .. "  " .. string.sub(filename, 1, 30),
-      string.format("<Cmd>e %s<CR>", full_filename),
-      nil,
-      { hl = hl }
-    )
-    table.insert(result, b)
+  for _, filename in ipairs(vim.v.oldfiles) do
+    if file_exists(filename) then
+      local icon, hl = require("nvim-web-devicons").get_icon(filename, vim.fn.fnamemodify(filename, ":e"))
+      table.insert(
+        result,
+        button(
+          string.format("%d", #result + 1),
+          string.format("%s  %s", icon, string.sub(vim.fn.fnamemodify(filename, ":t"), 1, 30)),
+          string.format("<Cmd>e %s<CR>", filename),
+          nil,
+          { hl = hl }
+        )
+      )
+      if #result >= 9 then
+        break
+      end
+    end
   end
   return result
 end
