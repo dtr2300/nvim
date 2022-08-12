@@ -45,14 +45,15 @@ local function mru()
   for _, filename in ipairs(vim.v.oldfiles) do
     if file_exists(filename) then
       local icon, hl = require("nvim-web-devicons").get_icon(filename, vim.fn.fnamemodify(filename, ":e"))
+      local filename_short = string.sub(vim.fn.fnamemodify(filename, ":t"), 1, 30)
       table.insert(
         result,
         button(
           string.format("%d", #result + 1),
-          string.format("%s  %s", icon, string.sub(vim.fn.fnamemodify(filename, ":t"), 1, 30)),
+          string.format("%s  %s", icon, filename_short),
           string.format("<Cmd>e %s<CR>", filename),
           nil,
-          { hl = hl }
+          { hl = { { hl, 0, 3 }, { "Normal", 5, #filename_short + 5 } } }
         )
       )
       if #result >= 9 then
