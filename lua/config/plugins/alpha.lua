@@ -1,30 +1,3 @@
----@param sc string
----@param txt string
----@param keybind string?
----@param keybind_opts table?
----@param opts table?
----@return table
-local function button(sc, txt, keybind, keybind_opts, opts)
-  local b = require("alpha.themes.dashboard").button(sc, txt, keybind, keybind_opts)
-  b.opts.hl = "AlphaButton"
-  b.opts.hl_shortcut = "AlphaButtonShortcut"
-  b.opts.width = 35
-  b.opts.position = "center"
-  if opts ~= nil then
-    b.opts = vim.tbl_extend("force", b.opts, opts)
-  end
-  return b
-end
-
----@return string
-local function info()
-  local plugins = #vim.tbl_keys(packer_plugins)
-  local v = vim.version()
-  local datetime = os.date " %d-%m-%Y   %H:%M:%S"
-  local platform = vim.fn.has "win32" == 1 and "" or ""
-  return string.format(" %d   v%d.%d.%d %s  %s", plugins, v.major, v.minor, v.patch, platform, datetime)
-end
-
 ---@param name string
 ---@return boolean
 local function file_exists(name)
@@ -37,6 +10,44 @@ local function file_exists(name)
   end
 end
 
+---@param sc string
+---@param txt string
+---@param keybind string?
+---@param keybind_opts table?
+---@param opts table?
+---@return table
+local function button(sc, txt, keybind, keybind_opts, opts)
+  local def_opts = {
+    cursor = 5,
+    align_shortcut = "right",
+    hl_shortcut = "AlphaButtonShortcut",
+    hl = "AlphaButton",
+    width = 35,
+    position = "center",
+  }
+  opts = opts and vim.tbl_extend("force", def_opts, opts) or def_opts
+  opts.shortcut = sc
+  local sc_ = sc:gsub("%s", ""):gsub("SPC", "<Leader>")
+  local on_press = function()
+    local key = vim.api.nvim_replace_termcodes(sc_ .. "<Ignore>", true, false, true)
+    vim.api.nvim_feedkeys(key, "t", false)
+  end
+  if keybind then
+    keybind_opts = vim.F.if_nil(keybind_opts, { noremap = true, silent = true, nowait = true })
+    opts.keymap = { "n", sc_, keybind, keybind_opts }
+  end
+  return { type = "button", val = txt, on_press = on_press, opts = opts }
+end
+
+---@return string
+local function info()
+  local plugins = #vim.tbl_keys(packer_plugins)
+  local v = vim.version()
+  local datetime = os.date " %d-%m-%Y   %H:%M:%S"
+  local platform = vim.fn.has "win32" == 1 and "" or ""
+  return string.format(" %d   v%d.%d.%d %s  %s", plugins, v.major, v.minor, v.patch, platform, datetime)
+end
+
 ---@return table
 local function mru()
   local result = {}
@@ -47,14 +58,14 @@ local function mru()
       table.insert(
         result,
         button(
-          string.format("%d", #result + 1),
+          tostring(#result + 1),
           string.format("%s  %s", icon, filename_short),
           string.format("<Cmd>e %s<CR>", filename),
           nil,
           { hl = { { hl, 0, 3 }, { "Normal", 5, #filename_short + 5 } } }
         )
       )
-      if #result >= 9 then
+      if #result == 9 then
         break
       end
     end
