@@ -18,7 +18,8 @@ return require("packer").startup {
     use { "navarasu/onedark.nvim", config = p "onedark", after = "catppuccin" }
 
     use { "nvim-lualine/lualine.nvim", config = p "lualine", after = "onedark.nvim" }
-    use { "akinsho/bufferline.nvim", tag = "v2.*", config = p "bufferline" }
+    -- use { "akinsho/bufferline.nvim", tag = "v2.*", config = p "bufferline" }
+    use { "akinsho/bufferline.nvim", tag = "v2.5.1", config = p "bufferline" }
     use { "goolord/alpha-nvim", config = p "alpha" }
     use { "folke/which-key.nvim", config = p "whichkey" }
     use { "folke/zen-mode.nvim", config = p "zenmode" }

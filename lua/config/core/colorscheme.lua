@@ -1,2 +1,2 @@
 -- set colorscheme
-vim.cmd("colorscheme " .. (vim.env.NVIM_COLORSCHEME or "onedark"))
+vim.cmd.colorscheme(vim.env.NVIM_COLORSCHEME or "catppuccin")

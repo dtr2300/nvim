@@ -27,26 +27,26 @@ vim.opt.listchars = { eol = "¬" }
 vim.opt.ruler = false
 --vim.opt.signcolumn = "number"
 
--- disable buildins
-for _, buildins in pairs {
-  "gzip",
-  "zip",
-  "zipPlugin",
-  "tar",
-  "tarPlugin",
+-- disable runtime plugins
+for _, scriptname in pairs {
   "getscript",
   "getscriptPlugin",
+  "gzip",
+  "logiPat",
+  "rrhelper",
+  "tar",
+  "tarPlugin",
+  "tohtml",
   "vimball",
   "vimballPlugin",
-  "2html_plugin",
-  "logipat",
-  "rrhelper",
+  "zip",
+  "zipPlugin",
 } do
-  vim.g["loaded_" .. buildins] = 1
+  vim.g["loaded_" .. scriptname] = 1
 end
 
 -- disable providers
-for _, provider in pairs { "python3", "python", "node", "ruby", "perl" } do
+for _, provider in pairs { "python3", "node", "ruby", "perl" } do
   vim.g[string.format("loaded_%s_provider", provider)] = 0
 end
 
