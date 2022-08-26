@@ -143,10 +143,9 @@ local function send(obj)
 
   if type(obj) == "string" then
     obj = vim.split(obj, "\n")
-  end
-
-  if #obj == 1 then
-    table.insert(obj, "")
+    if #obj == 1 then
+      table.insert(obj, "")
+    end
   end
 
   vim.fn.chansend(job_id, obj)
@@ -229,8 +228,8 @@ function M.send_buf(send_paragraph)
   if #lines > 1 then
     table.insert(lines, 1, ":{")
     table.insert(lines, ":}")
-    table.insert(lines, "")
   end
+  table.insert(lines, "")
 
   -- send
   send(lines)
