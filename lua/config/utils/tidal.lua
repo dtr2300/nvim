@@ -185,6 +185,9 @@ function M.start()
     if term ~= nil then
       job_id = term.job_id
       send(tidalboot_ghci)
+      vim.cmd.stopinsert { bang = true }
+      vim.cmd.normal { "G", bang = true }
+      vim.cmd.wincmd "p"
     end
   end
 end
