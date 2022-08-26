@@ -131,12 +131,6 @@ local function getlines(lines, row, step)
   return lines, row
 end
 
--- send a string
----@param s string
-local function _send(s)
-  vim.fn.chansend(job_id, s .. "\n")
-end
-
 -- send a string or list of strings
 ---@param obj string|table<number,string>
 local function send(obj)
@@ -149,17 +143,16 @@ local function send(obj)
 
   if type(obj) == "string" then
     for line in vim.gsplit(obj, "\n") do
-      _send(line)
+      vim.fn.chansend(job_id, line .. "\n")
     end
   else
     if #obj == 1 then
-      _send(obj[1])
+      vim.fn.chansend(job_id, obj[1] .. "\n")
     else
-      _send ":{"
-      for _, line in ipairs(obj) do
-        _send(line)
-      end
-      _send ":}"
+      table.insert(obj, 1, ":{")
+      table.insert(obj, ":}")
+      table.insert(obj, "")
+      vim.fn.chansend(job_id, obj)
     end
   end
 end
