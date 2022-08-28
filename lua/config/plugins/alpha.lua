@@ -30,7 +30,7 @@ local function button(sc, txt, keybind, keybind_opts, opts)
   local sc_ = sc:gsub("%s", ""):gsub("SPC", "<Leader>")
   local on_press = function()
     local key = vim.api.nvim_replace_termcodes(keybind or sc_ .. "<Ignore>", true, false, true)
-    vim.api.nvim_feedkeys(key, "tx", false)
+    vim.api.nvim_feedkeys(key, "tx!", false)
   end
   if keybind then
     keybind_opts = vim.F.if_nil(keybind_opts, { noremap = true, silent = true, nowait = true })

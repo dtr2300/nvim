@@ -31,6 +31,7 @@ require("catppuccin").setup {
   },
   integrations = {
     treesitter = true,
+    treesitter_context = true,
     native_lsp = {
       enabled = true,
       virtual_text = {
@@ -78,11 +79,6 @@ require("catppuccin").setup {
     vim_sneak = false,
     fern = false,
     barbar = false,
-    bufferline = {
-      enabled = false,
-      italics = false,
-      bolds = false,
-    },
     markdown = true,
     lightspeed = false,
     ts_rainbow = true,
@@ -94,7 +90,10 @@ require("catppuccin").setup {
     aerial = true,
     vimwiki = false,
     beacon = false,
-    navic = false,
+    navic = {
+      enabled = false,
+      custom_bg = "NONE",
+    },
     overseer = false,
   },
   custom_highlights = {
