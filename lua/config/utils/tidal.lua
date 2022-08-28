@@ -168,7 +168,7 @@ end
 -- start terminal and tidalcycles
 function M.start()
   if job_id == nil then
-    require("toggleterm").exec("ghci", terminal_id, 10, nil, "horizontal", true, true)
+    require("toggleterm").exec("ghci", terminal_id, 10, nil, "horizontal", false, true)
     local term = require("toggleterm.terminal").get(terminal_id)
     if term ~= nil then
       job_id = term.job_id
