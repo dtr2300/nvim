@@ -117,11 +117,7 @@ local function getlines(lines, row, step)
     if cline ~= "" then
       line = strip(line)
       if line ~= "" then
-        if step > 0 then
-          table.insert(lines, line)
-        else
-          table.insert(lines, 1, line)
-        end
+        table.insert(lines, step > 0 and #lines + 1 or 1, line)
       end
       row = row + step
     end
