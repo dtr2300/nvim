@@ -111,11 +111,9 @@ end
 ---@param step number
 ---@return table<number, string>, number
 local function getlines(lines, row, step)
-  local line
-  local cline
   repeat
-    line = vim.fn.getline(row + step)
-    cline = line:gsub("^%s+", "")
+    local line = vim.fn.getline(row + step)
+    local cline = line:gsub("^%s+", "")
     if cline ~= "" then
       line = strip(line)
       if line ~= "" then
