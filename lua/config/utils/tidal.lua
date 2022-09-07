@@ -2,6 +2,7 @@ M = {}
 
 local terminal_id = 1
 local job_id = nil
+local osc = nil
 local tidalboot_ghci = [[
 :set -XOverloadedStrings
 :set prompt ""
@@ -98,6 +99,24 @@ let bpm x = setcps (x/60/4)
 default (Pattern String, Integer, Double)
 ]]
 
+-- test
+local oscmap = {
+  [36] = [[d1 silence]],
+  [37] = [[d1 $ s "cpu*4"]],
+  [38] = [[d1 $ s "cpu*8"]],
+  [39] = [[d1 $ fast 2 $ s "cpu(<5 3 5 2>,8)"]],
+  [40] = function()
+    print "test 1234"
+  end,
+  [41] = { ":{", "do", [[  d1 $ s "bd*4"]], [[  d2 $ s "[~ hh27]*4"]], ":}" },
+  [42] = "hush",
+  [43] = function()
+    require("config.utils.tidal").send_buf()
+  end,
+}
+
+M.oscmap = oscmap
+
 -- strip comments, whitespace at the end
 ---@param s string
 ---@return string
@@ -126,6 +145,17 @@ local function getlines(lines, row, step)
   return lines, row
 end
 
+-- flash range of lines in current buffer
+---@param start_row number
+---@param end_row number
+local function flash(start_row, end_row)
+  local ns = vim.api.nvim_create_namespace "tidal_flash"
+  vim.highlight.range(0, ns, "TidalEval", { start_row - 1, 0 }, { end_row - 1, 100000 }, { inclusive = true })
+  vim.defer_fn(function()
+    vim.api.nvim_buf_clear_namespace(0, ns, 0, -1)
+  end, 200)
+end
+
 -- send a string or list of strings
 ---@param obj string|table<number,string>
 local function send(obj)
@@ -148,43 +178,6 @@ local function send(obj)
 end
 
 M.send = send
-
--- flash range of lines in current buffer
----@param start_row number
----@param end_row number
-local function flash(start_row, end_row)
-  local ns = vim.api.nvim_create_namespace "tidal_flash"
-  vim.highlight.range(0, ns, "TidalEval", { start_row - 1, 0 }, { end_row - 1, 100000 }, { inclusive = true })
-  vim.defer_fn(function()
-    vim.api.nvim_buf_clear_namespace(0, ns, 0, -1)
-  end, 200)
-end
-
--- start terminal and tidalcycles
-function M.start()
-  if job_id == nil then
-    require("toggleterm").exec("ghci", terminal_id, 10, nil, "horizontal", false, true)
-    local term = require("toggleterm.terminal").get(terminal_id)
-    if term ~= nil then
-      job_id = term.job_id
-      send(tidalboot_ghci)
-      vim.cmd.stopinsert { bang = true }
-      vim.cmd.normal { "G", bang = true }
-      vim.cmd.wincmd "p"
-    end
-  end
-end
-
--- stop tidalcycles and terminal
-function M.stop()
-  if job_id ~= nil then
-    job_id = nil
-    require("toggleterm").exec(":quit", terminal_id, nil, nil, nil, false, true)
-    vim.defer_fn(function()
-      require("toggleterm").exec("exit", terminal_id, nil, nil, nil, false, true)
-    end, 50)
-  end
-end
 
 -- send a line or paragraph in the current buffer
 -- * trailing comments and whitespace are removed
@@ -233,6 +226,63 @@ function M.send_buf(send_paragraph)
   vim.schedule(function()
     flash(start_row, end_row)
   end)
+end
+
+-- start osc server
+local function start_osc()
+  osc = require("osc").new {
+    transport = "udp",
+    recvAddr = "127.0.0.1",
+    recvPort = 9000,
+  }
+
+  osc:add_handler("/note", function(data)
+    local cmd = oscmap[tonumber(data.message[1])]
+    if cmd ~= nil then
+      vim.schedule(function()
+        if type(cmd) == "function" then
+          cmd()
+        else
+          send(cmd)
+        end
+      end)
+    end
+  end)
+
+  osc:open()
+end
+
+-- stop osc server
+local function stop_osc()
+  osc:close()
+end
+
+-- start terminal and tidalcycles
+function M.start()
+  if job_id == nil then
+    require("toggleterm").exec("ghci", terminal_id, 10, nil, "horizontal", false, true)
+    local term = require("toggleterm.terminal").get(terminal_id)
+    if term ~= nil then
+      job_id = term.job_id
+      send(tidalboot_ghci)
+      vim.cmd.stopinsert { bang = true }
+      vim.cmd.normal { "G", bang = true }
+      vim.cmd.wincmd "p"
+      start_osc()
+    end
+  end
+end
+
+-- stop tidalcycles and terminal
+function M.stop()
+  if job_id ~= nil then
+    job_id = nil
+    stop_osc()
+    require("toggleterm").exec(":quit", terminal_id, nil, nil, nil, false, true)
+    vim.defer_fn(function()
+      require("toggleterm").exec("exit", terminal_id, nil, nil, nil, false, true)
+    end, 50)
+  end
 end
 
 return M

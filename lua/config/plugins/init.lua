@@ -12,7 +12,8 @@ return require("packer").startup {
     use { "rcarriga/nvim-notify", config = p "notify" }
     use { "tami5/sqlite.lua", config = p "sqlite" }
     use { "MunifTanjim/nui.nvim" }
-    use { "davidgranstrom/osc.nvim", opt = true }
+    -- use { "davidgranstrom/osc.nvim", opt = true }
+    use { "davidgranstrom/osc.nvim" }
 
     use { "catppuccin/nvim", as = "catppuccin", config = p "catppuccin", run = ":CatppuccinCompile" }
     use { "navarasu/onedark.nvim", config = p "onedark", after = "catppuccin" }

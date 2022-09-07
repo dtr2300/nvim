@@ -3,17 +3,17 @@ vim.g.catppuccin_flavour = "mocha"
 local c = require("catppuccin.palettes").get_palette()
 
 require("catppuccin").setup {
-  dim_inactive = {
-    enabled = false,
-    shade = "dark",
-    percentage = 0.15,
-  },
   transparent_background = false,
   term_colors = true,
   compile = {
     enabled = true,
     path = vim.fn.stdpath "config" .. "/lua/config/plugins",
     suffix = "_compiled",
+  },
+  dim_inactive = {
+    enabled = false,
+    shade = "dark",
+    percentage = 0.15,
   },
   styles = {
     comments = { "italic" },
@@ -31,7 +31,6 @@ require("catppuccin").setup {
   },
   integrations = {
     treesitter = true,
-    treesitter_context = true,
     native_lsp = {
       enabled = true,
       virtual_text = {
@@ -53,21 +52,16 @@ require("catppuccin").setup {
     lsp_saga = false,
     gitgutter = false,
     gitsigns = false,
-    leap = false,
     telescope = true,
-    nvimtree = {
+    nvimtree = false,
+    dap = {
       enabled = false,
-      show_root = false,
-      transparent_panel = false,
+      enable_ui = false,
     },
     neotree = {
       enabled = false,
       show_root = false,
       transparent_panel = false,
-    },
-    dap = {
-      enabled = false,
-      enable_ui = false,
     },
     which_key = true,
     indent_blankline = {
@@ -81,6 +75,7 @@ require("catppuccin").setup {
     barbar = false,
     markdown = true,
     lightspeed = false,
+    leap = false,
     ts_rainbow = true,
     hop = false,
     notify = true,
@@ -95,6 +90,8 @@ require("catppuccin").setup {
       custom_bg = "NONE",
     },
     overseer = false,
+    fidget = false,
+    treesitter_context = true,
   },
   custom_highlights = {
     -- remove italics
