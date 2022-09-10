@@ -13,6 +13,29 @@ if vim.fn.has "win32" == 0 then
 end
 
 local tidal = require "config.utils.tidal"
+local strtobool = { ["true"] = true, ["1"] = true, ["false"] = false, ["0"] = false }
+
+-- mappings
+
+-- toggle sc post window
+vim.keymap.set("n", "<CR>", function()
+  require("scnvim.postwin").toggle()
+end, { silent = true, buffer = true, desc = "Toggle sc post window" })
+
+-- start sc and superdirt
+vim.keymap.set("n", "<S-F5>", function()
+  tidal.start_superdirt()
+end, { silent = true, buffer = true, desc = "Start sc and superdirt" })
+
+-- start tidalcycles
+vim.keymap.set("n", "<F5>", function()
+  tidal.start()
+end, { silent = true, buffer = true, desc = "Start tidalcycles" })
+
+-- stop tidalcycles and sc
+vim.keymap.set("n", "<F6>", function()
+  tidal.stop()
+end, { silent = true, buffer = true, desc = "Stop tidalcycles" })
 
 -- send current paragraph
 vim.keymap.set({ "n", "i" }, "<M-e>", function()
@@ -23,16 +46,6 @@ end, { silent = true, buffer = true, desc = "Send paragraph" })
 vim.keymap.set({ "n", "i" }, "<C-e>", function()
   tidal.send_buf(false)
 end, { silent = true, buffer = true, desc = "Send line" })
-
--- start tidalcycles
-vim.keymap.set("n", "<F5>", function()
-  tidal.start()
-end, { silent = true, buffer = true, desc = "Start tidalcycles" })
-
--- stop tidalcycles
-vim.keymap.set("n", "<F6>", function()
-  tidal.stop()
-end, { silent = true, buffer = true, desc = "Stop tidalcycles" })
 
 -- silence please
 vim.keymap.set("n", "<F12>", function()
@@ -88,7 +101,32 @@ vim.keymap.set("n", "<LocalLeader>S", function()
   end
 end, { silent = true, buffer = true, desc = "Unsolo pattern" })
 
+-- commands
+
 -- send string
 vim.api.nvim_create_user_command("TidalSend", function(opts)
   tidal.send(opts.args)
-end, { nargs = 1, desc = "Send string" })
+end, { nargs = 1, desc = "Send string", force = false })
+
+-- start tidalcycles
+vim.api.nvim_create_user_command("TidalStartSuperDirt", function()
+  tidal.start_superdirt()
+end, { nargs = 0, desc = "Start superdirt", force = false })
+
+-- start tidalcycles
+vim.api.nvim_create_user_command("TidalStart", function(opts)
+  local tidal_midi_in = strtobool[opts.fargs[1]]
+  local nvim_midi_in = strtobool[opts.fargs[2]]
+  local tidal_midi_out = strtobool[opts.fargs[3]]
+  tidal_midi_in = tidal_midi_in == nil or tidal_midi_in
+  nvim_midi_in = nvim_midi_in == nil or nvim_midi_in
+  tidal_midi_out = tidal_midi_out == nil or tidal_midi_out
+  tidal.start(tidal_midi_in, nvim_midi_in, tidal_midi_out)
+end, { nargs = "*", desc = "Start tidalcycles", force = false })
+
+-- stop tidalcycles
+vim.api.nvim_create_user_command("TidalStop", function(opts)
+  local stop_sclang = strtobool[opts.fargs[1]]
+  stop_sclang = stop_sclang == nil or stop_sclang
+  tidal.stop(stop_sclang)
+end, { nargs = "?", desc = "Stop tidalcycles and sc", force = false })
