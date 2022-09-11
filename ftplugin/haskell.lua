@@ -13,7 +13,7 @@ if vim.fn.has "win32" == 0 then
 end
 
 local tidal = require "config.utils.tidal"
-local strtobool = setmetatable({ ["true"] = true, ["1"] = true, ["false"] = false, ["0"] = false }, {
+local strtobool = setmetatable({ ["v:false"] = false, ["false"] = false, ["0"] = false }, {
   __index = function()
     return true -- default: true
   end,

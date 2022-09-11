@@ -1,6 +1,6 @@
 M = {}
 
-local boot = require "lua.config.utils.tidal.boot"
+local boot = require "config.utils.tidal.boot"
 
 local terminal_id = 1
 local job_id = nil
