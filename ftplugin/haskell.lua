@@ -13,7 +13,11 @@ if vim.fn.has "win32" == 0 then
 end
 
 local tidal = require "config.utils.tidal"
-local strtobool = { ["true"] = true, ["1"] = true, ["false"] = false, ["0"] = false }
+local strtobool = setmetatable({ ["true"] = true, ["1"] = true, ["false"] = false, ["0"] = false }, {
+  __index = function()
+    return true -- default: true
+  end,
+})
 
 -- mappings
 
@@ -115,18 +119,10 @@ end, { nargs = 0, desc = "Start superdirt", force = false })
 
 -- start tidalcycles
 vim.api.nvim_create_user_command("TidalStart", function(opts)
-  local tidal_midi_in = strtobool[opts.fargs[1]]
-  local nvim_midi_in = strtobool[opts.fargs[2]]
-  local tidal_midi_out = strtobool[opts.fargs[3]]
-  tidal_midi_in = tidal_midi_in == nil or tidal_midi_in
-  nvim_midi_in = nvim_midi_in == nil or nvim_midi_in
-  tidal_midi_out = tidal_midi_out == nil or tidal_midi_out
-  tidal.start(tidal_midi_in, nvim_midi_in, tidal_midi_out)
+  tidal.start(strtobool[opts.fargs[1]], strtobool[opts.fargs[2]], strtobool[opts.fargs[3]])
 end, { nargs = "*", desc = "Start tidalcycles", force = false })
 
 -- stop tidalcycles
 vim.api.nvim_create_user_command("TidalStop", function(opts)
-  local stop_sclang = strtobool[opts.fargs[1]]
-  stop_sclang = stop_sclang == nil or stop_sclang
-  tidal.stop(stop_sclang)
+  tidal.stop(strtobool[opts.fargs[1]])
 end, { nargs = "?", desc = "Stop tidalcycles and sc", force = false })
