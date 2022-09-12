@@ -203,20 +203,11 @@ function M.start(tidal_midi_in, nvim_midi_in, tidal_midi_out)
       if nvim_midi_in then
         start_osc()
       end
-      if tidal_midi_in and nvim_midi_in then
-        require("scnvim.sclang").send(boot.start_midi_to_osc_scd)
-      else
-        if tidal_midi_in then
-          require("scnvim.sclang").send(boot.start_midi_to_osc_tidal_scd)
-        else
-          if nvim_midi_in then
-            require("scnvim.sclang").send(boot.start_midi_to_osc_nvim_scd)
-          end
-        end
-      end
 
-      if tidal_midi_out then
-        require("scnvim.sclang").send(boot.start_midi_out_scd)
+      if tidal_midi_in or nvim_midi_in or tidal_midi_out then
+        require("scnvim.sclang").send(
+          string.format(boot.start_midi_scd, tostring(tidal_midi_in), tostring(nvim_midi_in), tostring(tidal_midi_out))
+        )
       end
     end
   end
