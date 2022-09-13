@@ -174,7 +174,7 @@ function M.start_superdirt()
   end, 40)
 end
 
--- start tidalcycles (sc, superdirt must be running)
+-- start tidalcycles (superdirt must be running)
 ---@param tidal_midi_in? boolean
 ---@param nvim_midi_in? boolean
 ---@param tidal_midi_out? boolean
@@ -213,7 +213,7 @@ function M.start(tidal_midi_in, nvim_midi_in, tidal_midi_out)
   end
 end
 
--- stop tidalcycles, sc
+-- stop tidalcycles and sc
 ---@param stop_sclang? boolean
 function M.stop(stop_sclang)
   vim.validate {

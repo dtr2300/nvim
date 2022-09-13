@@ -112,17 +112,22 @@ vim.api.nvim_create_user_command("TidalSend", function(opts)
   tidal.send(opts.args)
 end, { nargs = 1, desc = "Send string", force = false })
 
--- start tidalcycles
+-- start sc and superdirt
 vim.api.nvim_create_user_command("TidalStartSuperDirt", function()
   tidal.start_superdirt()
-end, { nargs = 0, desc = "Start superdirt", force = false })
+end, { nargs = 0, desc = "Start sc and superdirt", force = false })
 
 -- start tidalcycles
 vim.api.nvim_create_user_command("TidalStart", function(opts)
   tidal.start(strtobool[opts.fargs[1]], strtobool[opts.fargs[2]], strtobool[opts.fargs[3]])
 end, { nargs = "*", desc = "Start tidalcycles", force = false })
 
--- stop tidalcycles
+-- stop tidalcycles and sc
 vim.api.nvim_create_user_command("TidalStop", function(opts)
   tidal.stop(strtobool[opts.fargs[1]])
 end, { nargs = "?", desc = "Stop tidalcycles and sc", force = false })
+
+-- stop sc
+vim.api.nvim_create_user_command("TidalStopSc", function()
+  require("scnvim").stop()
+end, { nargs = 0, desc = "Stop sc", force = false })

@@ -124,7 +124,7 @@ s.reboot {
                 var folders = machine.folders;
                 folders.do({
                     arg folder;
-                    ~dirt.loadSoundFiles(folder.fullPath,namingFunction: { |x| x.basename.replace("-","")});
+                    ~dirt.loadSoundFiles(folder.fullPath,namingFunction: { |x| x.basename.replace("-","") });
                 });
             });
         );
@@ -162,41 +162,41 @@ if(tidal_midi_in) { osc_tidal = NetAddr.new("127.0.0.1", 6010) };
 if(nvim_midi_in) { osc_nvim = NetAddr.new("127.0.0.1", 9000) };
 
 if(tidal_midi_in && nvim_midi_in) {
-    on = MIDIFunc.noteOn({|val, num, chan, src|
+    on = MIDIFunc.noteOn({ |val, num, chan, src|
         if(chan == 0) {
             osc_nvim.sendMsg("/note", num.asString, val);
         } {
-            osc_tidal.sendMsg("/ctrl", num.asString, val/127);
+            osc_tidal.sendMsg("/ctrl", num.asString, val / 127);
         };
     });
 
-    off = MIDIFunc.noteOff({|val, num, chan, src|
+    off = MIDIFunc.noteOff({ |val, num, chan, src|
         if(chan != 0) {
             osc_tidal.sendMsg("/ctrl", num.asString, 0);
         };
     });
 
-    cc = MIDIFunc.cc({|val, num, chan, src|
-        osc_tidal.sendMsg("/ctrl", num.asString, val/127);
+    cc = MIDIFunc.cc({ |val, num, chan, src|
+        osc_tidal.sendMsg("/ctrl", num.asString, val / 127);
     });
 };
 
 if(tidal_midi_in && nvim_midi_in.not) {
-    on = MIDIFunc.noteOn({|val, num, chan, src|
-        osc_tidal.sendMsg("/ctrl", num.asString, val/127);
+    on = MIDIFunc.noteOn({ |val, num, chan, src|
+        osc_tidal.sendMsg("/ctrl", num.asString, val / 127);
     });
 
-    off = MIDIFunc.noteOff({|val, num, chan, src|
+    off = MIDIFunc.noteOff({ |val, num, chan, src|
         osc_tidal.sendMsg("/ctrl", num.asString, 0);
     });
 
-    cc = MIDIFunc.cc({|val, num, chan, src|
-        osc_tidal.sendMsg("/ctrl", num.asString, val/127);
+    cc = MIDIFunc.cc({ |val, num, chan, src|
+        osc_tidal.sendMsg("/ctrl", num.asString, val / 127);
     });
 };
 
 if(nvim_midi_in && tidal_midi_in.not) {
-    on = MIDIFunc.noteOn({|val, num, chan, src|
+    on = MIDIFunc.noteOn({ |val, num, chan, src|
         if(chan == 0) {
             osc_nvim.sendMsg("/note", num.asString, val);
         };
