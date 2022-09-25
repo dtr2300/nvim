@@ -171,7 +171,7 @@ function M.start_superdirt()
   end
   vim.defer_fn(function()
     require("scnvim.sclang").send(boot.start_superdirt_scd)
-  end, 40)
+  end, 50)
 end
 
 -- start tidalcycles (superdirt must be running)

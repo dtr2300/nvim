@@ -96,10 +96,9 @@ require("catppuccin").setup {
   },
   custom_highlights = {
     -- remove italics
-    TSParameter = { fg = c.maroon, style = {} },
-    markdownTSLiteral = { fg = c.teal, style = {} },
-    markdown_inlineTSLiteral = { fg = c.teal, style = {} },
-    TSURI = { fg = c.rosewater, style = { "underline" } },
+    ["@parameter"] = { fg = c.maroon, style = {} },
+    ["@text.literal"] = { fg = c.teal, style = {} },
+    ["@text.uri"] = { fg = c.rosewater, style = { "underline" } },
 
     -- alpha
     AlphaButton = { fg = c.blue },

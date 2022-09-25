@@ -114,7 +114,7 @@ s.reboot {
         ~dirt.loadSoundFiles;
 
         ~dirt.loadSoundFiles("F:\\Samples\\samples-extra\\*");
-        ~dirt.loadSoundFiles("F:\\Samples\\tidalbeckstrom\\*");
+        //~dirt.loadSoundFiles("F:\\Samples\\tidalbeckstrom\\*");
 
         ~drumMachinesDir = PathName.new("F:\\Samples\\tidaldrummachines");
         ~machines = ~drumMachinesDir.folders;

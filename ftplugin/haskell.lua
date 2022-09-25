@@ -131,3 +131,8 @@ end, { nargs = "?", desc = "Stop tidalcycles and sc", force = false })
 vim.api.nvim_create_user_command("TidalStopSc", function()
   require("scnvim").stop()
 end, { nargs = 0, desc = "Stop sc", force = false })
+
+-- send string to sc
+vim.api.nvim_create_user_command("TidalSendSc", function(opts)
+  require("scnvim").send(opts.args)
+end, { nargs = 1, desc = "Send string to sc", force = false })

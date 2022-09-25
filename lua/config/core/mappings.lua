@@ -53,3 +53,6 @@ vim.keymap.set("n", "<Leader>Lm", "<Cmd>set ft=markdown<CR>", { silent = true })
 vim.keymap.set("n", "<Leader>Lp", "<Cmd>set ft=python<CR>", { silent = true })
 vim.keymap.set("n", "<Leader>Lr", "<Cmd>set ft=rust<CR>", { silent = true })
 vim.keymap.set("n", "<Leader>Ls", "<Cmd>set ft=supercollider<CR>", { silent = true })
+
+-- space paste
+vim.keymap.set("x", "<Leader>p", [["_dP]], { noremap = true, silent = true })
