@@ -88,7 +88,7 @@ let drumMachine name ps = stack
     drumF = drumFrom
 :}
 
-let bpm x = setcps (x/60/4)
+let bpm x = setcps (x / 60 / 4)
 
 :set prompt "tidal> "
 :set prompt-cont ""
@@ -98,6 +98,9 @@ default (Pattern String, Integer, Double)
 
 M.start_superdirt_scd = [[
 (
+var file;
+var config;
+
 s.reboot {
     s.options.device = "ASIO";
     s.options.sampleRate = 48000;
@@ -113,20 +116,20 @@ s.reboot {
         ~dirt = SuperDirt(2, s);
         ~dirt.loadSoundFiles;
 
-        ~dirt.loadSoundFiles("F:\\Samples\\samples-extra\\*");
-        //~dirt.loadSoundFiles("F:\\Samples\\tidalbeckstrom\\*");
+        file = File("projectconfig.json", "r");
+        config = file.readAllString.parseYAML;
+        file.close;
+        config["sampledirs"].do { |item, i| ~dirt.loadSoundFiles(item); };
 
         ~drumMachinesDir = PathName.new("F:\\Samples\\tidaldrummachines");
         ~machines = ~drumMachinesDir.folders;
         (
-            ~machines.do({
-                arg machine;
+            ~machines.do { |machine|
                 var folders = machine.folders;
-                folders.do({
-                    arg folder;
-                    ~dirt.loadSoundFiles(folder.fullPath,namingFunction: { |x| x.basename.replace("-","") });
-                });
-            });
+                folders.do { |folder|
+                    ~dirt.loadSoundFiles(folder.fullPath, namingFunction: { |x| x.basename.replace("-", ""); });
+                };
+            };
         );
 
         s.sync;
@@ -140,6 +143,7 @@ s.reboot {
         );
     };
 
+    s.recHeaderFormat_("wav");
     s.latency = 0.1;
     s.volume = -12;
 };
@@ -158,8 +162,8 @@ var osc_tidal, osc_nvim;
 MIDIClient.init;
 MIDIIn.connectAll;
 
-if(tidal_midi_in) { osc_tidal = NetAddr.new("127.0.0.1", 6010) };
-if(nvim_midi_in) { osc_nvim = NetAddr.new("127.0.0.1", 9000) };
+if(tidal_midi_in) { osc_tidal = NetAddr.new("127.0.0.1", 6010); };
+if(nvim_midi_in) { osc_nvim = NetAddr.new("127.0.0.1", 9000); };
 
 if(tidal_midi_in && nvim_midi_in) {
     on = MIDIFunc.noteOn({ |val, num, chan, src|

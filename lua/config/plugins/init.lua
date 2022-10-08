@@ -12,15 +12,12 @@ return require("packer").startup {
     use { "rcarriga/nvim-notify", config = p "notify" }
     use { "tami5/sqlite.lua", config = p "sqlite" }
     use { "MunifTanjim/nui.nvim" }
-    -- use { "davidgranstrom/osc.nvim", opt = true }
     use { "davidgranstrom/osc.nvim" }
 
     use { "catppuccin/nvim", as = "catppuccin", config = p "catppuccin", run = ":CatppuccinCompile" }
-    use { "navarasu/onedark.nvim", config = p "onedark", after = "catppuccin" }
 
-    use { "nvim-lualine/lualine.nvim", config = p "lualine", after = "onedark.nvim" }
-    -- use { "akinsho/bufferline.nvim", tag = "v2.*", config = p "bufferline" }
-    use { "akinsho/bufferline.nvim", tag = "v2.5.1", config = p "bufferline" }
+    use { "nvim-lualine/lualine.nvim", config = p "lualine", after = "catppuccin" }
+    use { "akinsho/bufferline.nvim", config = p "bufferline", after = "lualine.nvim" }
     use { "goolord/alpha-nvim", config = p "alpha" }
     use { "folke/which-key.nvim", config = p "whichkey" }
     use { "folke/zen-mode.nvim", config = p "zenmode" }
@@ -28,7 +25,6 @@ return require("packer").startup {
     use { "numToStr/Comment.nvim", config = p "comment" }
     use { "akinsho/toggleterm.nvim", config = p "toggleterm", tag = "v2.*" }
     use { "stevearc/aerial.nvim", config = p "aerial" }
-    -- use { "tiagovla/scope.nvim", config = p "scope" }
 
     local telescope_ext = {
       { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
@@ -75,7 +71,7 @@ return require("packer").startup {
   end,
 
   config = {
-    compile_path = vim.fn.stdpath "config" .. "/lua/config/plugins/packer_compiled.lua",
+    compile_path = vim.fn.stdpath "config" .. "/lua/config/compiled/packer/packer_compiled.lua",
     display = {
       prompt_border = "rounded",
       open_fn = function()

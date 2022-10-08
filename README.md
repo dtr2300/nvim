@@ -16,7 +16,6 @@ This is my personal [Neovim](https://neovim.io/) configuration (Windows, WSL/Ubu
 - [nui.nvim](https://github.com/MunifTanjim/nui.nvim) - ui component library for neovim
 - [osc.nvim](https://github.com/davidgranstrom/osc.nvim) - open sound control (osc) library for neovim
 <!-- break -->
-- [onedark.nvim](https://github.com/navarasu/onedark.nvim) - a dark theme for neovim >= 0.5 based on atom one dark theme
 - [catppuccin](https://github.com/catppuccin/nvim) - soothing pastel theme for neovim
 <!-- break -->
 - [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim) - a blazing fast and easy to configure neovim statusline
@@ -115,11 +114,8 @@ This is my personal [Neovim](https://neovim.io/) configuration (Windows, WSL/Ubu
     - [wezterm](https://github.com/wez/wezterm)
 - guis
     - [neovide](https://github.com/neovide/neovide)
-    - [nvui](https://github.com/rohit-px2/nvui)
     - [neovim-qt](https://github.com/equalsraf/neovim-qt)
-    - [nvy](https://github.com/RMichelsen/Nvy)
-    - [goneovim](https://github.com/akiyosi/goneovim)
-    - [fvim](https://github.com/yatli/fvim)
+
 - language servers
     - [pyright](https://github.com/microsoft/pyright)
     - [vim-language-server](https://github.com/iamcco/vim-language-server)

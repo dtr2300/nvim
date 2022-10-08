@@ -33,7 +33,7 @@ end, { silent = true, buffer = true, desc = "Start sc and superdirt" })
 
 -- start tidalcycles
 vim.keymap.set("n", "<F5>", function()
-  tidal.start()
+  tidal.start(false, false, false)
 end, { silent = true, buffer = true, desc = "Start tidalcycles" })
 
 -- stop tidalcycles and sc
@@ -105,6 +105,36 @@ vim.keymap.set("n", "<LocalLeader>S", function()
   end
 end, { silent = true, buffer = true, desc = "Unsolo pattern" })
 
+-- s.plotTree
+vim.keymap.set("n", "<LocalLeader>t", function()
+  require("scnvim").send "s.plotTree;"
+end, { silent = true, buffer = true, desc = "s.plotTree" })
+
+-- s.scope
+vim.keymap.set("n", "<LocalLeader>c", function()
+  require("scnvim").send "s.scope;"
+end, { silent = true, buffer = true, desc = "s.scope" })
+
+-- s.freqscope
+vim.keymap.set("n", "<LocalLeader>f", function()
+  require("scnvim").send "s.freqscope;"
+end, { silent = true, buffer = true, desc = "s.freqscope" })
+
+-- s.makeGui
+vim.keymap.set("n", "<LocalLeader>g", function()
+  require("scnvim").send "s.makeGui;"
+end, { silent = true, buffer = true, desc = "s.makeGui" })
+
+-- s.meter
+vim.keymap.set("n", "<LocalLeader>r", function()
+  require("scnvim").send "s.meter;"
+end, { silent = true, buffer = true, desc = "s.meter" })
+
+-- s.volume.Gui
+vim.keymap.set("n", "<LocalLeader>v", function()
+  require("scnvim").send "s.volume.Gui;"
+end, { silent = true, buffer = true, desc = "s.volume.Gui" })
+
 -- commands
 
 -- send string
@@ -136,3 +166,8 @@ end, { nargs = 0, desc = "Stop sc", force = false })
 vim.api.nvim_create_user_command("TidalSendSc", function(opts)
   require("scnvim").send(opts.args)
 end, { nargs = 1, desc = "Send string to sc", force = false })
+
+-- load samples
+vim.api.nvim_create_user_command("TidalLoadSamples", function(opts)
+  require("scnvim").send(string.format([[~dirt.loadSoundFiles("%s");]], opts.args))
+end, { nargs = 1, desc = "Load folder with samples", force = false })

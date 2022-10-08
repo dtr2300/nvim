@@ -3,13 +3,9 @@ vim.g.catppuccin_flavour = "mocha"
 local c = require("catppuccin.palettes").get_palette()
 
 require("catppuccin").setup {
+  compile_path = vim.fn.stdpath "config" .. "/lua/config/compiled/catppuccin",
   transparent_background = false,
   term_colors = true,
-  compile = {
-    enabled = true,
-    path = vim.fn.stdpath "config" .. "/lua/config/plugins",
-    suffix = "_compiled",
-  },
   dim_inactive = {
     enabled = false,
     shade = "dark",
@@ -40,6 +36,7 @@ require("catppuccin").setup {
     fidget = false,
     gitgutter = false,
     gitsigns = false,
+    harpoon = false,
     hop = false,
     leap = false,
     lightspeed = false,
@@ -48,6 +45,8 @@ require("catppuccin").setup {
     markdown = true,
     mini = false,
     neogit = false,
+    neotest = false,
+    neotree = false,
     notify = true,
     nvimtree = false,
     overseer = false,
@@ -87,11 +86,6 @@ require("catppuccin").setup {
     navic = {
       enabled = false,
       custom_bg = "NONE",
-    },
-    neotree = {
-      enabled = false,
-      show_root = false,
-      transparent_panel = false,
     },
   },
   custom_highlights = {
@@ -139,20 +133,20 @@ require("catppuccin").setup {
     -- TelescopePreviewTitle = { fg = c.crust },
 
     -- bufferline
-    BufferLineBufferSelected = { fg = c.text, bg = c.base, style = {} },
-    BufferLineTabClose = { fg = c.surface1, bg = c.mantle },
-    BufferLineCloseButtonSelected = { fg = c.surface1, bg = c.base },
-    BufferLineBackground = { bg = c.mantle },
-    BufferLineBackcrust = { fg = c.text, bg = c.mantle },
-    BufferLineBufferVisible = { fg = c.surface1, bg = c.mantle },
-    BufferLineTab = { fg = c.surface1, bg = c.mantle },
-    BufferLineTabSelected = { fg = c.sky, bg = c.base },
-    BufferLineIndicatorSelected = { fg = c.peach, bg = c.base },
-    BufferLineSeparator = { fg = c.crust, bg = c.mantle },
-    BufferLineSeparatorVisible = { fg = c.crust, bg = c.mantle },
-    BufferLineSeparatorSelected = { fg = c.crust, bg = c.base },
-    BufferLineCloseButton = { fg = c.surface1, bg = c.mantle },
-    BufferLineCloseButtonVisible = { fg = c.surface1, bg = c.mantle },
-    BufferLineFill = { bg = c.crust },
+    -- BufferLineBufferSelected = { fg = c.text, bg = c.base, style = {} },
+    -- BufferLineCloseButtonSelected = { fg = c.surface1, bg = c.base },
+    -- BufferLineIndicatorSelected = { fg = c.peach, bg = c.base },
+    -- BufferLineTabClose = { fg = c.surface1, bg = c.mantle },
+    -- BufferLineBackground = { bg = c.mantle },
+    -- BufferLineBackcrust = { fg = c.text, bg = c.mantle },
+    -- BufferLineBufferVisible = { fg = c.surface1, bg = c.mantle },
+    -- BufferLineTab = { fg = c.surface1, bg = c.mantle },
+    -- BufferLineTabSelected = { fg = c.sky, bg = c.base },
+    -- BufferLineSeparator = { fg = c.crust, bg = c.mantle },
+    -- BufferLineSeparatorVisible = { fg = c.crust, bg = c.mantle },
+    -- BufferLineSeparatorSelected = { fg = c.crust, bg = c.base },
+    -- BufferLineCloseButton = { fg = c.surface1, bg = c.mantle },
+    -- BufferLineCloseButtonVisible = { fg = c.surface1, bg = c.mantle },
+    -- BufferLineFill = { bg = c.crust },
   },
 }

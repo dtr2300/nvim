@@ -25,6 +25,7 @@ vim.opt.showmode = false
 vim.opt.list = false
 vim.opt.listchars = { eol = "¬" }
 vim.opt.ruler = false
+vim.opt.cmdheight = 0
 --vim.opt.signcolumn = "number"
 
 -- disable runtime plugins

@@ -1,4 +1,4 @@
-/lua/config/plugins/*_compiled.lua
+/lua/config/compiled
 /spell
 /lua/scratch
 /doc

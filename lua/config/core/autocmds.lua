@@ -1,11 +1,12 @@
 -- update lualine colors
-vim.api.nvim_create_augroup("update_lualine", { clear = true })
-vim.api.nvim_create_autocmd("ColorScheme", {
-  group = "update_lualine",
-  callback = function()
-    R "config.plugins.lualine"
-  end,
-})
+-- vim.api.nvim_create_augroup("update_lualine", { clear = true })
+-- vim.api.nvim_create_autocmd("ColorScheme", {
+--   group = "update_lualine",
+--   callback = function()
+--     R "config.plugins.lualine"
+--     R "config.plugins.bufferline"
+--   end,
+-- })
 
 -- highlight on yank
 vim.api.nvim_create_augroup("yank_hl", { clear = true })

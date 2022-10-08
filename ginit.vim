@@ -1,1 +1,1 @@
-lua require"config.gui".setup_ginit()
+lua require"config.gui".setup()
