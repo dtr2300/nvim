@@ -1,8 +1,9 @@
-vim.g.catppuccin_flavour = "mocha"
-
-local c = require("catppuccin.palettes").get_palette()
-
 require("catppuccin").setup {
+  flavour = "mocha",
+  background = {
+    light = "latte",
+    dark = "mocha",
+  },
   compile_path = vim.fn.stdpath "config" .. "/lua/config/compiled/catppuccin",
   transparent_background = false,
   term_colors = true,
@@ -25,6 +26,7 @@ require("catppuccin").setup {
     types = {},
     operators = {},
   },
+  color_overrides = {},
   integrations = {
     aerial = true,
     barbar = false,
@@ -42,15 +44,18 @@ require("catppuccin").setup {
     lightspeed = false,
     lsp_saga = false,
     lsp_trouble = false,
+    mason = false,
     markdown = true,
     mini = false,
     neogit = false,
     neotest = false,
     neotree = false,
+    noice = false,
     notify = true,
     nvimtree = false,
     overseer = false,
     pounce = false,
+    semantic_tokens = false,
     symbols_outline = false,
     telekasten = false,
     telescope = true,
@@ -88,65 +93,52 @@ require("catppuccin").setup {
       custom_bg = "NONE",
     },
   },
-  custom_highlights = {
-    -- remove italics
-    ["@parameter"] = { fg = c.maroon, style = {} },
-    ["@text.literal"] = { fg = c.teal, style = {} },
-    ["@text.uri"] = { fg = c.rosewater, style = { "underline" } },
+  highlight_overrides = {
+    mocha = function(colors)
+      return {
+        -- remove italics
+        ["@parameter"] = { fg = colors.maroon, style = {} },
+        ["@text.literal"] = { fg = colors.teal, style = {} },
+        ["@text.uri"] = { fg = colors.rosewater, style = { "underline" } },
 
-    -- alpha
-    AlphaButton = { fg = c.blue },
-    AlphaButtonShortcut = { fg = c.sapphire },
-    AlphaCol1 = { fg = c.red },
-    AlphaCol2 = { fg = c.rosewater },
-    AlphaCol3 = { fg = c.yellow },
-    AlphaCol4 = { fg = c.green },
-    AlphaCol5 = { fg = c.sky },
-    AlphaCol6 = { fg = c.flamingo },
-    AlphaCol7 = { fg = c.pink },
-    AlphaCol8 = { fg = c.mauve },
-    AlphaCol9 = { fg = c.maroon },
-    AlphaCol10 = { fg = c.peach },
-    AlphaCol11 = { fg = c.teal },
-    AlphaQuote = { fg = c.lavender, style = { "italic" } },
+        -- alpha
+        AlphaButton = { fg = colors.blue },
+        AlphaButtonShortcut = { fg = colors.sapphire },
+        AlphaCol1 = { fg = colors.red },
+        AlphaCol2 = { fg = colors.rosewater },
+        AlphaCol3 = { fg = colors.yellow },
+        AlphaCol4 = { fg = colors.green },
+        AlphaCol5 = { fg = colors.sky },
+        AlphaCol6 = { fg = colors.flamingo },
+        AlphaCol7 = { fg = colors.pink },
+        AlphaCol8 = { fg = colors.mauve },
+        AlphaCol9 = { fg = colors.maroon },
+        AlphaCol10 = { fg = colors.peach },
+        AlphaCol11 = { fg = colors.teal },
+        AlphaQuote = { fg = colors.lavender, style = { "italic" } },
 
-    -- scnvim
-    SCNvimEval = { fg = c.base, bg = c.lavender },
+        -- scnvim
+        SCNvimEval = { fg = colors.base, bg = colors.lavender },
 
-    -- tidal
-    TidalEval = { fg = c.base, bg = c.lavender },
+        -- tidal
+        TidalEval = { fg = colors.base, bg = colors.lavender },
 
-    -- luasnip
-    LuaSnipChoiceNode = { fg = c.yellow, style = { "bold" } },
-    LuaSnipInsertNode = { fg = c.white, style = { "bold" } },
+        -- luasnip
+        LuaSnipChoiceNode = { fg = colors.yellow, style = { "bold" } },
+        LuaSnipInsertNode = { fg = colors.white, style = { "bold" } },
 
-    -- telescope
-    TelescopePromptPrefix = { bg = c.crust },
-    TelescopePromptNormal = { bg = c.crust },
-    TelescopeResultsNormal = { bg = c.mantle },
-    TelescopePreviewNormal = { bg = c.crust },
-    TelescopePromptBorder = { bg = c.crust, fg = c.crust },
-    TelescopeResultsBorder = { bg = c.mantle, fg = c.crust },
-    TelescopePreviewBorder = { bg = c.crust, fg = c.crust },
-    -- TelescopePromptTitle = { fg = c.crust },
-    -- TelescopeResultsTitle = { fg = c.text },
-    -- TelescopePreviewTitle = { fg = c.crust },
-
-    -- bufferline
-    -- BufferLineBufferSelected = { fg = c.text, bg = c.base, style = {} },
-    -- BufferLineCloseButtonSelected = { fg = c.surface1, bg = c.base },
-    -- BufferLineIndicatorSelected = { fg = c.peach, bg = c.base },
-    -- BufferLineTabClose = { fg = c.surface1, bg = c.mantle },
-    -- BufferLineBackground = { bg = c.mantle },
-    -- BufferLineBackcrust = { fg = c.text, bg = c.mantle },
-    -- BufferLineBufferVisible = { fg = c.surface1, bg = c.mantle },
-    -- BufferLineTab = { fg = c.surface1, bg = c.mantle },
-    -- BufferLineTabSelected = { fg = c.sky, bg = c.base },
-    -- BufferLineSeparator = { fg = c.crust, bg = c.mantle },
-    -- BufferLineSeparatorVisible = { fg = c.crust, bg = c.mantle },
-    -- BufferLineSeparatorSelected = { fg = c.crust, bg = c.base },
-    -- BufferLineCloseButton = { fg = c.surface1, bg = c.mantle },
-    -- BufferLineCloseButtonVisible = { fg = c.surface1, bg = c.mantle },
-    -- BufferLineFill = { bg = c.crust },
+        -- telescope
+        TelescopePromptPrefix = { bg = colors.crust },
+        TelescopePromptNormal = { bg = colors.crust },
+        TelescopeResultsNormal = { bg = colors.mantle },
+        TelescopePreviewNormal = { bg = colors.crust },
+        TelescopePromptBorder = { bg = colors.crust, fg = colors.crust },
+        TelescopeResultsBorder = { bg = colors.mantle, fg = colors.crust },
+        TelescopePreviewBorder = { bg = colors.crust, fg = colors.crust },
+        -- TelescopePromptTitle = { fg = colors.crust },
+        -- TelescopeResultsTitle = { fg = c.olorstext },
+        -- TelescopePreviewTitle = { fg = colors.crust },
+      }
+    end,
   },
 }

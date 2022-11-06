@@ -1,6 +1,6 @@
 local M = {}
 
-local fontname = "FiraCode NF"
+local fontname = "FiraCode NFM"
 local fontsize = 10
 local isfullscreen = false
 

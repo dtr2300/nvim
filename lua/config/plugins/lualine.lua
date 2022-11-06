@@ -1,4 +1,4 @@
-local cs = vim.g.colors_name or vim.env.NVIM_COLORSCHEME or "onedark"
+local cs = vim.g.colors_name or vim.env.NVIM_COLORSCHEME or "catppuccin"
 
 require("lualine").setup {
   options = {

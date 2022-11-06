@@ -1,10 +1,10 @@
-local c = require("catppuccin.palettes").get_palette()
+local c = require("catppuccin.palettes").get_palette "mocha"
 
 require("bufferline").setup {
   highlights = require("catppuccin.groups.integrations.bufferline").get {
     styles = {},
     custom = {
-      all = {
+      mocha = {
         buffer_selected = { fg = c.text, bg = c.base, bold = false, italic = false },
         tab_close = { fg = c.surface1, bg = c.mantle, bold = false, italic = false },
         close_button = { fg = c.surface1, bg = c.mantle, bold = false, italic = false },
