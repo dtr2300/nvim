@@ -7,7 +7,7 @@ return require("packer").startup {
     use { "lewis6991/impatient.nvim" }
     use { "wbthomason/packer.nvim" }
 
-    use { "kyazdani42/nvim-web-devicons", config = p "webdevicons" }
+    use { "nvim-tree/nvim-web-devicons", config = p "webdevicons" }
     use { "nvim-lua/plenary.nvim", config = p "plenary" }
     use { "rcarriga/nvim-notify", config = p "notify" }
     use { "tami5/sqlite.lua", config = p "sqlite" }
