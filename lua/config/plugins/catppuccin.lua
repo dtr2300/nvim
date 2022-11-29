@@ -12,6 +12,8 @@ require("catppuccin").setup {
     shade = "dark",
     percentage = 0.15,
   },
+  no_italic = false,
+  no_bold = false,
   styles = {
     comments = { "italic" },
     conditionals = { "bold" },
@@ -27,6 +29,7 @@ require("catppuccin").setup {
     operators = {},
   },
   color_overrides = {},
+  custom_highlights = {},
   integrations = {
     aerial = true,
     barbar = false,

@@ -17,8 +17,13 @@ require("zen-mode").setup {
       showcmd = false,
     },
   },
+  -- workaround for https://github.com/folke/zen-mode.nvim/issues/69
   on_open = function(win)
-    vim.cmd "mode"
+    vim.o.cmdheight = 1
+    vim.cmd.mode()
+  end,
+  on_close = function()
+    vim.o.cmdheight = 0
   end,
 }
 
