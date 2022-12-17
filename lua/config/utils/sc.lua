@@ -1,4 +1,4 @@
-M = {}
+local M = {}
 
 local pickers = require "telescope.pickers"
 local finders = require "telescope.finders"

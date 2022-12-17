@@ -60,6 +60,7 @@ This is my personal [Neovim](https://neovim.io/) configuration (Windows, WSL/Ubu
 <!-- break -->
 - [scnvim](https://github.com/davidgranstrom/scnvim) - neovim frontend for supercollider
 - [sc-scratchpad.nvim](https://github.com/madskjeldgaard/sc-scratchpad.nvim) - throwaway buffers for chaotic supercollider coders in neovim
+- [tidal.nvim](https://github.com/dtr2300/tidal.nvim) - neovim plugin for tidalcycles. wip.
 
 ## useful links
 
@@ -68,6 +69,7 @@ This is my personal [Neovim](https://neovim.io/) configuration (Windows, WSL/Ubu
     - [neovim craft](https://neovimcraft.com/) ([json](https://github.com/neurosnap/neovimcraft/blob/main/src/lib/resources.json))
     - [nvim.sh](https://github.com/neurosnap/nvim.sh)
     - [this week in neovim](https://this-week-in-neovim.org/)
+    - [neoland](https://neoland.dev/)
 - lua
     - [getting started using lua in neovim](https://github.com/nanotee/nvim-lua-guide)
     - [programming in lua (first edition)](https://www.lua.org/pil/contents.html)

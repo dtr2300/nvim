@@ -1,30 +1,32 @@
 return require("packer").startup {
   function()
-    local p = function(name)
-      return string.format("require'config.plugins.%s'", name)
-    end
+    local p = setmetatable({}, {
+      __index = function(_, key)
+        return string.format("require('config.plugins.%s')", key)
+      end,
+    })
 
     use { "lewis6991/impatient.nvim" }
     use { "wbthomason/packer.nvim" }
 
-    use { "nvim-tree/nvim-web-devicons", config = p "webdevicons" }
-    use { "nvim-lua/plenary.nvim", config = p "plenary" }
-    use { "rcarriga/nvim-notify", config = p "notify" }
-    use { "tami5/sqlite.lua", config = p "sqlite" }
+    use { "nvim-tree/nvim-web-devicons", config = p.webdevicons }
+    use { "nvim-lua/plenary.nvim", config = p.plenary }
+    use { "rcarriga/nvim-notify", config = p.notify }
+    use { "tami5/sqlite.lua", config = p.sqlite }
     use { "MunifTanjim/nui.nvim" }
     use { "davidgranstrom/osc.nvim" }
 
-    use { "catppuccin/nvim", as = "catppuccin", config = p "catppuccin", run = ":CatppuccinCompile" }
+    use { "catppuccin/nvim", as = "catppuccin", config = p.catppuccin, run = ":CatppuccinCompile" }
 
-    use { "nvim-lualine/lualine.nvim", config = p "lualine", after = "catppuccin" }
-    use { "akinsho/bufferline.nvim", config = p "bufferline", after = "lualine.nvim" }
-    use { "goolord/alpha-nvim", config = p "alpha" }
-    use { "folke/which-key.nvim", config = p "whichkey" }
-    use { "folke/zen-mode.nvim", config = p "zenmode" }
-    use { "norcalli/nvim-colorizer.lua", config = p "colorizer" }
-    use { "numToStr/Comment.nvim", config = p "comment" }
-    use { "akinsho/toggleterm.nvim", config = p "toggleterm", tag = "v2.*" }
-    use { "stevearc/aerial.nvim", config = p "aerial" }
+    use { "nvim-lualine/lualine.nvim", config = p.lualine, after = "catppuccin" }
+    use { "akinsho/bufferline.nvim", config = p.bufferline, after = "lualine.nvim" }
+    use { "goolord/alpha-nvim", config = p.alpha }
+    use { "folke/which-key.nvim", config = p.whichkey }
+    use { "folke/zen-mode.nvim", config = p.zenmode }
+    use { "norcalli/nvim-colorizer.lua", config = p.colorizer }
+    use { "numToStr/Comment.nvim", config = p.comment }
+    use { "akinsho/toggleterm.nvim", config = p.toggleterm, tag = "v2.*" }
+    use { "stevearc/aerial.nvim", config = p.aerial }
 
     local telescope_ext = {
       { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
@@ -36,21 +38,21 @@ return require("packer").startup {
     if vim.fn.has "win32" == 1 then
       table.insert(telescope_ext, "davidgranstrom/telescope-scdoc.nvim")
     end
-    use { "nvim-telescope/telescope.nvim", config = p "telescope", branch = "0.1.x", requires = telescope_ext }
+    use { "nvim-telescope/telescope.nvim", config = p.telescope, branch = "0.1.x", requires = telescope_ext }
 
     local ts_modules = {
       "nvim-treesitter/playground",
       "nvim-treesitter/nvim-treesitter-textobjects",
       "p00f/nvim-ts-rainbow",
     }
-    use { "nvim-treesitter/nvim-treesitter", config = p "treesitter", requires = ts_modules, run = ":TSUpdate" }
+    use { "nvim-treesitter/nvim-treesitter", config = p.treesitter, requires = ts_modules, run = ":TSUpdate" }
 
     use { "ray-x/lsp_signature.nvim" }
-    use { "neovim/nvim-lspconfig", config = p "lsp" }
-    use { "onsails/lspkind-nvim", config = p "lspkind" }
+    use { "neovim/nvim-lspconfig", config = p.lsp }
+    use { "onsails/lspkind-nvim", config = p.lspkind }
 
     use { "rafamadriz/friendly-snippets" }
-    use { "L3MON4D3/LuaSnip", config = p "luasnip" }
+    use { "L3MON4D3/LuaSnip", config = p.luasnip }
 
     local cmp_sources = {
       "hrsh7th/cmp-buffer",
@@ -59,14 +61,17 @@ return require("packer").startup {
       "hrsh7th/cmp-nvim-lsp",
       "saadparwaiz1/cmp_luasnip",
     }
-    use { "hrsh7th/nvim-cmp", config = p "cmp", requires = cmp_sources, after = "lspkind-nvim" }
+    use { "hrsh7th/nvim-cmp", config = p.cmp, requires = cmp_sources, after = "lspkind-nvim" }
 
     use { "milisims/nvim-luaref" }
     use { "nanotee/nvim-lua-guide" }
 
     if vim.fn.has "win32" == 1 then
-      use { "davidgranstrom/scnvim", config = p "scnvim" }
-      use { "madskjeldgaard/sc-scratchpad.nvim", config = p "scscratchpad", after = "scnvim" }
+      use { "davidgranstrom/scnvim", config = p.scnvim }
+      use { "madskjeldgaard/sc-scratchpad.nvim", config = p.scscratchpad, after = "scnvim" }
+      use { "dtr2300/tidal.nvim", config = p.tidal }
+      -- use { "F:\\devel\\nvimplugins\\tidal.nvim" , config = p.tidal }
+      -- use { "https://gitlab.com/dtr2300/tidal.nvim", as = "tidal.nvim", config = p.tidal }
     end
   end,
 

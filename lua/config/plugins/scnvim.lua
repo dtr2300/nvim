@@ -3,6 +3,7 @@ local map = scnvim.map
 local map_expr = scnvim.map_expr
 
 scnvim.setup {
+  ensure_installed = false,
   keymaps = {
     ["<C-e>"] = map("editor.send_line", { "i", "n" }),
     ["<M-e>"] = {

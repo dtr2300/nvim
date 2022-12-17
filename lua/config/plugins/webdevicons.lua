@@ -16,9 +16,14 @@ require("nvim-web-devicons").setup {
       name = "Schelp",
     },
     tidal = {
-      icon = "○",
+      icon = "",
       color = "#a074c4",
       name = "TidalCycles",
+    },
+    ghci = {
+      icon = "",
+      color = "#a074c4",
+      name = "Ghci",
     },
   },
   default = true,

@@ -1,2 +1,2 @@
 require("plenary.filetype").add_file "supercollider"
-require("plenary.filetype").add_file "tidal"
+require("plenary.filetype").add_file "ghci"

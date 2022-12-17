@@ -1,6 +1,6 @@
 return {
   extension = {
-    ["tidal"] = "haskell",
+    ["ghci"] = "haskell",
   },
   file_name = {},
   shebang = {},
