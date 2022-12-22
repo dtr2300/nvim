@@ -66,12 +66,20 @@ return require("packer").startup {
     use { "milisims/nvim-luaref" }
     use { "nanotee/nvim-lua-guide" }
 
+    if vim.fn.has "win32" == 0 then
+      use {
+        "jackMort/ChatGPT.nvim",
+        config = p.chatgpt,
+        opt = true,
+        cmd = { "ChatGPT", "ChatGPTActAs", "ChatGPTEditWithInstructions" },
+      }
+    end
+
     if vim.fn.has "win32" == 1 then
       use { "davidgranstrom/scnvim", config = p.scnvim }
       use { "madskjeldgaard/sc-scratchpad.nvim", config = p.scscratchpad, after = "scnvim" }
       use { "dtr2300/tidal.nvim", config = p.tidal }
-      -- use { "F:\\devel\\nvimplugins\\tidal.nvim" , config = p.tidal }
-      -- use { "https://gitlab.com/dtr2300/tidal.nvim", as = "tidal.nvim", config = p.tidal }
+      -- use { "F:\\devel\\nvimplugins\\tidal.nvim", as = "tidal.nvim", config = p.tidal }
     end
   end,
 

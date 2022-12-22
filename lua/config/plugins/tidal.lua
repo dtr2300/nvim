@@ -4,4 +4,6 @@ require("tidal").setup {
     start_superdirt_scd = "F:/devel/tidal/boot/start_superdirt.scd",
     start_midi_scd = "F:/devel/tidal/boot/start_midi.scd",
   },
+  plenary = true,
+  highlight = "TidalEval",
 }
