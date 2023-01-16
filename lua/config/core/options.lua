@@ -28,24 +28,6 @@ vim.opt.ruler = false
 vim.opt.cmdheight = 0
 --vim.opt.signcolumn = "number"
 
--- disable runtime plugins
-for _, scriptname in pairs {
-  "getscript",
-  "getscriptPlugin",
-  "gzip",
-  "logiPat",
-  "rrhelper",
-  "tar",
-  "tarPlugin",
-  "tohtml",
-  "vimball",
-  "vimballPlugin",
-  "zip",
-  "zipPlugin",
-} do
-  vim.g["loaded_" .. scriptname] = 1
-end
-
 -- disable providers
 for _, provider in pairs { "python3", "node", "ruby", "perl" } do
   vim.g[string.format("loaded_%s_provider", provider)] = 0

@@ -1,86 +1,105 @@
-local parsers = require "nvim-treesitter.parsers"
-local tsrainbow_enabled_list = { "lua", "supercollider", "json", "fennel", "haskell" }
+local function config()
+  local parsers = require "nvim-treesitter.parsers"
+  local tsrainbow_enabled_list = { "lua", "supercollider", "json", "fennel", "haskell" }
 
-require("nvim-treesitter.configs").setup {
-  ensure_installed = "all",
-  ignore_install = { "elm", "foam", "fortran", "hack", "help", "phpdoc", "slint", "todotxt", "verilog" },
-  highlight = {
-    enable = true,
-  },
-
-  textobjects = {
-
-    select = {
+  require("nvim-treesitter.configs").setup {
+    ensure_installed = "all",
+    ignore_install = { "elm", "foam", "fortran", "hack", "phpdoc", "slint", "todotxt", "verilog" },
+    highlight = {
       enable = true,
-      lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
-      keymaps = {
-        -- You can use the capture groups defined in textobjects.scm
-        ["af"] = "@function.outer",
-        ["if"] = "@function.inner",
-        ["ac"] = "@class.outer",
-        ["ic"] = "@class.inner",
-        -- Or you can define your own textobjects like this
-        --["iF"] = {
-        --  python = "(function_definition) @function",
-        --  cpp = "(function_definition) @function",
-        --  c = "(function_definition) @function",
-        --  java = "(method_declaration) @function",
-        --},
+    },
+
+    textobjects = {
+
+      select = {
+        enable = true,
+        lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
+        keymaps = {
+          -- You can use the capture groups defined in textobjects.scm
+          ["af"] = "@function.outer",
+          ["if"] = "@function.inner",
+          ["ac"] = "@class.outer",
+          ["ic"] = "@class.inner",
+          -- Or you can define your own textobjects like this
+          --["iF"] = {
+          --  python = "(function_definition) @function",
+          --  cpp = "(function_definition) @function",
+          --  c = "(function_definition) @function",
+          --  java = "(method_declaration) @function",
+          --},
+        },
+      },
+
+      move = {
+        enable = true,
+        set_jumps = true, -- whether to set jumps in the jumplist
+        goto_next_start = {
+          ["]m"] = "@function.outer",
+          ["]]"] = "@class.outer",
+        },
+        goto_next_end = {
+          ["]M"] = "@function.outer",
+          ["]["] = "@class.outer",
+        },
+        goto_previous_start = {
+          ["[m"] = "@function.outer",
+          ["[["] = "@class.outer",
+        },
+        goto_previous_end = {
+          ["[M"] = "@function.outer",
+          ["[]"] = "@class.outer",
+        },
+      },
+
+      swap = {
+        enable = true,
+        swap_next = {
+          ["<leader>a"] = "@parameter.inner",
+        },
+        swap_previous = {
+          ["<leader>A"] = "@parameter.inner",
+        },
+      },
+
+      lsp_interop = {
+        enable = true,
+        peek_definition_code = {
+          ["df"] = "@function.outer",
+          ["dF"] = "@class.outer",
+        },
       },
     },
 
-    move = {
+    rainbow = {
       enable = true,
-      set_jumps = true, -- whether to set jumps in the jumplist
-      goto_next_start = {
-        ["]m"] = "@function.outer",
-        ["]]"] = "@class.outer",
-      },
-      goto_next_end = {
-        ["]M"] = "@function.outer",
-        ["]["] = "@class.outer",
-      },
-      goto_previous_start = {
-        ["[m"] = "@function.outer",
-        ["[["] = "@class.outer",
-      },
-      goto_previous_end = {
-        ["[M"] = "@function.outer",
-        ["[]"] = "@class.outer",
-      },
-    },
-
-    swap = {
-      enable = true,
-      swap_next = {
-        ["<leader>a"] = "@parameter.inner",
-      },
-      swap_previous = {
-        ["<leader>A"] = "@parameter.inner",
-      },
-    },
-
-    lsp_interop = {
-      enable = true,
-      peek_definition_code = {
-        ["df"] = "@function.outer",
-        ["dF"] = "@class.outer",
-      },
-    },
-  },
-
-  rainbow = {
-    enable = true,
-    disable = vim.tbl_filter(function(p)
-      local disable = true
-      for _, lang in pairs(tsrainbow_enabled_list) do
-        if p == lang then
-          disable = false
+      disable = vim.tbl_filter(function(p)
+        local disable = true
+        for _, lang in pairs(tsrainbow_enabled_list) do
+          if p == lang then
+            disable = false
+          end
         end
-      end
-      return disable
-    end, parsers.available_parsers()),
-    extended_mode = true,
-    max_file_lines = nil,
+        return disable
+      end, parsers.available_parsers()),
+      extended_mode = true,
+      max_file_lines = nil,
+    },
+  }
+end
+
+return {
+  {
+    "nvim-treesitter/nvim-treesitter",
+    event = { "BufNewFile", "BufReadPost", "BufWritePost" },
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter-textobjects",
+      "mrjones2014/nvim-ts-rainbow",
+    },
+    build = ":TSUpdate",
+    config = config,
+  },
+  {
+    "nvim-treesitter/playground",
+    cmd = "TSPlaygroundToggle",
   },
 }

@@ -1,0 +1,5 @@
+return {
+  {
+    "davidgranstrom/osc.nvim",
+  },
+}

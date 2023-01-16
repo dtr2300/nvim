@@ -1,1 +1,7 @@
-require("Comment").setup()
+return {
+  {
+    "numToStr/Comment.nvim",
+    event = { "BufNewFile", "BufReadPost", "BufWritePost" },
+    config = true,
+  },
+}

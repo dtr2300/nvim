@@ -1,6 +1,5 @@
-/lua/config/compiled
 /spell
-/lua/scratch
 /doc
 /syntax
 .luarc.json
+lazy-lock.json

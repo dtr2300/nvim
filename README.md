@@ -6,8 +6,7 @@ This is my personal [Neovim](https://neovim.io/) configuration (Windows, WSL/Ubu
 
 ## plugins
 
-- [packer.nvim](https://github.com/wbthomason/packer.nvim) - plugin/package management for neovim
-- [impatient.nvim](https://github.com/lewis6991/impatient.nvim) - speed up loading lua modules in neovim to improve startup time
+- [lazy.nvim](https://github.com/folke/lazy.nvim) - a modern plugin manager for neovim
 <!-- break -->
 - [nvim-web-devicons](https://github.com/kyazdani42/nvim-web-devicons) - adds filetype glyphs (icons) to various vim plugins
 - [plenary.nvim](https://github.com/nvim-lua/plenary.nvim) - all the lua functions I don't want to write twice
@@ -32,14 +31,14 @@ This is my personal [Neovim](https://neovim.io/) configuration (Windows, WSL/Ubu
 - [telescope-file-browser.nvim](https://github.com/nvim-telescope/telescope-file-browser.nvim) - a file browser extension for telescope.nvim
 - [telescope-repo.nvim](https://github.com/cljoly/telescope-repo.nvim) - an extension for telescope.nvim that searches the filesystem for git or other repositories
 - [telescope-fzf-native.nvim](https://github.com/nvim-telescope/telescope-fzf-native.nvim) - fzf sorter for telescope written in c
-- [telescope-packer.nvim](https://github.com/nvim-telescope/telescope-packer.nvim) - a telescope extension that provides extra functionality for packer.nvim
+- [telescope-lazy.nvim](https://github.com/tsakirist/telescope-lazy.nvim) - telescope extension that provides handy functionality about plugins installed via lazy.nvim
 - [telescope-luasnip](https://github.com/benfowler/telescope-luasnip.nvim) - telescope.nvim extension that adds luasnip integration
 - [telescope-scdoc.nvim](https://github.com/davidgranstrom/telescope-scdoc.nvim) - a supercollider documentation picker
 <!-- break -->
 - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) - provide a simple and easy way to use the interface for tree-sitter in neovim and provide some basic functionality such as highlighting based on it
 - [playground](https://github.com/nvim-treesitter/playground) - view treesitter information directly in neovim
 - [nvim-treesitter-textobjects](https://github.com/nvim-treesitter/nvim-treesitter-textobjects) - create your own textobjects using tree-sitter queries
-- [nvim-ts-rainbow](https://github.com/p00f/nvim-ts-rainbow) - rainbow parentheses for neovim using tree-sitter
+- [nvim-ts-rainbow](https://github.com/mrjones2014/nvim-ts-rainbow) - rainbow parentheses for neovim using tree-sitter
 <!-- break -->
 - [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) - a collection of common configurations for neovim's built-in language server client
 - [lsp_signature.nvim](https://github.com/ray-x/lsp_signature.nvim) - show function signature when you type
@@ -55,7 +54,6 @@ This is my personal [Neovim](https://neovim.io/) configuration (Windows, WSL/Ubu
 - [cmp-nvim-lsp](https://github.com/hrsh7th/cmp-nvim-lsp) - nvim-cmp source for neovim builtin lsp client
 - [cmp_luasnip](https://github.com/saadparwaiz1/cmp_luasnip) - luasnip completion source for nvim-cmp
 <!-- break -->
-- [nvim-lua-guide](https://github.com/nanotee/nvim-lua-guide) - getting started using lua in neovim
 - [nvim-luaref](https://github.com/milisims/nvim-luaref) - adds a reference for builtin lua functions, extracting both text and formatting from the lua 5.1 reference manual
 <!-- break -->
 - [scnvim](https://github.com/davidgranstrom/scnvim) - neovim frontend for supercollider
@@ -66,7 +64,7 @@ This is my personal [Neovim](https://neovim.io/) configuration (Windows, WSL/Ubu
 
 - index
     - [awesome neovim](https://github.com/rockerBOO/awesome-neovim)
-    - [neovim craft](https://neovimcraft.com/) ([json](https://github.com/neurosnap/neovimcraft/blob/main/src/lib/resources.json))
+    - [neovim craft](https://neovimcraft.com/)
     - [nvim.sh](https://github.com/neurosnap/nvim.sh)
     - [this week in neovim](https://this-week-in-neovim.org/)
     - [neoland](https://neoland.dev/)
@@ -85,6 +83,7 @@ This is my personal [Neovim](https://neovim.io/) configuration (Windows, WSL/Ubu
     - [how to create vim text-objects](https://thevaluable.dev/vim-create-text-objects/)
     - [neovim as a supercollider ide](https://madskjeldgaard.dk/posts/neovim-as-sc-ide/)
     - [unused keys](https://vim.fandom.com/wiki/Unused_keys)
+    - [events](https://gist.github.com/dtr2300/2f867c2b6c051e946ef23f92bd9d1180)
 - breaking changes
     - [nvim](https://github.com/neovim/neovim/issues/14090)
     - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter/issues/2293)

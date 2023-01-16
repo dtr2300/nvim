@@ -1,8 +1,14 @@
-require("which-key").setup {
-  plugins = {
-    spelling = {
-      enabled = true,
-      suggestions = 20,
+return {
+  {
+    "folke/which-key.nvim",
+    event = "UIEnter",
+    opts = {
+      plugins = {
+        spelling = {
+          enabled = true,
+          suggestions = 20,
+        },
+      },
     },
   },
 }

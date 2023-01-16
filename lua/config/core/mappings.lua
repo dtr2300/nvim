@@ -10,12 +10,8 @@ vim.keymap.set("n", "<C-Down>", "<Cmd>m .+1<CR>", { noremap = false, silent = tr
 vim.keymap.set("v", "<C-Up>", [[@='"zxk"zP`[V`]'<CR>]], { silent = true })
 vim.keymap.set("v", "<C-Down>", [[@='"zx"zp`[V`]'<CR>]], { silent = true })
 
--- update
-vim.keymap.set("n", "<Leader>pu", "<Cmd>PackerUpdate<CR>", { silent = true })
-vim.keymap.set("n", "<Leader>pc", "<Cmd>PackerCompile<CR>", { silent = true })
-vim.keymap.set("n", "<Leader>ps", "<Cmd>PackerSync<CR>", { silent = true })
-vim.keymap.set("n", "<Leader>pU", "<Cmd>TSUpdate<CR>", { silent = true })
-vim.keymap.set("n", "<Leader>pC", "<Cmd>LuaCacheClear<CR>", { silent = true })
+-- plugins
+vim.keymap.set("n", "<Leader>pu", "<Cmd>Lazy<CR>", { silent = true })
 
 -- append N blank lines below cursor
 vim.keymap.set("n", "<F3>", function()
