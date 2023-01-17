@@ -1,13 +1,11 @@
 return {
-  {
-    "folke/which-key.nvim",
-    event = "UIEnter",
-    opts = {
-      plugins = {
-        spelling = {
-          enabled = true,
-          suggestions = 20,
-        },
+  "folke/which-key.nvim",
+  event = "UIEnter",
+  opts = {
+    plugins = {
+      spelling = {
+        enabled = true,
+        suggestions = 20,
       },
     },
   },

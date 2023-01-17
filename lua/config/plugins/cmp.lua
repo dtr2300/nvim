@@ -126,18 +126,16 @@ local function config()
 end
 
 return {
-  {
-    "hrsh7th/nvim-cmp",
-    event = { "BufNewFile", "BufReadPost", "BufWritePost" },
-    dependencies = {
-      "LuaSnip",
-      "friendly-snippets",
-      "hrsh7th/cmp-buffer",
-      "hrsh7th/cmp-path",
-      "hrsh7th/cmp-nvim-lua",
-      "hrsh7th/cmp-nvim-lsp",
-      "saadparwaiz1/cmp_luasnip",
-    },
-    config = config,
+  "hrsh7th/nvim-cmp",
+  event = { "BufNewFile", "BufReadPost", "BufWritePost" },
+  dependencies = {
+    "LuaSnip",
+    "friendly-snippets",
+    "hrsh7th/cmp-buffer",
+    "hrsh7th/cmp-path",
+    "hrsh7th/cmp-nvim-lua",
+    "hrsh7th/cmp-nvim-lsp",
+    "saadparwaiz1/cmp_luasnip",
   },
+  config = config,
 }
