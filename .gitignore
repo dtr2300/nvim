@@ -1,5 +1,6 @@
 /spell
 /doc
 /syntax
+/lua/scratch
 .luarc.json
 lazy-lock.json

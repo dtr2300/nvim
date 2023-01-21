@@ -23,7 +23,7 @@ vim.opt.splitbelow = true
 vim.opt.showtabline = 2
 vim.opt.showmode = false
 vim.opt.list = false
-vim.opt.listchars = { eol = "¬" }
+vim.opt.listchars = { tab = "╶─╴", lead = "·", trail = "▒", eol = "↲", extends = "►", precedes = "◄" }
 vim.opt.ruler = false
 vim.opt.cmdheight = 0
 --vim.opt.signcolumn = "number"
