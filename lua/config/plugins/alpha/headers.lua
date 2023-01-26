@@ -1,5 +1,4 @@
-local headers = {
-
+return {
   ["1943"] = {
     [[###  ## ### ###  ## ##  ### ### #### ##   ##]],
     [[  ## ##  ##  ## ##   ##  ##  ##  ##   ## ## ]],
@@ -4166,15 +4165,3 @@ local headers = {
     [[##   ## #######  #####    ###   #### ##   ##]],
   },
 }
-
-return setmetatable(headers, {
-  __index = {
-    random = function()
-      local keys = {}
-      for k, _ in pairs(headers) do
-        table.insert(keys, k)
-      end
-      return headers[keys[math.random(#keys)]]
-    end,
-  },
-})

@@ -1,14 +1,38 @@
-math.randomseed(os.time())
-local header_color = "AlphaCol" .. math.random(11)
-
 local utils = require "config.plugins.alpha.utils"
+
+math.randomseed(os.time())
+local headers = {
+  "amcrazor",
+  "block2",
+  "graffiti",
+  "henry3d",
+  "kban",
+  "larry3d",
+  "marquee",
+  "mono9",
+  "nancyj",
+  "npn",
+  "os2",
+  "pagga",
+  "peaks",
+  "peaksslant",
+  "relief",
+  "relief2",
+  "rowancap",
+  "sblood",
+  "smisome1",
+  "swampland",
+  "ticks",
+  "twisted",
+}
+local header = headers[math.random(#headers)]
+local header_color = "AlphaCol" .. math.random(11)
 
 return {
   { type = "padding", val = 2 },
   {
     type = "text",
-    -- val = require("config.plugins.alpha.headers").random(),
-    val = require("config.plugins.alpha.headers").block2,
+    val = require("config.plugins.alpha.headers")[header],
     opts = { hl = header_color, position = "center" },
   },
   { type = "padding", val = 1 },
