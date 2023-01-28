@@ -26,6 +26,7 @@ This is my personal [Neovim](https://neovim.io/) configuration (Windows, WSL/Ubu
 - [Comment.nvim](https://github.com/numToStr/Comment.nvim) - smart and powerful comment plugin for neovim
 - [toggleterm.nvim](https://github.com/akinsho/toggleterm.nvim) - a neovim lua plugin to help easily manage multiple terminal windows
 - [aerial.nvim](https://github.com/stevearc/aerial.nvim/) - a code outline window for skimming and quick navigation
+- [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim) - git integration for buffers
 <!-- break -->
 - [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) - a highly extendable fuzzy finder over lists
 - [telescope-file-browser.nvim](https://github.com/nvim-telescope/telescope-file-browser.nvim) - a file browser extension for telescope.nvim

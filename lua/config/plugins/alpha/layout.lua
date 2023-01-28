@@ -5,7 +5,7 @@ local headers = {
   "amcrazor",
   "block2",
   "graffiti",
-  "henry3d",
+  "hieroglyphs",
   "kban",
   "larry3d",
   "marquee",

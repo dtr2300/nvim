@@ -5,7 +5,7 @@ local M = {}
 --   https://github.com/neovide/neovide/issues/888#issuecomment-898928509
 --   https://github.com/neovim/neovim/pull/15373
 
-local fontname = "FiraCode NFM"
+local fontname = "FiraCode NF"
 local fontsize = 10
 local isfullscreen = false
 

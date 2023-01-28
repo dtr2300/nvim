@@ -44,7 +44,7 @@ return {
       fern = false,
       fidget = false,
       gitgutter = false,
-      gitsigns = false,
+      gitsigns = true,
       harpoon = false,
       hop = false,
       leap = false,
