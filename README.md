@@ -123,7 +123,7 @@ This is my personal [Neovim](https://neovim.io/) configuration (Windows, WSL/Ubu
     - [pyright](https://github.com/microsoft/pyright)
     - [vim-language-server](https://github.com/iamcco/vim-language-server)
     - [bash-language-server](https://github.com/bash-lsp/bash-language-server)
-    - [sumneko-lua](https://github.com/sumneko/lua-language-server)
+    - [luals](https://github.com/luals/lua-language-server/releases)
     - [clangd](https://clangd.llvm.org/)
         - [bear](https://github.com/rizsotto/Bear)
         - [compiledb](https://pypi.org/project/compiledb/)

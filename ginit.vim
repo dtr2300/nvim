@@ -1,1 +1,1 @@
-lua require("config.gui").setup()
+lua require("config.gui")
