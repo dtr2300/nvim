@@ -16,7 +16,7 @@ end
 
 function M.fullscreen_toggle()
   isfullscreen = not isfullscreen
-  vim.call("GuiWindowFullScreen", isfullscreen and 1 or 0)
+  vim.fn.GuiWindowFullScreen(isfullscreen and 1 or 0)
 end
 
 function M.setup()
