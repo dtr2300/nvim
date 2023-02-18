@@ -11,7 +11,7 @@ vim.keymap.set("v", "<C-Up>", [[@='"zxk"zP`[V`]'<CR>]], { silent = true })
 vim.keymap.set("v", "<C-Down>", [[@='"zx"zp`[V`]'<CR>]], { silent = true })
 
 -- plugins
-vim.keymap.set("n", "<Leader>pu", "<Cmd>Lazy<CR>", { silent = true })
+vim.keymap.set("n", "<Leader>p", "<Cmd>Lazy<CR>", { silent = true })
 
 -- append N blank lines below cursor
 vim.keymap.set("n", "<F3>", function()
@@ -52,3 +52,6 @@ vim.keymap.set("n", "<Leader>Ls", "<Cmd>set ft=supercollider<CR>", { silent = tr
 
 -- space paste
 vim.keymap.set("x", "<Leader>p", [["_dP]], { noremap = true, silent = true })
+
+-- hide number column
+vim.keymap.set("n", "<Leader>zx", "<Cmd>setlocal nonu nornu scl=no<CR>", { silent = true })

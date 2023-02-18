@@ -4,11 +4,13 @@ local fontname = "FiraCode NF"
 local fontsize_default = 10
 local fontsize = fontsize_default
 
+---@param size? number
 function M.set_fontsize(size)
   fontsize = size or fontsize_default
   vim.opt.guifont = fontname .. ":h" .. fontsize
 end
 
+---@param amount number
 function M.adjust_fontsize(amount)
   M.set_fontsize(fontsize + amount)
 end

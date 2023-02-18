@@ -5,11 +5,13 @@ local fontsize_default = 10
 local fontsize = fontsize_default
 local isfullscreen = false
 
+---@param size? number
 function M.set_fontsize(size)
   fontsize = size or fontsize_default
   vim.cmd.GuiFont { fontname .. ":h" .. fontsize, bang = true }
 end
 
+---@param amount number
 function M.adjust_fontsize(amount)
   M.set_fontsize(fontsize + amount)
 end

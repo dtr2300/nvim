@@ -3,10 +3,10 @@ return {
     "neovim/nvim-lspconfig",
     event = { "BufNewFile", "BufReadPost", "BufWritePost" },
     config = function()
-      local function find_sumneko_path(path)
+      local function find_lua_ls_path(path)
         local dirs = require("plenary.scandir").scan_dir(path, { add_dirs = true, depth = 1 })
         for _, dir in ipairs(dirs) do
-          if string.find(dir, "sumneko%.lua") or string.find(dir, "lua%-language%-server") then
+          if string.find(dir, "lua%-language%-server") then
             return dir
           end
         end
@@ -63,23 +63,23 @@ return {
         require("lspconfig")[lsp].setup { on_attach = on_attach }
       end
 
-      -- sumneko_lua
+      -- lua_ls
       local runtime_path = vim.split(package.path, ";")
       table.insert(runtime_path, "lua/?.lua")
       table.insert(runtime_path, "lua/?/init.lua")
-      local sumneko_root_path
+      local lua_ls_root_path
 
       if vim.fn.has "win32" == 1 then
-        sumneko_root_path = find_sumneko_path "D:/Program Files"
+        lua_ls_root_path = find_lua_ls_path "D:/Program Files"
       elseif vim.fn.has "wsl" == 1 then
-        sumneko_root_path = find_sumneko_path "/home/dtr/.local/share"
+        lua_ls_root_path = find_lua_ls_path "/home/dtr/.local/share"
       else
-        sumneko_root_path = "/data/data/com.termux/files/usr/share/lua-language-server"
+        lua_ls_root_path = "/data/data/com.termux/files/usr/share/lua-language-server"
       end
 
       require("lspconfig").lua_ls.setup {
         on_attach = on_attach,
-        cmd = { sumneko_root_path .. "/bin/lua-language-server", "-E", sumneko_root_path .. "/main.lua" },
+        cmd = { lua_ls_root_path .. "/bin/lua-language-server", "-E", lua_ls_root_path .. "/main.lua" },
         settings = {
           Lua = {
             runtime = {

@@ -6,7 +6,6 @@ return {
     vim.keymap.set("n", "<Leader>zZ", function()
       require("zen-mode").toggle { window = { width = 0.5 } }
     end, { silent = true, desc = "Toggle ZenMode (width=0.5)" })
-    vim.keymap.set("n", "<Leader>zx", "<Cmd>setlocal nonu nornu scl=no<CR>", { silent = true })
   end,
   opts = {
     window = {
