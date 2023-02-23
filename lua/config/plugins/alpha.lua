@@ -40,6 +40,15 @@ local function layout()
     return { type = "button", val = txt, on_press = on_press, opts = opts }
   end
 
+  ---@return table
+  local function header()
+    return {
+      [[╔═ ╔═╝╔═║║ ║╝╔╔ ]],
+      [[║ ║╔═╝║ ║║ ║║║║║]],
+      [[╝ ╝══╝══╝ ╝ ╝╝╝╝]],
+    }
+  end
+
   ---@return string
   local function info()
     local plugins = #vim.tbl_keys(require("lazy").plugins())
@@ -47,6 +56,21 @@ local function layout()
     local datetime = os.date " %d-%m-%Y   %H:%M:%S"
     local platform = vim.fn.has "win32" == 1 and "" or ""
     return string.format(" %d  %s %d.%d.%d  %s", plugins, platform, v.major, v.minor, v.patch, datetime)
+  end
+
+  ---@return table
+  local function menu()
+    return {
+      button("SPC t o", "  Recently opened files"),
+      button("SPC t f", "  Find file"),
+      button("SPC t l", "  Find word"),
+      button("SPC t F", "  File browser"),
+      button("SPC t 1", "  Find repo"),
+      button("SPC t s", "  Open session"),
+      button("n", "  New file", "<Cmd>ene<CR>"),
+      button("p", "  Plugins", "<Cmd>Lazy<CR>"),
+      button("q", "  Quit", "<Cmd>qa<CR>"),
+    }
   end
 
   ---@return table
@@ -81,33 +105,19 @@ local function layout()
     { type = "padding", val = 1 },
     {
       type = "text",
-      val = {
-        [[╔═ ╔═╝╔═║║ ║╝╔╔ ]],
-        [[║ ║╔═╝║ ║║ ║║║║║]],
-        [[╝ ╝══╝══╝ ╝ ╝╝╝╝]],
-      },
+      val = header,
       opts = { hl = header_color, position = "center" },
     },
     { type = "padding", val = 1 },
     {
       type = "text",
-      val = info(),
+      val = info,
       opts = { hl = header_color, position = "center" },
     },
     { type = "padding", val = 2 },
     {
       type = "group",
-      val = {
-        button("SPC t o", "  Recently opened files"),
-        button("SPC t f", "  Find file"),
-        button("SPC t l", "  Find word"),
-        button("SPC t F", "  File browser"),
-        button("SPC t 1", "  Find repo"),
-        button("SPC t s", "  Open session"),
-        button("n", "  New file", "<Cmd>ene<CR>"),
-        button("p", "  Plugins", "<Cmd>Lazy<CR>"),
-        button("q", "  Quit", "<Cmd>qa<CR>"),
-      },
+      val = menu,
       opts = { spacing = 0 },
     },
     { type = "padding", val = 1 },
@@ -119,7 +129,7 @@ local function layout()
     { type = "padding", val = 1 },
     {
       type = "text",
-      val = require "alpha.fortune"(),
+      val = require "alpha.fortune",
       opts = { hl = "AlphaQuote", position = "center" },
     },
   }
