@@ -58,7 +58,8 @@ return {
       end, { silent = true, desc = "Save session" })
       vim.keymap.set("n", "<Leader>tt", "<Cmd>Telescope treesitter<CR>", { silent = true })
       vim.keymap.set("n", "<Leader>tv", "<Cmd>Telescope vim_options<CR>", { silent = true })
-      vim.keymap.set("n", "<Leader>ty", function()
+      vim.keymap.set("n", "<Leader>ty", "<Cmd>Noice telescope<CR>", { silent = true })
+      vim.keymap.set("n", "<Leader>tY", function()
         require("telescope").extensions.notify.notify()
       end, { silent = true, desc = "Telescope notify" })
 
