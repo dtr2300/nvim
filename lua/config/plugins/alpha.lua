@@ -40,84 +40,72 @@ local function layout()
     return { type = "button", val = txt, on_press = on_press, opts = opts }
   end
 
-  local info = nil
-  local menu = nil
-  local mru = nil
-  local fortune = nil
+  -- https://github.com/goolord/alpha-nvim/issues/105
+  local lazycache = setmetatable({ eval = {} }, {
+    __call = function(lazycache, index)
+      return function()
+        return lazycache[index]
+      end
+    end,
+    __index = function(lazycache, index)
+      local value = rawget(lazycache, "eval")[index]()
+      lazycache[index] = value
+      return value
+    end,
+  })
 
   ---@return string
-  local function lazy_info()
-    local function eval()
-      local plugins = #vim.tbl_keys(require("lazy").plugins())
-      local v = vim.version()
-      local datetime = os.date " %d-%m-%Y   %H:%M:%S"
-      local platform = vim.fn.has "win32" == 1 and "" or ""
-      return string.format(" %d  %s %d.%d.%d  %s", plugins, platform, v.major, v.minor, v.patch, datetime)
-    end
-    if info == nil then
-      info = eval()
-    end
-    return info
+  lazycache.eval.info = function()
+    local plugins = #vim.tbl_keys(require("lazy").plugins())
+    local v = vim.version()
+    local datetime = os.date " %d-%m-%Y   %H:%M:%S"
+    local platform = vim.fn.has "win32" == 1 and "" or ""
+    return string.format(" %d  %s %d.%d.%d  %s", plugins, platform, v.major, v.minor, v.patch, datetime)
   end
 
   ---@return table
-  local function lazy_menu()
-    local function eval()
-      return {
-        button("SPC t o", "  Recently opened files"),
-        button("SPC t f", "  Find file"),
-        button("SPC t l", "  Find word"),
-        button("SPC t F", "  File browser"),
-        button("SPC t 1", "  Find repo"),
-        button("SPC t s", "  Open session"),
-        button("n", "  New file", "<Cmd>ene<CR>"),
-        button("p", "  Plugins", "<Cmd>Lazy<CR>"),
-        button("q", "  Quit", "<Cmd>qa<CR>"),
-      }
-    end
-    if menu == nil then
-      menu = eval()
-    end
-    return menu
+  lazycache.eval.menu = function()
+    return {
+      button("SPC t o", "  Recently opened files"),
+      button("SPC t f", "  Find file"),
+      button("SPC t l", "  Find word"),
+      button("SPC t F", "  File browser"),
+      button("SPC t 1", "  Find repo"),
+      button("SPC t s", "  Open session"),
+      button("n", "  New file", "<Cmd>ene<CR>"),
+      button("p", "  Plugins", "<Cmd>Lazy<CR>"),
+      button("q", "  Quit", "<Cmd>qa<CR>"),
+    }
   end
 
   ---@return table
-  local function lazy_mru()
-    local function eval()
-      local result = {}
-      for _, filename in ipairs(vim.v.oldfiles) do
-        if file_exists(filename) then
-          local icon, hl = require("nvim-web-devicons").get_icon(filename, vim.fn.fnamemodify(filename, ":e"))
-          local filename_short = string.sub(vim.fn.fnamemodify(filename, ":t"), 1, 30)
-          table.insert(
-            result,
-            button(
-              tostring(#result + 1),
-              string.format("%s  %s", icon, filename_short),
-              string.format("<Cmd>e %s<CR>", filename),
-              nil,
-              { hl = { { hl, 0, 3 }, { "Normal", 5, #filename_short + 5 } } }
-            )
+  lazycache.eval.mru = function()
+    local result = {}
+    for _, filename in ipairs(vim.v.oldfiles) do
+      if file_exists(filename) then
+        local icon, hl = require("nvim-web-devicons").get_icon(filename, vim.fn.fnamemodify(filename, ":e"))
+        local filename_short = string.sub(vim.fn.fnamemodify(filename, ":t"), 1, 30)
+        table.insert(
+          result,
+          button(
+            tostring(#result + 1),
+            string.format("%s  %s", icon, filename_short),
+            string.format("<Cmd>e %s<CR>", filename),
+            nil,
+            { hl = { { hl, 0, 3 }, { "Normal", 5, #filename_short + 5 } } }
           )
-          if #result == 9 then
-            break
-          end
+        )
+        if #result == 9 then
+          break
         end
       end
-      return result
     end
-    if mru == nil then
-      mru = eval()
-    end
-    return mru
+    return result
   end
 
   ---@return table
-  local function lazy_fortune()
-    if fortune == nil then
-      fortune = require "alpha.fortune"()
-    end
-    return fortune
+  lazycache.eval.fortune = function()
+    return require "alpha.fortune"()
   end
 
   math.randomseed(os.time())
@@ -137,25 +125,25 @@ local function layout()
     { type = "padding", val = 1 },
     {
       type = "text",
-      val = lazy_info,
+      val = lazycache "info",
       opts = { hl = header_color, position = "center" },
     },
     { type = "padding", val = 2 },
     {
       type = "group",
-      val = lazy_menu,
+      val = lazycache "menu",
       opts = { spacing = 0 },
     },
     { type = "padding", val = 1 },
     {
       type = "group",
-      val = lazy_mru,
+      val = lazycache "mru",
       opts = { spacing = 0 },
     },
     { type = "padding", val = 1 },
     {
       type = "text",
-      val = lazy_fortune,
+      val = lazycache "fortune",
       opts = { hl = "AlphaQuote", position = "center" },
     },
   }
