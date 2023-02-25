@@ -51,7 +51,7 @@ local function layout()
       end
     end,
     __index = function(lazycache, index)
-      local fn = rawget(lazycache, "_eval")[index]
+      local fn = lazycache._eval[index]
       if fn ~= nil then
         local value = fn()
         rawset(lazycache, index, value)
