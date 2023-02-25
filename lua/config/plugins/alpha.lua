@@ -42,6 +42,9 @@ local function layout()
 
   -- https://github.com/goolord/alpha-nvim/issues/105
   local lazycache = setmetatable({ eval = {} }, {
+    __newindex = function(lazycache, index, fn)
+      lazycache.eval[index] = fn
+    end,
     __call = function(lazycache, index)
       return function()
         return lazycache[index]
@@ -49,13 +52,13 @@ local function layout()
     end,
     __index = function(lazycache, index)
       local value = rawget(lazycache, "eval")[index]()
-      lazycache[index] = value
+      rawset(lazycache, index, value)
       return value
     end,
   })
 
   ---@return string
-  lazycache.eval.info = function()
+  lazycache.info = function()
     local plugins = #vim.tbl_keys(require("lazy").plugins())
     local v = vim.version()
     local datetime = os.date " %d-%m-%Y   %H:%M:%S"
@@ -64,7 +67,7 @@ local function layout()
   end
 
   ---@return table
-  lazycache.eval.menu = function()
+  lazycache.menu = function()
     return {
       button("SPC t o", "  Recently opened files"),
       button("SPC t f", "  Find file"),
@@ -79,7 +82,7 @@ local function layout()
   end
 
   ---@return table
-  lazycache.eval.mru = function()
+  lazycache.mru = function()
     local result = {}
     for _, filename in ipairs(vim.v.oldfiles) do
       if file_exists(filename) then
@@ -104,7 +107,7 @@ local function layout()
   end
 
   ---@return table
-  lazycache.eval.fortune = function()
+  lazycache.fortune = function()
     return require "alpha.fortune"()
   end
 
