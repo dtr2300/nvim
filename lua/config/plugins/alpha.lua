@@ -41,9 +41,9 @@ local function layout()
   end
 
   -- https://github.com/goolord/alpha-nvim/issues/105
-  local lazycache = setmetatable({ _eval = {} }, {
+  local lazycache = setmetatable({}, {
     __newindex = function(lazycache, index, fn)
-      lazycache._eval[index] = fn
+      getmetatable(lazycache)[index] = fn
     end,
     __call = function(lazycache, index)
       return function()
@@ -51,7 +51,7 @@ local function layout()
       end
     end,
     __index = function(lazycache, index)
-      local fn = lazycache._eval[index]
+      local fn = getmetatable(lazycache)[index]
       if fn ~= nil then
         local value = fn()
         rawset(lazycache, index, value)
