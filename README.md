@@ -56,8 +56,6 @@ This is my personal [Neovim](https://neovim.io/) configuration (Windows, WSL/Ubu
 - [cmp-nvim-lsp](https://github.com/hrsh7th/cmp-nvim-lsp) - nvim-cmp source for neovim builtin lsp client
 - [cmp_luasnip](https://github.com/saadparwaiz1/cmp_luasnip) - luasnip completion source for nvim-cmp
 <!-- break -->
-- [nvim-luaref](https://github.com/milisims/nvim-luaref) - adds a reference for builtin lua functions, extracting both text and formatting from the lua 5.1 reference manual
-<!-- break -->
 - [scnvim](https://github.com/davidgranstrom/scnvim) - neovim frontend for supercollider
 - [sc-scratchpad.nvim](https://github.com/madskjeldgaard/sc-scratchpad.nvim) - throwaway buffers for chaotic supercollider coders in neovim
 - [tidal.nvim](https://github.com/dtr2300/tidal.nvim) - neovim plugin for tidalcycles. wip.
