@@ -1,16 +1,5 @@
+---@return table
 local function layout()
-  ---@param name string
-  ---@return boolean
-  local function file_exists(name)
-    local f = io.open(name, "r")
-    if f ~= nil then
-      io.close(f)
-      return true
-    else
-      return false
-    end
-  end
-
   ---@param sc string
   ---@param txt string
   ---@param keybind string?
@@ -42,22 +31,21 @@ local function layout()
 
   -- https://github.com/goolord/alpha-nvim/issues/105
   local lazycache = setmetatable({}, {
-    __newindex = function(lazycache, index, fn)
-      getmetatable(lazycache)[index] = fn
+    __newindex = function(table, index, fn)
+      assert(type(fn) == "function")
+      getmetatable(table)[index] = fn
     end,
-    __call = function(lazycache, index)
+    __call = function(table, index)
       return function()
-        return lazycache[index]
+        return table[index]
       end
     end,
-    __index = function(lazycache, index)
-      local fn = getmetatable(lazycache)[index]
-      if fn ~= nil then
+    __index = function(table, index)
+      local fn = getmetatable(table)[index]
+      if fn then
         local value = fn()
-        rawset(lazycache, index, value)
+        rawset(table, index, value)
         return value
-      else
-        return nil
       end
     end,
   })
@@ -90,7 +78,7 @@ local function layout()
   lazycache.mru = function()
     local result = {}
     for _, filename in ipairs(vim.v.oldfiles) do
-      if file_exists(filename) then
+      if vim.loop.fs_stat(filename) ~= nil then
         local icon, hl = require("nvim-web-devicons").get_icon(filename, vim.fn.fnamemodify(filename, ":e"))
         local filename_short = string.sub(vim.fn.fnamemodify(filename, ":t"), 1, 30)
         table.insert(
