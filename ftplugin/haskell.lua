@@ -6,7 +6,6 @@ vim.keymap.set("n", "}", "2}{j", { silent = true, buffer = true })
 vim.keymap.set("n", "{", "2{j", { silent = true, buffer = true })
 
 -- mappings
-
 if vim.fn.has "win32" == 1 then
   -- toggle sc post window
   vim.keymap.set("n", "<CR>", function()
@@ -18,15 +17,52 @@ if vim.fn.has "win32" == 1 then
     require("tidal").start_superdirt()
   end, { silent = true, buffer = true, desc = "Start sc and superdirt" })
 
-  -- start tidalcycles
-  vim.keymap.set("n", "<F5>", function()
-    require("tidal").start()
-  end, { silent = true, buffer = true, desc = "Start tidalcycles" })
+  -- s.plotTree
+  vim.keymap.set("n", "<LocalLeader>t", function()
+    require("scnvim").send "s.plotTree;"
+  end, { silent = true, buffer = true, desc = "s.plotTree" })
+
+  -- s.scope
+  vim.keymap.set("n", "<LocalLeader>c", function()
+    require("scnvim").send "s.scope;"
+  end, { silent = true, buffer = true, desc = "s.scope" })
+
+  -- s.freqscope
+  vim.keymap.set("n", "<LocalLeader>f", function()
+    require("scnvim").send "s.freqscope;"
+  end, { silent = true, buffer = true, desc = "s.freqscope" })
+
+  -- s.makeGui
+  vim.keymap.set("n", "<LocalLeader>g", function()
+    require("scnvim").send "s.makeGui;"
+  end, { silent = true, buffer = true, desc = "s.makeGui" })
+
+  -- s.meter
+  vim.keymap.set("n", "<LocalLeader>r", function()
+    require("scnvim").send "s.meter;"
+  end, { silent = true, buffer = true, desc = "s.meter" })
+
+  -- s.volume.Gui
+  vim.keymap.set("n", "<LocalLeader>v", function()
+    require("scnvim").send "s.volume.Gui;"
+  end, { silent = true, buffer = true, desc = "s.volume.Gui" })
 
   -- stop tidalcycles and sc
   vim.keymap.set("n", "<F6>", function()
     require("tidal").stop()
   end, { silent = true, buffer = true, desc = "Stop tidalcycles" })
+elseif vim.fn.has "wsl" == 1 then
+  -- stop tidalcycles
+  vim.keymap.set("n", "<F6>", function()
+    require("tidal").stop(false)
+  end, { silent = true, buffer = true, desc = "Stop tidalcycles" })
+end
+
+if vim.fn.has "win32" == 1 or vim.fn.has "wsl" == 1 then
+  -- start tidalcycles
+  vim.keymap.set("n", "<F5>", function()
+    require("tidal").start()
+  end, { silent = true, buffer = true, desc = "Start tidalcycles" })
 
   -- send current paragraph
   vim.keymap.set({ "n", "i" }, "<M-e>", function()
@@ -91,34 +127,4 @@ if vim.fn.has "win32" == 1 then
       require("tidal").send "unsoloAll"
     end
   end, { silent = true, buffer = true, desc = "Unsolo pattern" })
-
-  -- s.plotTree
-  vim.keymap.set("n", "<LocalLeader>t", function()
-    require("scnvim").send "s.plotTree;"
-  end, { silent = true, buffer = true, desc = "s.plotTree" })
-
-  -- s.scope
-  vim.keymap.set("n", "<LocalLeader>c", function()
-    require("scnvim").send "s.scope;"
-  end, { silent = true, buffer = true, desc = "s.scope" })
-
-  -- s.freqscope
-  vim.keymap.set("n", "<LocalLeader>f", function()
-    require("scnvim").send "s.freqscope;"
-  end, { silent = true, buffer = true, desc = "s.freqscope" })
-
-  -- s.makeGui
-  vim.keymap.set("n", "<LocalLeader>g", function()
-    require("scnvim").send "s.makeGui;"
-  end, { silent = true, buffer = true, desc = "s.makeGui" })
-
-  -- s.meter
-  vim.keymap.set("n", "<LocalLeader>r", function()
-    require("scnvim").send "s.meter;"
-  end, { silent = true, buffer = true, desc = "s.meter" })
-
-  -- s.volume.Gui
-  vim.keymap.set("n", "<LocalLeader>v", function()
-    require("scnvim").send "s.volume.Gui;"
-  end, { silent = true, buffer = true, desc = "s.volume.Gui" })
 end

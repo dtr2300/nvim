@@ -62,6 +62,7 @@ return {
       noice = true,
       notify = true,
       nvimtree = false,
+      octo = false,
       overseer = false,
       pounce = false,
       sandwich = false,
