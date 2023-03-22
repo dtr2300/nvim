@@ -1,5 +1,7 @@
 vim.bo.cindent = true
 vim.opt_local.cinkeys:remove "0#"
+vim.opt_local.foldexpr = "getline(v:lnum)=~'^\\s*$'&&getline(v:lnum+1)=~'\\S'?'<1':1"
+-- vim.opt_local.foldcolumn = "auto"
 
 -- jump to prev/next paragraph
 vim.keymap.set("n", "}", "2}{j", { silent = true, buffer = true })

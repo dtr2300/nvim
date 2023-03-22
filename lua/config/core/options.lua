@@ -27,6 +27,9 @@ vim.opt.listchars = { tab = "╶─╴", lead = "·", trail = "▒", eol = "↲"
 vim.opt.ruler = false
 vim.opt.cmdheight = 0
 --vim.opt.signcolumn = "number"
+vim.opt.foldlevel = 99
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 
 -- disable providers
 for _, provider in pairs { "python3", "node", "ruby", "perl" } do
