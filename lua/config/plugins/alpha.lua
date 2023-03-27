@@ -56,21 +56,21 @@ local function layout()
     local v = vim.version()
     local datetime = os.date " %d-%m-%Y   %H:%M:%S"
     local platform = vim.fn.has "win32" == 1 and "" or ""
-    return string.format(" %d  %s %d.%d.%d  %s", plugins, platform, v.major, v.minor, v.patch, datetime)
+    return string.format("󰂖 %d  %s %d.%d.%d  %s", plugins, platform, v.major, v.minor, v.patch, datetime)
   end
 
   ---@return table
   lazycache.menu = function()
     return {
-      button("SPC t o", "  Recently opened files"),
+      button("SPC t o", "󰈢  Recently opened files"),
       button("SPC t f", "  Find file"),
       button("SPC t l", "  Find word"),
       button("SPC t F", "  File browser"),
       button("SPC t 1", "  Find repo"),
       button("SPC t s", "  Open session"),
       button("n", "  New file", "<Cmd>ene<CR>"),
-      button("p", "  Plugins", "<Cmd>Lazy<CR>"),
-      button("q", "  Quit", "<Cmd>qa<CR>"),
+      button("p", "󰂖  Plugins", "<Cmd>Lazy<CR>"),
+      button("q", "󰅚  Quit", "<Cmd>qa<CR>"),
     }
   end
 

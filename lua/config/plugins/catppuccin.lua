@@ -47,6 +47,7 @@ return {
       gitgutter = false,
       gitsigns = true,
       harpoon = false,
+      headlines = false,
       hop = false,
       illuminate = false,
       leap = false,
@@ -79,6 +80,8 @@ return {
       which_key = true,
       barbecue = {
         dim_dirname = true,
+        bold_basename = true,
+        dim_context = false,
       },
       dap = {
         enabled = false,

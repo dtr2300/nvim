@@ -3,17 +3,17 @@ return {
   opts = {
     override = {
       scd = {
-        icon = "",
+        icon = "󰎄",
         color = "#dd9046",
         name = "Scd",
       },
       sc = {
-        icon = "",
+        icon = "󰎅",
         color = "#dd9046",
         name = "Sc",
       },
       schelp = {
-        icon = "",
+        icon = "󰎆",
         color = "#dd9046",
         name = "Schelp",
       },
