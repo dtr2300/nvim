@@ -37,6 +37,7 @@ return {
     custom_highlights = {},
     integrations = {
       aerial = true,
+      alpha = false,
       barbar = false,
       beacon = false,
       cmp = true,
@@ -82,6 +83,7 @@ return {
         dim_dirname = true,
         bold_basename = true,
         dim_context = false,
+        alt_background = false,
       },
       dap = {
         enabled = false,
@@ -118,7 +120,6 @@ return {
           ["@parameter"] = { fg = colors.maroon, style = {} },
           ["@text.literal"] = { fg = colors.teal, style = {} },
           ["@text.uri"] = { fg = colors.rosewater, style = { "underline" } },
-
           -- alpha
           AlphaButton = { fg = colors.blue },
           AlphaButtonShortcut = { fg = colors.sapphire },
@@ -134,17 +135,13 @@ return {
           AlphaCol10 = { fg = colors.peach },
           AlphaCol11 = { fg = colors.teal },
           AlphaQuote = { fg = colors.lavender, style = { "italic" } },
-
           -- scnvim
           SCNvimEval = { fg = colors.base, bg = colors.lavender },
-
           -- tidal
           TidalEval = { fg = colors.base, bg = colors.lavender },
-
           -- luasnip
           LuaSnipChoiceNode = { fg = colors.yellow, style = { "bold" } },
           LuaSnipInsertNode = { fg = colors.white, style = { "bold" } },
-
           -- telescope
           TelescopePromptPrefix = { bg = colors.crust },
           TelescopePromptNormal = { bg = colors.crust },

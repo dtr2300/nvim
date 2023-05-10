@@ -8,7 +8,7 @@ local function layout()
   ---@return table
   local function button(sc, txt, keybind, keybind_opts, opts)
     local def_opts = {
-      cursor = 5,
+      cursor = 3,
       align_shortcut = "right",
       hl_shortcut = "AlphaButtonShortcut",
       hl = "AlphaButton",

@@ -1,3 +1,91 @@
+local toggleterm = {
+  sections = {
+    lualine_a = {
+      {
+        function()
+          return "ToggleTerm #" .. vim.b.toggle_number
+        end,
+        separator = { left = "", right = "" },
+      },
+    },
+  },
+  filetypes = { "toggleterm" },
+}
+
+local aerial = {
+  sections = {
+    lualine_a = {
+      {
+        function()
+          return "Aerial"
+        end,
+        separator = { left = "", right = "" },
+      },
+    },
+  },
+  filetypes = { "aerial" },
+}
+
+local quickfix = {
+  sections = {
+    lualine_a = {
+      {
+        function()
+          return (vim.fn.getloclist(0, { filewinid = 1 }).filewinid ~= 0) and "Location List" or "Quickfix List"
+        end,
+        separator = { left = "", right = "" },
+      },
+    },
+    lualine_b = {
+      {
+        function()
+          if vim.fn.getloclist(0, { filewinid = 1 }).filewinid ~= 0 then
+            return vim.fn.getloclist(0, { title = 0 }).title
+          end
+          return vim.fn.getqflist({ title = 0 }).title
+        end,
+      },
+    },
+    lualine_z = {
+      {
+        "location",
+        separator = { left = "", right = "" },
+      },
+    },
+  },
+  filetypes = { "qf" },
+}
+
+vim.g.qf_disable_statusline = true
+
+local lazy = {
+  sections = {
+    lualine_a = {
+      {
+        function()
+          return "Lazy 💤"
+        end,
+        separator = { left = "", right = "" },
+      },
+    },
+    lualine_b = {
+      {
+        function()
+          local stats = require("lazy").stats()
+          return "loaded: " .. stats.loaded .. "/" .. stats.count
+        end,
+      },
+    },
+    lualine_c = {
+      {
+        require("lazy.status").updates,
+        cond = require("lazy.status").has_updates,
+      },
+    },
+  },
+  filetypes = { "lazy" },
+}
+
 return {
   "nvim-lualine/lualine.nvim",
   event = "ColorScheme",
@@ -5,8 +93,8 @@ return {
     options = {
       theme = "catppuccin",
       globalstatus = true,
-      section_separators = { left = "", right = "" },
-      component_separators = { left = "", right = "" },
+      component_separators = "",
+      section_separators = { left = "", right = "" },
     },
     sections = {
       lualine_a = {
@@ -18,15 +106,12 @@ return {
       lualine_b = {
         {
           "branch",
-          separator = { left = "", right = "" },
         },
         {
           "diff",
-          separator = { left = "", right = "" },
         },
         {
           "diagnostics",
-          separator = { left = "", right = "" },
         },
       },
       lualine_c = { "filename" },
@@ -34,7 +119,6 @@ return {
       lualine_y = {
         {
           "progress",
-          separator = { left = "" },
         },
       },
       lualine_z = {
@@ -44,6 +128,6 @@ return {
         },
       },
     },
-    extensions = { "quickfix", "toggleterm", "aerial" },
+    extensions = { lazy, quickfix, toggleterm, aerial },
   },
 }

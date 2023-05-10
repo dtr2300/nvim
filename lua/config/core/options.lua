@@ -1,35 +1,53 @@
 -- options
-vim.opt.cursorline = true
-vim.opt.number = true
-vim.opt.relativenumber = true
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.expandtab = true
-vim.opt.smartindent = true
-vim.opt.wrap = true
-vim.opt.breakindent = true
-vim.opt.linebreak = true
-vim.opt.mouse = "a"
-vim.opt.hidden = true
-vim.opt.completeopt = { "menu", "menuone", "noselect" }
-vim.opt.shortmess:append "c"
-vim.opt.fillchars = "eob: "
-vim.opt.termguicolors = true
-vim.opt.spelllang = "en"
-vim.opt.ignorecase = true
-vim.opt.splitright = true
-vim.opt.splitbelow = true
-vim.opt.showtabline = 2
-vim.opt.showmode = false
-vim.opt.list = false
-vim.opt.listchars = { tab = "╶─╴", lead = "·", trail = "▒", eol = "↲", extends = "►", precedes = "◄" }
-vim.opt.ruler = false
-vim.opt.cmdheight = 0
---vim.opt.signcolumn = "number"
-vim.opt.foldlevel = 99
-vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+local opt = vim.opt
+
+opt.breakindent = true
+opt.clipboard = "unnamedplus"
+opt.cmdheight = 0
+opt.completeopt = { "menu", "menuone", "noselect" }
+opt.confirm = true
+opt.cursorline = true
+opt.expandtab = true
+opt.fillchars = "eob: "
+opt.foldexpr = "nvim_treesitter#foldexpr()"
+opt.foldlevel = 99
+opt.foldmethod = "expr"
+opt.formatoptions = "jcroqlnt"
+opt.grepformat = "%f:%l:%c:%m"
+opt.grepprg = "rg --vimgrep"
+opt.hidden = true
+opt.ignorecase = true
+opt.linebreak = true
+opt.list = false
+opt.listchars = { tab = "╶─╴", lead = "·", trail = "▒", eol = "↲", extends = "►", precedes = "◄" }
+opt.mouse = "a"
+opt.number = true
+opt.pumblend = 10
+opt.pumheight = 15
+opt.relativenumber = true
+opt.ruler = false
+opt.sessionoptions = { "buffers", "curdir", "tabpages" }
+opt.shiftround = true
+opt.shiftwidth = 4
+opt.shortmess:append { W = true, I = true, c = true, C = true }
+opt.showmode = false
+opt.showtabline = 2
+opt.smartcase = true
+opt.smartindent = true
+opt.softtabstop = 4
+opt.spelllang = "en"
+opt.splitbelow = true
+opt.splitkeep = "screen"
+opt.splitright = true
+opt.splitright = true
+opt.tabstop = 4
+opt.termguicolors = true
+opt.timeoutlen = 300
+opt.undofile = true
+opt.undolevels = 10000
+opt.updatetime = 200
+opt.wildmode = "longest:full,full"
+opt.wrap = true
 
 -- disable providers
 for _, provider in pairs { "python3", "node", "ruby", "perl" } do
