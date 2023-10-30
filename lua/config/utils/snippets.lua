@@ -103,14 +103,17 @@ ls.add_snippets("supercollider", {
   -- test 9
   s(
     "Pbind",
-    fmt("Pbind(\n\t\\scale, Scale.{},\n\t\\octave, {},\n\t\\degree, {},\n\t\\dur, {},\n\t\\legato, {},\n\t\\amp, {}\n);", {
-      c(1, { t "minor", t "major" }),
-      i(2, "4"),
-      i(3, "Pseq(#[0, 2, 4, 6], inf)"),
-      i(4, "Pseq(#[0.25, 0.25, 0.5], inf)"),
-      i(5, "0.7"),
-      i(6, "0.4"),
-    })
+    fmt(
+      "Pbind(\n\t\\scale, Scale.{},\n\t\\octave, {},\n\t\\degree, {},\n\t\\dur, {},\n\t\\legato, {},\n\t\\amp, {}\n);",
+      {
+        c(1, { t "minor", t "major" }),
+        i(2, "4"),
+        i(3, "Pseq(#[0, 2, 4, 6], inf)"),
+        i(4, "Pseq(#[0.25, 0.25, 0.5], inf)"),
+        i(5, "0.7"),
+        i(6, "0.4"),
+      }
+    )
   ),
 }, {
   key = "mysupercollidersnippets",

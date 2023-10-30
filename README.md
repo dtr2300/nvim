@@ -107,7 +107,7 @@ This is my personal [Neovim](https://neovim.io/) configuration (Windows, WSL/Ubu
     - [glow](https://github.com/charmbracelet/glow)
     - [bat](https://github.com/sharkdp/bat)
     - [delta](https://github.com/dandavison/delta)
-    - [exa](https://github.com/ogham/exa)
+    - [eza](https://github.com/eza-community/eza)
     - [gh](https://github.com/cli/cli)
     - [gh-s](https://github.com/gennaro-tedesco/gh-s)
     - [starship](https://github.com/starship/starship)
