@@ -61,6 +61,7 @@ return {
         end, { desc = "Load scnvim snippets" })
       end
     end,
+    version = "v2.*",
     build = "make install_jsregexp",
   },
   {
